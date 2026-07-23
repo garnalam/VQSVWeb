@@ -1,0 +1,107 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/d/j.class
+  Last modified Feb 1, 2013; size 461 bytes
+  SHA-256 checksum 2ceba27c38a98c73548a25d1b4c48d15d3ecddaf0eba4a228c351487f652b2bf
+public final class d.j
+  minor version: 3
+  major version: 45
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #2                          // d/j
+  super_class: #3                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 3, attributes: 0
+Constant pool:
+   #1 = Class              #27            // d/i
+   #2 = Class              #28            // d/j
+   #3 = Class              #30            // java/lang/Object
+   #4 = Fieldref           #1.#13         // d/i.e:[Ljava/lang/Object;
+   #5 = Fieldref           #2.#10         // d/j.a:Ld/i;
+   #6 = Fieldref           #2.#11         // d/j.b:I
+   #7 = Fieldref           #2.#12         // d/j.c:Ljava/lang/Object;
+   #8 = Methodref          #3.#9          // java/lang/Object."<init>":()V
+   #9 = NameAndType        #17:#15        // "<init>":()V
+  #10 = NameAndType        #24:#20        // a:Ld/i;
+  #11 = NameAndType        #25:#19        // b:I
+  #12 = NameAndType        #26:#21        // c:Ljava/lang/Object;
+  #13 = NameAndType        #29:#23        // e:[Ljava/lang/Object;
+  #14 = Utf8               ()Ljava/lang/Object;
+  #15 = Utf8               ()V
+  #16 = Utf8               (Ljava/lang/Object;)V
+  #17 = Utf8               <init>
+  #18 = Utf8               Code
+  #19 = Utf8               I
+  #20 = Utf8               Ld/i;
+  #21 = Utf8               Ljava/lang/Object;
+  #22 = Utf8               StackMap
+  #23 = Utf8               [Ljava/lang/Object;
+  #24 = Utf8               a
+  #25 = Utf8               b
+  #26 = Utf8               c
+  #27 = Utf8               d/i
+  #28 = Utf8               d/j
+  #29 = Utf8               e
+  #30 = Utf8               java/lang/Object
+{
+  public d.i a;
+    descriptor: Ld/i;
+    flags: (0x0001) ACC_PUBLIC
+
+  public int b;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public java.lang.Object c;
+    descriptor: Ljava/lang/Object;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d.j();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+         4: return
+
+  public final java.lang.Object a();
+    descriptor: ()Ljava/lang/Object;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #5                  // Field a:Ld/i;
+         4: ifnonnull     12
+         7: aload_0
+         8: getfield      #7                  // Field c:Ljava/lang/Object;
+        11: areturn
+        12: aload_0
+        13: getfield      #5                  // Field a:Ld/i;
+        16: getfield      #4                  // Field d/i.e:[Ljava/lang/Object;
+        19: aload_0
+        20: getfield      #6                  // Field b:I
+        23: aaload
+        24: areturn
+        StackMap: length = 0xB (unknown attribute)
+         00 01 00 0C 00 01 07 00 02 00 00
+
+  public final void a(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #5                  // Field a:Ld/i;
+         4: ifnonnull     13
+         7: aload_0
+         8: aload_1
+         9: putfield      #7                  // Field c:Ljava/lang/Object;
+        12: return
+        13: aload_0
+        14: getfield      #5                  // Field a:Ld/i;
+        17: getfield      #4                  // Field d/i.e:[Ljava/lang/Object;
+        20: aload_0
+        21: getfield      #6                  // Field b:I
+        24: aload_1
+        25: aastore
+        26: return
+        StackMap: length = 0xE (unknown attribute)
+         00 01 00 0D 00 02 07 00 02 07 00 03 00 00
+}

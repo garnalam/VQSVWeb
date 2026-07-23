@@ -1,0 +1,22 @@
+path=data/img/img_569.mid
+kind=png
+size=1466
+sha256=95DE0DB7449E5282E32977C1E3D83112B7F1DE01A8143375779455159D0AE465
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 57 00 00 00 3a 08 03 00 00 00 f2 7c 35 da 00 00 00 30 50 4c 54 45 e8 c8 a0 f8 d8 b0 d7 b7 97 d0 aa 69 b2 8d 38 f8 e7 bf d3 a8 44 de b9
+
+IHDR
+0PLTE
+tRNS
+)IDATx
+scuu
+*o'}
+\ V2m4
+#`&`&
+jp'S
+m=^K
+7lp?
+}490
+RmU9
+{Lxf
+v'O\K
+IEND

@@ -1,0 +1,14 @@
+﻿family,detected_type,count
+event,custom_binary,16
+img,png,308
+logo,png,2
+map,custom_binary,102
+mod,custom_binary,8
+root,custom_binary,3
+root,png,1
+root,text_like,1
+script,custom_binary,19
+sound,midi,7
+spr,custom_binary,325
+tex,custom_binary,24
+ui,custom_binary,42

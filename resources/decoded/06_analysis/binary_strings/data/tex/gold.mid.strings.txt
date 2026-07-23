@@ -1,0 +1,7 @@
+path=data/tex/gold.mid
+kind=custom_binary
+size=97
+sha256=BFA9F6001F4D60EB537CEEE50003E13A269316E935B46977CBA98E7F0D44C8FD
+hex_prefix=00 00 00 0a 00 00 00 0a 08 03 00 00 00 0f e1 b0 01 f7 f0 00 ff ff ff 8d 44 20 ff ff ff 74 52 4e 53 05 04 00 00 00 3a 78 da 44 cd 41 0e 00 30 08 02 41 50 fe ff e6 ae b6 49 39 98 39 a0 2a e9 4d
+
+tRNS

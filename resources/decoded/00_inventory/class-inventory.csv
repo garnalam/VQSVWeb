@@ -1,0 +1,73 @@
+﻿class,module,inferred_role,confidence,superclass,interfaces,class_bytes,class_major,class_minor,estimated_fields,estimated_methods,vineflower_lines,cfr_lines,cfr_warning_markers,vineflower_warning_markers,sha256
+a.a.a,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,,,716,47,0,1,1,26,24,0,0,EBCB939069E7B1C259B2BD3D0F81F9FD36B56EF62D6292120AA88534A70E3AF8
+a.a.b,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,a.b.a,,10024,47,0,7,9,676,590,0,0,29DB8B53BBCB197025EDCD765E9AC50A44FB7C5FE320650067771F57445F0727
+a.a.c,03_assets_media_storage,RecordStore/RMS wrapper,high,,,3598,47,0,6,6,176,190,0,0,F91E9B2F46B81EAA418BD3FA9376FACD4DFE7FC54766F09EFF1271B7E98B6FD2
+a.a.d,03_assets_media_storage,Ảnh/animation frame helper,medium,,,3809,47,0,3,10,221,197,0,0,BA3629414724A317AFA3AD5CDA436280B42C21AB2D0B81D14652280E82175660
+a.a.e,03_assets_media_storage,Audio player/manager cho MIDI và media Java ME,high,,,4535,47,0,13,13,259,259,0,0,DDE0D18FAF778B6D01B47748142D0BC74F793AB34E10AECD7717CCBEF3ECFB8B
+a.a.f,05_gameplay_battle_entities,"Battle state machine, pet/actor, NPC, reward/interactable và dữ liệu combat.",low,,,17552,47,0,69,28,1187,1121,0,0,773CFEFA0B46E02CCB0272D7F9A821621A03C0368AD56A0DDE9248C60F7536BA
+a.a.g,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,a.b.a,,2077,47,0,3,17,140,160,0,0,CE863E3DA83249336A76672C487CAE3FC5CB0A46C4F0512BEB96BEF437AF4039
+a.a.h,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,,,4737,47,0,5,9,229,218,0,0,F99B8B9E664AEAB6F4A0D88DB4578EFE35015A8C4A3518C4D5136CB286A81312
+a.a.i,03_assets_media_storage,PlayerListener cho audio lifecycle,high,,PlayerListener,735,47,0,1,1,33,43,0,0,E389CA7732277E2CC248B080CEDE5191DAECA0A758EB096922FC4E07DDE63C38
+a.a,01_bootstrap_game_loop,Lớp scene/state trừu tượng và cầu nối display/payment,high,c,"e.a.a.a.b.a, e.b.a.a.a",9753,47,0,30,42,531,560,0,0,2292D5BEB70389E1715687B05E7676E6F504F32456C6E934ED9241CA2A58088F
+a.b.a,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,,,2455,47,0,20,25,198,210,0,0,82E8371420F8FD8C31D0AA6DD9A11924FE71830CBA4DE1A087482F5BB75F1991
+a.b.b,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,a.b.a,,1184,47,0,6,7,105,104,0,0,27CC9A6BA245970A7747E30B8E06282A6999B9658F3E801156365F69CD16F43C
+a.b.c,03_assets_media_storage,Nạp cơ sở dữ liệu asset/script toàn cục,high,,,3472,47,0,10,12,179,178,0,0,AAB85716CBB7A53D9402CC7957CED825AD04D8249D351CDED7BF3A8BFAFB091A
+a.b.d,03_assets_media_storage,Nạp map và module scene,high,,,5493,47,0,24,10,369,307,0,0,1CCE5835BBCEADAC6BD116C5E49D1C0246F670A1D2609A9BA254BAD1450233C3
+a.b.e,03_assets_media_storage,RMS persistence helper,high,,,1808,47,0,4,7,110,121,0,0,687CAFCFDCEA6F1643D98BA563D45B679D69E4E632E5DD2AE4A2DA6BFACFAD4C
+a.b.f,03_assets_media_storage,Nạp sprite binary data/spr,high,,,1222,47,0,1,5,57,62,0,0,680CDC930667884082EED24DA56B7DE910955D3B5CDD5C57905D56D81361E033
+a.b.g,03_assets_media_storage,"Đọc resource nhị phân, map/sprite, ảnh, âm thanh MIDI, RMS và bitmap font.",low,,,7820,47,0,15,24,492,423,0,0,13AEF3D1EF1E8688D6CF6CDC0EF01B3238D3B64640C6D68E64BB8BD54D8BDBA6
+a.b.h,03_assets_media_storage,"Đọc resource nhị phân, map/sprite, ảnh, âm thanh MIDI, RMS và bitmap font.",low,,,223,47,0,7,0,11,15,0,0,4A605301FD2E8246096EC033D0662472F9BC4AA72F8E1FFA555FB324D128AF60
+a.b,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,TimerTask,,219,47,0,0,1,10,15,0,0,E45A25A1BCA389AB36C8EC906357A4220B9C5B3DCB704139FB5D123685AF9895
+a.c,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,,d,2206,47,0,10,13,275,187,0,0,7FA29E1CC38566286881672BA11F2E07863D8329DD38B4FF982EEB0E5F308BF9
+a.d,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,,,151,47,0,0,0,15,19,0,0,4339FACB3688514672C033158565B37EAE9B3239F521CE704B5B137D3DAB91F0
+a.e,03_assets_media_storage,"Utility nạp resource, ảnh, dữ liệu và vẽ chữ",high,,,15770,47,0,13,54,1091,995,0,0,C5CE8C6B3621EEC63286C1A06C8889DDCF65EC9325488E2D5AF571824DF951F8
+a.f,02_scene_input_primitives,"Các callback, timer, base object và primitive dùng chung cho scene/rendering.",low,,,245,47,0,4,0,8,15,0,0,1A0996C2F225ACB71DC83FC68668102BFE5D0DAFAA92AD490D86AB9A2F4E36ED
+a,09_activation_sms_payment,Đọc UID/Term/RefCode và dữ liệu kích hoạt từ l2.bin,high,,,4312,45,3,7,8,235,261,0,0,6FF249BEB09EAD0B836973848ACAAC6B1E391B7137F9642FB0AFC3F8E10DDE57
+b.a,03_assets_media_storage,"Đọc resource nhị phân, map/sprite, ảnh, âm thanh MIDI, RMS và bitmap font.",low,,,1290,47,0,6,9,73,80,0,0,9C9DE1FD9EFF85AA373D259912139C6C210BC7263903F20E13085372D121A206
+b.b,03_assets_media_storage,"Đọc resource nhị phân, map/sprite, ảnh, âm thanh MIDI, RMS và bitmap font.",low,,,707,47,0,3,4,41,43,0,0,831071157273D74CB3300342A62FAB77DBDC2FD1FE8FCFC31090AF70DB9D2093
+b,03_assets_media_storage,DataInputStream có buffer/auto-close cho resource,high,DataInputStream,,1877,45,3,2,2,60,74,0,0,7BBD2EBC4F23AA1D4D24AA93F8607C9DCE728B9855D32AE867C99E7F6FD2B352
+c.a,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,77,47,0,0,0,5,9,0,0,284367505AB34117AAF8CEBC7B47815AD7B8F5549A46092F81CC12B4CC2C1711
+c.b,04_ui_framework,Thành phần của UI framework nhị phân,medium,,f,3316,47,0,15,26,257,259,0,0,26E5CC5E564090C710488C22C538FE76F75353C5DD489B4A037D27A353628822
+c.c,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,12935,47,0,9,17,821,765,2,0,DF04DB80CC2ED017F6C01DD57950184E9302BEAA3512D5E3592AC63339002B2B
+c.d,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,454,45,3,0,2,15,22,0,0,BBE6801D0E1815A798FEFF73D742F3996DE41D5DAF1668BF008E8589F490059B
+c.e,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,912,47,0,6,9,85,90,0,0,5BB6318791A36DF418DC9B7F2170B6F8EC5490B1D259D412103339832308B59F
+c.f,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,412,47,0,0,0,45,54,0,0,F1F557A93D7BAEDE20BA18C4C30EF1DF0E18ABA4689530ACA04FE4B794703A38
+c.g,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,2060,47,0,4,8,133,146,0,0,C9002AFDEC0BDABA149E56CD72A954A7B24F732A9D459B2FBABFC0A6711CFDD8
+c.h,04_ui_framework,Thành phần của UI framework nhị phân,medium,,f,2704,47,0,14,25,214,225,0,0,476AEC42D4CA45B76636C06BACEF4ABE4B954009893258F5E34B7B32180F459C
+c.i,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,3013,47,0,20,8,147,158,0,0,5AB6B8CC16978974FC5202DB23EC7429BE7A536E5D663B18BC624A92FC8F9FE3
+c.j,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,2513,47,0,6,9,124,124,0,0,A6857E13883D6411EF87CBD87AF38CC8537BE0BD8B5D457C35692E67EC3B96D6
+c.k,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,292,47,0,4,0,22,26,0,0,9D4DDB89FB7959C9D5112BFAC996AE52D15D7DB0A2E10080EAAA585E1020CB3A
+c.l,04_ui_framework,Thành phần của UI framework nhị phân,medium,,,4839,47,0,19,7,321,289,0,0,1502EE1623BB74B201F24C073AD0980145576081619AF283C775211D156802D7
+c.m,04_ui_framework,Thành phần của UI framework nhị phân,medium,,f,6353,47,0,27,46,504,471,0,0,782350B65A8C69230571194BFEE6BDB5756493E602B84A9D5EF3B04FDEA60E13
+d.a,08_lua_runtime,Lua standard library subset,high,,d.b,8306,45,3,4,9,429,420,0,0,2995D3E19F8D7F147231FEEB8159E2DF618207482A4198D13E0A70E9DE2D90D4
+d.b,08_lua_runtime,Thành phần nội bộ của máy ảo Lua,medium,,,79,45,3,0,0,5,11,0,0,C437F4A0C1271C1B5F3D81DFB704179C0CCCC41521B0472B68B3E700391B5E5B
+d.c,08_lua_runtime,Thành phần nội bộ của máy ảo Lua,medium,,,1961,45,3,6,15,137,136,0,0,9D79E7B1054D3BFE0A601AEC1B96C27AA3E4F534F47299B78BC8514ACF2F261C
+d.d,08_lua_runtime,Thành phần nội bộ của máy ảo Lua,medium,,,351,45,3,3,1,17,25,0,0,B620941804481165CF275EB39D3943BEEC829897718AFBCD9F08583A208FA76C
+d.e,08_lua_runtime,Thành phần nội bộ của máy ảo Lua,medium,RuntimeException,,146,45,3,0,1,7,12,0,0,6FEEDFA9CAE94A9521218C5C46444DE8406264DCBF6487E9A617CECFF1B444AA
+d.f,08_lua_runtime,Lua bytecode loader,high,,,2487,45,3,8,4,130,137,0,0,34F59FA7D1EBD43B27377EA60E65778977B1F4CCD6CBA051017919DBB2468B07
+d.g,08_lua_runtime,Lua interpreter/thread execution,high,,,12252,45,3,2,16,726,730,0,0,EFB8F5C5148401A18E72BD8700BD9030174DC40B1D3B6B87EED9FCD1FB96E147
+d.h,08_lua_runtime,Lua table implementation,high,,,3669,45,3,6,18,281,287,1,0,BADBCB8EE76AA66273204E9D5DD83A686BFD4D136B3FAA7C2CDB026F2806AB6B
+d.i,08_lua_runtime,Lua value stack,high,,,2420,45,3,9,11,161,156,0,0,4FB509DE3FC32197BFF7A5950F8417EE7689A1B4B51997E01A70FD689A0276AC
+d.j,08_lua_runtime,Thành phần nội bộ của máy ảo Lua,medium,,,461,45,3,3,2,19,28,0,0,2CEBA27C38A98C73548A25D1B4C48D15D3ECDDAF0EBA4A228C351487F652B2BF
+e.a.a.a.a.a,09_activation_sms_payment,Cấu hình giá/nội dung SMS payment,high,,,1863,45,3,11,23,115,126,0,0,C6B849BDF725A48B5B6B92B7D97A5286F71D4483776CBAC254F4E59B573DE243
+e.a.a.a.b.a,09_activation_sms_payment,Adapter/callback của hệ thống SMS payment,medium,,,82,45,3,0,0,5,9,0,0,F257AFECA393A70B39E1C0BB2FE925FF3D1D645AD8F1BB10AC59AACD5DCB84B1
+e.a.a.a.b.b,09_activation_sms_payment,Canvas UI cho luồng payment,high,Canvas,Runnable,8956,45,3,23,19,448,476,1,0,63801BC54D8539726A09386A4B9A864C39AEBB587BA9EA8803BA26BE05684234
+e.a.a.a.b.c,09_activation_sms_payment,Adapter/callback của hệ thống SMS payment,medium,,d.b,323,45,3,2,1,15,22,0,0,9F3B86C715591CB60E8E376CEADBC3F7D76A4F99CC57BF1552D3BA25268E84FA
+e.b.a.a.a,09_activation_sms_payment,Adapter/callback của hệ thống SMS payment,medium,,,80,45,3,0,0,5,9,0,0,D3ABD51412F4CC616E73F89279B75DB4C60933449E3ABB139ADA1E329DBA0BA0
+e.b.a.a.b,09_activation_sms_payment,Runnable gửi SMS qua Wireless Messaging API,high,,Runnable,2470,45,3,4,1,113,103,0,2,C78E648D6795F604E0223E14D178D62872DC382900E3532DA96C840422EC978A
+game.a,05_gameplay_battle_entities,Battle state machine và combat rendering,high,a.a,,39592,47,0,78,59,3173,2865,1,0,BCB7EBD35B73B2D802C2C8DE3011A8125B83C2B259751470BEF4AF021049219B
+game.b,06_world_events_save,"Scene/world controllers, nhiệm vụ-phần thưởng, nạp event và trạng thái lưu RMS.",low,a.a,,1919,47,0,8,8,132,146,0,0,170DC201DA07D7A0F7D1829E358CC08DC15DD263B731715B88732E19D38608FD
+game.c,06_world_events_save,"Scene/world controllers, nhiệm vụ-phần thưởng, nạp event và trạng thái lưu RMS.",low,a.a,,4271,47,0,16,6,218,208,0,0,D0CFA9FAE7D236FC4FE2EB57E1E9B765A8C1EF7D78EAABB78CDB982271760D7F
+game.d,07_menus_dialogs_flow,Dialog renderer và phân trang hội thoại,high,,,7699,45,3,30,14,508,528,2,0,9FD18987E2651033D196B3D52B7CF6344AB86B219E9401097127E52296CD98C7
+game.e,06_world_events_save,Quest/event/reward controller,high,a.a,,31466,47,0,59,23,2190,1894,3,0,E8511401E669401099D3C3610DB1E41BE6DF68260F20ADBE75C004990818E1DB
+game.f,07_menus_dialogs_flow,Splash/tutorial/pause screen,medium,a.a,,7176,47,0,18,14,529,525,0,0,0685469A68DE972617C39CAAE4908AB5587A76A191A1F94522BE3B55A4BA26D0
+game.g,07_menus_dialogs_flow,"Main menu, thoát game và tạo game mới",high,a.a,,5393,47,0,15,9,366,392,1,0,DF0CEBB59D745320BC35F01F2107568E68B570B08ADA3A04FCFC3A521CA5ACFF
+game.GameMIDLet,01_bootstrap_game_loop,MIDlet entry point; tạo Display và Canvas chính,high,MIDlet,,793,47,0,3,3,31,43,0,0,B09FB44B92EC7D223DC5DF41656A266F6D0BD213472D817C3E8EA66909E36938
+game.h,05_gameplay_battle_entities,World actor/NPC runtime object,medium,a.a.g,,10173,47,0,27,22,811,782,0,0,D418A6C3AD5C143CD7B440E8DCFD6F26205375BAB4D46CEC7796C20593144D6F
+game.i,05_gameplay_battle_entities,"Pet/combatant model với stat, element và skill",high,a.a.g,,20757,47,0,27,88,1875,2042,3,0,BD9CC90EAFEA1041923C2DE84AB702044AFD4228641779333F231F1322EBE8DF
+game.j,05_gameplay_battle_entities,Player/inventory/world-interaction aggregate,medium,a.a.g,,24664,47,0,43,77,2159,2027,0,0,65A14FD05B1573D649966042F2E723B86E54B89918634808E379082DF866FAFA
+game.k,07_menus_dialogs_flow,Controller menu/UI gameplay,high,,c.a,100394,47,0,44,189,6602,6386,0,0,94D5501F383952C552F7B31B00D9C9FBEE6F48CF4C75221568BCE72932C77391
+game.l,06_world_events_save,"World state, scene loader, save/load và game orchestration",high,a.a,,47787,47,0,94,58,3764,3062,2,0,BDFA8609D919096565EF573AC70EFD4C3F8E890BDACD7E2081EF0B10C167CEF3
+game.m,01_bootstrap_game_loop,"Canvas chính; game loop, paint, keypad và pointer input",high,Canvas,Runnable,2294,47,0,9,9,122,131,0,0,4CE6244EDB9C78D46FCDEB790D39BD5DFEA7DF052F2CAAFC9EFD32AA418B513A
+game.n,03_assets_media_storage,Bitmap font renderer đọc font.bin,high,,,3544,45,3,10,8,202,206,0,0,E23B449031B07C0AC1A2BF969AE3CBB7AFE70723C102129069D0D5EE030C5FC5
+lavax.wireless.messaging.MessageConnection,09_activation_sms_payment,Compatibility shim cho gửi SMS bất đồng bộ,high,,,429,45,3,0,1,9,16,0,0,5995D7063067629A0968A27D614A4E0E76E29508FDC17CAE56139C042E90C500

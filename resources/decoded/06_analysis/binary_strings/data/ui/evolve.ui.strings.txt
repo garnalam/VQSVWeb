@@ -1,0 +1,12 @@
+path=data/ui/evolve.ui
+kind=custom_binary
+size=2621
+sha256=7E5FC4DBA95ED4EFF0D439A1A8655D78A2D757D6BC4AAC7FF5F3E493D2766A17
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 32 01 00 01 00 2e 00 57 00 96 00 9e 00 00 00 00 00 ff ff ff ff ff 00 00 00 ff 00 00 00 ff ff 04 ff bd e4 ef ff bd e4 ef ff bd e4 ef ff ff
+
+N^XS
+NZZZ
+$2ZP
+&5TH
+i li
+n thi

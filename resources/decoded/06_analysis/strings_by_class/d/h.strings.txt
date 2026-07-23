@@ -1,0 +1,2 @@
+invalid key to 'next'
+table index is nil

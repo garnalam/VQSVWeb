@@ -1,0 +1,21 @@
+path=data/img/img_116.mid
+kind=png
+size=1147
+sha256=C6A8045581840FEE7B3CC669887F91CEB8F1B05399CDD7A556B81F14BA3EE858
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 4f 00 00 00 2a 08 03 00 00 00 c5 d3 f6 5d 00 00 00 51 50 4c 54 45 d3 6d 45 2e 27 19 af a7 9a 99 50 32 7e ce f4 fa e9 d2 74 78 a8 73 55
+
+IHDR
+QPLTE
+mE.'
+tRNS
+IDATx
+QSy5
+0[IR
+5k~\}
+09Qs
+)f k;W
+7 \C
+KjoI
+&u</
+|y9"~
+IEND

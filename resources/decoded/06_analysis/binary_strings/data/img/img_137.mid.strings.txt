@@ -1,0 +1,23 @@
+path=data/img/img_137.mid
+kind=png
+size=1060
+sha256=A9C88C95BB5200D49A1853394361FAA785477F2537F0CC305B8FBE67F0E3FD39
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 33 00 00 00 48 08 03 00 00 00 6c 9a 3d 1a 00 00 00 30 50 4c 54 45 cd ba 60 bd c8 60 bd b5 e2 8a 50 12 37 49 4f 3e 20 47 6c a1 59 e7 95
+
+IHDR
+0PLTE
+7IO> Gl
+tRNS
+IDATx
+DCt2
+4(EF$ew
+={lA
+(_>nC
+%HN3;
+!pRP
+Qx'q
+# yffC
+ZtG F
+FnEm
+jm?67a
+IEND

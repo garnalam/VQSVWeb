@@ -1,0 +1,8 @@
+path=data/tex/blood_0.mid
+kind=custom_binary
+size=172
+sha256=0C0D032780B20090592CCB69B20E5A57BE8A4965531C3CDED6BA495CCCD1EBFB
+hex_prefix=00 00 00 63 00 00 00 0c 08 03 00 00 00 09 ff f0 00 a4 00 00 ff ff ff 74 52 4e 53 03 02 00 00 00 8b 78 da bc 54 d1 12 80 20 08 5b fc ff 47 67 8a da 50 48 eb ae bd b8 03 da ce e1 05 54 88 39 0d
+
+tRNS
+$Bgbw

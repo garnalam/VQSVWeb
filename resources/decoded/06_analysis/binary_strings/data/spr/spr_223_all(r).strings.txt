@@ -1,0 +1,6 @@
+path=data/spr/spr_223_all(r)
+kind=custom_binary
+size=230
+sha256=9883AC58E0A7B07EBF8A545907AF18201A7043C9DE63B6B96DCE973D73EE2E02
+hex_prefix=00 01 00 05 00 00 00 00 00 00 00 10 00 10 00 08 00 04 00 01 00 00 ff f8 ff f0 00 06 00 01 00 00 ff f8 ff ee 00 06 00 01 00 00 ff f8 ff f0 00 00 00 01 00 00 ff f8 ff f2 00 00 00 01 00 00 ff f8
+

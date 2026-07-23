@@ -1,0 +1,730 @@
+path=data/event/scene_2.mid
+kind=custom_binary
+size=46609
+sha256=4E65DBC068F1F87B17522940AE6E01601A8B7338C375A907B326D46904EC11D9
+hex_prefix=00 08 11 2c 5c f2 0f 28 0d 4a 09 85 0a 05 0a 9c 0d 49 00 62 00 01 00 30 00 01 00 31 00 01 00 34 00 01 00 36 00 01 00 30 00 01 00 30 00 01 00 34 00 01 00 34 00 04 00 4e 00 65 00 69 00 6c 00 17
+
+Neil
+m gi
+c qu
+ng sai!
+Neil8D
+ng nh
+m nay 
+c bi
+nh, 
+i nh
+ng l
+11,12
+10,11,12
+3,3,3
+4,8,8
+10,7,7
+Harry*
+c, c
+m ta li
+ng v
+c ng
+Mau xem chuy
+y ra.,Tr
+p Harry 
+i binh l
+nh H
+c Long.
+Binh l
+c Long-Mau c
+o! Ch
+ xen v
+o vi
+a ng
+i kh
+76,79
+c Long+Ti
+ ... kh
+ng bi
+t ch
+ng ta l
+ ai sao?!
+n trang ph
+m bi
+i ch
+nh l
+c Long Qu
+n. Ta c
+n ch
+i, c
+o kh
+ng m
+c Long
+t, v
+y ta nh
+a. N
+ khu v
+t Ho
+ng Gia! D
+y gi
+ng oai th
+ng tr
+ch ta 
+nh cho tan t
+Ha ha ha ha!
+HarrykV
+ thi
+u hi
+y, B
+ch Th
+y Th
+ chi
+nh! Ta mu
+n Ph
+ng Chi Th
+o tin!
+14,15
+c Long'M
+t con ru
+ng h
+ng ch
+y tho
+y th
+ng gi
+16,17,18
+0,0,0
+2,2,2
+1,1,3
+Neil B
+nh xinh 
+NeilZNghe n
+ sen 
+nh c
+n, ta ph
+i th
+ xem 
+n kh
+ sen th
+ xem.
+nh Th
+Harry
+%&'(
+456 
+VWX8
+30,49
+1,1<32,33,34,35,36,37,38,39,45,46,47,31,40,41,42,43,50,51,44,53,'0,0,0,0,1,1,1,1,1,1,1,1,2,2,2,2,2,2,0,3'1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+30,31,48,49,52,65,66,68
+0,1,1,0,0,0,2,0
+PaYaQiEYafei 
+t xem tr
+ng b
+, ng
+i mu
+y ngay l
+Neil%(H
+i tr
+c Harry t
+nh hu
+ng xem sao.)
+NeilGH
+m sao chi
+i qu
+ng Gia 
+c Long l
+nh k
+t hai b
+n Tr
+ng th
+n. Sau 
+t nhi
+u binh l
+c Long theo b
+t li
+i to
+t, ch
+ ta tr
+n tho
+32,36,37
+Dbell
+i, H
+t cu
+u th
+c hay kh
+ng?! 
+n chi
+nh n
+y, r
+i ng
+y nghe m
+t ti
+u nha 
+i chuy
+c Long6L
+o gi
+?! D
+i Yafei 
+JieYa
+Dbell, b
+ khoan h
+i. L
+ nhi tu
+i cao. Ng
+i tu
+ cao 
+n ph
+ng ta.
+36,37
+Neil (N
+ nhi tr
+? Sao c
+HarryiN
+ch th
+i! B
+nh ch
+ng ta v
+nh vi
+n th
+c Long*Ta cho ng
+ng tay!
+54,55,56,57,58,59
+0,0,0,0,0,0
+1,1,1,1,1,1
+4,4,4,4,4,4
+33,33,33,33,33,33
+54,55,56,58,59,57
+3,3,3,3,3,3
+YafeiVKh
+ng ph
+i ta 
+i, t
+ng ng
+ng kh
+n sao?
+c LonguB
+o Yafei 
+n, hai k
+ kia mu
+o tin, cho n
+ng t
+Sophie ...
+Yafei
+ng, ta nh
+m ng
+Yafei#... Qu
+c kh
+u. H
+m nay, ch
+c ch
+ng ta. Chi
+nh, cho n
+n ta c
+i Tr
+t th
+a thu
+n, B
+nh sau n
+ do H
+ng ta ch
+nh th
+c ti
+p qu
+n. Ch
+n theo, b
+t lu
+o ta c
+ng s
+ng g
+y kh
+. Ngo
+i ra, n
+u ai bi
+c Long B
+o Ch
+i xu
+u, cho ta bi
+t, s
+DbellqV
+p ni
+n tr
+c, H
+t gi
+c Long Th
+ng c
+nh m
+ bay, gi
+ mau 
+YafeiNTa mu
+ng Gia, nh
+ng coi l
+Harry5
+ng Gia m
+m vi
+Cho m
+Yafei4Tr
+n, l
+y mau n
+nFTa ... th
+c xin l
+nh ...
+Neil(
+y ... 
+c hi
+p ng
+c LongP
+nh cho t
+n ti
+t tr
+n xem c
+Khoan!
+Neil[M
+ lang s
+i. Khen cho t
+nh gi
+. Kh
+ng qua kh
+t ta 
+u. Ha ha!
+YafeiKNg
+i cho r
+ng ta b
+p Tr
+y sao?
+Neil}
+y! C
+nh di
+n quy
+u! Ta kh
+ng tin 
+ng Gia c
+ thua cho b
+...!
+Pago
+Yafei 
+ng ta tr
+i sau.
+u nguy
+54,55,56,58
+1,1,1,1
+271#231#216
+204#177#203
+53,57,59
+3,0,3
+Neil!H
+n ai h
+PaYaQi+Ch
+ ta ch
+53,59
+14,10
+PaYaQi7Ch
+a? Theo ta b
+i, ha ha!
+Neil\C
+i ... ch
+. Ta ch
+ng qua l
+ng Gia.
+PaYaQi$Yafei 
+n, c
+n nh
+Yafei.B
+c. Ch
+ng ta 
+53,57
+15,15
+39,39
+53,57,38
+1,1,1
+c Long`Ha ha! 
+a Yafei 
+n, ti
+ uy hi
+n ta!
+i ... )Neil 
+t ng
+??_Kh
+i theo ch
+ch, ng
+ chuy
+n quan tr
+ ai?
+??JTa l
+ ai kh
+ng quan tr
+ng. Ta mu
+n ng
+c, mau theo ta.<32,33,34,35,36,37,38,39,45,46,47,31,40,41,42,43,50,51,44,53,'1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+n minh+Ng
+i kia, ng
+n luy
+n minh
+Ta l
+a li
+n minh ~ chuy
+c hu
+t. Cho ta bi
+ bao nhi
+u ch
+ng lo
+m lo
+t! Li
+n minh r
+t hoan ngh
+m ki
+i, m
+i khi ng
+nh, s
+c nh
+n huy ch
+ng. D
+ng n
+ trao 
+i nhi
+t qu
+t kh
+ng ti
+t trong s
+ch c
+i. Ch
+ng ta c
+n cung c
+ng mua s
+t ph
+m trang b
+. Hi
+ do di chuy
+c Long3N
+o qu
+n, kh
+ mau tr
+nh ra!
+66,65
+i! Hi
+c ph
+p th
+2 69,70,32,35,36,37,38,39,42,41,43
+1,3,0,0,1,1,1,1,2,2,2
+Senana
+c! C
+a ta!
+George
+ng x
+ng sao?
+Hai b
+o giao chi
+c LongRL
+?! Mu
+nh nhau th
+Senana4B
+n thi
+u gia c
+u! Ai d
+n ta?
+c LongW
+m, d
+ sao canh gi
+ ho n
+m ch
+n, v
+ film 
+ coi.
+i!) 69,70,32,35,36,37,38,39,42,41,43#
+o Qu
+u qu
+Eliza
+Xin h
+m ta c
+Eliza)A, Dodo cho ng
+i mang 
+i cho ta sao?
+ng y
+n chuy
+i ca c
+a ta Kate hi
+ang nghi
+u ti
+t. Ta nghe n
+i La Ph
+a phi th
+ng d
+nh d
+ng r
+ElizaHN
+i gian, c
+y La Ph
+a cho Y gi
+p ta kh
+7,11
+p nh
+n, t
+ElizaaLa Ph
+c tr
+n Nguy
+n, ca ca c
+a ta hi
+ang 
+ Nguy
+c Th
+nh."Kate hi
+nh.BNhi
+t, vui l
+t 1 
+ tra x
+. 69,70,32,35,36,37,38,39,42,41,43
+1,1,1,1,1,1,1,1,1,1,1
+72,74
+49,68
+A! C
+n ...
+ALulun
+m mi
+ng!WM
+n giao tranh s
+p di
+n ra gi
+ng Gia v
+ Binh l
+Neil (nhanh gi
+u Tr
+.)+T
+y Tr
+n.232,33,34,35,36,37,38,39,31,40,41,42,43,44,75,76,60!0,0,0,0,1,1,1,1,1,2,2,2,2,0,0,0,2!1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+1,1,1,1,1,1,1,1
+y qu
+ng anh h
+a ch
+Neil, th
+Senana*N
+y, c
+y nh
+Neil:
+a Abra 
+ng qu
+i, Neil, c
+u khi
+n qu
+Abra5Neil, c
+n nhi
+ng, cho n
+y ...
+AbraxCh
+c th
+ nghi
+NeilSWoa, t
+n Abra 
+i, Th
+y Lam huy hi
+u tr
+i cho 
+y coi nh
+nh, hy v
+c nhi
+u ng
+n! Ta s
+ Yafei ...
+n*Neil, ng
+ Yafei kia c
+ quen bi
+t sao?
+Ta c
+n thanh mai tr
+n Sophie. N
+u tu
+i. Yafei r
+. Nh
+ng Sophie m
+ ta bi
+t nh
+u...
+n9Theo ta nh
+y, Yafei kia c
+Ha ha, t
+n ra.
+Abra"Neil, k
+nh g
+Neil T
+m Yafei l
+i chi
+Abra
+y ch
+n, ng
+ng. Theo ta ng
+nh tr
+c. Th
+t, ta lo l
+nh; th
+ hai, n
+p trung nhi
+c, ng
+ sung 
+u tri th
+c, n
+m ra manh m
+i quan h
+a Yafei v
+ Thi
+n Gi
+Neil!Ta hi
+Ta s
+t ngay!
+Abra/Kh
+i, ngh
+y, ng
+y mai l
+79,80,81,82,75,83
+0,0,0,0,0,1
+Lily
+ABell
+Millie
+Anja
+Kuluoli
+Alicia
+Stephen
+TeYaQi
+Fruita
+Maxim
+PeiJiya
+Calder
+;<=>
+BCDE
+[\]^
+nopq
+vwxy
+FruitaVCh
+t hi
+p, ta s
+ cho ng
+t #2 T
+t Trung C
+u #1, b
+Neil#Kh
+NeilJT
+ tuy
+i! C
+t chi
+u kh
+m Abra 
+ng cu
+c gi
+y ra chuy
+SlavicsTa mang ti
+u Mischa 
+ tinh ngh
+ch n
+ng. C
+ cho ta 3 ph
+n Kh
+i Ph
+Slavic,
+, Kh
+ mua t
+Mua s
+m 3 ph
+.BNhi
+Slavic2Kh
+m, ta 
+ang ngh
+ theo c
+ch kh
+Slavic
+Slavic:T
+ nay v
+ sau xem ng
+m ngh
+ch ng
+a hay kh
+ng.*Slavic vu
+t ve s
+ch tr
+Slavic_Ch
+ng trai, th
+u, v
+y ta t
+u coi nh
+n, mong c
+t khu B
+13,15
+Neil:Tr
+n, Fruita 
+a tr
+ng ta mau 
+Fruita8Neil! Tr
+n! T
+nh an!
+Neil2Tr
+ sao ta kh
+Fruita?Ng
+u, H
+ lui binh r
+ do th
+c thay 
+n+Ch
+ng ta mau t
+FruitaM
+y, nh
+ hai ng
+u Nh
+Quinton
+Andi
+Naomi
+Neil2V
+ xem ra r
+ng nghi ng
+n sau...
+Kuluoli.Mang s
+i theo chi
+i ta!
+62,55
+14,14
+Kuluoli%Kh
+u Th
+n bi
+, mau r
+t lui.
+12,13
+Lilia)Ng
+88,34
+13,13
+Lilia
+Xem ra ch
+i gi
+Boen@Ta m
+u mang s
+p, ng
+48,48
+BoenKC
+t sau tr
+i, n
+n cho ch
+t chocolate.
+Meterbene@H
+c, cho ta xem nh
+60,58
+Meterbene
+Ta thua!
+Neil7Hay l
+i quy
+n quan 
+y tr
+ng S
+Boen
+Salvador
+LankaDNg
+ sao c
+t, ta 
+o, haizzz
+59,62
+LankaACh
+y khi g
+, nh
+ng cho ng
+22,29
+15,16
+A... t
+i ...
+ErieMNghe n
+i, ta mu
+n coi xem th
+16,16
+Erie-Kh
+ danh anh h
+47,48,49,50
+ng Nguy
+Lanka
+Erie
+c Gia

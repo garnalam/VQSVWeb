@@ -1,0 +1,40 @@
+path=data/img/img_800.mid
+kind=png
+size=2448
+sha256=3F415D0BED81D89EDF55A332EB0C85FFBF049175C71F6E38FE4977F25E6A6927
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 f0 00 00 00 8a 08 03 00 00 00 a3 32 37 07 00 00 00 19 74 45 58 74 53 6f 66 74 77 61 72 65 00 41 64 6f 62 65 20 49 6d 61 67 65 52 65 61
+
+IHDR
+tEXtSoftware
+Adobe ImageReadyq
+`PLTE
+ tRNS
+IDATx
+q\(XI{>
+'{QL
+a|pz
+ci*S,
+y/8s
+C_17x
+`/K<
+Gy]/
+'I02
+l5`h
+]qQz
+xmi+`!f
+Y5mD
+oz-s>
+EN#1
+]Hm)
+Rczx
+|Iyym!d
+6^Bt
+Ai5.-
+0tK-
+E/L]
+bMx:
+|5`[\uP
+6Lq^6^d
+GC\5^3-
+.Slyw
+IEND

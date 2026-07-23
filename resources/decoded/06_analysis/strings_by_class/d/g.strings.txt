@@ -1,0 +1,9 @@
+_G
+call nil
+call a non-func
+func
+ not defined for operand
+Call non-func: 
+Tried to call nil
+Tried to call a non-function: 
+Thread changed in pcall

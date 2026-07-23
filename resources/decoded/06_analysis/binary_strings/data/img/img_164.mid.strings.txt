@@ -1,0 +1,20 @@
+path=data/img/img_164.mid
+kind=png
+size=516
+sha256=DD707CBEFDC5A3B67574DD1B81D912F170133582034705216C682C5C5F49FCF6
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 1c 00 00 00 14 08 03 00 00 00 a9 80 ad cb 00 00 00 8a 50 4c 54 45 3f 07 14 c3 31 5c 54 2d 41 ef 25 63 3a 3c 4a 54 a5 ae 69 0a 1f f9 bc
+
+IHDR
+PLTE?
+1\T-A
+%c:<JT
+DR:v~
+:pt>W
+.tRNS
+IDATx
+#rU=
+]76<1!
+te9r
+6?5h
+bL|M
+IEND

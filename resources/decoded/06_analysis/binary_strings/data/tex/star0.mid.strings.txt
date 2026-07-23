@@ -1,0 +1,6 @@
+path=data/tex/star0.mid
+kind=custom_binary
+size=65
+sha256=9A8607DEC57C063F9591111553D2E4DA5FD52D981BCD43F761A80A805B28FB1B
+hex_prefix=00 00 00 04 00 00 00 04 08 06 00 00 00 33 78 da 62 fc ff ff 3f 03 10 30 02 31 98 c1 04 c4 5c 40 6c 0a c4 02 20 01 06 a0 0a 03 20 7e 09 c4 2e 40 cc 0c 12 e0 82 0a f2 82 b4 03 04 18 00 d3 9e 1d
+

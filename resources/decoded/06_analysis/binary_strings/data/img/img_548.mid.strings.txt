@@ -1,0 +1,17 @@
+path=data/img/img_548.mid
+kind=png
+size=663
+sha256=4D3F910AE2582AD23651A685E8DBA121147589AE3DE012A9B485850D4C8F72BB
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 27 00 00 00 29 08 03 00 00 00 81 77 c0 77 00 00 00 30 50 4c 54 45 ff f7 be ff ee 69 ff e5 1a ff e8 36 ff fe f3 ff f9 d2 ff fd ec ff ee
+
+IHDR
+0PLTE
+tRNS
+IDATx
+Yr.}s
+yH_K
+tTA>b,-
+5.|r
+ps{j>9
+gR\P2
+IEND

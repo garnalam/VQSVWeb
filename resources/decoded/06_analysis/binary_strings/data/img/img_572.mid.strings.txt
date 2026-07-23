@@ -1,0 +1,11 @@
+path=data/img/img_572.mid
+kind=png
+size=371
+sha256=93F26D24D8A39A11B03B3A00B9561B0A89E0B3B1C574C2D6E14B1D11AAEF7E67
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 2b 00 00 00 18 08 03 00 00 00 54 6d f4 f1 00 00 00 18 50 4c 54 45 ef f8 cf fc c7 2a ff be 02 f4 e5 8f f8 d6 5a cb 96 02 f1 ef b2 5b 4d
+
+IHDR
+PLTE
+tRNS
+IDATx
+IEND

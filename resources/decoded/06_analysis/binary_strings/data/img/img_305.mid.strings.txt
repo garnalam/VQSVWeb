@@ -1,0 +1,167 @@
+path=data/img/img_305.mid
+kind=png
+size=13789
+sha256=BB72F186F4CA659E5D6E77940879105282F5205949E7EAD544096F7E2C1D5063
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 01 87 00 00 00 ff 08 03 00 00 00 2d c6 ea 54 00 00 00 90 50 4c 54 45 b5 80 63 cf e1 e4 f7 d8 bf ea c4 ad 60 a9 dd b1 98 7a e6 d1 a6 f4 db
+
+IHDR
+PLTE
+h'm]Y
+0tRNS
+IDATx
+&1,>
+A~t9
+a 9l"
+vVR&
+iF+i
+Dfw|
+[Fl"
+T+9lr*
+xNKr
+gRW"
+&3LN
+sp+h
+0`FZ
+")(\.
+Vr`) 
+<^X3
+.x -
+/A/u 
+`1\4
+!zNq!
+Z#I 
+q8_!z
+qAP)
+&}Ng~$(
+Z\ei
+3qGO:z
+Zy+!
+EL,\
+5C4uR
+4SX{bd
+5qGU0(hwJlN
+ {TF
+p')c
+&= TC)
+r80p
+ @aY
+}<Xw*
+Iy`D
+D_XM
+M0W%p(
+`!i4T
+b3B9^
+<T^I
+(A=G&!
+.~|j
+D,"K
+,!Az
+C#?N
+iq8}
+jXeY
+~ebT(Zu
+$sn]
+y+0T
+[WyM
+,)xL
+!K" {tP
+k`C9^}
+nkNY%
+v\o+
+plWc|
+r` P
+MZ"'6
+Y=&0
+XbPC
+RlPCpu
+lL7o
+3g$T/
+Lb8SA
+R`@ 
+bWsb
+Atf0\h
+H)n5
+V"7w
+9 8-
+;"v 
+?y~~
+5pmq$
+"zIb
+bd;/1!
+b1ii
+.8g&
+x MD
+U7:f
+.d*y
+WtCj
+}F-i
+85w#
+N/Yyx
+-Zkh
+a82/0
+aF\&
+YQyT4
+1~W(
+9vU?
+Y0T6
+=kXA
+ w1c
+`Xzw}
+cr4d
+P8-9Pj
+'zKn@
+ 0}F
+yh#*
+Ws(c Ts
+5R!W=
+J_cpWU
+A%$-EMgc
+Rsx3
+Ba@U
+PKe$0
+FGAK
+"u`1hq
+on$8
+iex+
+u;dqy
+tK2:
+&0<h
+}(QE
+}HNp(
+m)Sw
+A_~h
+8D((
+`(Z*
+U`xx
+,<=1
+bXq1
+8(q@
+g1`qhF
+Lt]S \
+vEjR,5B
+^cXI
+ta;3
+YZY>;b
+s#?8
+CZ)D^
+&Q J
+GaxVVa
+6#8(qXIqx
+[F0\
+k_{jI
+ j).
+Z w+
+\AqXyJI
+ax!0
+'cUf 
+7Vo!
+skb1O#4
+;i >
+Y 3T
+xF#E5
+zTWP
+qT? 
+Gw^w@
+?J5MX
+uOg@
+IEND

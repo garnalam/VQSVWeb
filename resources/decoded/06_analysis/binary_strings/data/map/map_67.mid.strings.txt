@@ -1,0 +1,42 @@
+path=data/map/map_67.mid
+kind=custom_binary
+size=20147
+sha256=3F9AB0C0CB9FCEC7FB3BBB5736FC20EC7BD723C6186AA88AAF74C63E96353988
+hex_prefix=01 04 33 28 10 05 00 00 07 f8 00 00 00 01 01 00 00 01 02 00 00 01 03 00 00 01 04 00 00 01 05 00 00 01 06 00 00 01 07 00 00 01 08 00 00 01 09 00 00 01 0a 00 00 01 0b 00 00 01 0c 00 00 01 0d 00
+
+ @y  @y! @y" @y# @y$ @y% 
+K+ @K, @K- 
+P1 PK2 
+K+!@K,!@K-!
+Q1!PK2!
+Q,"@K/"
+K1"PK2"
+K+#@K,#@K-#
+K+$@K,$@K-$
+K1$PK2$
+K+%@K,%
+Q1%PK2%
+&PK &PK!&PK"&PK#&PK$&PK%&PK&&PK'&PK(&
+y*&@K+&
+Q,&PK-&PK.&PK/&PK0&PK1&
+y*'@K+'@K,'PK-'PK.'
+U% @s- 
+y/ @s
+_%!@_-!
+Y/!@l
+l%"@l-"
+[/"@m
+m%#@m
+b( 0b) 
+V2 0a
+b(!0a)!
+b2!0b
+a("0b)"
+a2"0a
+b(#0a)#
+b2#0b
+b($0b)$
+a2$0a
+a(%0a)%
+b2%0b
+b-'0b.'

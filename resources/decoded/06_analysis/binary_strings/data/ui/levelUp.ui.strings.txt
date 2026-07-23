@@ -1,0 +1,11 @@
+path=data/ui/levelUp.ui
+kind=custom_binary
+size=2114
+sha256=C2D90BC5B06B91CD281E7384BEFACFFAB41AEEB5BA7A41F9FE2B8207C269CE54
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 29 01 00 01 00 2e 00 57 00 96 00 9e 00 00 00 00 00 ff ff ff ff ff 00 00 00 ff 00 00 00 ff ff 04 ff bd e4 ef ff bd e4 ef ff bd e4 ef ff ff
+
+ng c
+N^XS
+NZZZ
+$2ZP
+&5TH

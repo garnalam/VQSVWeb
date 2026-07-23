@@ -1,0 +1,6 @@
+path=data/spr/spr_177_all(r)
+kind=custom_binary
+size=148
+sha256=BE25AACD6C5F69E5C0A932B0D7C957F3EE87AD57EF212875E1019E4ACEE9A675
+hex_prefix=00 01 00 05 00 00 00 00 00 00 00 3f 00 2c 00 08 00 04 00 01 00 00 ff dc ff ca 00 00 00 01 00 00 ff d9 ff c5 00 00 00 01 00 00 ff d9 ff be 00 00 00 01 00 00 ff ca ff c5 00 00 00 01 00 00 ff ce
+

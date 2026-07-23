@@ -1,0 +1,21 @@
+﻿source_table,game_id,kind,name,description,parameters
+10,0,neutral,Không có tư chất thiên bẩm,,"{""game_modifier"": 0}"
+10,1,harmful,Khí lực suy yếu,"Trời sinh thể chất suy yếu, sinh mệnh so với đồng loại có vẻ yếu hơn","{""game_modifier"": -15}"
+10,2,beneficial,Khí lực cường tráng,"Có được thể chất cường tráng, sinh mệnh so với đồng loại có vẻ nhiều hơn","{""game_modifier"": 15}"
+10,3,beneficial,Cành cây khô héo,Thiêu đốt hoặc Hủ thực sẽ tạo nhiều thương tổn cho chính bản thân,"{""game_modifier"": 20}"
+10,4,beneficial,Hồi phục tự nhiên,Mỗi hiệp hồi phục giá trị sinh mệnh nhất định,"{""game_modifier"": 6}"
+10,5,beneficial,Phá Toái Ngoại Xác,Cuộc công kích dễ dàng hơn khi tiến vào trạng thái Thạch Hóa,"{""game_modifier"": 20}"
+10,6,harmful,Kim Loại Ngoại Xác,Cuộc công kích không dễ dàng khi tiến vào trạng thái Thạch Hóa,"{""game_modifier"": -20}"
+10,7,beneficial,Ý chí phân tán,Cuộc công kích dễ dàng hơn khi tiến vào trạng thái giam cầm,"{""game_modifier"": 20}"
+10,8,harmful,Ý chí kiên định,Cuộc công kích không dễ dàng khi tiến vào trạng thái giam cầm,"{""game_modifier"": -20}"
+10,9,beneficial,Công kích hài hòa,Công kích có tỷ lệ thương tổn giảm,"{""game_modifier"": 20}"
+10,10,harmful,Công kích thô bạo,Công kích có tỷ lệ thương tổn bạo tăng,"{""game_modifier"": -20}"
+10,11,beneficial,Thủy chất đục,Cuộc công kích rất dễ dàng tiến vào trạng thái tê liệt và hủ thực,"{""game_modifier"": 20}"
+10,12,harmful,Nước tinh khiết,Cuộc công kích có vẻ sẽ không tiến vào trạng thái tê liệt và hủ thực ,"{""game_modifier"": -20}"
+11,0,harmful,Thạch Hóa,Không thể hành động; sát thương nhận vào giảm 30%.,
+11,1,harmful,Thiêu Đốt,Trạng thái gây sát thương theo thời gian.,
+11,2,harmful,Tê Liệt,Mỗi hiệp mất 10% sinh mệnh hiện tại.,
+11,3,harmful,Mị Hoặc,Không thể chạy trốn và dễ bị bắt hơn.,
+11,4,harmful,Giam Cầm,"Không thể chạy trốn, đổi Sủng Vật hoặc dùng đạo cụ.",
+11,5,harmful,Hủ Thực,Mỗi hiệp nhận một lượng sát thương tăng dần.,
+11,6,harmful,Phong Bế,Không thể sử dụng kỹ năng vượt quá bậc cho phép.,

@@ -1,0 +1,657 @@
+path=data/script/npcDialog.mid
+kind=custom_binary
+size=25982
+sha256=8A4BCBCA5A87F10691A04DE629B13CDA65A7D66216E969DC2739F64611AC7F1D
+hex_prefix=00 a8 00 01 03 00 2e 00 2e 00 2e 00 01 22 00 42 1e a3 00 6f 00 20 00 76 1e c7 00 20 00 74 00 68 00 f4 00 6e 00 20 00 6c 00 e0 00 20 00 74 00 72 00 e1 00 63 00 68 00 20 00 6e 00 68 00 69 1e c7
+
+ch nhi
+a ta!
+Nghe n
+i con 
+ch Th
+y Th
+nh tr
+ sen, xem ra l
+t th
+ng v
+ng y
+Neil, t
+u mu
+ng xuy
+n xem.
+i th
+n th
+, Ph
+ng Ho
+ng ch
+nh l
+t trong s
+ng thu th
+p nhi
+ng t
+Neil, ta s
+y ch
+ tin t
+nh t
+c Linh c
+a ta th
+n nh
+a ta ch
+ng su
+t trung 
+ng coi th
+n cho s
+t...A a a
+nh m
+ch t
+t nh
+p ch
+ng ti
+c Long Qu
+n tu
+m qua c
+t ng
+y kh
+ng may m
+n. Coi b
+m nay s
+y ho
+Hoan ngh
+m nay th
+o? C
+ng th
+? Vui v
+u kh
+Sen 
+nh di chuy
+n qua n
+i kh
+c ph
+i ch
+ng l
+a hoa t
+i trong Th
+a nh
+ng, th
+t mu
+n mang ch
+a gi
+n kh
+m hoa tr
+ng kh
+o nh
+a tr
+ng c
+nh kh
+Trong l
+ sen. C
+ng li
+n. Phi
+ to, d
+ng n
+ng nhi
+m gi
+ng chuy
+t hay, l
+ng bao gi
+ lo b
+m phi
+n ta n
+Ta s
+Oh, 
+y sinh th
+em c
+nh c
+m th
+n ph
+ng nh
+o trong n
+c, nh
+y th
+m, c
+ng s
+n. Ha ha
+u nh
+ chi
+o ta c
+ng ng
+y ng
+m ho
+ng h
+ nghe ti
+y tri
+n xu
+ cho l
+. Tr
+ng nhao nhao nh
+ch m
+a, h
+a kh
+c, m
+c kh
+c th
+, th
+y ... 
+c qu
+, qu
+c phonng, phong kh
+n ... Haizzz, th
+Pho t
+y nh
+ng tr
+ng gi
+ng ai. Ng
+ng b
+ng Nguy
+c Th
+t nhi
+u, c
+a ph
+i ng
+c. L
+p nh
+t kh
+ng bi
+t bao c
+u chuy
+ thu
+ xa x
+n chi
+ng k
+ng, d
+i, kh
+ng r
+ nam hay n
+ nam th
+ng thanh t
+Khi ta 
+c sinh ra, cha m
+c nh
+y. Gi
+ ta gi
+i, tr
+ cao l
+n qu
+ nhi
+n quan tr
+a ch
+ng ta. 
+ Nguy
+nh nghi
+m ch
+t ph
+a th
+ nghe n
+i xa x
+ng trung cho S
+n linh. V
+ng xu
+n gian, tr
+n lo
+i chi
+c ma. Sau chi
+ng, v
+n truy
+ tri th
+t. Nh
+ng ki
+c nghi
+m Th
+i ti
+ng, r
+u ng
+i gi
+i duy nh
+t tr
+nh th
+i khu ph
+ng, nh
+ch n
+o th
+ng qua 
+t. Ta ch
+c than ch
+en c
+. Gi
+i ngh
+i sao con g
+u trang b
+t mi
+ ta 
+ luy
+Binh l
+nh H
+c Long tuy t
+m nh
+i qu
+t bi
+i tr
+i. C
+n ta b
+t YaQi 
+i nh
+ y c
+ ta d
+ cho bi
+ng ph
+i ai c
+c bi
+t. N
+i nhanh nh
+nh ph
+n Nguy
+nh g
+p Arnold th
+c hi
+n nhi
+n tr
+ ta cho t
+y gi
+y qua Red 
+m che m
+ sao th
+ Yafei 
+ kinh nghi
+c chi
+n, n
+ hai v
+n kia, Red v
+ YaQi 
+n, ch
+c ch
+t to
+o Ch
+t Ho
+ng Gia mang 
+i con ng
+i Thi
+n Gi
+t xinh 
+p, l
+ng nghe th
+c nu
+m tr
+c Thi
+a li
+ng, kh
+ng ai d
+t Yafei 
+a lao H
+ch l
+ ra th
+n hai m
+c, Silia 
+m ng
+nh x
+ng khu c
+n. V
+ sau, nh
+o danh ngh
+a ng
+u, m
+ch c
+p, n
+c gi
+p Silia 
+n ho
+nh vi
+c. Nh
+ng cu
+m mi
+m hay ch
+ng uy m
+p. Ch
+nh Silia 
+Silia 
+n gi
+ uy nghi c
+nh, l
+t trong nh
+n trai v
+nh nh
+ng Gia th
+n ch
+, ch
+! Xem H
+nh ch
+ng ta, hai 
+o qu
+n! Ta d
+i, l
+ng ta m
+nh h
+n, ph
+m vi r
+i thay 
+t thanh khi
+t. C
+ ngay c
+a chi
+n tranh c
+n ngo
+ Tomas 
+ bay l
+ ngu
+n linh.
+ch Long Th
+n duy nh
+ng ta th
+Con ng
+ng ta t
+i bao 
+i nay l
+ duy tr
+c tr
+c, trong tr
+nh Thi
+n ng
+n ban cho ch
+ng ta ni
+m vui v
+ linh ho
+ng, 
+ng ta kh
+t Thi
+ng m
+n. N
+ 3 v
+ Thi
+i, th
+n quan Thi
+ng gian truy
+ng thu
+ng. Nh
+nng n
+t, m
+ng L
+ 2 ng
+i con trai nh
+u vong. C
+n 1 n
+ nhi l
+ch. Th
+nh v
+nh n
+t cu
+n, Minh v
+ng Long t
+c Long Th
+n tho
+t ch
+n Thi
+p tr
+Misha c
+a ta qu
+ tinh ngh
+nh ta 
+c vong linh n
+y... Ha ha! Th
+o? Tin r
+Ai c
+ch Jahila qu
+ kia ch
+Hay l
+ ...
+y ti
+o Trung t
+o ph
+ng H
+n trai!
+y canh gi
+i ph
+m quan tr
+ng quanh 
+t qu
+... Th
+ may m
+p may m
+i, b
+ng ta 
+ con c
+m sinh 
+ ngu ng
+nh bay l
+i thi
+u ch
+Quang qu
+ a a a
+y thu
+n, nh
+ng mau tr
+nh ra!
+ vui v
+ng vi
+ vui
+t cho vi
+ ven s
+Ta l
+n luy
+t vui v
+m nay l
+n sau l
+i so ti
+y ta 
+u mang s
+n qua ng
+y, c
+Linh Quang L
+c, th
+ trong truy
+n thuy
+t hi
+ang ch
+m trong gi
+c ng
+, ta 
+c. Nghe n
+. Haizzz.. Thi
+i, ta ch
+u thu r
+Trong r
+ng ta l
+c ...
+Khi n
+ thay ca nh
+? Th
+ phi
+n to
+ang r
+?! B
+Red 
+nh, ch
+ trong n
+nh trong tay!
+n kia bi
+n Oa c
+a ta l
+n ra t
+nh, ta 
+t. Gi
+n ra h
+p...
+Ta kh
+ng mu
+m nay nh
+n ai c
+i mu
+n ta nh
+, ta c
+ng qu
+ang hu
+nh ng
+ ngh
+ ra con 
+y tr
+u, ha ha!
+ng. Oa oa, cua, c
+m...
+Con cua n
+p ng
+i mau b
+Meo meo
+a ta
+ ... hix
+Ca ca, huynh th
+t gi
+ng ta c
+c, tr
+nh hu
+ng lai ng
+ng gian nan n
+i, ta sao th
+y. M
+n ti
+ng ra s
+i!) b
+ ta g
+Ta mu
+i... qu
+Ta c
+ mang ti
+n hi
+o ta gi
+i tay ng
+ thi nh
+n ... ngo
+ ta.
+u mang huy
+ng Thi
+i, ch
+n huy v
+ ta h
+y! Ha ha
+c Sophie v
+, ta s
+n ngon, tha h
+u manh
+ sau 3h bu
+y quay l
+Ta r
+m ph
+ Gottardo lu
+ cho ta v
+? Hay h
+i ta?
+t, ph
+p th
+nh than 
+en r
+i hi
+i sao c
+ em l
+y Yafei 
+c. D
+n quan 
+n bu
+i Silia 
+n, c
+a Silia 
+n. Ng
+a ti
+ng. V
+n Yafei 
+i tin t
+n sinh ra m
+n cai qu
+n duy tr
+n. Nh
+ch long l
+i di
+n cho c
+n, H
+c Long 
+n cho th
+c, ph
+ng, h
+ hai m
+n bi
+c thi
+i to
+c. Kh
+ng hi
+ng Nh
+m hi
+u th
+ hay bi
+ng mong Thi
+ do Tomas 
+ hay l
+t sau khi d
+nh bay 
+n Nh
+i bay tr
+c, c
+ch xa nhau ngh
+ xuy
+n qua hai th
+ch, n
+ng g
+ch. N
+i Tomas 
+n quan, h
+, kh
+t ho
+Trong n
+ng ta h
+i qua b
+Cha n
+ng khi l
+ cho ta L
+ ta c
+u phi n
+ng do ng
+i. V
+ng ta v
+ng Gia b
+, cu
+t, H
+ treo th
+ng cho ai ph
+n ra H
+u, th
+ch, H
+m khi 
+y ta ch
+m sao m
+ng xem th
+u lo
+y. Xem lo
+y xem. C
+t? Ha ha
+a! Mau nh
+n, con v
+u qu
+ng nghi
+a ta 
+i gian 
+t ra sao ...
+nh gh
+ qua!
+ qua
+ 5 s
+ ra t
+ sinh v
+nh b
+a con ng
+ng chi
+t hu
+ Phi Kh
+i sao? 
+ ngo
+i Th
+m hoan ngh
+ qua. 
+ ta ch
+ cho s
+u nghi
+a ta c
+ linh tinh, ng
+ xem tho
+Nhanh 
+i mua r
+n cho ta 
+y...
+ng may! B
+m kh
+, tr
+ tai th

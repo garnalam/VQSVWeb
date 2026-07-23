@@ -1,0 +1,147 @@
+path=data/script/bTask.mid
+kind=custom_binary
+size=5092
+sha256=A7D2DFBFB697D7A1E09EFA5F6C58EC03F9653805405EFCA8B2AC9B0EC518E1E9
+hex_prefix=00 3c 00 01 0e 00 42 1e af 00 74 00 20 00 73 1e e7 00 6e 00 67 00 20 00 76 1e ad 00 74 00 20 00 31 00 01 0e 00 42 1e af 00 74 00 20 00 73 1e e7 00 6e 00 67 00 20 00 76 1e ad 00 74 00 20 00 32
+
+ng v
+ng c
+ quan t
+ng l
+p tr
+ng s
+Truy
+i th
+ng tin
+Nghi
+m vui trong 
+ng k
+ chuy
+c hi
+ng tay
+u kh
+ng n
+n tr
+nh l
+Giao th
+a Gi
+Nghi v
+y may m
+n linh
+Long k
+ng nh
+ng] b
+t Kh
+c Linh giao cho Dodo t
+i [Ph
+ng Chi Th
+ng].
+ch Th
+y Th
+nh b
+n Mi
+u giao cho Eliza [Trung t
+i Nguy
+c Th
+t La Ph
+o giao cho Kate t
+i [Trung t
+m Nguy
+em c
+ giao cho Senta 
+ng 1].
+em Nham Nham quy ti
+a th
+nh ki
+m Gi
+n Quy giao cho Al t
+m Ni
+m Th
+m [Trung t
+n quan 
+n Moose.
+ng giao cho Moose t
+em t
+a cho Fisher t
+ch [Ch
+i Qu
+nh Thi 
+ giao cho Kate t
+n Ni
+ng ph
+ng 1] h
+m Senta c
+n tri
+em chi
+p ti
+ng giao t
+i giao gi
+i gi
+a Ni
+ch cho Mu t
+i [M
+n ph
+nh [C
+u nh
+] Gottardo mang v
+ chi
+ng tay c
+a Jahila.
+em y ph
+m, t
+i li
+u cho Arnold t
+n [B
+nh nguy
+y] Nguy
+ch Ch
+o giao cho Amocxi t
+i [B
+u ph
+ng] Nguy
+ tai c
+ng giao cho Amocxi t
+c [B
+i Th
+m mua 3 kh
+i ph
+ giao cho Slavic t
+p Sa].
+m binh l
+nh H
+c Long l
+ Nailuo.
+em th
+t giao cho Hughes t
+m Locke chuy
+n th
+t giao cho JaniLa t
+ng H
+nh].
+a lao H
+ch] c
+u Edern.
+i Thi
+n Gi
+i [Khi
+ch M
+n Phi] cho Zuzu xem b
+n thu
+nh c
+n Nhu S
+n] tr
+a YaQila.
+em qu
+ may m
+ng cho DoranRule t
+i [Th
+ng cho Camille t
+ng cho AimiDe t
+i [Khoan th
+ng cho Tomas t
+n [Khu r
+ng m
+a] di
+t tr
+t ng
+Cho Kay 20 chocolate.

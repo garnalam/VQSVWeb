@@ -1,0 +1,45 @@
+path=data/sound/1.mid
+kind=midi
+size=20565
+sha256=727C51D22B7B959CC22A4CAD7DA99FF71A5410128CDF34FC0959E39B4F7B07D2
+hex_prefix=4d 54 68 64 00 00 00 06 00 01 00 11 01 e0 4d 54 72 6b 00 00 00 30 00 ff 03 10 b4 f3 c6 f8 a1 a2 d7 af d1 cf b5 c4 d2 f4 c0 d6 00 ff 51 03 08 52 ae 00 ff 58 04 04 02 18 08 00 ff 06 00 9e 60 ff
+
+MThd
+MTrk
+EGJT=
+ZEO1G
+;Jn=
+3EA=D
+6DL,E
+BE&B
+9=+8
+LDJGE
+O8EC9
+Dg*6B
+ KX3B
+L_#K
+;<$@
+iD@'E
+GekB@
+9;{B
+MD;5E
+<GVJ
+h@_#?
+?eX>
+]D=$@
+@EE"D
+/D;$E
+EB"B
+drum
+N*$I
+N42L
+D OK
+K8IH
+I<1K
+piano
+`1`@,
+@/u'1
+X-z7/
+J4x(-
+r1i>6
+/u'1

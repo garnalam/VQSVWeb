@@ -1,0 +1,9 @@
+path=data/tex/down3.mid
+kind=custom_binary
+size=237
+sha256=711CFC49ED8B4D8D01DBEC1508D7E8BD2C96B1B9A35D56950A3E30BC204DD85C
+hex_prefix=00 00 00 2f 00 00 00 30 08 03 00 00 00 0c 37 37 37 eb eb eb 84 84 84 ff ff ff 74 52 4e 53 04 03 00 00 00 c9 78 da d4 96 c1 0e 02 31 08 44 07 f8 ff 7f d6 6a 50 9a 05 ca 24 9a 28 87 cd 1e 1e 4b
+
+tRNS
+gsY5
+[?Jj:

@@ -1,0 +1,7 @@
+path=data/ui/help1.ui
+kind=custom_binary
+size=1978
+sha256=8395528B29061A8C9D27D5B9B1B76699F842224271106923C427DED9D232450F
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 27 01 00 01 00 2e 00 57 00 96 00 9e 00 00 00 00 00 ff ff ff ff ff 00 00 00 ff 00 00 00 ff ff 04 ff bd e4 ef ff bd e4 ef ff bd e4 ef ff ff
+
+Quay l

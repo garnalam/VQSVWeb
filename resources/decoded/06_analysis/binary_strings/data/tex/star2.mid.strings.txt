@@ -1,0 +1,24 @@
+path=data/tex/star2.mid
+kind=custom_binary
+size=1074
+sha256=25A16A0F98702DA1E66D017DAFBFA46473C242EA15A3A6C0B44B702BB1002AC0
+hex_prefix=00 00 00 18 00 00 00 18 08 06 00 00 04 24 78 da ac 95 4b 6f 55 55 14 c7 d7 5a 7b ef f3 b8 8f d3 db 4b 5b 6e 69 a5 ad 06 41 89 a0 21 51 46 80 51 4c 88 89 03 07 38 73 a6 23 3e 81 9f c1 89 13 4d
+
+KoUU
+K[ni
+CntE\
+1X2n
+EN5A
+D&we
+f.Gx
+ZEcqJ
+"F_\
+z>Bi
+e_l/
+h_,1zi
+k{43
+9Kt]
+\Iu=3pE*}
+cad>/
+._)T
+V+,f

@@ -1,0 +1,119 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/c/f.class
+  Last modified Feb 1, 2013; size 412 bytes
+  SHA-256 checksum f1f557a93d7baede20ba18c4c30ef1df0e18aba4689530aca04fe4b794703a38
+public interface c.f
+  minor version: 0
+  major version: 47
+  flags: (0x0601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #1                          // c/f
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 20, attributes: 0
+Constant pool:
+   #1 = Class              #17            // c/f
+   #2 = Class              #25            // java/lang/Object
+   #3 = Utf8               ()I
+   #4 = Utf8               ()Lc/i;
+   #5 = Utf8               ()Lc/l;
+   #6 = Utf8               ()V
+   #7 = Utf8               ()[Lc/f;
+   #8 = Utf8               (ILc/f;)V
+   #9 = Utf8               (Lc/f;)V
+  #10 = Utf8               (Lc/i;)V
+  #11 = Utf8               (Ljavax/microedition/lcdui/Graphics;ZZLc/f;[I)V
+  #12 = Utf8               (Z)V
+  #13 = Utf8               (ZZLc/f;[I)V
+  #14 = Utf8               a
+  #15 = Utf8               b
+  #16 = Utf8               c
+  #17 = Utf8               c/f
+  #18 = Utf8               d
+  #19 = Utf8               e
+  #20 = Utf8               f
+  #21 = Utf8               g
+  #22 = Utf8               h
+  #23 = Utf8               i
+  #24 = Utf8               j
+  #25 = Utf8               java/lang/Object
+  #26 = Utf8               k
+  #27 = Utf8               l
+{
+  public abstract void a(boolean);
+    descriptor: (Z)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void a(javax.microedition.lcdui.Graphics, boolean, boolean, c.f, int[]);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;ZZLc/f;[I)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void a(boolean, boolean, c.f, int[]);
+    descriptor: (ZZLc/f;[I)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract int b();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract int c();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void a(int, c.f);
+    descriptor: (ILc/f;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract int d();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void b(int, c.f);
+    descriptor: (ILc/f;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract int e();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void c(int, c.f);
+    descriptor: (ILc/f;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract int f();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void d(int, c.f);
+    descriptor: (ILc/f;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract c.l g();
+    descriptor: ()Lc/l;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract c.f[] h();
+    descriptor: ()[Lc/f;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract c.i i();
+    descriptor: ()Lc/i;
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void a(c.i);
+    descriptor: (Lc/i;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract int j();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract int k();
+    descriptor: ()I
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void a(c.f);
+    descriptor: (Lc/f;)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+
+  public abstract void l();
+    descriptor: ()V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+}

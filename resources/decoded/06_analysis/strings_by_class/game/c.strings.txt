@@ -1,0 +1,25 @@
+1: tràng cảnh khống chế
+2: sủng vật khống chế
+Lựa chọn tràng cảnh
+Lựa chọn gian phòng
+Gặp địch điều chỉnh thử
+CG tràng cảnh
+Thôn trang
+Bích thủy
+Gỗ thô
+Niêm thổ
+Hắc thạch
+Hắc Long thần điện
+Thiên giới
+Viễn cổ
+Đạo quán
+Thần thú mê cung
+Trong phòng
+Đài điều khiển
+Tràng cảnh: 
+  
+Gian phòng: 
+Có thể gặp được địch
+Không thể gặp địch
+Sủng vật trước mặt: 
+ tên: 

@@ -1,0 +1,8 @@
+path=data/tex/tex_0.mid
+kind=custom_binary
+size=299
+sha256=E9FD86463F97518F5BFFF8457F3A3320D70E5F3ACB9E0630B90535D46628D51C
+hex_prefix=00 00 00 10 00 00 00 10 08 03 00 00 00 99 00 6c 1c 2a ff 25 02 6e 1e 01 6c 1d 01 6d 1d 03 6e 1e 2a fe 25 12 93 25 12 91 24 0c 81 23 0b 7e 24 03 6f 1f 17 8f 2c 29 f9 25 29 fa 26 1f 9d 2f 24 c1
+
++0A<
+QW3b

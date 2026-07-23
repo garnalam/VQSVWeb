@@ -1,0 +1,19 @@
+path=data/img/img_590.mid
+kind=png
+size=811
+sha256=BEFA9C6392335EDEBF612735801E2B48CD0702E1654D205480E6259F42F4F874
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 31 00 00 00 30 08 03 00 00 00 8f 1e 62 8b 00 00 00 45 50 4c 54 45 da 43 00 ff aa 00 ff ff fe ff b0 00 de 4f 00 ff f5 01 e9 6b 00 e1 55
+
+IHDR
+EPLTE
+tRNS
+~IDATx
+a}4X?
+h,lfz
+>Oos6F
+PZAf
+|1w>
+1= Z
+PYd=u
+@Uq?6X
+IEND

@@ -1,0 +1,4 @@
+/data/script/battleNpc.mid
+/data/ui/menu1.ui
+/data/ui/npcEnemy.ui
+/data/tex/

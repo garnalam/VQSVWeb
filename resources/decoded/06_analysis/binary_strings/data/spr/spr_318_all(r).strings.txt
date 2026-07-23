@@ -1,0 +1,6 @@
+path=data/spr/spr_318_all(r)
+kind=custom_binary
+size=180
+sha256=F8C59ABE94A6B05A3718DC807E145A141EDE425D743A7C71D2B20904440657E2
+hex_prefix=00 01 00 05 00 00 00 00 00 00 00 1c 00 25 00 04 00 04 00 01 00 00 ff f2 ff db 00 00 00 01 00 00 ff e8 ff db 00 00 00 01 00 00 ff e1 ff db 00 00 00 01 00 00 ff d8 ff db 00 00 00 03 00 02 00 01
+

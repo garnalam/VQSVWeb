@@ -1,0 +1,22 @@
+path=font.bin
+kind=custom_binary
+size=2264
+sha256=1168E0EFEF80A3EC194F25EE680AF9080D98A50C991DA6A90325932AA13FB104
+hex_prefix=01 c5 41 42 43 44 45 46 47 48 49 4a 4b 4c 4d 4e 4f 50 51 52 53 54 55 56 57 58 59 5a 61 62 63 64 65 66 67 68 69 6a 6b 6c 6d 6e 6f 70 71 72 73 74 75 76 77 78 79 7a 30 31 32 33 34 35 36 37 38 39
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:!@/\*()[]{}|#$%^&<>?~'"+- 
+J)%Eh!
+$5BH
+'''''g(
+HDH^
+D(Te
+$%@*K"
+c$)c
+HPPPPPPPPPPPPPPPPP(
+8DHRe
+RRJ)-
+T@DHRe
+QRJ)E
+>J"!
+RRJ)
+J"!I"G

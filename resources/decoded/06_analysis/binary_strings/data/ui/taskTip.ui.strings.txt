@@ -1,0 +1,6 @@
+path=data/ui/taskTip.ui
+kind=custom_binary
+size=166
+sha256=EBD8A4073DDA5CCBBF1F414962E38461CCBDB6F316D5BE0DBD268A41C1FF636F
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 03 01 00 01 00 0e 00 93 00 d4 00 1a 00 00 00 00 00 00 ff ff ff 00 00 00 00 ff 00 00 00 ff ff 04 00 ff a5 00 00 ff 00 00 ff 00 80 00 ff ff
+

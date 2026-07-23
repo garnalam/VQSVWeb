@@ -1,0 +1,89 @@
+path=data/img/img_259.mid
+kind=png
+size=6289
+sha256=197F34F7BCFC057C4D45502DA86C0B87B665A8BDB7BC004D4D0C33D839738B2F
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 d0 00 00 00 84 08 03 00 00 00 d6 65 55 a7 00 00 00 60 50 4c 54 45 ff e1 55 a8 74 4b b4 a7 68 a6 a4 a5 80 4d 40 ff fe f0 91 83 7a f9 ec
+
+IHDR
+`PLTE
+RQHJ
+ tRNS
+IDATx
+AW&6
+F)Pr
+:n4$G@
+D h@
+m":s
+"kdbO
+% 6/
+.OS~v
+e<%P
+._s76
+g/$/
+nFDL
+O[B6
+ e4s
+HLqTZ
+sF""
+y]/<
+VxJ u`
+hhX=
+&V:W
+8L$<U
+FbZ'
+hN@;
+S  zrEH
+ P3'
+DHLS
+)sr:
+j6$@}E
+(fKD
+U"R7
+# w1@
+jg@+
+pane
+dI|4_
+y:\-
+%Eeq
+D9P$2e
+h}=[x
+:O"B
+<t5 8
+mHD_
+cTdu
+Cl$Z
+,&H)
+}+8X
+^~Ht
+N5 I
+-O/@
+@o>YB/
+1uc4v
+ZD!0
+I}#N5
+7"P{.
+C28[
+BH4sb 
+7j2n
+%!I3
+@\SY
+Ae!>
+LbC'
+kNd<
+oJD:
+\BXD
+8$Ls+
+9Zf;
+^+sZ
+,uvZ
+:,P{E
+Fds)I
+v@I@
+eA]*
+)5tu
+"+Sb
+Wy$Nh[<r
+aHS]
+Dv4e]
+%u_-
+IEND

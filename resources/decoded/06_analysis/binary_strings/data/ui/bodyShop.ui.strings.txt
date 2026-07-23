@@ -1,0 +1,20 @@
+path=data/ui/bodyShop.ui
+kind=custom_binary
+size=1003
+sha256=4D6EF61A3D027988793BC6939F6319ED18AF0CE00860880AF5F1CA4E52943028
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 01 00 01 00 04 00 04 00 00 00 10 00 0c 00 55 00 44 00 63 00 6d 00 64 00 30 00 08 00 0c 00 55 00 44 00 63 00 6d 00 64 00 31 00 09 00 0c 00 55 00
+
+UDcmd0
+UDcmd1
+UDcmd2
+UDcmd3
+6Giao d
+c th
+ng c
+ng v
+ Mua s
+m huy hi
+m kim ti
+Mua s
+Quay l
+nh d

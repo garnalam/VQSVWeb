@@ -1,0 +1,6 @@
+path=data/spr/spr_327_all(r)
+kind=custom_binary
+size=268
+sha256=EC13D61392EC70DD697F29A6B1D2DF09EFD4C93C52536DD77876E0773997CA68
+hex_prefix=00 02 00 05 00 00 00 00 00 00 00 2a 00 2a 00 01 00 00 00 00 00 2a 00 2a 00 0b 00 04 00 01 00 00 ff ec ff d7 00 00 00 01 00 01 ff ed ff d6 00 00 00 02 00 01 ff de ff d6 00 00 00 00 ff f9 ff cc
+

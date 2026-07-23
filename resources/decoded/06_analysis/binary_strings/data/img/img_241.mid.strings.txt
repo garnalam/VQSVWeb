@@ -1,0 +1,21 @@
+path=data/img/img_241.mid
+kind=png
+size=1122
+sha256=CA96B90577EB432DA1FDFAB54A4C8784EB98F30F580459298FD3D9A352722380
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 37 00 00 00 41 08 03 00 00 00 42 7e cc a8 00 00 00 63 50 4c 54 45 1d 0e 08 67 b7 0f 26 55 3e 88 2d 24 37 87 00 f1 75 1c 3b 29 35 f2 bc
+
+IHDR
+cPLTE
+<mWW
+!tRNS
+IDATx
+qv2{
+@Is_
+\!')S
+[INJ
+w skS0Mvr
+1pV2
+pV3c
+:gm6
+c\w[
+IEND

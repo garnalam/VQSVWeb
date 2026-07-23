@@ -1,0 +1,22 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/c/a.class
+  Last modified Feb 1, 2013; size 77 bytes
+  SHA-256 checksum 284367505ab34117aaf8cebc7b47815ad7b8f5549a46092f81cc12b4cc2c1711
+public interface c.a
+  minor version: 0
+  major version: 47
+  flags: (0x0601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #1                          // c/a
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 1, attributes: 0
+Constant pool:
+  #1 = Class              #5              // c/a
+  #2 = Class              #6              // java/lang/Object
+  #3 = Utf8               ([I[I)V
+  #4 = Utf8               a
+  #5 = Utf8               c/a
+  #6 = Utf8               java/lang/Object
+{
+  public abstract void a(int[], int[]);
+    descriptor: ([I[I)V
+    flags: (0x0401) ACC_PUBLIC, ACC_ABSTRACT
+}

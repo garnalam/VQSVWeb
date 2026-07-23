@@ -1,0 +1,19 @@
+path=data/img/img_506.mid
+kind=png
+size=841
+sha256=A95CBDCF0F7A8ABCEF051EF5FC53BE3F0898DB456BA99A0BD1AED12FC334E747
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 3c 00 00 00 26 08 03 00 00 00 af 6f 08 bd 00 00 00 6c 50 4c 54 45 f5 8a 00 ac 5d 20 63 2f 08 97 52 1d d1 74 10 79 41 17 3c 14 07 ff fd
+
+IHDR
+lPLTE
+] c/
+xuu?
+$tRNS
+hIDATx
+8,*,t
+^%+ c
+9#hm][J
+./>S
+0_M[[7
+6{w:
+IEND

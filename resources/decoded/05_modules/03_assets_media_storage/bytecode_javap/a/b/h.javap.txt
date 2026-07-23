@@ -1,0 +1,69 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/a/b/h.class
+  Last modified Feb 1, 2013; size 223 bytes
+  SHA-256 checksum 4a605301fd2e8246096ec033d0662472f9bc4aa72f8e1ffa555fb324d128af60
+public final class a.b.h
+  minor version: 0
+  major version: 47
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #1                          // a/b/h
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 7, methods: 1, attributes: 0
+Constant pool:
+   #1 = Class              #13            // a/b/h
+   #2 = Class              #20            // java/lang/Object
+   #3 = Methodref          #2.#4          // java/lang/Object."<init>":()V
+   #4 = NameAndType        #6:#5          // "<init>":()V
+   #5 = Utf8               ()V
+   #6 = Utf8               <init>
+   #7 = Utf8               Code
+   #8 = Utf8               I
+   #9 = Utf8               Z
+  #10 = Utf8               [S
+  #11 = Utf8               [[S
+  #12 = Utf8               a
+  #13 = Utf8               a/b/h
+  #14 = Utf8               b
+  #15 = Utf8               c
+  #16 = Utf8               d
+  #17 = Utf8               e
+  #18 = Utf8               f
+  #19 = Utf8               g
+  #20 = Utf8               java/lang/Object
+{
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[] b;
+    descriptor: [S
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[][] c;
+    descriptor: [[S
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[][] d;
+    descriptor: [[S
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[][] e;
+    descriptor: [[S
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[][] f;
+    descriptor: [[S
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean g;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public a.b.h();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+         4: return
+}

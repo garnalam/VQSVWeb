@@ -1,0 +1,86 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/d/d.class
+  Last modified Feb 1, 2013; size 351 bytes
+  SHA-256 checksum b620941804481165cf275eb39d3943beec829897718afbcd9f08583a208fa76c
+public final class d.d
+  minor version: 3
+  major version: 45
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #2                          // d/d
+  super_class: #5                         // java/lang/Object
+  interfaces: 0, fields: 3, methods: 2, attributes: 0
+Constant pool:
+   #1 = String             #16            //
+   #2 = Class              #29            // d/d
+   #3 = Class              #30            // d/f
+   #4 = Class              #31            // d/j
+   #5 = Class              #33            // java/lang/Object
+   #6 = Fieldref           #2.#12         // d/d.a:Ld/f;
+   #7 = Fieldref           #2.#13         // d/d.b:Ld/h;
+   #8 = Fieldref           #2.#14         // d/d.c:[Ld/j;
+   #9 = Fieldref           #3.#15         // d/f.f:I
+  #10 = Methodref          #5.#11         // java/lang/Object."<init>":()V
+  #11 = NameAndType        #20:#18        // "<init>":()V
+  #12 = NameAndType        #26:#23        // a:Ld/f;
+  #13 = NameAndType        #27:#24        // b:Ld/h;
+  #14 = NameAndType        #28:#25        // c:[Ld/j;
+  #15 = NameAndType        #32:#22        // f:I
+  #16 = Utf8
+  #17 = Utf8               ()Ljava/lang/String;
+  #18 = Utf8               ()V
+  #19 = Utf8               (Ld/f;Ld/h;)V
+  #20 = Utf8               <init>
+  #21 = Utf8               Code
+  #22 = Utf8               I
+  #23 = Utf8               Ld/f;
+  #24 = Utf8               Ld/h;
+  #25 = Utf8               [Ld/j;
+  #26 = Utf8               a
+  #27 = Utf8               b
+  #28 = Utf8               c
+  #29 = Utf8               d/d
+  #30 = Utf8               d/f
+  #31 = Utf8               d/j
+  #32 = Utf8               f
+  #33 = Utf8               java/lang/Object
+  #34 = Utf8               toString
+{
+  public d.f a;
+    descriptor: Ld/f;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d.h b;
+    descriptor: Ld/h;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d.j[] c;
+    descriptor: [Ld/j;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d.d(d.f, d.h);
+    descriptor: (Ld/f;Ld/h;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: invokespecial #10                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #6                  // Field a:Ld/f;
+         9: aload_0
+        10: aload_2
+        11: putfield      #7                  // Field b:Ld/h;
+        14: aload_0
+        15: aload_1
+        16: getfield      #9                  // Field d/f.f:I
+        19: anewarray     #4                  // class d/j
+        22: putfield      #8                  // Field c:[Ld/j;
+        25: return
+
+  public final java.lang.String toString();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: ldc           #1                  // String
+         2: areturn
+}

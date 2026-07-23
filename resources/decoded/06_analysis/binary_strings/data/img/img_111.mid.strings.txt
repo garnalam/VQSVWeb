@@ -1,0 +1,21 @@
+path=data/img/img_111.mid
+kind=png
+size=1321
+sha256=0D6E678A36A20D75A38368B3CC5E3E6857C74F573DABD635B97155DD451F3720
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 5c 00 00 00 2b 08 03 00 00 00 c2 16 1f 13 00 00 00 4b 50 4c 54 45 91 89 42 51 5a 10 ef e9 ce c2 b4 87 00 00 00 7a 64 00 fb be 8d 18 2e
+
+IHDR
+KPLTE
+tRNS
+tIDATx
+8Nfg
+2Ny)
+\.UltX8
+;F85x
+5g>{
+wh 3
+#<Cg
+NgnQ
+[zOO
+N/p}
+IEND

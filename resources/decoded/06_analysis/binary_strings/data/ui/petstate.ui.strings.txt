@@ -1,0 +1,21 @@
+path=data/ui/petstate.ui
+kind=custom_binary
+size=3959
+sha256=51F3775397BAC851C70966CE9EE00FB1B56A6B60180173AEA80D3E8213C3EBEA
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 01 00 01 00 06 00 06 00 00 00 0d 00 0c 00 55 00 44 00 63 00 6d 00 64 00 30 00 12 00 0c 00 55 00 44 00 63 00 6d 00 64 00 31 00 18 00 0c 00 55 00
+
+UDcmd0
+UDcmd1
+UDcmd2
+UDcmd3$
+UDcmd4*
+UDcmd5
+ng v
+t trong h
+nh trang
+k\XS
+#P100
+0iUZZ
+ng kh
+Mang theo
+Quay l

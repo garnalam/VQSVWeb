@@ -1,0 +1,7 @@
+path=data/tex/down2.mid
+kind=custom_binary
+size=222
+sha256=46D9758C6B91C9ACAC33808216996CF9217829C183AE6944023044B66C490713
+hex_prefix=00 00 00 2f 00 00 00 30 08 03 00 00 00 0c 6f 6f 6f eb eb eb 37 37 37 ff ff ff 74 52 4e 53 04 03 00 00 00 ba 78 da ec d4 c1 0e c3 30 08 03 50 e3 fc ff 3f 2f d9 9a 96 54 c0 1c 69 bb 4c f3 a9 87
+
+tRNS

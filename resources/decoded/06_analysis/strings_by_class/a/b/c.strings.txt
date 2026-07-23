@@ -1,0 +1,11 @@
+/data/script/sprite.mid
+/data/mod/modInfo.mid
+/data/script/chs.mid
+/data/script/npcDialog.mid
+/data/event/worldEvt.mid
+/data/script/db.mid
+/data/tex/
+bk
+tex_
+/data/img/
+img_

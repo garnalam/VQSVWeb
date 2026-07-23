@@ -1,0 +1,16 @@
+path=data/img/img_234.mid
+kind=png
+size=782
+sha256=22D84F8B1CD3CFBCEFB0952C796995FC3922EB8FAC19DC4F359185506B98A433
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 3c 00 00 00 34 08 03 00 00 00 e1 71 ab 2d 00 00 00 30 50 4c 54 45 ac a4 a2 6f 6b 6a 94 8a 87 e1 df c9 fe ce 00 57 54 53 ff e0 00 fd a7
+
+IHDR
+0PLTE
+tRNS
+~IDATx
+c';j
+]wp>(
+9kO{
+Uj*h
+]-(L{R
+IEND

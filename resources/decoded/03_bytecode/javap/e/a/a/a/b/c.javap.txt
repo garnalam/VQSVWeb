@@ -1,0 +1,75 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/e/a/a/a/b/c.class
+  Last modified Feb 1, 2013; size 323 bytes
+  SHA-256 checksum 9f3b86c715591cb60e8e376ceadbc3f7d76a4f99cc57bf1552d3ba25268e84fa
+public final class e.a.a.a.b.c implements d.b
+  minor version: 3
+  major version: 45
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #3                          // e/a/a/a/b/c
+  super_class: #4                         // java/lang/Object
+  interfaces: 1, fields: 2, methods: 2, attributes: 0
+Constant pool:
+   #1 = Class              #23            // d/b
+   #2 = Class              #24            // e/a/a/a/b/b
+   #3 = Class              #25            // e/a/a/a/b/c
+   #4 = Class              #26            // java/lang/Object
+   #5 = Fieldref           #3.#11         // e/a/a/a/b/c.a:I
+   #6 = Fieldref           #3.#12         // e/a/a/a/b/c.b:Le/a/a/a/b/b;
+   #7 = Methodref          #2.#10         // e/a/a/a/b/b.a:(ILd/c;I)I
+   #8 = Methodref          #4.#9          // java/lang/Object."<init>":()V
+   #9 = NameAndType        #17:#13        // "<init>":()V
+  #10 = NameAndType        #21:#14        // a:(ILd/c;I)I
+  #11 = NameAndType        #21:#19        // a:I
+  #12 = NameAndType        #22:#20        // b:Le/a/a/a/b/b;
+  #13 = Utf8               ()V
+  #14 = Utf8               (ILd/c;I)I
+  #15 = Utf8               (Ld/c;I)I
+  #16 = Utf8               (Le/a/a/a/b/b;I)V
+  #17 = Utf8               <init>
+  #18 = Utf8               Code
+  #19 = Utf8               I
+  #20 = Utf8               Le/a/a/a/b/b;
+  #21 = Utf8               a
+  #22 = Utf8               b
+  #23 = Utf8               d/b
+  #24 = Utf8               e/a/a/a/b/b
+  #25 = Utf8               e/a/a/a/b/c
+  #26 = Utf8               java/lang/Object
+{
+  private int a;
+    descriptor: I
+    flags: (0x0002) ACC_PRIVATE
+
+  private e.a.a.a.b.b b;
+    descriptor: Le/a/a/a/b/b;
+    flags: (0x0002) ACC_PRIVATE
+
+  public e.a.a.a.b.c(e.a.a.a.b.b, int);
+    descriptor: (Le/a/a/a/b/b;I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=3
+         0: aload_0
+         1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aload_1
+         6: putfield      #6                  // Field b:Le/a/a/a/b/b;
+         9: aload_0
+        10: iload_2
+        11: putfield      #5                  // Field a:I
+        14: return
+
+  public final int a(d.c, int);
+    descriptor: (Ld/c;I)I
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #6                  // Field b:Le/a/a/a/b/b;
+         4: aload_0
+         5: getfield      #5                  // Field a:I
+         8: aload_1
+         9: iload_2
+        10: invokevirtual #7                  // Method e/a/a/a/b/b.a:(ILd/c;I)I
+        13: ireturn
+}

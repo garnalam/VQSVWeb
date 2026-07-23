@@ -1,0 +1,17 @@
+path=data/img/img_260.mid
+kind=png
+size=708
+sha256=ACDA12FB32F75540871964C32439C1BA4F5F2643E5FD98968BB3C1648DB81275
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 3c 00 00 00 2c 08 03 00 00 00 0e f4 2b db 00 00 00 60 50 4c 54 45 95 d2 ea ff ff ff cb e3 ea 3a 52 61 d7 c3 bf 4a 63 74 65 bd e0 e0 e9
+
+IHDR
+`PLTE
+Jcte
+IDATx
+e;/-)
+;QK)
+d :pl"
+=*{u
+o9W9o
+!chB
+IEND

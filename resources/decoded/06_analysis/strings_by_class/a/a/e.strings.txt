@@ -1,0 +1,6 @@
+audio/x-tone-seq
+audio/midi
+audio/x-wav
+audio/amr
+.mid
+VolumeControl

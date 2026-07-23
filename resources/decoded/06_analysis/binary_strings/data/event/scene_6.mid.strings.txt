@@ -1,0 +1,47 @@
+path=data/event/scene_6.mid
+kind=custom_binary
+size=2215
+sha256=612E0A05939ACDE99D7DC7DAFB2E1C29637CE8B8A90D1270FA5D88B6A60F6B91
+hex_prefix=00 02 02 41 06 60 00 04 00 12 00 42 00 69 00 6e 00 68 00 20 00 6c 00 ed 00 6e 00 68 00 20 00 48 1e af 00 63 00 20 00 4c 00 6f 00 6e 00 67 00 32 00 48 1e af 00 63 00 20 00 4c 00 6f 00 6e 00 67
+
+Binh l
+nh H
+c Long2H
+c Long Th
+ khu v
+c nghi
+m th
+Neil
+, ta c
+ng kh
+ng c
+MusiTan
+c Long
+Yafei@H
+c Tinh Th
+ch c
+ng H
+a Tinh Th
+i tr
+Sophie!
+Yafei$Neil, kh
+n theo 
+u, c
+ tin ta.
+Neil^Kh
+i! N
+ng l
+, Phi Kh
+nh c
+ bay l
+n, l
+i Ni
+m Th
+nh!R
+nh [C
+ Phi Kh
+nh], ng
+n Phi Kh
+ng Thi
+n ch
+Yafei

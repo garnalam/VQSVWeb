@@ -1,0 +1,16 @@
+path=data/img/img_123.mid
+kind=png
+size=689
+sha256=DB7AC6504A27498F595B6B1EFF5B451AE25E318E82F03ECDBFFFC7A93456581B
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 21 00 00 00 3e 08 03 00 00 00 92 ba 82 13 00 00 00 3c 50 4c 54 45 3b 0b 15 5b 11 1c 4a 0f 00 ff ff ff 8e 36 40 fe d6 a0 e7 76 44 00 00
+
+IHDR
+<PLTE;
+tRNS
+IDATx
+dk*-
+'sej
+[%Fd
+)B.]
+"V^vD>
+IEND

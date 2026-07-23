@@ -1,0 +1,6 @@
+path=data/event/worldEvt.mid
+kind=custom_binary
+size=4
+sha256=DF3F619804A92FDB4057192DC43DD748EA778ADC52BC498CE80524C014B81119
+hex_prefix=00 00 00 00
+

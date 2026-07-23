@@ -1,0 +1,77 @@
+Summary for C:\Users\Dell\Downloads\VQSV-Web\resources\decoded\01_original\AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar
+Decompiled with CFR 0.152
+
+
+c.c
+----------------------------
+
+a(javax.microedition.lcdui.Graphics )
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+d.h
+----------------------------
+
+b(java.lang.Object int )
+  Unable to fully structure code
+
+
+e.a.a.a.b.b
+----------------------------
+
+keyPressed(int )
+  Unable to fully structure code
+
+
+game.a
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+game.d
+----------------------------
+
+a(javax.microedition.lcdui.Graphics )
+  Unable to fully structure code
+a(javax.microedition.lcdui.Graphics int int )
+  Unable to fully structure code
+
+
+game.e
+----------------------------
+
+a()
+  Unable to fully structure code
+  Could not resolve type clashes
+J()
+  Unable to fully structure code
+
+
+game.g
+----------------------------
+
+a()
+  Unable to fully structure code
+
+
+game.i
+----------------------------
+
+K()
+  Unable to fully structure code
+a(game.i )
+  Unable to fully structure code
+b(game.i )
+  Unable to fully structure code
+
+
+game.l
+----------------------------
+
+a()
+  Unable to fully structure code
+af()
+  Unable to fully structure code

@@ -1,0 +1,20 @@
+path=data/img/img_833.mid
+kind=png
+size=1116
+sha256=8C68FD6D08ACE8DA220D7BB3170EB3514950C9268426690B8ABB0A62A6544AF6
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 43 00 00 00 1c 08 06 00 00 00 3a 12 02 51 00 00 04 23 49 44 41 54 78 da dc 99 5f 72 d3 30 10 c6 25 59 49 1b 1a 3a dc 80 be c2 75 7a 07
+
+IHDR
+#IDATx
+#e-ah/
+|$A(
+*Sp#
+@b}6W
+U}nF
+YpJ.
+Q='CT Q
+5XHR|\
+8o@u
+&NqU
+[R`<eC8+yFVv
+IEND

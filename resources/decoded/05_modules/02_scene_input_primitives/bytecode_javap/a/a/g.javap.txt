@@ -1,0 +1,557 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/a/a/g.class
+  Last modified Feb 1, 2013; size 2077 bytes
+  SHA-256 checksum ce863e3da83249336a76672c487cae3fc5cb0a46c4f0512beb96bef437af4039
+public class a.a.g extends a.b.a
+  minor version: 0
+  major version: 47
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #2                          // a/a/g
+  super_class: #3                         // a/b/a
+  interfaces: 0, fields: 3, methods: 18, attributes: 0
+Constant pool:
+    #1 = Class              #103          // a/a
+    #2 = Class              #104          // a/a/g
+    #3 = Class              #105          // a/b/a
+    #4 = Class              #106          // a/b/d
+    #5 = Class              #107          // a/b/g
+    #6 = Class              #108          // a/e
+    #7 = Class              #115          // game/l
+    #8 = Class              #119          // javax/microedition/lcdui/Graphics
+    #9 = Fieldref           #2.#54        // a/a/g.a:La/b/g;
+   #10 = Fieldref           #2.#58        // a/a/g.b:La/a/g;
+   #11 = Fieldref           #2.#61        // a/a/g.c:Z
+   #12 = Fieldref           #2.#69        // a/a/g.g:Z
+   #13 = Fieldref           #2.#73        // a/a/g.j:I
+   #14 = Fieldref           #2.#74        // a/a/g.k:I
+   #15 = Fieldref           #2.#76        // a/a/g.o:B
+   #16 = Fieldref           #3.#76        // a/b/a.o:B
+   #17 = Fieldref           #4.#53        // a/b/d.a:I
+   #18 = Fieldref           #4.#57        // a/b/d.b:I
+   #19 = Fieldref           #7.#75        // game/l.k:La/b/d;
+   #20 = Methodref          #1.#68        // a/a.g:()S
+   #21 = Methodref          #1.#70        // a/a.h:()S
+   #22 = Methodref          #2.#55        // a/a/g.b:(II)V
+   #23 = Methodref          #2.#56        // a/a/g.b:(Z)V
+   #24 = Methodref          #2.#60        // a/a/g.c:(Z)V
+   #25 = Methodref          #2.#62        // a/a/g.d:()V
+   #26 = Methodref          #2.#63        // a/a/g.d:(I)V
+   #27 = Methodref          #2.#64        // a/a/g.d:(Z)V
+   #28 = Methodref          #2.#66        // a/a/g.e:(I)V
+   #29 = Methodref          #3.#44        // a/b/a."<init>":()V
+   #30 = Methodref          #5.#44        // a/b/g."<init>":()V
+   #31 = Methodref          #5.#46        // a/b/g.a:(BB)V
+   #32 = Methodref          #5.#47        // a/b/g.a:(BBZ)Z
+   #33 = Methodref          #5.#48        // a/b/g.a:(I)V
+   #34 = Methodref          #5.#50        // a/b/g.a:(IIZ)V
+   #35 = Methodref          #5.#51        // a/b/g.a:(IZ)Z
+   #36 = Methodref          #5.#52        // a/b/g.a:(Ljavax/microedition/lcdui/Graphics;IIB)V
+   #37 = Methodref          #5.#59        // a/b/g.c:()V
+   #38 = Methodref          #5.#65        // a/b/g.e:()Z
+   #39 = Methodref          #5.#67        // a/b/g.f:()Z
+   #40 = Methodref          #5.#71        // a/b/g.i:()Z
+   #41 = Methodref          #5.#72        // a/b/g.j:()[S
+   #42 = Methodref          #6.#49        // a/e.a:(IIIIII[S)Z
+   #43 = Methodref          #7.#45        // game/l.B:()Lgame/l;
+   #44 = NameAndType        #93:#79       // "<init>":()V
+   #45 = NameAndType        #94:#77       // B:()Lgame/l;
+   #46 = NameAndType        #102:#82      // a:(BB)V
+   #47 = NameAndType        #102:#84      // a:(BBZ)Z
+   #48 = NameAndType        #102:#85      // a:(I)V
+   #49 = NameAndType        #102:#87      // a:(IIIIII[S)Z
+   #50 = NameAndType        #102:#88      // a:(IIZ)V
+   #51 = NameAndType        #102:#89      // a:(IZ)Z
+   #52 = NameAndType        #102:#91      // a:(Ljavax/microedition/lcdui/Graphics;IIB)V
+   #53 = NameAndType        #102:#96      // a:I
+   #54 = NameAndType        #102:#99      // a:La/b/g;
+   #55 = NameAndType        #109:#86      // b:(II)V
+   #56 = NameAndType        #109:#92      // b:(Z)V
+   #57 = NameAndType        #109:#96      // b:I
+   #58 = NameAndType        #109:#97      // b:La/a/g;
+   #59 = NameAndType        #110:#79      // c:()V
+   #60 = NameAndType        #110:#92      // c:(Z)V
+   #61 = NameAndType        #110:#101     // c:Z
+   #62 = NameAndType        #111:#79      // d:()V
+   #63 = NameAndType        #111:#85      // d:(I)V
+   #64 = NameAndType        #111:#92      // d:(Z)V
+   #65 = NameAndType        #112:#80      // e:()Z
+   #66 = NameAndType        #112:#85      // e:(I)V
+   #67 = NameAndType        #113:#80      // f:()Z
+   #68 = NameAndType        #114:#78      // g:()S
+   #69 = NameAndType        #114:#101     // g:Z
+   #70 = NameAndType        #116:#78      // h:()S
+   #71 = NameAndType        #117:#80      // i:()Z
+   #72 = NameAndType        #118:#81      // j:()[S
+   #73 = NameAndType        #118:#96      // j:I
+   #74 = NameAndType        #120:#96      // k:I
+   #75 = NameAndType        #120:#98      // k:La/b/d;
+   #76 = NameAndType        #121:#94      // o:B
+   #77 = Utf8               ()Lgame/l;
+   #78 = Utf8               ()S
+   #79 = Utf8               ()V
+   #80 = Utf8               ()Z
+   #81 = Utf8               ()[S
+   #82 = Utf8               (BB)V
+   #83 = Utf8               (BBB)V
+   #84 = Utf8               (BBZ)Z
+   #85 = Utf8               (I)V
+   #86 = Utf8               (II)V
+   #87 = Utf8               (IIIIII[S)Z
+   #88 = Utf8               (IIZ)V
+   #89 = Utf8               (IZ)Z
+   #90 = Utf8               (Ljavax/microedition/lcdui/Graphics;II)V
+   #91 = Utf8               (Ljavax/microedition/lcdui/Graphics;IIB)V
+   #92 = Utf8               (Z)V
+   #93 = Utf8               <init>
+   #94 = Utf8               B
+   #95 = Utf8               Code
+   #96 = Utf8               I
+   #97 = Utf8               La/a/g;
+   #98 = Utf8               La/b/d;
+   #99 = Utf8               La/b/g;
+  #100 = Utf8               StackMap
+  #101 = Utf8               Z
+  #102 = Utf8               a
+  #103 = Utf8               a/a
+  #104 = Utf8               a/a/g
+  #105 = Utf8               a/b/a
+  #106 = Utf8               a/b/d
+  #107 = Utf8               a/b/g
+  #108 = Utf8               a/e
+  #109 = Utf8               b
+  #110 = Utf8               c
+  #111 = Utf8               d
+  #112 = Utf8               e
+  #113 = Utf8               f
+  #114 = Utf8               g
+  #115 = Utf8               game/l
+  #116 = Utf8               h
+  #117 = Utf8               i
+  #118 = Utf8               j
+  #119 = Utf8               javax/microedition/lcdui/Graphics
+  #120 = Utf8               k
+  #121 = Utf8               o
+{
+  public a.b.g a;
+    descriptor: La/b/g;
+    flags: (0x0001) ACC_PUBLIC
+
+  public a.a.g b;
+    descriptor: La/a/g;
+    flags: (0x0001) ACC_PUBLIC
+
+  protected boolean c;
+    descriptor: Z
+    flags: (0x0004) ACC_PROTECTED
+
+  public a.a.g();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #29                 // Method a/b/a."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #10                 // Field b:La/a/g;
+         9: aload_0
+        10: new           #5                  // class a/b/g
+        13: dup
+        14: invokespecial #30                 // Method a/b/g."<init>":()V
+        17: putfield      #9                  // Field a:La/b/g;
+        20: return
+
+  public boolean a(int, boolean);
+    descriptor: (IZ)Z
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: iload_1
+         5: iload_2
+         6: invokevirtual #35                 // Method a/b/g.a:(IZ)Z
+         9: ireturn
+
+  public final void a(int, int, boolean);
+    descriptor: (IIZ)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: iload_1
+         5: iload_2
+         6: iconst_1
+         7: invokevirtual #34                 // Method a/b/g.a:(IIZ)V
+        10: return
+
+  public final boolean a(byte, byte, boolean);
+    descriptor: (BBZ)Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: iload_1
+         5: iload_2
+         6: iload_3
+         7: invokevirtual #32                 // Method a/b/g.a:(BBZ)Z
+        10: ireturn
+
+  public final void a(byte, byte, byte);
+    descriptor: (BBB)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: iload_1
+         5: iconst_m1
+         6: invokevirtual #31                 // Method a/b/g.a:(BB)V
+         9: aload_0
+        10: iload_3
+        11: istore_2
+        12: dup
+        13: astore_1
+        14: iload_2
+        15: putfield      #16                 // Field a/b/a.o:B
+        18: return
+
+  public final boolean a();
+    descriptor: ()Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #12                 // Field g:Z
+         4: ifne          9
+         7: iconst_0
+         8: ireturn
+         9: aload_0
+        10: getfield      #9                  // Field a:La/b/g;
+        13: invokevirtual #38                 // Method a/b/g.e:()Z
+        16: ireturn
+        StackMap: length = 0xB (unknown attribute)
+         00 01 00 09 00 01 07 00 02 00 00
+
+  public final boolean b();
+    descriptor: ()Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: invokevirtual #39                 // Method a/b/g.f:()Z
+         7: ireturn
+
+  public final void a(javax.microedition.lcdui.Graphics, int, int);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;II)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=5, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #12                 // Field g:Z
+         4: ifne          8
+         7: return
+         8: aload_0
+         9: getfield      #15                 // Field o:B
+        12: iconst_3
+        13: if_icmpne     38
+        16: aload_0
+        17: getfield      #9                  // Field a:La/b/g;
+        20: aload_1
+        21: aload_0
+        22: getfield      #13                 // Field j:I
+        25: iload_2
+        26: isub
+        27: aload_0
+        28: getfield      #14                 // Field k:I
+        31: iload_3
+        32: isub
+        33: iconst_1
+        34: invokevirtual #36                 // Method a/b/g.a:(Ljavax/microedition/lcdui/Graphics;IIB)V
+        37: return
+        38: aload_0
+        39: getfield      #9                  // Field a:La/b/g;
+        42: aload_1
+        43: aload_0
+        44: getfield      #13                 // Field j:I
+        47: iload_2
+        48: isub
+        49: aload_0
+        50: getfield      #14                 // Field k:I
+        53: iload_3
+        54: isub
+        55: iconst_0
+        56: invokevirtual #36                 // Method a/b/g.a:(Ljavax/microedition/lcdui/Graphics;IIB)V
+        59: return
+        StackMap: length = 0x1E (unknown attribute)
+         00 02 00 08 00 04 07 00 02 07 00 08 01 01 00 00
+         00 26 00 04 07 00 02 07 00 08 01 01 00 00
+
+  public final void b(javax.microedition.lcdui.Graphics, int, int);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;II)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=5, locals=4, args_size=4
+         0: aload_0
+         1: getfield      #11                 // Field c:Z
+         4: ifne          8
+         7: return
+         8: aload_0
+         9: getfield      #15                 // Field o:B
+        12: iconst_3
+        13: if_icmpne     38
+        16: aload_0
+        17: getfield      #9                  // Field a:La/b/g;
+        20: aload_1
+        21: aload_0
+        22: getfield      #13                 // Field j:I
+        25: iload_2
+        26: isub
+        27: aload_0
+        28: getfield      #14                 // Field k:I
+        31: iload_3
+        32: isub
+        33: iconst_3
+        34: invokevirtual #36                 // Method a/b/g.a:(Ljavax/microedition/lcdui/Graphics;IIB)V
+        37: return
+        38: aload_0
+        39: getfield      #9                  // Field a:La/b/g;
+        42: aload_1
+        43: aload_0
+        44: getfield      #13                 // Field j:I
+        47: iload_2
+        48: isub
+        49: aload_0
+        50: getfield      #14                 // Field k:I
+        53: iload_3
+        54: isub
+        55: iconst_4
+        56: invokevirtual #36                 // Method a/b/g.a:(Ljavax/microedition/lcdui/Graphics;IIB)V
+        59: return
+        StackMap: length = 0x1E (unknown attribute)
+         00 02 00 08 00 04 07 00 02 07 00 08 01 01 00 00
+         00 26 00 04 07 00 02 07 00 08 01 01 00 00
+
+  public void c();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: iconst_1
+         2: invokevirtual #23                 // Method b:(Z)V
+         5: aload_0
+         6: iconst_1
+         7: invokevirtual #24                 // Method c:(Z)V
+        10: aload_0
+        11: iconst_1
+        12: invokevirtual #27                 // Method d:(Z)V
+        15: return
+
+  public void d();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: iconst_0
+         2: invokevirtual #23                 // Method b:(Z)V
+         5: aload_0
+         6: iconst_0
+         7: invokevirtual #24                 // Method c:(Z)V
+        10: aload_0
+        11: iconst_0
+        12: invokevirtual #27                 // Method d:(Z)V
+        15: return
+
+  public final void e();
+    descriptor: ()V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #10                 // Field b:La/a/g;
+         4: ifnull        14
+         7: aload_0
+         8: getfield      #10                 // Field b:La/a/g;
+        11: invokevirtual #25                 // Method d:()V
+        14: return
+        StackMap: length = 0x8 (unknown attribute)
+         00 01 00 0E 00 00 00 00
+
+  public final void a(boolean);
+    descriptor: (Z)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: putfield      #11                 // Field c:Z
+         5: return
+
+  public void a(int);
+    descriptor: (I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #15                 // Field o:B
+         4: tableswitch   { // 0 to 3
+
+                       0: 62
+
+                       1: 45
+
+                       2: 53
+
+                       3: 36
+                 default: 67
+            }
+        36: aload_0
+        37: iload_1
+        38: ineg
+        39: invokevirtual #26                 // Method d:(I)V
+        42: goto          67
+        45: aload_0
+        46: iload_1
+        47: invokevirtual #26                 // Method d:(I)V
+        50: goto          67
+        53: aload_0
+        54: iload_1
+        55: ineg
+        56: invokevirtual #28                 // Method e:(I)V
+        59: goto          67
+        62: aload_0
+        63: iload_1
+        64: invokevirtual #28                 // Method e:(I)V
+        67: aload_0
+        68: getfield      #10                 // Field b:La/a/g;
+        71: ifnull        89
+        74: aload_0
+        75: getfield      #10                 // Field b:La/a/g;
+        78: aload_0
+        79: getfield      #13                 // Field j:I
+        82: aload_0
+        83: getfield      #14                 // Field k:I
+        86: invokevirtual #22                 // Method b:(II)V
+        89: return
+        StackMap: length = 0x39 (unknown attribute)
+         00 06 00 24 00 02 07 00 02 01 00 00 00 2D 00 02
+         07 00 02 01 00 00 00 35 00 02 07 00 02 01 00 00
+         00 3E 00 02 07 00 02 01 00 00 00 43 00 01 07 00
+         02 00 00 00 59 00 00 00 00
+
+  public final void a(int, int);
+    descriptor: (II)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=3, args_size=3
+         0: iload_1
+         1: tableswitch   { // 0 to 3
+
+                       0: 58
+
+                       1: 41
+
+                       2: 49
+
+                       3: 32
+                 default: 63
+            }
+        32: aload_0
+        33: bipush        -4
+        35: invokevirtual #26                 // Method d:(I)V
+        38: goto          63
+        41: aload_0
+        42: iconst_4
+        43: invokevirtual #26                 // Method d:(I)V
+        46: goto          63
+        49: aload_0
+        50: bipush        -4
+        52: invokevirtual #28                 // Method e:(I)V
+        55: goto          63
+        58: aload_0
+        59: iconst_4
+        60: invokevirtual #28                 // Method e:(I)V
+        63: aload_0
+        64: getfield      #10                 // Field b:La/a/g;
+        67: ifnull        85
+        70: aload_0
+        71: getfield      #10                 // Field b:La/a/g;
+        74: aload_0
+        75: getfield      #13                 // Field j:I
+        78: aload_0
+        79: getfield      #14                 // Field k:I
+        82: invokevirtual #22                 // Method b:(II)V
+        85: return
+        StackMap: length = 0x35 (unknown attribute)
+         00 06 00 20 00 01 07 00 02 00 00 00 29 00 01 07
+         00 02 00 00 00 31 00 01 07 00 02 00 00 00 3A 00
+         01 07 00 02 00 00 00 3F 00 01 07 00 02 00 00 00
+         55 00 00 00 00
+
+  public final void f();
+    descriptor: ()V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=7, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: invokevirtual #40                 // Method a/b/g.i:()Z
+         7: ifeq          16
+        10: aload_0
+        11: iconst_1
+        12: invokevirtual #27                 // Method d:(Z)V
+        15: return
+        16: invokestatic  #43                 // Method game/l.B:()Lgame/l;
+        19: getfield      #19                 // Field game/l.k:La/b/d;
+        22: getfield      #17                 // Field a/b/d.a:I
+        25: invokestatic  #43                 // Method game/l.B:()Lgame/l;
+        28: getfield      #19                 // Field game/l.k:La/b/d;
+        31: getfield      #18                 // Field a/b/d.b:I
+        34: invokestatic  #20                 // Method a/a.g:()S
+        37: invokestatic  #21                 // Method a/a.h:()S
+        40: aload_0
+        41: getfield      #13                 // Field j:I
+        44: aload_0
+        45: getfield      #14                 // Field k:I
+        48: aload_0
+        49: getfield      #9                  // Field a:La/b/g;
+        52: invokevirtual #41                 // Method a/b/g.j:()[S
+        55: invokestatic  #42                 // Method a/e.a:(IIIIII[S)Z
+        58: ifeq          67
+        61: aload_0
+        62: iconst_1
+        63: invokevirtual #27                 // Method d:(Z)V
+        66: return
+        67: aload_0
+        68: iconst_0
+        69: invokevirtual #27                 // Method d:(Z)V
+        72: return
+        StackMap: length = 0x14 (unknown attribute)
+         00 02 00 10 00 01 07 00 02 00 00 00 43 00 01 07
+         00 02 00 00
+
+  public final void g();
+    descriptor: ()V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: invokevirtual #37                 // Method a/b/g.c:()V
+         7: return
+
+  public final void b(int);
+    descriptor: (I)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: getfield      #9                  // Field a:La/b/g;
+         4: iload_1
+         5: invokevirtual #33                 // Method a/b/g.a:(I)V
+         8: return
+}

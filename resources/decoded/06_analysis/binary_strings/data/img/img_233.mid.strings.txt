@@ -1,0 +1,12 @@
+path=data/img/img_233.mid
+kind=png
+size=200
+sha256=9165C2201ADA90F169E6973C600F1649D1E0556BAE1A5444C15766BD5D20F212
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 20 00 00 00 10 08 03 00 00 00 40 de 8d 6b 00 00 00 18 50 4c 54 45 ff ff ff 95 8f 84 77 68 50 a9 a9 a6 a7 a6 a1 db db db e5 e4 e4 a5 a4
+
+IHDR
+PLTE
+kIDATx
+=XB9@]
+X?-~
+IEND

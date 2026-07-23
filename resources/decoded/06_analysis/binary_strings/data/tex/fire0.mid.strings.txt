@@ -1,0 +1,6 @@
+path=data/tex/fire0.mid
+kind=custom_binary
+size=150
+sha256=53C7BC83C80988F51D9BE2F5423519E7F85EB2F206D69B5083AF5CF7EC041625
+hex_prefix=00 00 00 06 00 00 00 08 08 06 00 00 00 88 78 da 62 fc cf c0 c0 cf c0 c0 c0 0e c4 ac 0c 10 f0 1b 88 7f b2 00 09 1e 28 e6 82 4a 7c 03 e2 2f 30 09 01 86 64 3b 35 06 6e 6e 66 86 49 db af 03 f9 8c
+

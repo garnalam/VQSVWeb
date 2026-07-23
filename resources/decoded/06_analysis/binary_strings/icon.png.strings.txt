@@ -1,0 +1,26 @@
+path=icon.png
+kind=png
+size=1000
+sha256=19280D636D9FE9EE3A275BEC2697B76786EFB1B4FE53BA4A7FA3AF3FD94E4E4B
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 2a 00 00 00 2a 08 03 00 00 00 f2 1d 39 69 00 00 00 19 74 45 58 74 53 6f 66 74 77 61 72 65 00 41 64 6f 62 65 20 49 6d 61 67 65 52 65 61
+
+IHDR
+tEXtSoftware
+Adobe ImageReadyq
+PLTE
+=!1B/ 
+}]I9 
+jK"'
+Z_<1P$&
+IDATx
+{`]9
+kOAT!e
+*!BOVL(
+gYVZ
+$I 8
+<Jz|pT:
+w&RHN
+vdjy8,
+.oA3
+VM'^_
+IEND

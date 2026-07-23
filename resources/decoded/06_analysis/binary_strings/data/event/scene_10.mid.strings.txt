@@ -1,0 +1,367 @@
+path=data/event/scene_10.mid
+kind=custom_binary
+size=26152
+sha256=F271FAEA27E0E759ECFC7C1343A553558E99BC16F1A128905CBEFD084A98A81C
+hex_prefix=00 0f 09 bd 03 ba 02 96 03 1a 09 b5 02 6f 01 75 05 d3 0a 10 02 54 01 65 0a 1d 11 68 07 47 0e e0 00 20 00 4e 01 10 00 e2 00 79 00 20 00 6c 00 e0 00 20 00 6d 1e d9 00 74 00 20 00 73 00 e2 00 6e
+
+n tr
+t, mu
+n ph
+t huy c
+i bi
+ng s
+ng Qu
+n Gi
+isXem ra ta l
+m ki
+m so
+t cu
+ng. Ta s
+ cho ng
+nh h
+i nghi
+c Long 
+i nh
+NeilhChuy
+c Long Th
+ng kh
+ng th
+nh v
+. Hu
+ng chi gi
+c Long th
+n th
+ng h
+a ch
+iNTa 
+ thua, ng
+c ph
+t chuy
+n. Th
+i mau 
+n Thi
+i.CTr
+i Thi
+m Tomas 
+ch quay l
+a chi s
+u tr
+Neil
+Hay l
+.., th
+u th
+Neil%Cu
+m ni
+Neil#L
+n sau d
+ng T
+t Trung C
+ xem.
+2,-1
+16,16dD
+ng tia laser c
+ng qua. N
+y sai, c
+i. Hi
+ do di chuy
+n 1!
+n 2"
+n 3#
+t con ng
+i mang theo H
+m ta, c
+ chuy
+NeiloCh
+ng t
+c th
+n quan Thi
+i cho ph
+p, xin ng
+i gi
+p ch
+ ra con 
+ng Thi
+a truy
+ch xa nhau ngh
+m, m
+i tr
+m ch
+p nhau m
+n, cho n
+ng g
+nh b
+i ta r
+Neil?H
+ ... 
+nh cho ta ch
+ng l
+i, cu
+ng c
+ng ho
+09Tr
+i [V
+nh H
+ch Kinh Phi
+n] Th
+m Tomas.
+nh.9Tr
+Neil*Hay l
+Neil+Cu
+Neil-C
+u xem sao.
+n 4$
+a nh
+ng d
+ng n
+c xo
+y ch
+? Ng
+n nguy hi
+m kh
+n, b
+ truy
+m xu
+t ph
+Tinh V
+c 1%
+c 2(
+c_Li
+n quan 
+ch Long 
+n, ta s
+p ng
+i. C
+y cho ta th
+y th
+a ng
+nh!9Tr
+Neil-Hay l
+ ...d
+Neil)Cu
+Neil.L
+n sau hay l
+ xem sao.
+c 3)
+0,1,2,3
+t hi
+i! Minh V
+ng Long.
+Minh V
+ng LongJH
+ng gi
+n thay... Li
+u theo ti
+i ng
+ sao?
+Neil!Xin ch
+c kh
+e ng
+i, ta l
+ ...
+ng Long=Ta bi
+t. Ng
+i thi
+i. Mu
+n ng
+n ta t
+m Tinh v
+ng LongTHa ha! 
+u kh
+i th
+ ngang t
+c tranh 
+t phen r
+Neil8Th
+... ng
+i cu
+ng vui nh
+ Tinh V
+n [Ch
+m sao 
+n Di
+u] th
+nh Tinh V
+Neil4Sau c
+ng ng
+ vui nh
+NeilITh
+c tr
+ng! C
+ Minh V
+ng Long s
+ng xu
+Neil&Hay l
+Neil?Th
+t chi giao ... c
+ng Long*
+'()*
+c Nh
+1,2,3,4
+Linh Quang L
+c6Ta s
+i, H
+i...
+c-Ng
+i...s
+n, ta ch
+m sao c
+c cho 
+y? Ta ch
+t ng
+t quan tr
+ng v
+i ta m
+cfNg
+i ngh
+n gi
+y sao? Th
+c, ta s
+ng y
+i, xoay chuy
+i Ni
+m Th
+nh [L
+o di t
+ch] 
+nh th
+c Chi
+n Th
+c/Ng
+n sao?
+Neil.Hay l
+a xem sao.
+Neil/Cu
+Neil9Th
+t chi giao... c
+n sau th
+c 3.
+.I0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27
+Ha ha! Ha ha ha ha!
+aTo gan! Ch
+nh l
+ con ng
+m ph
+nh c
+a ta l
+t ti
+n khinh mi
+ng, th
+c xin l
+i. Th
+i ch
+c di
+n ki
+i. Tr
+c gi
+ng r
+a hay l
+, nh
+i. T
+t th
+c cu
+c tranh lu
+m, mau ch
+u ch
+8Ta l
+ng k
+c ta l
+Neil>Oh, ra v
+y. Xin ng
+p ta truy
+n quay l
+. Nh
+ng...C
+c ng
+p mu
+i sao? C
+ cho ta tham gia 
+ng? M
+y ng
+m nay ta v
+n gai m
+09Ni
+nh, tinh qu
+ng m
+, th
+nh T
+i.9Ni
+NeiloNh
+nh khi
+n cho m
+o th
+ng lo
+t? Th
+ xem c
+()*+
+ng ta 
+Yafei
+Yafei, l
+m sao v
+o ta!
+NeilPYafei, c
+i chuy
+i sao? N
+i cho ta bi
+m nh
+YafeiCKh
+ ... Ta ch
+m th
+u, ch
+Yafei)Th
+i nhanh 
+Neil!Ch
+ng ta h
+nh nh
+ quan, nh
+n hai c
+c kia, c
+o. Nh
+p tr
+n, t
+Ok, ta r
+i. Yafei t
+a Ph
+ng Ho
+ng 1X
+-./0
+4,3,2,7,6,5
+4,4,4,-4,-4,-4
+0,0,0,0,0,0
+6,6,6,6,6,6
+1,2,3,4,5,6,7
+1,1,1,1,1,1,1
+Neil'H
+ng ... th
+a ...
+ng ai g
+... Ai? Ch
+ng ta c
+ng;Gi
+ ta 
+i theo H
+n. Ng
+ thu ph
+c ta sao?
+Yafei, 
+ ta.
+ngdNg
+ khi c
+u ng
+i, Ta v
+ng chung m
+n. Ta s
+ng, ng
+i theo h
+ng!L
+i quan tr
+Ta hi
+i sao?
+NeilAC
+t nhi
+u, nh
+ng ta s
+ng mu
+... 
+m! C
+u ta.
+ng 2Y

@@ -1,0 +1,15 @@
+path=data/img/img_109.mid
+kind=png
+size=904
+sha256=9907882B5EE6E6A6E0B03AAD429DDB5DA22CCB5653F95CED1B1625DF4195AD5F
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 35 00 00 00 36 08 03 00 00 00 50 ac 21 ec 00 00 00 51 50 4c 54 45 f6 e7 40 ff ca 00 7c 4f 15 ff ff ff d3 6d 45 ee ff cb d1 a6 00 4a 11
+
+IHDR
+QPLTE
+tRNS
+IDATx
+4MiI
+y@L9
+yrTy
+k1g3*
+IEND

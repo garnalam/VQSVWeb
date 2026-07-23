@@ -1,0 +1,8 @@
+path=data/tex/hide.mid
+kind=custom_binary
+size=162
+sha256=91C6E7038699A769A1E6FDBF450935CBD3C370CA2CC492EE1A07E4E196692D73
+hex_prefix=00 00 00 18 00 00 00 20 08 06 00 00 00 94 78 da ec 95 31 0e 80 20 0c 45 81 b4 17 50 17 cf e9 19 bd 0d 7a 01 06 9d 4c 18 0c fd 68 be 89 ca 1f 19 fa da 86 bc fa 6d 1e 27 47 4c 70 e4 bc 1f 20 6c
+
+'GLp
+5]7]

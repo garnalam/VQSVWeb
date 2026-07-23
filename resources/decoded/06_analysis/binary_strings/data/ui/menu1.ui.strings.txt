@@ -1,0 +1,12 @@
+path=data/ui/menu1.ui
+kind=custom_binary
+size=2616
+sha256=E3630DFB482A31D1C7F05F6EC36CC5B146B864C5C00E896FAE6485A0E73257B3
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 35 01 00 34 00 00 00 00 00 f0 01 40 00 00 00 00 00 00 ff ff ff 00 00 00 00 ff 00 00 00 ff ff 04 00 ff a5 00 00 ff 00 00 ff 00 80 00 ff ff
+
+v,TL
+!/X}
+'Hmc
+<KuTD
+9P0_c
+;k>X

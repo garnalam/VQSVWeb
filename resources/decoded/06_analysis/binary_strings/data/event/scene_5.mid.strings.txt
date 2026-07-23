@@ -1,0 +1,401 @@
+path=data/event/scene_5.mid
+kind=custom_binary
+size=23766
+sha256=6EE3BF6615000581E225E17AB8A891DD968F5C853154F5841B714745AD85CA81
+hex_prefix=00 07 01 fa 08 26 02 8a 1d 93 05 f0 11 bb 1a de 00 06 00 04 00 4e 00 65 00 69 00 6c 00 0e 01 10 1e bf 00 6e 00 20 00 63 00 68 1e e7 00 20 00 74 00 68 00 e0 00 6e 00 68 00 2e 00 01 00 30 00 01
+
+Neil
+n ch
+c Th
+i qua S
+Binh l
+nh H
+c Long
+Yafei^Ta 
+i tr
+p ph
+n, ng
+o ch
+i trong th
+nh r
+n Cung 
+c Long t
+m ta 
+(nghe n
+o Qu
+ng Chi
+ng Ch
+ng, kh
+ng b
+ng nh
+t. Khu s
+ng t
+m kia m
+nh c
+ng kh
+ng mu
+n tr
+i qua l
+a.)#
+n [H
+ng T
+a th
+ch Th
+nh M
+Thuy
+F 41,42,43,44,45,46,47,48,49,50,51
+0,0,0,0,0,0,0,0,0,0,0
+1,1,1,1,1,1,1,1,1,1,1
+#FFFFFF Thi
+n Gi
+a Gi
+i li
+ duy nh
+t th
+o Thi
+ch Long Th
+c Long Th
+n. C
+ sau m
+t tr
+m, hai t
+i th
+ng nhau v
+t ng
+i hai gi
+. Nh
+ng m
+ng h
+m vui cho nh
+n lo
+#FFFFFFH
+u: Ha ha! Tuy l
+p nh
+ng l
+nh! Ch
+ng qu
+n nghe l
+#FFFFFF H
+c Long Qu
+#FFFFFF Ng
+ thi
+n kh
+ng th
+ tho
+t kh
+i ki
+nh n
+y kh
+ng ph
+i chi
+n tranh, cu
+c chi
+t phe, c
+nh l
+... Ch
+t ch
+Fisher6Ti
+n th
+nh sao? Cho ta coi n
+FisherQ
+c! Ti
+, gan ng
+m. Th
+i ta 
+y. Nh
+ng v
+y ng
+FisherIKh
+n, nh
+ ta 
+n trong qu
+nh nghi
+FisherPN
+i gian gi
+p ta giao k
+t qu
+ nghi
+y cho Kate 
+ Nguy
+5,10
+n, t
+Fisher4
+em Thi 
+i Qu
+ giao cho h
+c ch
+Fisher\Thi 
+ng qua t
+i qu
+c. T
+ang 
+a lao H
+ch.'T
+m ki
+ch.@Nhi
+t, vui l
+t 1 
+ tra x
+t nhi
+Fisher$Th
+c, ta s
+m ng
+i kh
+YafeiBPh
+n ta sau nghi nghe n
+t mu
+p ng
+Neil(H
+ cho t
+Yafei
+Ta c
+n ph
+NeilAT
+ch c
+ng c
+ng gi
+a ta
+Sao c
+? Kh
+u th
+m phi.
+Neil+Sao ... trong m
+ng sai v
+y...
+Neil6Th
+i ... v
+ Phi Kh
+nh gi
+i quy
+t nh
+Yafeij
+nh d
+c Tinh Th
+ng H
+u trong H
+a Tinh Th
+Neil)
+c, v
+y ta 
+ch tr
+ch ch
+, kh
+c. Ng
+i ph
+a Ch
+ng. Ta s
+i ng
+... 
+... T
+n [Ph
+nh] 
+o qu
+ng. Hi
+ do di chuy
+nh Nh
+Fisher
+Black
+n minh
+c Long A
+c Long B
+>?@A
+George,Th
+o? Kh
+c mu
+n khi
+u kh
+ch h
+42,41,40
+33,34,35
+3,4,4
+a laoA
+George
+Jani Las
+i ca ta? C
+i Jani Las
+Jani Las c
+ang t
+ng Ni
+m Th
+nh. Silia tr
+c ... Red c
+ng TeYaQi canh gi
+nh Phi Kh
+nh, b
+m qu
+nh thu
+i. Hi
+ng lo
+y khi th
+n. Song song 
+ng chi
+Jani Las|Nh
+ng ch
+ trong H
+nh, h
+n hi
+i ... b
+ giam t
+Jani LasMTa r
+ch nh
+ng tin ng
+i cung c
+n thu
+ng cho ng
+NeilmNg
+i bi
+y binh b
+ ai? Ph
+i ch
+ tung t
+ch n
+Jani Las+ ... Kh
+ng r
+ng hay 
+t.)Jani Las n
+Jani Las4Ng
+u Edern ra sao?
+7,11
+Jani LasG
+, Edern hi
+n trong 
+ch, ng
+u Edern.@Nhi
+Jani Las&Ta bi
+, ta s
+ ngh
+Neil@
+u Edern c
+y dai th
+Edern ... nh
+nh ch
+ng ta s
+u ng
+i ra! Neil, ng
+, ta t
+ng ng
+a di chuy
+ nhanh do 
+ng k
+PeiJiya
+Rose
+c Long=T
+m quan tr
+ng, b
+t lu
+Neil:Ta l
+ quan c
+a Yafei c
+m nh
+i ... ch
+ Edern?
+Edern
+NeiljTa l
+ chi
+t Ho
+ng Gia Neil, Jani Las 
+ qua cho ta v
+i, ta 
+i ra ngo
+Ta ch
+i. Ta n
+m gi
+nh, n
+u ta ch
+y, b
+ thay 
+t cho qu
+n ta.
+m sao b
+y gi
+EdernGTa 
+ ghi l
+t ra lo
+i gi
+ng, ng
+em giao cho Jani Las.
+Ta hi
+ giao cho Jani Las.
+Neil2M
+t ph
+i ngay, ch
+ng ta 
+YafeikNhi
+ch cao h
+nh th
+ng g
+n, b
+nh tro b
+Yafei)C
+a Ph
+ng Ho
+ng Gia H
+NeilSH
+ng! Kh
+t trong nh
+ thanh th
+n sao?
+YafeibSao c
+ kinh ng
+y? M
+, nh
+ng hi
+ng Chi Th
+ng nhi
+n bi
+YafeibN
+c kia kh
+i Li
+a Th
+n sao? V
+ sao 
+i Ph
+Neil}B
+a nay lu
+nh an, m
+nh, d
+ng cho r
+ che ch
+ cho h
+Yafei,Nh
+ng con ng
+Neil"
+ng, k
+ hai ng
+Sao l
+m, v
+ sao ph
+i? Nghe n
+i con g
+i mu
+n ra 
+i, c
+n ng
+i con trai kia v
+nh y
+ng d
+Yafei xuy m
+t ti
+n Ph
+ng Di T
+ch.0
+ch] t
+5,5,5
+6,6,6
+3,4,5
+0)Hi
+ mang theo H
+n gi
+ cho ta t
+t cu
+Neil\B
+n, h
+ quan m
+t qua b
+i chung quanh coi xem sao.
+i da 
+FGHI
+\]^_*
+hijk*
+tuvw*
+z{|}*

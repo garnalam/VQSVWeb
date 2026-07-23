@@ -1,0 +1,10 @@
+path=data/tex/fire1.mid
+kind=custom_binary
+size=275
+sha256=5192061AF973213E903868E4C06A23A6085994EB440A669067F0881730DBF7E1
+hex_prefix=00 00 00 0a 00 00 00 0b 08 06 00 00 01 05 78 da 4c 90 41 4e 02 51 10 44 eb cf 20 a0 c1 98 30 1a 87 30 21 9a b8 71 e9 d2 b8 e2 0e de c0 a5 6b 2e e4 3d 5c 78 03 13 20 2e 60 21 06 43 74 44 51 44
+
+ .`!
+CtDQDA
+uwu;
+xF^WH(J$&

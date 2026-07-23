@@ -1,0 +1,2112 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "VQSV-Web",
+    "languages": [
+      "PHP",
+      "TypeScript",
+      "JavaScript",
+      "Java",
+      "Blade",
+      "CSS"
+    ],
+    "frameworks": [
+      "Laravel 13",
+      "Laravel Fortify",
+      "Inertia.js 3",
+      "React 19",
+      "Tailwind CSS 4",
+      "Java ME MIDP"
+    ],
+    "description": "A Laravel/Inertia foundation for a Vương Quốc Siêu Việt game wiki, accompanied by the extracted and decompiled Java ME RPG implementation that supplies evidence for pets, skills, items, combat, quests, and world systems.",
+    "analyzedAt": "2026-07-23T10:46:02.7559750+07:00",
+    "gitCommitHash": "ed8dc132fff56d3f5f3b80d8344bbdd20107ba11"
+  },
+  "nodes": [
+    {
+      "id": "domain:player-account-security",
+      "type": "domain",
+      "name": "Player Account & Security",
+      "summary": "Handles the web player's identity lifecycle through registration, profile maintenance, password protection, and account closure. This is the implemented Laravel business surface for future personalized wiki capabilities.",
+      "tags": [
+        "account",
+        "identity",
+        "security"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entities": [
+          "User",
+          "Profile",
+          "Password",
+          "Session"
+        ],
+        "businessRules": [
+          "Email addresses must be unique and valid.",
+          "Passwords must satisfy the shared password policy.",
+          "Changing an email clears its verification timestamp.",
+          "Account deletion requires the current password and invalidates the session."
+        ],
+        "crossDomainInteractions": [
+          "Provides authenticated identity for future wiki preferences and contributions.",
+          "Uses Laravel Fortify and session infrastructure."
+        ]
+      }
+    },
+    {
+      "id": "domain:game-session-persistence",
+      "type": "domain",
+      "name": "Game Session & Persistence",
+      "summary": "Controls Java ME startup, new/continued sessions, and durable player progress. It coordinates the MIDlet, menu, world runtime, and partitioned RecordStores.",
+      "tags": [
+        "game-session",
+        "save",
+        "load"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "MIDlet",
+          "Game Canvas",
+          "Player State",
+          "World State",
+          "RecordStore"
+        ],
+        "businessRules": [
+          "The Canvas owns the active scene loop.",
+          "Player, world, event, currency, pet, consumable, and ball state use separate PK6_RMS stores.",
+          "Loaded dependent state must be rebuilt before play resumes."
+        ],
+        "crossDomainInteractions": [
+          "Restores pets, inventory, quests, and world position.",
+          "Starts exploration and transitions to combat."
+        ]
+      }
+    },
+    {
+      "id": "domain:world-exploration-quests",
+      "type": "domain",
+      "name": "World Exploration & Quests",
+      "summary": "Runs map traversal, actors, scripted interactions, dialogue, tasks, and location transitions. The world controller and event engine combine map data with persistent quest state.",
+      "tags": [
+        "world",
+        "map",
+        "quest",
+        "event"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "Map",
+          "World Actor",
+          "NPC",
+          "Event",
+          "Quest",
+          "Dialogue"
+        ],
+        "businessRules": [
+          "World transitions update map, scene, and coordinates together.",
+          "Events are gated by stored state and contextual conditions.",
+          "Quest outcomes update persistent state, not UI state alone."
+        ],
+        "crossDomainInteractions": [
+          "Encounters initiate battles and capture opportunities.",
+          "Quest outcomes grant items or pet progression.",
+          "Session persistence saves the current world and quests."
+        ]
+      }
+    },
+    {
+      "id": "domain:pet-collection-progression",
+      "type": "domain",
+      "name": "Pet Collection & Progression",
+      "summary": "Manages pet definitions, the active team, reserve collection, capture, statistics, leveling, evolution-related actions, and learned skills. It is the central evidence domain for the planned Pet wiki.",
+      "tags": [
+        "pet",
+        "roster",
+        "capture",
+        "progression"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "Pet",
+          "Pet Species",
+          "Active Team",
+          "Reserve Pet",
+          "Level",
+          "Evolution"
+        ],
+        "businessRules": [
+          "The active team is capped at six pets by the roster flow.",
+          "Stats derive from species, level, growth, and element data.",
+          "Capture requires battle-side success and available storage handling.",
+          "Level-up can require a learned-skill choice."
+        ],
+        "crossDomainInteractions": [
+          "Combat uses pet stats and skills and produces experience.",
+          "Items heal, modify, capture, or evolve pets.",
+          "Persistence stores active and reserve pets."
+        ]
+      }
+    },
+    {
+      "id": "domain:combat-skills",
+      "type": "domain",
+      "name": "Combat & Skills",
+      "summary": "Implements turn-based battle, action ordering, skill selection, damage, buffs/debuffs, defeat, capture branches, and post-battle progression. It supplies behavioral evidence for the planned Skill wiki.",
+      "tags": [
+        "battle",
+        "skill",
+        "damage",
+        "status-effect"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "Battle",
+          "Combatant",
+          "Skill",
+          "Turn",
+          "Damage",
+          "Buff",
+          "Debuff"
+        ],
+        "businessRules": [
+          "Combat advances through an explicit state machine.",
+          "Skill availability comes from each pet's learned-skill data.",
+          "Damage and status resolution use stats, elements, and effect tables.",
+          "Completion resolves defeat, rewards, level-up, and scene return."
+        ],
+        "crossDomainInteractions": [
+          "Consumes pet combat data.",
+          "Consumes battle and capture items.",
+          "Returns progression results to the world."
+        ]
+      }
+    },
+    {
+      "id": "domain:inventory-commerce",
+      "type": "domain",
+      "name": "Inventory, Items & Commerce",
+      "summary": "Owns item categories, quantities, bag actions, shops, currency, and reward insertion. It is the main evidence domain for the planned Item wiki and links items to pets and skills.",
+      "tags": [
+        "inventory",
+        "item",
+        "shop",
+        "currency"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "Item",
+          "Inventory Stack",
+          "Bag Category",
+          "Shop",
+          "Currency",
+          "Reward"
+        ],
+        "businessRules": [
+          "Items are separated into category-specific collections.",
+          "Use and purchase validate context, quantity, capacity, and currency.",
+          "Stacks decrement only after an accepted action.",
+          "Rewards mutate player holdings and persistent event state."
+        ],
+        "crossDomainInteractions": [
+          "Items target pets, skills, battles, and quests.",
+          "Commerce mutates currency and inventory.",
+          "Quest and battle rewards feed inventory."
+        ]
+      }
+    },
+    {
+      "id": "flow:register-player-account",
+      "type": "flow",
+      "name": "Register Player Account",
+      "summary": "Validates registration data and creates a durable web user through Fortify.",
+      "tags": [
+        "registration",
+        "validation",
+        "fortify"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "POST /register",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "step:register-player-account:receive-registration",
+      "type": "step",
+      "name": "Receive Registration",
+      "summary": "Fortify dispatches submitted identity fields to the user-creation action.",
+      "tags": [
+        "registration",
+        "validation",
+        "fortify"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/CreateNewUser.php",
+      "lineRange": [
+        20,
+        21
+      ]
+    },
+    {
+      "id": "step:register-player-account:validate-profile",
+      "type": "step",
+      "name": "Validate Identity Fields",
+      "summary": "Apply shared name and unique-email rules.",
+      "tags": [
+        "registration",
+        "validation",
+        "fortify"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/CreateNewUser.php",
+      "lineRange": [
+        22,
+        24
+      ]
+    },
+    {
+      "id": "step:register-player-account:validate-password",
+      "type": "step",
+      "name": "Validate Password",
+      "summary": "Apply the shared password policy before creation.",
+      "tags": [
+        "registration",
+        "validation",
+        "fortify"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/CreateNewUser.php",
+      "lineRange": [
+        22,
+        25
+      ]
+    },
+    {
+      "id": "step:register-player-account:create-user",
+      "type": "step",
+      "name": "Create User",
+      "summary": "Create and return the accepted User record.",
+      "tags": [
+        "registration",
+        "validation",
+        "fortify"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/CreateNewUser.php",
+      "lineRange": [
+        27,
+        31
+      ]
+    },
+    {
+      "id": "flow:update-player-profile",
+      "type": "flow",
+      "name": "Update Player Profile",
+      "summary": "Edits identity fields while preserving email-verification invariants.",
+      "tags": [
+        "profile",
+        "email-verification",
+        "settings"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "PATCH /settings/profile",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "step:update-player-profile:validate-profile",
+      "type": "step",
+      "name": "Validate Profile",
+      "summary": "The authenticated form request validates submitted profile values.",
+      "tags": [
+        "profile",
+        "email-verification",
+        "settings"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Settings/ProfileUpdateRequest.php",
+      "lineRange": [
+        18,
+        22
+      ]
+    },
+    {
+      "id": "step:update-player-profile:fill-user",
+      "type": "step",
+      "name": "Fill User",
+      "summary": "Copy validated fields onto the current user.",
+      "tags": [
+        "profile",
+        "email-verification",
+        "settings"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        31,
+        34
+      ]
+    },
+    {
+      "id": "step:update-player-profile:reset-verification",
+      "type": "step",
+      "name": "Reset Email Verification",
+      "summary": "Clear verification when the email address changes.",
+      "tags": [
+        "profile",
+        "email-verification",
+        "settings"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        35,
+        37
+      ]
+    },
+    {
+      "id": "step:update-player-profile:save-profile",
+      "type": "step",
+      "name": "Save Profile",
+      "summary": "Persist, flash success, and return to profile settings.",
+      "tags": [
+        "profile",
+        "email-verification",
+        "settings"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        39,
+        43
+      ]
+    },
+    {
+      "id": "flow:secure-or-close-account",
+      "type": "flow",
+      "name": "Secure or Close Account",
+      "summary": "Changes a password or closes an account only after credential validation.",
+      "tags": [
+        "password",
+        "account-deletion",
+        "session"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "PUT /settings/password or DELETE /settings/profile",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "step:secure-or-close-account:validate-credential",
+      "type": "step",
+      "name": "Validate Credential",
+      "summary": "Apply current/new password rules for the requested security action.",
+      "tags": [
+        "password",
+        "account-deletion",
+        "session"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Settings/PasswordUpdateRequest.php",
+      "lineRange": [
+        18,
+        25
+      ]
+    },
+    {
+      "id": "step:secure-or-close-account:update-password",
+      "type": "step",
+      "name": "Update Password",
+      "summary": "Replace the authenticated user's password and confirm success.",
+      "tags": [
+        "password",
+        "account-deletion",
+        "session"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/SecurityController.php",
+      "lineRange": [
+        30,
+        38
+      ]
+    },
+    {
+      "id": "step:secure-or-close-account:delete-user",
+      "type": "step",
+      "name": "Delete User",
+      "summary": "After current-password confirmation, log out and delete the user.",
+      "tags": [
+        "password",
+        "account-deletion",
+        "session"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        49,
+        55
+      ]
+    },
+    {
+      "id": "step:secure-or-close-account:invalidate-session",
+      "type": "step",
+      "name": "Invalidate Session",
+      "summary": "Invalidate session data, rotate the token, and redirect home.",
+      "tags": [
+        "password",
+        "account-deletion",
+        "session"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        57,
+        60
+      ]
+    },
+    {
+      "id": "flow:start-game-session",
+      "type": "flow",
+      "name": "Start Game Session",
+      "summary": "Boots the Java ME runtime, processes the menu choice, and initializes the playable world.",
+      "tags": [
+        "startup",
+        "midlet",
+        "new-game"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "MIDlet startApp / main menu selection",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:start-game-session:boot-midlet",
+      "type": "step",
+      "name": "Boot MIDlet",
+      "summary": "Create the Display and game Canvas and make it current.",
+      "tags": [
+        "startup",
+        "midlet",
+        "new-game"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/GameMIDLet.java",
+      "lineRange": [
+        11,
+        19
+      ]
+    },
+    {
+      "id": "step:start-game-session:process-menu",
+      "type": "step",
+      "name": "Process Main Menu",
+      "summary": "Handle new-game or continue selection in the menu state.",
+      "tags": [
+        "startup",
+        "midlet",
+        "new-game"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/g.java",
+      "lineRange": [
+        99,
+        167
+      ]
+    },
+    {
+      "id": "step:start-game-session:initialize-world",
+      "type": "step",
+      "name": "Initialize World",
+      "summary": "Load event, pet-area, media, sprite, and world dependencies.",
+      "tags": [
+        "startup",
+        "midlet",
+        "new-game"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/l.java",
+      "lineRange": [
+        680,
+        940
+      ]
+    },
+    {
+      "id": "step:start-game-session:enter-world",
+      "type": "step",
+      "name": "Enter World",
+      "summary": "Reset coordinates and transfer control to the world scene.",
+      "tags": [
+        "startup",
+        "midlet",
+        "new-game"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/g.java",
+      "lineRange": [
+        71,
+        95
+      ]
+    },
+    {
+      "id": "flow:save-and-restore-progress",
+      "type": "flow",
+      "name": "Save and Restore Progress",
+      "summary": "Serializes or rehydrates player and subsystem state through partitioned RecordStores.",
+      "tags": [
+        "save",
+        "load",
+        "recordstore"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "In-game save or continue action",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:save-and-restore-progress:serialize-player",
+      "type": "step",
+      "name": "Serialize Player",
+      "summary": "Collect and encode player, party, position, and play-time values.",
+      "tags": [
+        "save",
+        "load",
+        "recordstore"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/l.java",
+      "lineRange": [
+        1013,
+        1166
+      ]
+    },
+    {
+      "id": "step:save-and-restore-progress:persist-subsystems",
+      "type": "step",
+      "name": "Persist Subsystems",
+      "summary": "Write world, event, currency, pet, consumable, and ball partitions.",
+      "tags": [
+        "save",
+        "load",
+        "recordstore"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/l.java",
+      "lineRange": [
+        1312,
+        1726
+      ]
+    },
+    {
+      "id": "step:save-and-restore-progress:decode-save",
+      "type": "step",
+      "name": "Decode Saved State",
+      "summary": "Read player and dependent subsystem partitions back into runtime structures.",
+      "tags": [
+        "save",
+        "load",
+        "recordstore"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/l.java",
+      "lineRange": [
+        1167,
+        1776
+      ]
+    },
+    {
+      "id": "step:save-and-restore-progress:resume-scene",
+      "type": "step",
+      "name": "Resume Scene",
+      "summary": "Validate rebuilt state and return to its saved world scene.",
+      "tags": [
+        "save",
+        "load",
+        "recordstore"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/l.java",
+      "lineRange": [
+        1781,
+        1910
+      ]
+    },
+    {
+      "id": "flow:traverse-game-world",
+      "type": "flow",
+      "name": "Traverse Game World",
+      "summary": "Moves through loaded maps and applies coherent location transitions.",
+      "tags": [
+        "movement",
+        "map",
+        "transition"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Keypad/pointer movement in world scene",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:traverse-game-world:load-map",
+      "type": "step",
+      "name": "Load Map",
+      "summary": "Load current map, scene, pet-area, and actor data.",
+      "tags": [
+        "movement",
+        "map",
+        "transition"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/l.java",
+      "lineRange": [
+        680,
+        858
+      ]
+    },
+    {
+      "id": "step:traverse-game-world:resolve-movement",
+      "type": "step",
+      "name": "Resolve Movement",
+      "summary": "Update player interaction and movement against world objects.",
+      "tags": [
+        "movement",
+        "map",
+        "transition"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/j.java",
+      "lineRange": [
+        1222,
+        1374
+      ]
+    },
+    {
+      "id": "step:traverse-game-world:offer-transition",
+      "type": "step",
+      "name": "Offer Transition",
+      "summary": "Open the wharf/transport UI for an available destination.",
+      "tags": [
+        "movement",
+        "map",
+        "transition"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        6143,
+        6167
+      ]
+    },
+    {
+      "id": "step:traverse-game-world:apply-transition",
+      "type": "step",
+      "name": "Apply Transition",
+      "summary": "Update map, scene, coordinates, and event context for the destination.",
+      "tags": [
+        "movement",
+        "map",
+        "transition"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        6168,
+        6229
+      ]
+    },
+    {
+      "id": "flow:execute-quest-event",
+      "type": "flow",
+      "name": "Execute Quest Event",
+      "summary": "Evaluates an event branch, presents dialogue or choices, advances tasks, and commits rewards.",
+      "tags": [
+        "event",
+        "quest",
+        "dialogue",
+        "reward"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Player interacts with event or NPC",
+        "entryType": "event"
+      }
+    },
+    {
+      "id": "step:execute-quest-event:load-event",
+      "type": "step",
+      "name": "Load Event",
+      "summary": "Decode the binary event record and indexed strings.",
+      "tags": [
+        "event",
+        "quest",
+        "dialogue",
+        "reward"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/e.java",
+      "lineRange": [
+        408,
+        426
+      ]
+    },
+    {
+      "id": "step:execute-quest-event:evaluate-branch",
+      "type": "step",
+      "name": "Evaluate Branch",
+      "summary": "Check world, event, task, actor, pet, and inventory conditions.",
+      "tags": [
+        "event",
+        "quest",
+        "dialogue",
+        "reward"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/e.java",
+      "lineRange": [
+        506,
+        1190
+      ]
+    },
+    {
+      "id": "step:execute-quest-event:present-dialogue",
+      "type": "step",
+      "name": "Present Dialogue",
+      "summary": "Render dialogue or task-choice UI for the selected branch.",
+      "tags": [
+        "event",
+        "quest",
+        "dialogue",
+        "reward"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        5689,
+        5887
+      ]
+    },
+    {
+      "id": "step:execute-quest-event:commit-outcome",
+      "type": "step",
+      "name": "Commit Outcome",
+      "summary": "Advance task/event markers and grant the selected branch outcome.",
+      "tags": [
+        "event",
+        "quest",
+        "dialogue",
+        "reward"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/e.java",
+      "lineRange": [
+        1191,
+        1970
+      ]
+    },
+    {
+      "id": "flow:browse-and-manage-pets",
+      "type": "flow",
+      "name": "Browse and Manage Pets",
+      "summary": "Loads pet definitions, renders details, and manages active/reserve membership.",
+      "tags": [
+        "pet-catalog",
+        "stats",
+        "party"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Pet state or record menu",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:browse-and-manage-pets:load-pet-data",
+      "type": "step",
+      "name": "Load Pet Data",
+      "summary": "Decode global pet-related database tables.",
+      "tags": [
+        "pet-catalog",
+        "stats",
+        "party"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/a/b/c.java",
+      "lineRange": [
+        20,
+        91
+      ]
+    },
+    {
+      "id": "step:browse-and-manage-pets:construct-pet",
+      "type": "step",
+      "name": "Construct Pet",
+      "summary": "Initialize species, level, stat, element, and skill values.",
+      "tags": [
+        "pet-catalog",
+        "stats",
+        "party"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/i.java",
+      "lineRange": [
+        41,
+        173
+      ]
+    },
+    {
+      "id": "step:browse-and-manage-pets:render-roster",
+      "type": "step",
+      "name": "Render Roster",
+      "summary": "Populate pet-state UI with reserve entries and derived stats.",
+      "tags": [
+        "pet-catalog",
+        "stats",
+        "party"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        873,
+        999
+      ]
+    },
+    {
+      "id": "step:browse-and-manage-pets:apply-roster-action",
+      "type": "step",
+      "name": "Apply Roster Action",
+      "summary": "Validate capacity and transfer or release the selected pet.",
+      "tags": [
+        "pet-catalog",
+        "stats",
+        "party"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        1000,
+        1072
+      ]
+    },
+    {
+      "id": "flow:capture-wild-pet",
+      "type": "flow",
+      "name": "Capture Wild Pet",
+      "summary": "Consumes a capture item, calculates success, and transfers the target into ownership.",
+      "tags": [
+        "capture",
+        "pet-ball",
+        "battle"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Capture item selected during battle",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:capture-wild-pet:choose-ball",
+      "type": "step",
+      "name": "Choose Capture Item",
+      "summary": "List available capture items and accept one.",
+      "tags": [
+        "capture",
+        "pet-ball",
+        "battle"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        4552,
+        4585
+      ]
+    },
+    {
+      "id": "step:capture-wild-pet:consume-ball",
+      "type": "step",
+      "name": "Consume Capture Item",
+      "summary": "Validate quantity, set ball type, and decrement inventory.",
+      "tags": [
+        "capture",
+        "pet-ball",
+        "battle"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        4586,
+        4623
+      ]
+    },
+    {
+      "id": "step:capture-wild-pet:calculate-capture",
+      "type": "step",
+      "name": "Calculate Capture",
+      "summary": "Resolve capture probability from target and selected item.",
+      "tags": [
+        "capture",
+        "pet-ball",
+        "battle"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/a.java",
+      "lineRange": [
+        2964,
+        3029
+      ]
+    },
+    {
+      "id": "step:capture-wild-pet:store-pet",
+      "type": "step",
+      "name": "Store Captured Pet",
+      "summary": "Convert the successful target to owned data and add it to party/reserve handling.",
+      "tags": [
+        "capture",
+        "pet-ball",
+        "battle"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/j.java",
+      "lineRange": [
+        1871,
+        1976
+      ]
+    },
+    {
+      "id": "flow:progress-pet",
+      "type": "flow",
+      "name": "Progress Pet",
+      "summary": "Applies experience, derived level changes, evolution-related actions, and learned-skill choices.",
+      "tags": [
+        "experience",
+        "level-up",
+        "evolution",
+        "learn-skill"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Battle result or pet item action",
+        "entryType": "event"
+      }
+    },
+    {
+      "id": "step:progress-pet:award-experience",
+      "type": "step",
+      "name": "Award Experience",
+      "summary": "Apply battle experience to participating pets.",
+      "tags": [
+        "experience",
+        "level-up",
+        "evolution",
+        "learn-skill"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        4809,
+        4928
+      ]
+    },
+    {
+      "id": "step:progress-pet:calculate-growth",
+      "type": "step",
+      "name": "Calculate Growth",
+      "summary": "Update level and derived pet statistics in the pet model.",
+      "tags": [
+        "experience",
+        "level-up",
+        "evolution",
+        "learn-skill"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/i.java",
+      "lineRange": [
+        428,
+        586
+      ]
+    },
+    {
+      "id": "step:progress-pet:show-level-up",
+      "type": "step",
+      "name": "Show Level Up",
+      "summary": "Present stat changes and pending progression results.",
+      "tags": [
+        "experience",
+        "level-up",
+        "evolution",
+        "learn-skill"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        4929,
+        5015
+      ]
+    },
+    {
+      "id": "step:progress-pet:choose-learned-skill",
+      "type": "step",
+      "name": "Choose Learned Skill",
+      "summary": "Prompt for a learned-skill choice and apply the selected slot.",
+      "tags": [
+        "experience",
+        "level-up",
+        "evolution",
+        "learn-skill"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        5016,
+        5088
+      ]
+    },
+    {
+      "id": "flow:enter-pet-battle",
+      "type": "flow",
+      "name": "Enter Pet Battle",
+      "summary": "Transitions from world state, loads combat assets, and constructs combatants and turn order.",
+      "tags": [
+        "battle-start",
+        "combatant",
+        "encounter"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "World encounter or scripted battle",
+        "entryType": "event"
+      }
+    },
+    {
+      "id": "step:enter-pet-battle:trigger-battle",
+      "type": "step",
+      "name": "Trigger Battle",
+      "summary": "Switch world orchestration into battle mode and load battle UI.",
+      "tags": [
+        "battle-start",
+        "combatant",
+        "encounter"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/l.java",
+      "lineRange": [
+        1815,
+        1830
+      ]
+    },
+    {
+      "id": "step:enter-pet-battle:load-combat-data",
+      "type": "step",
+      "name": "Load Combat Data",
+      "summary": "Load positions, layers, effects, blood, and buff/debuff tables.",
+      "tags": [
+        "battle-start",
+        "combatant",
+        "encounter"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/a.java",
+      "lineRange": [
+        195,
+        320
+      ]
+    },
+    {
+      "id": "step:enter-pet-battle:construct-combatants",
+      "type": "step",
+      "name": "Construct Combatants",
+      "summary": "Build player/opponent pet arrays and battle-specific state.",
+      "tags": [
+        "battle-start",
+        "combatant",
+        "encounter"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/a.java",
+      "lineRange": [
+        335,
+        522
+      ]
+    },
+    {
+      "id": "step:enter-pet-battle:order-turns",
+      "type": "step",
+      "name": "Order Turns",
+      "summary": "Evaluate active combatants and prepare the initial action sequence.",
+      "tags": [
+        "battle-start",
+        "combatant",
+        "encounter"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/a.java",
+      "lineRange": [
+        523,
+        710
+      ]
+    },
+    {
+      "id": "flow:execute-and-resolve-skill-turn",
+      "type": "flow",
+      "name": "Execute and Resolve Skill Turn",
+      "summary": "Selects a learned skill, calculates targets/damage/status, and advances battle state.",
+      "tags": [
+        "skill",
+        "turn",
+        "damage",
+        "effect"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Skill command in battle UI",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:execute-and-resolve-skill-turn:present-skills",
+      "type": "step",
+      "name": "Present Skills",
+      "summary": "Open the chooser with the acting pet's learned skills.",
+      "tags": [
+        "skill",
+        "turn",
+        "damage",
+        "effect"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        4457,
+        4498
+      ]
+    },
+    {
+      "id": "step:execute-and-resolve-skill-turn:select-skill",
+      "type": "step",
+      "name": "Select Skill",
+      "summary": "Pass the selected learned-skill identifier to battle state.",
+      "tags": [
+        "skill",
+        "turn",
+        "damage",
+        "effect"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        4499,
+        4544
+      ]
+    },
+    {
+      "id": "step:execute-and-resolve-skill-turn:resolve-effects",
+      "type": "step",
+      "name": "Resolve Effects",
+      "summary": "Calculate hit/damage and apply elemental, special, buff, or debuff behavior.",
+      "tags": [
+        "skill",
+        "turn",
+        "damage",
+        "effect"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/a.java",
+      "lineRange": [
+        2330,
+        2708
+      ]
+    },
+    {
+      "id": "step:execute-and-resolve-skill-turn:advance-battle",
+      "type": "step",
+      "name": "Advance Battle",
+      "summary": "Process remaining effects and move to the next actor or result phase.",
+      "tags": [
+        "skill",
+        "turn",
+        "damage",
+        "effect"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/a.java",
+      "lineRange": [
+        2709,
+        2872
+      ]
+    },
+    {
+      "id": "flow:manage-item-inventory",
+      "type": "flow",
+      "name": "Manage Item Inventory",
+      "summary": "Displays category-specific bag contents and applies contextual item actions.",
+      "tags": [
+        "bag",
+        "item",
+        "consumable"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Bag command in gameplay menu",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:manage-item-inventory:open-bag",
+      "type": "step",
+      "name": "Open Bag",
+      "summary": "Load the bag layout and current item category.",
+      "tags": [
+        "bag",
+        "item",
+        "consumable"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        3177,
+        3191
+      ]
+    },
+    {
+      "id": "step:manage-item-inventory:list-category",
+      "type": "step",
+      "name": "List Category",
+      "summary": "Read item vectors and populate category-specific rows.",
+      "tags": [
+        "bag",
+        "item",
+        "consumable"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        3192,
+        3436
+      ]
+    },
+    {
+      "id": "step:manage-item-inventory:show-details",
+      "type": "step",
+      "name": "Show Item Details",
+      "summary": "Resolve selected item data, quantity, description, and action.",
+      "tags": [
+        "bag",
+        "item",
+        "consumable"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        3437,
+        3530
+      ]
+    },
+    {
+      "id": "step:manage-item-inventory:use-item",
+      "type": "step",
+      "name": "Use Item",
+      "summary": "Validate context/quantity, apply effect, decrement stack, and refresh.",
+      "tags": [
+        "bag",
+        "item",
+        "consumable"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        3531,
+        3855
+      ]
+    },
+    {
+      "id": "flow:trade-items-at-shop",
+      "type": "flow",
+      "name": "Trade Items at Shop",
+      "summary": "Browses stock and performs validated purchases or sales against currency and capacity.",
+      "tags": [
+        "shop",
+        "buy",
+        "sell",
+        "currency"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "Shop interaction",
+        "entryType": "manual"
+      }
+    },
+    {
+      "id": "step:trade-items-at-shop:open-shop",
+      "type": "step",
+      "name": "Open Shop",
+      "summary": "Load shop layout and browsing state.",
+      "tags": [
+        "shop",
+        "buy",
+        "sell",
+        "currency"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        1080,
+        1089
+      ]
+    },
+    {
+      "id": "step:trade-items-at-shop:browse-stock",
+      "type": "step",
+      "name": "Browse Stock",
+      "summary": "Switch category and populate item data and prices.",
+      "tags": [
+        "shop",
+        "buy",
+        "sell",
+        "currency"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        1090,
+        1238
+      ]
+    },
+    {
+      "id": "step:trade-items-at-shop:confirm-trade",
+      "type": "step",
+      "name": "Confirm Trade",
+      "summary": "Present item, quantity, and price confirmation.",
+      "tags": [
+        "shop",
+        "buy",
+        "sell",
+        "currency"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        1239,
+        1310
+      ]
+    },
+    {
+      "id": "step:trade-items-at-shop:apply-trade",
+      "type": "step",
+      "name": "Apply Trade",
+      "summary": "Validate funds/capacity and update currency and inventory.",
+      "tags": [
+        "shop",
+        "buy",
+        "sell",
+        "currency"
+      ],
+      "complexity": "complex",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        1311,
+        1553
+      ]
+    },
+    {
+      "id": "flow:receive-gameplay-reward",
+      "type": "flow",
+      "name": "Receive Gameplay Reward",
+      "summary": "Turns an event or quest outcome into player currency/item ownership and visible feedback.",
+      "tags": [
+        "reward",
+        "item-grant",
+        "quest"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "Quest or event reward outcome",
+        "entryType": "event"
+      }
+    },
+    {
+      "id": "step:receive-gameplay-reward:resolve-reward",
+      "type": "step",
+      "name": "Resolve Reward",
+      "summary": "Read reward type and payload from the event branch.",
+      "tags": [
+        "reward",
+        "item-grant",
+        "quest"
+      ],
+      "complexity": "moderate",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/e.java",
+      "lineRange": [
+        1971,
+        2052
+      ]
+    },
+    {
+      "id": "step:receive-gameplay-reward:validate-reward",
+      "type": "step",
+      "name": "Validate Reward",
+      "summary": "Check event state and inventory, pet, or world conditions.",
+      "tags": [
+        "reward",
+        "item-grant",
+        "quest"
+      ],
+      "complexity": "moderate",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/e.java",
+      "lineRange": [
+        2053,
+        2110
+      ]
+    },
+    {
+      "id": "step:receive-gameplay-reward:mutate-holdings",
+      "type": "step",
+      "name": "Mutate Holdings",
+      "summary": "Add item/currency or update the associated player collection.",
+      "tags": [
+        "reward",
+        "item-grant",
+        "quest"
+      ],
+      "complexity": "moderate",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/j.java",
+      "lineRange": [
+        1512,
+        1608
+      ]
+    },
+    {
+      "id": "step:receive-gameplay-reward:show-feedback",
+      "type": "step",
+      "name": "Show Reward Feedback",
+      "summary": "Present open-box/task-tip feedback and continue the event.",
+      "tags": [
+        "reward",
+        "item-grant",
+        "quest"
+      ],
+      "complexity": "moderate",
+      "filePath": "resources/decoded/02_decompiled/vineflower/game/k.java",
+      "lineRange": [
+        5451,
+        5493
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "domain:player-account-security",
+      "target": "flow:register-player-account",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:register-player-account",
+      "target": "step:register-player-account:receive-registration",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:register-player-account",
+      "target": "step:register-player-account:validate-profile",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:register-player-account",
+      "target": "step:register-player-account:validate-password",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:register-player-account",
+      "target": "step:register-player-account:create-user",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:player-account-security",
+      "target": "flow:update-player-profile",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:update-player-profile",
+      "target": "step:update-player-profile:validate-profile",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:update-player-profile",
+      "target": "step:update-player-profile:fill-user",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:update-player-profile",
+      "target": "step:update-player-profile:reset-verification",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:update-player-profile",
+      "target": "step:update-player-profile:save-profile",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:player-account-security",
+      "target": "flow:secure-or-close-account",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:secure-or-close-account",
+      "target": "step:secure-or-close-account:validate-credential",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:secure-or-close-account",
+      "target": "step:secure-or-close-account:update-password",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:secure-or-close-account",
+      "target": "step:secure-or-close-account:delete-user",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:secure-or-close-account",
+      "target": "step:secure-or-close-account:invalidate-session",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:game-session-persistence",
+      "target": "flow:start-game-session",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:start-game-session",
+      "target": "step:start-game-session:boot-midlet",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:start-game-session",
+      "target": "step:start-game-session:process-menu",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:start-game-session",
+      "target": "step:start-game-session:initialize-world",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:start-game-session",
+      "target": "step:start-game-session:enter-world",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:game-session-persistence",
+      "target": "flow:save-and-restore-progress",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:save-and-restore-progress",
+      "target": "step:save-and-restore-progress:serialize-player",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:save-and-restore-progress",
+      "target": "step:save-and-restore-progress:persist-subsystems",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:save-and-restore-progress",
+      "target": "step:save-and-restore-progress:decode-save",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:save-and-restore-progress",
+      "target": "step:save-and-restore-progress:resume-scene",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:world-exploration-quests",
+      "target": "flow:traverse-game-world",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:traverse-game-world",
+      "target": "step:traverse-game-world:load-map",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:traverse-game-world",
+      "target": "step:traverse-game-world:resolve-movement",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:traverse-game-world",
+      "target": "step:traverse-game-world:offer-transition",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:traverse-game-world",
+      "target": "step:traverse-game-world:apply-transition",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:world-exploration-quests",
+      "target": "flow:execute-quest-event",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:execute-quest-event",
+      "target": "step:execute-quest-event:load-event",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:execute-quest-event",
+      "target": "step:execute-quest-event:evaluate-branch",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:execute-quest-event",
+      "target": "step:execute-quest-event:present-dialogue",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:execute-quest-event",
+      "target": "step:execute-quest-event:commit-outcome",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:pet-collection-progression",
+      "target": "flow:browse-and-manage-pets",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:browse-and-manage-pets",
+      "target": "step:browse-and-manage-pets:load-pet-data",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:browse-and-manage-pets",
+      "target": "step:browse-and-manage-pets:construct-pet",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:browse-and-manage-pets",
+      "target": "step:browse-and-manage-pets:render-roster",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:browse-and-manage-pets",
+      "target": "step:browse-and-manage-pets:apply-roster-action",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:pet-collection-progression",
+      "target": "flow:capture-wild-pet",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:capture-wild-pet",
+      "target": "step:capture-wild-pet:choose-ball",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:capture-wild-pet",
+      "target": "step:capture-wild-pet:consume-ball",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:capture-wild-pet",
+      "target": "step:capture-wild-pet:calculate-capture",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:capture-wild-pet",
+      "target": "step:capture-wild-pet:store-pet",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:pet-collection-progression",
+      "target": "flow:progress-pet",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:progress-pet",
+      "target": "step:progress-pet:award-experience",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:progress-pet",
+      "target": "step:progress-pet:calculate-growth",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:progress-pet",
+      "target": "step:progress-pet:show-level-up",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:progress-pet",
+      "target": "step:progress-pet:choose-learned-skill",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:combat-skills",
+      "target": "flow:enter-pet-battle",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:enter-pet-battle",
+      "target": "step:enter-pet-battle:trigger-battle",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:enter-pet-battle",
+      "target": "step:enter-pet-battle:load-combat-data",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:enter-pet-battle",
+      "target": "step:enter-pet-battle:construct-combatants",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:enter-pet-battle",
+      "target": "step:enter-pet-battle:order-turns",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:combat-skills",
+      "target": "flow:execute-and-resolve-skill-turn",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:execute-and-resolve-skill-turn",
+      "target": "step:execute-and-resolve-skill-turn:present-skills",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:execute-and-resolve-skill-turn",
+      "target": "step:execute-and-resolve-skill-turn:select-skill",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:execute-and-resolve-skill-turn",
+      "target": "step:execute-and-resolve-skill-turn:resolve-effects",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:execute-and-resolve-skill-turn",
+      "target": "step:execute-and-resolve-skill-turn:advance-battle",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:inventory-commerce",
+      "target": "flow:manage-item-inventory",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:manage-item-inventory",
+      "target": "step:manage-item-inventory:open-bag",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:manage-item-inventory",
+      "target": "step:manage-item-inventory:list-category",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:manage-item-inventory",
+      "target": "step:manage-item-inventory:show-details",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:manage-item-inventory",
+      "target": "step:manage-item-inventory:use-item",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:inventory-commerce",
+      "target": "flow:trade-items-at-shop",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:trade-items-at-shop",
+      "target": "step:trade-items-at-shop:open-shop",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:trade-items-at-shop",
+      "target": "step:trade-items-at-shop:browse-stock",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:trade-items-at-shop",
+      "target": "step:trade-items-at-shop:confirm-trade",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:trade-items-at-shop",
+      "target": "step:trade-items-at-shop:apply-trade",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:inventory-commerce",
+      "target": "flow:receive-gameplay-reward",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:receive-gameplay-reward",
+      "target": "step:receive-gameplay-reward:resolve-reward",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:receive-gameplay-reward",
+      "target": "step:receive-gameplay-reward:validate-reward",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:receive-gameplay-reward",
+      "target": "step:receive-gameplay-reward:mutate-holdings",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "flow:receive-gameplay-reward",
+      "target": "step:receive-gameplay-reward:show-feedback",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "domain:player-account-security",
+      "target": "domain:game-session-persistence",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Web identity is the ownership boundary for future personalized game and wiki state.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:game-session-persistence",
+      "target": "domain:world-exploration-quests",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Save/load restores current world location and quest progression.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:game-session-persistence",
+      "target": "domain:pet-collection-progression",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Persistence stores active and reserve pets.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:game-session-persistence",
+      "target": "domain:inventory-commerce",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Persistence stores currency and item quantities.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:world-exploration-quests",
+      "target": "domain:combat-skills",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Encounters and scripted events initiate battles.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:world-exploration-quests",
+      "target": "domain:inventory-commerce",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Quest outcomes grant or consume items and currency.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:world-exploration-quests",
+      "target": "domain:pet-collection-progression",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Areas and encounters determine available pets.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:pet-collection-progression",
+      "target": "domain:combat-skills",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Pets supply combat stats, elements, health, and learned skills.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:inventory-commerce",
+      "target": "domain:pet-collection-progression",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Healing, progression, evolution, and capture items act on pets.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:inventory-commerce",
+      "target": "domain:combat-skills",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Battle items and capture balls are consumed during combat.",
+      "weight": 0.6
+    }
+  ],
+  "layers": [],
+  "tour": []
+}

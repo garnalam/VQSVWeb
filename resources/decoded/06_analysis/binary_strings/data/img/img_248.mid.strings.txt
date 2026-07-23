@@ -1,0 +1,46 @@
+path=data/img/img_248.mid
+kind=png
+size=3737
+sha256=FC7262CB543BC3C9F2354F0548A9930E3B27050E2CFC539D4A0EAC02C2C69018
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 65 00 00 00 3a 08 06 00 00 00 a9 a4 97 ed 00 00 0e 60 49 44 41 54 78 da ec 5c 5b 88 14 d9 19 3e d5 53 3d 33 f6 38 97 1d ef 06 b3 44 f1
+
+IHDR
+`IDATx
+.L0$"
+tdtF=C
+6a{4(
+;2cq
+< ?9t
+# ]0
+{@~}
+/Ka;
+E0Y}
+h)00
+OV"*
+@HK<
+7Q So
+D!SEN
+3M46
+ 03`
+?!?!
+@1?$
+<Q@s
+U?Jw
+D+DT
+@%`h_
+W^@j
+8Z:S
+?0(_
+!R"D
+Ab46
+3N+D
+v3xY
+sq0P
+L2J7
+P,-1
+T0:{
++AK.
+@1x>
+fZHWa
+%gig
+IEND

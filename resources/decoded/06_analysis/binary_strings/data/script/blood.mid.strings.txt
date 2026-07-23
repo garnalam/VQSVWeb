@@ -1,0 +1,6 @@
+path=data/script/blood.mid
+kind=custom_binary
+size=74
+sha256=3CF955C3B48A2288CF7286F0F93B6CFD109FD497F6F06C3DA851934FF0B6AE8A
+hex_prefix=00 02 00 16 00 00 00 00 ff fb ff f9 ff f9 ff f5 ff f6 ff f0 ff f4 ff ee ff f0 ff eb ff ee ff ed ff ea ff f1 ff e4 ff f8 ff e2 ff f6 ff e0 ff f8 00 0c 00 00 00 00 00 00 ff f8 00 00 ff f5 00 00
+

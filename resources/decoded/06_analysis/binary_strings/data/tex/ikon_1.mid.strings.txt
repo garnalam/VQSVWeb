@@ -1,0 +1,12 @@
+path=data/tex/ikon_1.mid
+kind=custom_binary
+size=418
+sha256=61B288E4932AB3076D5584A7426C31FEFF52F5B3A28B607016B1BEAA4DA604CF
+hex_prefix=00 00 00 31 00 00 00 31 08 03 00 00 00 45 01 e4 ff 02 91 ff f6 fe fd c1 b2 e9 b6 fb f9 21 19 9b 81 1b ad bc bd f2 f9 b9 bf f8 c7 9c 16 b4 ab 9f ba aa f8 f6 c8 2a a5 e7 c9 f8 f0 4d 5c 3c 50 52
+
+M\<PR
+tRNS
+!h9CH4
+?ttI
+nVU 
++I.F

@@ -1,0 +1,6 @@
+path=data/script/media.mid
+kind=custom_binary
+size=839
+sha256=6D23E7B6A91D9918942CB3F7440FEF7F4B44C459DEF33CFB37245C09BCA9BCA5
+hex_prefix=00 77 00 04 ff 01 ff ff 00 04 ff 00 ff ff 00 07 ff 03 01 01 0a 00 ff 00 04 ff 03 ff ff 00 04 ff 03 ff ff 00 07 ff 00 01 01 00 ff 00 00 04 ff 03 ff ff 00 04 ff 03 ff ff 00 04 ff 03 ff ff 00 07
+

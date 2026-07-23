@@ -1,0 +1,23 @@
+path=data/img/img_568.mid
+kind=png
+size=939
+sha256=9E633B855FA95CF4940FBC4877322A0449C1CD0AD3B2B672B50B3F7D0CBA0A89
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 5c 00 00 00 3d 08 03 00 00 00 17 99 fe 95 00 00 00 18 50 4c 54 45 fd 90 00 f9 f8 f0 d5 74 01 fd b1 01 ff cf 02 ff ee 19 ff fc 6b f3 59
+
+IHDR
+PLTE
+tRNS
+:IDATx
+qvoe
+KPs,
++\oHnL3<
+l5|%|
+,['<
+v7lJ
+.tQ_
+yRY&
+NVxR
+EIJ8[B
+EpWs
+q.@y-
+IEND

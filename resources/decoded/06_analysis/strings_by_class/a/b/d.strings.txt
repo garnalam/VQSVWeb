@@ -1,0 +1,3 @@
+/data/map/map_
+.mid
+/data/mod/mod_

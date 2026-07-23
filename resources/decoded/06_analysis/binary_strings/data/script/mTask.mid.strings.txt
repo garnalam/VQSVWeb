@@ -1,0 +1,240 @@
+path=data/script/mTask.mid
+kind=custom_binary
+size=7714
+sha256=6532B9B23A871B6ADDF202CC8417F85633E765F27EBE2A0AF7506BB48074D440
+hex_prefix=00 62 00 01 11 00 56 00 f2 00 6e 00 67 00 20 00 6c 00 6f 1e a1 00 69 00 20 00 73 01 a1 00 20 00 6b 00 68 1e a3 00 6f 00 01 19 00 54 00 68 1e ed 00 20 00 74 00 68 00 e1 00 63 00 68 00 20 00 63
+
+ng lo
+ch c
+a Tr
+ng th
+ch Th
+y Th
+p Harry
+n ti
+ cho Th
+t Uy Qua 
+m Abra 
+o Qu
+u qu
+n ch
+u Tr
+n Nguy
+c Th
+Bao v
+y Nguy
+o Dinh th
+c chi
+u ng
+i Dinh th
+ Nguy
+i ng
+ Yafei
+p Jones th
+c hi
+t vi
+Trao 
+i tr
+ng su
+ng v
+m Th
+m tra Phi Kh
+i Trung t
+m Ni
+Huy hi
+c Tinh Th
+a gia h
+u chuy
+n Tr
+n Phong
+Sophie v
+a Tinh Th
+ Phi Kh
+n Kh
+ng Chi Th
+n Th
+ng c
+ng b
+ch l
+nh c
+a tr
+i xanh
+n kh
+ng gia h
+U Linh Ch
+a truy
+ng ho
+ng tuy
+i gian truy
+a chi s
+t th
+n luy
+n #2[D
+ng nh
+ng]#0 b
+t Th
+ Di L
+c Bunny giao cho Tr
+t tham gia giao chi
+i Tr
+n #2[
+a Nam] 
+p Harry 
+i binh l
+nh H
+c Long.
+m mua m
+c ph
+n #2[B
+p Sa]#0 d
+ng T
+t Trung C
+c #1Uy Qua 
+n #2[Trung t
+y] go
+c #0 trong c
+n ph
+p #1 Abra 
+o #2[B
+n]#0 gi
+n #2[con su
+i nh
+y] trong ph
+ #0 t
+m #1 gi
+u #0 Tr
+ #2Trung t
+Theo [
+i #2Nguy
+n #2[Nguy
+o qu
+n]#0 th
+nh h
+n #2 
+o trong 
+n #0 
+o dinh th
+m mua ch
+ chu
+Theo 
+o #2[Nguy
+nh nguy
+y]#0 b
+t hi
+n #2[b
+u ph
+nh]#0 H
+ Yafei.
+m Jones.
+n #2[Khu ch
+a Nam]#0 b
+t #1 Ti
+n Nh
+o #0 giao cho Jones.
+n #2[Ni
+n]#0 xem x
+n #2[C
+nh]#0 t
+m Yafei.
+i #2[Trung t
+ng Yafei 
+n #2H
+n #2[H
+n] t
+ng H
+nh]#0 
+c #1 
+a Ch
+o #2[
+a lao H
+ch] l
+n #2[Truy 
+c Chi S
+m]#0 [Ph
+ng Ho
+ng Di T
+ch] m
+a Ph
+n #2[Ph
+ng] h
+ng Tr
+n #0 h
+i th
+m th
+n th
+a Sophie.
+c Long Th
+n]#0 t
+m Sophie.
+i #2[C
+nh] t
+i Ni
+nh#0, ng
+n Phi Kh
+nh bay l
+m ki
+m Sophie b
+n #2[V
+ng Kinh Phi
+n]#0 h
+m tin t
+n #2[Phi
+u Phi V
+ Linh]#0 
+nh th
+i #2Th
+n#0 t
+m #1Tomas.
+n #2[Kh
+ng Gian Minh T
+ng] th
+nh #1Minh v
+ng Long.
+n #2[Ch
+m Sao 
+n Di
+c #1Tinh V
+i #2[V
+n] Th
+n #0t
+m Tomas.
+n #2[Thi
+n]#0 l
+y U Linh Ch
+ch Long Th
+m Tomas #0 truy
+n quay l
+a Gi
+n #2B
+nh [Nguy
+c qu
+ng m
+]#0 
+c #1 Linh Quang L
+n #2Ni
+nh [L
+o di t
+ch]#0 th
+nh #1 Chi
+nh [M
+ng ph
+ng 3]#0 th
+nh T
+ng Qu
+n Gi
+i #2Thi
+i#0 t
+m #1Tomas#0 truy
+i Thi
+n]#0 m
+i #1Tomas#0 ti
+nh nghi th
+c truy
+y Ng
+a]#0 t
+c Sophie v
+ Silia.
+t sau 
+n minh 
+c Ho
+ng Kim Ch

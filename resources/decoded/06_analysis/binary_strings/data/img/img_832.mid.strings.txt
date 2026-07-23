@@ -1,0 +1,12 @@
+path=data/img/img_832.mid
+kind=png
+size=140
+sha256=833674FD4796A7736A2C2CF93DAB41B2AE756295FACFE8C9A401D2BE830565B8
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 0c 00 00 00 0b 08 03 00 00 00 7c ae 9c 6d 00 00 00 09 50 4c 54 45 3c 67 bf bd ec ec fe d9 77 b1 6d 5c 0b 00 00 00 03 74 52 4e 53 ff ff
+
+IHDR
+PLTE<g
+tRNS
+/IDATx
+b`b``
+IEND

@@ -1,0 +1,6 @@
+path=data/spr/spr_321_all(r)
+kind=custom_binary
+size=188
+sha256=7AA7F095747C76EEF44EE41E604BCE0F6C9C6700F16DDE0B6358DA3E400931B2
+hex_prefix=00 02 00 05 00 00 00 79 00 3d 00 20 00 0a 00 00 00 70 00 39 00 08 00 1e 00 02 00 04 00 05 00 00 ff ee ff f6 00 00 00 01 ff ee ff de 00 00 00 01 ff f6 ff dc 00 00 00 01 ff fe ff da 00 00 00 01
+

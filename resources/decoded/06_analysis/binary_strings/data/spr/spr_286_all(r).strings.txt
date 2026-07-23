@@ -1,0 +1,6 @@
+path=data/spr/spr_286_all(r)
+kind=custom_binary
+size=492
+sha256=48C85CC1D063119B27F97EEFEFF8F536905D914836E262F55C48258CFB716EC1
+hex_prefix=00 02 00 05 00 00 00 b8 00 2d 00 0c 00 19 00 00 01 05 00 3b 00 0c 00 21 00 0a 00 04 00 01 00 00 ff fa ff e7 00 00 00 01 00 01 ff fa ff df 00 00 00 04 00 00 ff f2 ff e7 00 00 00 00 00 02 ff e7
+

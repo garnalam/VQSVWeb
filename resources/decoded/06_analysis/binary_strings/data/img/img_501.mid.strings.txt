@@ -1,0 +1,21 @@
+path=data/img/img_501.mid
+kind=png
+size=681
+sha256=0A3BF51B3A47C32AB585395B6B915B090DBA5B4D122C2602EBFE29CD4FE021B3
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 28 00 00 00 2d 08 03 00 00 00 eb ed d9 ec 00 00 00 54 50 4c 54 45 8a 6e 60 44 44 48 c3 a8 83 93 55 00 a7 8b 72 2f 20 2e fe ff 3f eb 70
+
+IHDR
+TPLTE
+n`DDH
+r/ .
+?gYTk<
+JOQKW"|
+ydZ[4
+tRNS
+IDATx
+^k7N
+=c_B
+\_=)T
+o~R,KIoD
+|8Fz
+IEND

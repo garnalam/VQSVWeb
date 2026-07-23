@@ -1,0 +1,10 @@
+path=data/tex/blood_1.mid
+kind=custom_binary
+size=389
+sha256=A5D1D8F187FDCB2F74DA5E443EA9B505EA007237209598C225BCC57114BFD9E7
+hex_prefix=00 00 00 a5 00 00 00 13 08 03 00 00 00 21 ff f0 00 6f 48 0a ff 14 09 ff 38 35 ff 14 00 ff 2f 26 ff 61 58 ff 5f 55 ff 1f 18 ff 4e 44 ff ff ff 74 52 4e 53 0b 0a 00 00 01 4c 78 da d4 56 d1 8e c2
+
+tRNS
+Z>:XKgA
+nVch
+k+f91

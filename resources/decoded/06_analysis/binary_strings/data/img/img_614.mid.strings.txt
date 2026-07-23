@@ -1,0 +1,16 @@
+path=data/img/img_614.mid
+kind=png
+size=742
+sha256=E9B1991468D1EE01C98304578F7281578BF2F83C049A70D4EA05DA9151B9DA3D
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 3f 00 00 00 2c 08 03 00 00 00 e5 c3 90 d8 00 00 00 4b 50 4c 54 45 fd f8 f8 91 db ff ff c4 7f ff a7 7e 40 a6 d9 15 4b ac 13 7d b2 0b 29
+
+IHDR
+KPLTE
+tRNS
+1IDATx
+'u/ 
+"]9=,
+)9[rJ
+W'Z}
+kN(g
+IEND

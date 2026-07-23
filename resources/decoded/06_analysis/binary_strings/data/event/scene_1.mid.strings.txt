@@ -1,0 +1,808 @@
+path=data/event/scene_1.mid
+kind=custom_binary
+size=42806
+sha256=DF69B7E50509E8E65C11B70D9F446677D8055F1A663DCE0AA024650B0AE0BFE7
+hex_prefix=00 07 3f c5 08 1d 0d 21 3d 8b 0a dc 03 cd 05 ef 00 ce 00 16 00 23 00 46 00 46 00 46 00 46 00 46 00 46 00 4d 01 b0 1e dd 00 69 00 20 00 6e 01 03 00 6d 00 20 00 73 00 61 00 75 00 2e 00 2e 00 2e
+
+#FFFFFFM
+m sau...,36,38,39,40,41,42,43,44,45,46,47,48,49,50,51
+1,1,1,1,1,1,0,1,0,3,1,0,0,0,3
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+#1c6c91Ti
+ng huy
+o...
+AliyNeil, th
+n ta nhi
+m qua c
+t thi
+u ni
+ng, c
+n tr
+ tham gia cu
+c thi cu
+c chi
+ng v
+t Ho
+ng Gia.
+Ti-TandNeil 
+ng ph
+ thi
+i, khi y 
+a hu
+n luy
+t ch
+t gi
+c ng
+AliPC
+ng l
+ khi H
+c Long Qu
+n thanh mai tr
+a y...
+ng th
+m nay l
+ch xem Neil c
+ng trong 
+i ng
+ chi
+ng Gia hay kh
+ng, Neil 
+ng ch
+Neil8Tr
+n, ng
+i bi
+t ta l
+ng s
+ng r
+m. Neil, ti
+ng. N
+c th
+ Bunny th
+ch coi nh
+n th
+Neil
+n gi
+n, ch
+t8Ti
+p nh
+n nhi
+n ph
+ng c
+ng b
+NeilVGi
+nh c
+i ki
+m tra c
+a tr
+i ph
+ Bunny!
+n&Nh
+ng con th
+ng d
+m sao.
+Neil&Tr
+n ... c
+c ti
+u sai ...
+i, ng
+i bao nhi
+u tu
+y ta h
+y, Cho ng
+i chu
+ 3 s
+t. Hi
+nh ph
+c. Chi
+ng Gia c
+a ch
+ng ta th
+ang gi
+ng m
+ch nh
+n. Ng
+i mu
+i ch
+t qu
+! Ta 
+i xem!
+c, ta ch
+i xong. Gi
+c ch
+t, d
+ng n
+nh th
+ng ta m
+ mang 
+y ch
+ng cho 
+ng tr
+53,54,55
+0,0,0
+1,1,1
+4,8,12
+y th
+t PenGuin: S
+t thu
+y, c
+nh ch
+ mao, s
+ di chuy
+n linh ho
+, Kh
+ch Frog: S
+c, ph
+ng nh
+ xem l
+ng ng
+10,2
+ng B
+i: S
+a, c
+ng phun ra H
+a Di
+m th
+ ngo
+ng y
+u nh
+n ch
+c kh
+ng t
+14,2
+Neil/Ch
+i tr
+i, ti
+p chi
+t, nh
+y, ch
+ng ta c
+m. Neil, nh
+y ng
+i mang theo, nh
+c nguy k
+ch s
+i khi ng
+i nh
+y ho
+i, s
+ch tranh l
+ gia t
+ng lo
+t, do 
+ng thu th
+p nhi
+nnSau khi 
+ch Th
+y Th
+nh, nh
+m Abra, 
+p ng
+nh tay hu
+nh m
+m, ta nh
+ do di chuy
+Dodo
+Neil ~ ca ~ ca ~
+Chuy
+Ta nghe n
+c Linh l
+t hay kh
+c nh
+c phi th
+ng, r
+u. Ng
+i gi
+p ta b
+6,10
+n, t
+DodoINiall t
+t nh
+t! M
+c Linh 
+m. Nh
+n #1 #0 
+i nhanh h
+c Linh #2 #1HNhi
+t, Nh
+t 1 
+m tra nhi
+c thi.
+Dodo/Neil ng
+t vai ph
+n di
+Dodo9D
+m! C
+n, Neil! Nh
+ng cho ng
+Nepal ~ Seoul ~ ... ~ ... ~
+Dodo-C
+p ta m
+t chuy
+n nho nh
+Dodo?B
+ng h
+a ta t
+nh r
+t mu
+n Mi
+Dodo!Ng
+p ta mang n
+ cho n
+7,11
+Dodo)
+nh.B
+t #2
+u#1 
+nh cho Eliza.HNhi
+Dodo$H
+, Neil ng
+i ngu ng
+Neil! 
+NeilcTr
+n, ta t
+m ng
+ chuy
+n! Xin ng
+i cho ta bi
+t, Sophie 
+y nh
+n(Ta r
+t ti
+ cho c
+u bi
+NeilnTr
+n! Chuy
+t kh
+p, ng
+i mau n
+t. Ta cam 
+oan s
+i th
+ 2 bi
+a li
+t bu
+i chi
+u mu
+n, ngo
+n xu
+t hi
+a quang bay qua, sau 
+i di t
+ch ph
+ng ho
+ng ta nh
+i.Ba ng
+y sau, trong m
+m, ta nghe ti
+p canh c
+ch, 
+Ta nh
+ xinh 
+n ngo
+i kh
+a, nh
+ng to
+m, d
+y. N
+u ta 
+ ta 
+. Ta b
+n trong ch
+t li
+n xoay ng
+c khi 
+i, c
+i Sophie, v
+u xin ta b
+, kh
+ng cho H
+c, v
+nh vi
+n kh
+i cho n
+t th
+n}Sophie c
+ng gi
+ng thi
+c bi
+m. Ta ngh
+, gi
+i quan h
+Neil+N
+y sao b
+ ta kh
+em Sophie 
+ncTa c
+ng kh
+, nh
+nh nh
+n khi th
+y Sophie r
+n, ta tin h
+Ta ngh
+y kh
+a Sophie 
+n ... nh
+n Si Lya l
+i y l
+n Sophie ...
+Ta c
+y Si Lya c
+i Sophie. Ph
+i tranh th
+i gian t
+c! Tr
+n, ta 
+n^(Ti
+u qu
+y bi
+a gh
+t, gi
+n chuy
+n ki
+u thai xu
+y...)$
+n [H
+c Long Th
+n] t
+m Sophie./36,38,39,40,41,42,43,44,45,46,47,48,49,50,51,57
+1,1,1,1,1,1,0,1,0,3,1,0,0,0,3,2
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+i sao?
+c kia ta v
+ Sophie 
+ng. Gi
+ ta mu
+m ph
+ch c
+a th
+i, t
+ng huy hi
+Ha ha, nghe r
+Neil>Ha ha, K
+ng ta l
+ng Kim huy hi
+u ...
+ nghe n
+n Ho
+u,...
+, Ho
+u ch
+t, do ng
+ng hu
+n minh vi 
+m gi
+. Ch
+t tr
+c trao t
+n@Cho n
+n, c
+n.Ti
+i ta kh
+ng Sophie th
+Sophie
+NeilN
+ng ro
+i! Sophie tr
+m ro
+i. Ha ha!
+Neil! Mu
+Ha ha!
+c Th
+Hart
+Emily
+Arnold
+YaQi
+Kuluoli
+Locke
+Vogue
+$%&'*
+789&
+>?@W
+CDEW
+HIJW
+OPQR*
+UVWX*
+nopq
+NeilCCh
+nh l
+ con th
+a ng
+i, mau gi
+t qua
+m tr
+u tr
+Maghull'Cho ta bi
+Maghull,Nh
+n thu
+nh cho ng
+Maghull
+Lanni
+Neil, t
+Xem, 
+Tuy kh
+m nh
+ch th
+n chu
+ cho ng
+ang b
+ng, n
+u kh
+ng cho n
+ng thu
+c, c
+t trong tr
+n chi
+n. Ta t
+m cho n
+ sinh m
+c tr
+NeilYLanni, tr
+i lu
+ch g
+ cho ta, gi
+ng hi
+u chuy
+Ha ha, ta sai! Lanni, c
+c " Tuy
+Lanni'Tr
+i, trao 
+i qua m
+Neil qu
+ nhi
+y cho ng
+JohnnyYL
+i may m
+ng ta, l
+y ta mu
+n khi
+u chi
+c khi ng
+Johnny)
+ ... ta thua, nh
+t...<Nh
+t 0 tra x
+t 1 tra x
+t nhi
+m li
+n minh s
+c Ho
+u. Hi
+Theo ch
+p theo l
+Johnny
+#FFFFFF S
+m sau ...
+48,49,50
+1,2,2
+Neil3
+i! Sophie ~ T
+m kh
+y ta 
+u~~~ Ha ha
+49,50
+13,13
+23,23
+20,20
+18,18
+SophieL... H
+ ... 
+n sau 
+ Peepna c
+? ~ Mau ra 
+Neil!
+c, sao ph
+y ta?...
+Hun? Th
+ch ... s
+m bi
+Sophie6H
+ ~ th
+i gian kh
+m, ch
+ng ta mau tr
+4,4,4
+13,13,13
+20,20,20
+Neil/Sophie, 
+ qua v
+p cha m
+Ai? V
+ sao ch
+Neil'
+ng nhi
+ng g
+16,16
+c ra..., ch
+nh ta c
+i cha m
+t trong chi
+n tranh. T
+Sophie+Neil, tr
+NeilB
+i ta 
+nh ng
+ng qu
+. Hix
+Ta kh
+y. M
+ ta c
+ng mu
+ cha m
+ gia gia, c
+ Neil l
+i! Nh
+i Neil l
+m vui l
+n nh
+a ta!
+Neil,V
+ng ta s
+ng nhau 
+Sophie&Th
+ sao? Neil c
+i Sophie sao?
+Sophie1N
+i ~ Neil th
+n! Nam nh
+ng phu n
+ng thay 
+i! Ta s
+n, b
+ng cho b
+ ai l
+ng Sophie!
+SophieP Hay qu
+, ta 
+ng Neil s
+ng chung m
+i, v
+ng xa r
+i nhau.
+53,54,55,56
+0,0,0,0
+4,4,4,4
+23,23,23,23
+3,3,3,3
+15,15,15,15
+???T
+i! R
+t cu
+c! Ng
+i mang d
+53,49,56,50
+6,4,6,4
+2,2,2,2
+6,6,6,6
+A a a! Th
+ ta ra! Neil!
+c! Bu
+ng Sophie ra!
+53,56,49
+, xem ra ti
+y mu
+m anh h
+??*Gi
+i quy
+t nhanh t
+y tr
+i, kh
+i ta khi d
+i, l
+ng bi
+nh mu
+ng ta 
+Neil! C
+m sao...?!
+m, Ta c
+Neil! Neil! Ch
+y mau 
+i gian 
+n ti
+49,53,54,55,56
+1,1,1,1,1
+4,4,4,4,4
+15,15,15,15,15
+2,2,2,2,2
+23,23,23,23,23
+#FFFFFF T
+t! Sophie! Tr
+ Sophie l
+i cho ta ...!(v
+ng. V
+ nhau, v
+em l
+i ni
+m vui cho Sophie. Th
+...)$#FFFFFF 
+y! H
+y khoan!
+ ... c
+ ...?
+Sophie, v
+ ...
+NeilDKh
+ng, l
+nh... m
+t ng
+ ... m
+58,59
+ ta r
+ng gia gia v
+ Neil s
+ng chung d
+! Nh
+ng Neil 
+ chung m
+i gian vui v
+NeilT... Ta quy
+nh k
+nh nhau, c
+Sophie#Th
+? Neil c
+Sophie0N
+t nha ~ Neil th
+y! Nam nh
+i! Kh
+nh, Neil s
+n Sophie!
+SophieB
+m ~ 
+nh ~ Neil c
+Neilu(Sophie, ta r
+n trong 
+i qu
+n hu
+ng Gia. Kh
+Neil3(10 n
+nh, gi
+c ph
+c hi
+NeilFPh
+ng Ho
+ng Th
+SophierM
+n tranh t
+ khi ta c
+. Nh
+George
+y trao 
+i qua 
+Neil)Hi
+ang c
+a Tinh Th
+YafeiL
+ ta th
+i, ch
+ng ta t
+m ngh
+, ch
+c, ngh
+ xem ch
+Yafei
+ ... tr
+Yafei0L
+t ta 
+n, mau nh
+Neil nh
+Sophie!
+YafeiOTa kh
+i Sophie 
+i Neil ta y
+ Sophie! Ta r
+, ph
+p Tr
+nh vi h
+nh cho B
+i di
+n. Ch
+ng lui binh l
+ng vong. R
+m. L
+ ta v
+i. Ch
+ Sophie nh
+u, ch
+a. Sophie! Tr
+Yafei b
+Neil, ng
+m quy r
+Neil!Ch
+m 10 n
+i ta y
+t khi 
+ang ch
+m. Ta 
+m ki
+m su
+t 10 n
+m, gi
+i ...
+Neil-Sophie! Ta 
+ng, mau ra 
+i!!!
+SophiecNeil t
+m Sophie th
+c, gi
+ Sophie mu
+nh tr
+. Neil ch
+ Sophie.
+a Ph
+ngRTa bi
+, xem ch
+ang ti
+ng H
+ng! 
+(Sophie v
+u thay 
+ e ... N
+nh bi
+ng!)I
+n [Ph
+ng Chi Th
+ng] h
+ Sophie. Hi
+NeilATr
+c kia ch
+ng ngh
+p th
+n khu di t
+ch Ph
+Jack
+()*+
+,-./
+0123
+?@AB
+CDEF
+STUV
+defg
+yz{|
+ `@0
+Neil+Chalcone, l
+ang hu
+t sao?
+ChalconeOKh
+ng, ch
+i. Ng
+i ta s
+, chi b
+ng so m
+Chalcone
+ ta mang theo s
+t, n
+u, b
+i nhanh ph
+t tri
+ng. S
+i hi
+. Tr
+c chia l
+c, bi
+nh kh
+t chi
+u. S
+i thu
+n bu
+m xu
+c " Kim Ti
+m Oa Ng
+u Th
+Thuy
+Salmond
+Portia
+ABell
+Harry
+m nay kh
+Harry,Nh
+Asia+A a a ~ ta l
+t vui v
+AsiaPGh
+t, ng
+m ti
+u tan k
+ch l
+c 200 l
+a ta r
+Nick
+Asia

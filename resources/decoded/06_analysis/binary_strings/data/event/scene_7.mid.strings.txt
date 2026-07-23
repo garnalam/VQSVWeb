@@ -1,0 +1,637 @@
+path=data/event/scene_7.mid
+kind=custom_binary
+size=38561
+sha256=71792D135CEBB439BA40DF970968CA2B3753046F813DD1C62F509492C4EC1DCB
+hex_prefix=00 0d 0e b9 01 d2 25 13 1c c1 04 9a 03 76 14 d4 03 16 06 5e 04 c5 0e 36 04 b9 06 1a 00 31 00 11 00 31 00 39 00 2c 00 32 00 30 00 2c 00 32 00 31 00 2c 00 32 00 32 00 2c 00 32 00 33 00 2c 00 32
+
+19,20,21,22,23,24
+0,0,0,0,0,0
+Tomas!
+c U Linh Ch
+ng r
+Neil.
+m, c
+n ng
+ cho m
+n Thi
+n Gi
+i Ch
+Tomas=T
+nh. S
+ng tr
+a Gi
+i ch
+Neil
+Tomas
+c, nghi th
+u.nV
+u tr
+i nh
+t, khu
+nh. Ng
+t ti
+ng, 
+m thanh nh
+c ng
+Tomas ch
+t ra.
+TomasJC
+ng Thi
+ ... nh
+ng ch
+ trong ch
+t, h
+y mau quay tr
+Neil(Ng
+i... th
+a ng
+ang ti
+u hao?!
+Tomas n
+TomasETh
+n quan c
+ng n
+ng l
+c kh
+i ph
+m, ng
+i kh
+ng c
+n lo l
+Neil1Ta hi
+u! Ta s
+ng th
+Ta s
+p th
+c cho ng
+c Nguy
+c Th
+nh [Nguy
+c Qu
+ng M
+m ki
+m Linh Quang L
+10,10,10
+11,12,0
+0,1,1
+ ...
+Tomas 
+i, ta s
+ thu tr
+izTh
+n quan v
+n gi
+nh m
+p nh
+n xu
+t ph
+n chi
+c xanh lam c
+i chi
+u xu
+ng nh
+n gian.
+20,21,22,23,24
+1,1,1,1,1
+n quan nh
+ng ta 
+i th
+i ...
+n quan 
+TomaseKh
+ng sao. Ta 
+ trong n
+u, tuy kh
+n th
+y nh
+c ta v
+n nh
+i [V
+nh H
+ch Kinh Phi
+n] m
+i Tomas ti
+nh nghi th
+c th
+i gian truy
+ch Long Th
+Neil"M
+ng ng
+i qua B
+#FFFFFF M
+y ng
+m tr
+c, l
+ng h
+nh, d
+nh th
+nh xu th
+p Thi
+ng gi
+a Thi
+a, B
+ch Long c
+ng H
+c Long 
+t cu
+c Thi
+a th
+nh chi
+32,33
+10,-10
+13,12
+5,-5
+18,30
+36,37
+36,37,38
+1,1,1
+39,40
+41,42,43,44,45,46,47,48,49
+1,1,1,1,1,1,1,1,1
+50,51,52,53,54
+1,1,1,1,1)41,42,43,44,45,46,47,48,49,50,51,52,53,54
+1,1,1,1,1,1,1,1,1,1,1,1,1,1
+57,58,59
+1,1T#FFFFFF M
+y tr
+m sau, cu
+c chi
+t th
+c, B
+u tan bi
+Neil#
+ch B
+o Ch
+u sao? L
+Sophie b
+ng b
+Sophie"Neil th
+ch qu
+y kh
+ng ph
+NeilDTh
+o Silia kh
+ng v
+o, b
+ng kh
+Sophie
+t di
+y?! 
+Sophie>... c
+a ta, nh
+ng coi nh
+y ta.
+i mau
+n Th
+ chia kh
+ng gian th
+nh hai c
+c. Kh
+nh c
+a Th
+i Gian Thi
+n Kh
+i Chi M
+n. L
+o ph
+ Thi
+a Chi S
+ sao?#
+y, t
+m th
+65,60
+XianLaAT
+ khi c
+a tr
+y, m
+p ch
+XianLa9N
+n nhi
+u th
+Neil'
+, Thi
+i bi
+XianLa
+Ha ha b
+i tr
+c khi ta sinh ra, cu
+nh kh
+ng thay 
+i, con ng
+y th
+. Hi
+ng nhau!
+i sao kh
+ng coi th
+ng ta! Ta 
+ng nhi
+n bi
+t! Ch
+nh b
+i hai v
+em tr
+n lo
+n chia 
+u cho tr
+t, l
+m cho Thi
+ng sinh c
+m cho 
+ng quy ph
+Ngoan l
+m. Ha ha
+Hey hey..."B
+ng xu
+t hi
+n tr
+XianLa"Tr
+ng! Tr
+ng s
+a! A a!!
+65,66,67,68,69,70,71
+3,0,2,2,2,0,0
+1,1,1,1,1,1,1
+65,66,67,68,69,70,71,72,73
+7,7,7,7,7,7,7,7,7
+72,73
+Sophie, cu
+nh s
+ng. Ta c
+c. (Sophie: Neil t
+m Sophie th
+t kh
+y, Sophie mu
+nh. Neil ch
+ Sophie th
+i.) Sophie, ...L#FFFFFF Ch
+ qua c
+a, ti
+c ph
+u thu th
+p nhi
+ xong ch
+ xong!
+c, b
+u nghi th
+a Ph
+ng Ho
+ sao?
+Neil'B
+y gi
+n ch
+o qu
+Ailie
+Camille
+MeterLu
+Burch
+Doranle
+YaQila
+Leita
+BCDE
+KLMM
+PQR8
+rstH
+Zuzu
+t chia l
+m phong, 
+n, qu
+. Nghe n
+y, h
+a, m
+c, th
+ cho ta xem b
+n thu
+nh n
+n, t
+iRTrong h
+nh trang ph
+t nh
+t mang c
+c thu
+.@Nhi
+t, vui l
+t 1 
+ tra x
+t nhi
+Zuzu<Th
+c, khi Thi
+a li
+ng ta s
+nh xu
+ng xem.
+y ch
+y qua! Nghe n
+ng thu
+t Thi
+ quan h
+c, v
+ng m
+nh h
+n? C
+ xem sao kh
+4,11#B
+n khi
+u chi
+n kh
+73,94,81
+40,41,42
+5,5,5
+Zuzu2Kh
+ch ng
+em qu
+nh Thi
+y thu
+ng cho ng
+Zuzu0Xem ra v
+i ng
+i, kh
+ng g
+23,24,25
+1,2,3
+Sophie!
+ngOL
+ Sophie, n
+ng hay bi
+t chuy
+y ra, ta m
+a cho n
+ng bi
+Neil'Sophie, ta 
+y, mu
+Sophie:Neil ... Neil ... c
+m gi
+c... v
+y ta c
+au l
+Lulu
+c, m
+t nam nh
+n Silia d
+i qu
+i, thi
+y Th
+n, gi
+t ch
+ng ai d
+m ch
+i. Ch
+ Sylvia 
+Sylvia 
+c ra 
+y chi
+eo v
+o ng
+i. Ng
+i mang 
+i sinh ch
+ thi
+ng sau c
+i, b
+ch t
+ trong tay ng
+ di v
+t, m
+nh l
+i. M
+c cu
+i gi
+ nghi
+ng do nh
+y ra.
+Zuzu`Ng
+u du
+n quan Sylvia v
+ng L
+ Sophie.
+Lulu, Zuzu
+Cung ngh
+nh Sophie 
+c ...
+Neil, ta kh
+ng sao. Gi
+m ra h
+n. H
+n, nh
+i Thi
+n cung tra h
+i xu
+i, nh
+ng...
+SophieQ
+nh ch
+a hai ch
+ng ta. Ta kh
+ng mu
+i li
+. Ch
+ suy ngh
+ nhi
+NeilJSophie, n
+ ta t
+i nam t
+ng bao gi
+ thay 
+Sophie3... Ta nh
+ Neil m
+u tu
+Ha ha, ta th
+y ph
+c ch
+nh qu
+ " v
+nh vi
+nh, b
+, kh
+o " 
+ng gh
+Sophie1Nh
+ 1 l
+n ...
+Neil,
+m, ta l
+t vui, n
+Im l
+t gi
+Ta sai r
+Neil, c
+Neil3Ch
+ng ta h
+ng nhau 
+i di
+i cu
+24,23
+1,12
+n [V
+n] th
+nh. Hi
+ do di chuy
+Neil(M
+ quay tr
+nh T
+Black
+!"#$
+]^_`
+ghij*
+Ailie1Ng
+ ai? Ta 
+ang r
+n gh
+28,29,30
+i qua L
+Rachel
+YaQila1Ng
+91,92
+38,39
+Panzi
+Karen
+Karen Ng
+o Th
+Ta v
+t hoa qu
+y nho may m
+n, c
+u gi
+p ta mang 
+ng Doranle b
+ng ba v
+ Camille, Aimie, XianLa.
+9,14
+Karen)C
+i kia ... d
+n Doranle b
+ may m
+n Doranle.@Nhi
+Karen[Cu
+a con ng
+i gian 
+nh mu
+Karen 
+p ta d
+n Camille 
+6,10
+n qu
+n Camille.@Nhi
+Karen'C
+n Aimie 
+p ta.
+Con ng
+m Aimie?Nhi
+Karen'Qu
+n XianLa 
+n XianLa.@Nhi
+n.q#FFFFFF Phi Kh
+nh. H
+u Sophie bay 
+i, Neil c
+ng nhanh ch
+NeiloB
+c nh
+y sai l
+ch r
+i! C
+i ra t
+nh, nh
+ng d
+ sao v
+Neil'Thi
+p tr
+m Sophie. Hi
+92,93,94
+37,38,39
+ tan xu
+ng B
+*+,-
+789:
+KLM 
+u Nh
+Aimie5Ng
+m cho ch
+nh Karen 
+a cho Tomas kh
+Aimie
+Tomas h
+ng qu
+n. Karen h
+n cho h
+c ti
+u nh
+ qua ta... Tomas c
+nh ta m
+y cho h
+i ta 
+y. C
+Neil'M
+u Th
+Lilia%A! Con ng
+i! Kh
+n ph
+nh ta!
+93,83,73,56
+43,44,45,46
+5,5,5,5
+i qua Tinh V
+Lilia
+PaRuisi
+ch Long th
+ ba con th
+n, ph
+ nguy
+o th
+i qua Tomas 
+. Ng
+ng k
+ ba, c
+t con m
+i. Kh
+a Ng
+YaQila+C
+p ta t
+m hi
+i tho
+ng YaQila gi
+i quy
+t nghi v
+n?Nhi
+t sao?
+YaQilabM
+n con th
+m. C
+ng?l
+ Chi
+ sao? B
+. Hay ch
+ng Qu
+i? Hay l
+ Linh Quang L
+c sao? H
+9,9,9,48D
+t Silia 
+n. Kh
+p con ng
+i sao?
+i, l
+u Sophie.
+YaQilaGSophie 
+ sao? Ra v
+p ta m
+m sao c
+Ailie?Nh
+n gian h
+n, kh
+17,40
+42,43
+AilieBThi
+ng, con ng
+ng ta sao?
+91,71,61
+41,42,43
+ ai?
+50,46,81
+43,43,44
+Burch-Con ng
+nh v
+30,53,71,96
+43,44,45,56
+i qua Minh V
+ng Long'
+Pamela

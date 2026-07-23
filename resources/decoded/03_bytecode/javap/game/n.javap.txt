@@ -1,0 +1,791 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/game/n.class
+  Last modified Feb 1, 2013; size 3544 bytes
+  SHA-256 checksum e23b449031b07c0ac1a2bf969ae3cbb7afe70723c102129069d0d5ee030c5fc5
+public final class game.n
+  minor version: 3
+  major version: 45
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #8                          // game/n
+  super_class: #13                        // java/lang/Object
+  interfaces: 0, fields: 10, methods: 9, attributes: 0
+Constant pool:
+    #1 = Integer            16777215
+    #2 = String             #92           //
+    #3 = String             #114          // /font.bin
+    #4 = String             #161          // nhung1
+    #5 = Class              #124          // "[B"
+    #6 = Class              #126          // "[Ljava/lang/String;"
+    #7 = Class              #127          // "[[B"
+    #8 = Class              #140          // game/n
+    #9 = Class              #149          // java/io/DataInputStream
+   #10 = Class              #150          // java/lang/Class
+   #11 = Class              #151          // java/lang/Exception
+   #12 = Class              #152          // java/lang/Integer
+   #13 = Class              #153          // java/lang/Object
+   #14 = Class              #154          // java/lang/String
+   #15 = Class              #155          // java/lang/StringBuffer
+   #16 = Class              #156          // java/lang/System
+   #17 = Class              #157          // java/lang/Throwable
+   #18 = Class              #158          // java/util/Hashtable
+   #19 = Class              #159          // javax/microedition/lcdui/Graphics
+   #20 = Fieldref           #8.#65        // game/n.a:B
+   #21 = Fieldref           #8.#68        // game/n.b:I
+   #22 = Fieldref           #8.#69        // game/n.c:[[B
+   #23 = Fieldref           #8.#72        // game/n.d:[I
+   #24 = Fieldref           #8.#74        // game/n.e:[I
+   #25 = Fieldref           #8.#75        // game/n.f:Ljava/util/Hashtable;
+   #26 = Fieldref           #8.#76        // game/n.g:Ljava/lang/String;
+   #27 = Fieldref           #8.#81        // game/n.h:I
+   #28 = Fieldref           #8.#82        // game/n.i:C
+   #29 = Fieldref           #8.#84        // game/n.j:I
+   #30 = Methodref          #8.#60        // game/n.a:(C)I
+   #31 = Methodref          #8.#61        // game/n.a:(Ljava/lang/String;)I
+   #32 = Methodref          #8.#62        // game/n.a:(Ljava/lang/String;II)I
+   #33 = Methodref          #8.#63        // game/n.a:(Ljavax/microedition/lcdui/Graphics;CII)I
+   #34 = Methodref          #8.#64        // game/n.a:(Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;II)V
+   #35 = Methodref          #9.#59        // java/io/DataInputStream."<init>":(Ljava/io/InputStream;)V
+   #36 = Methodref          #9.#71        // java/io/DataInputStream.close:()V
+   #37 = Methodref          #9.#88        // java/io/DataInputStream.readByte:()B
+   #38 = Methodref          #9.#89        // java/io/DataInputStream.readUTF:()Ljava/lang/String;
+   #39 = Methodref          #10.#80       // java/lang/Class.getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;
+   #40 = Methodref          #12.#58       // java/lang/Integer."<init>":(I)V
+   #41 = Methodref          #12.#83       // java/lang/Integer.intValue:()I
+   #42 = Methodref          #13.#78       // java/lang/Object.getClass:()Ljava/lang/Class;
+   #43 = Methodref          #14.#70       // java/lang/String.charAt:(I)C
+   #44 = Methodref          #14.#85       // java/lang/String.length:()I
+   #45 = Methodref          #15.#57       // java/lang/StringBuffer."<init>":()V
+   #46 = Methodref          #15.#66       // java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+   #47 = Methodref          #15.#85       // java/lang/StringBuffer.length:()I
+   #48 = Methodref          #15.#91       // java/lang/StringBuffer.toString:()Ljava/lang/String;
+   #49 = Methodref          #16.#67       // java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+   #50 = Methodref          #17.#86       // java/lang/Throwable.printStackTrace:()V
+   #51 = Methodref          #18.#57       // java/util/Hashtable."<init>":()V
+   #52 = Methodref          #18.#77       // java/util/Hashtable.get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #53 = Methodref          #18.#87       // java/util/Hashtable.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #54 = Methodref          #19.#73       // javax/microedition/lcdui/Graphics.drawLine:(IIII)V
+   #55 = Methodref          #19.#79       // javax/microedition/lcdui/Graphics.getColor:()I
+   #56 = Methodref          #19.#90       // javax/microedition/lcdui/Graphics.setColor:(I)V
+   #57 = NameAndType        #116:#97      // "<init>":()V
+   #58 = NameAndType        #116:#101     // "<init>":(I)V
+   #59 = NameAndType        #116:#103     // "<init>":(Ljava/io/InputStream;)V
+   #60 = NameAndType        #128:#98      // a:(C)I
+   #61 = NameAndType        #128:#107     // a:(Ljava/lang/String;)I
+   #62 = NameAndType        #128:#110     // a:(Ljava/lang/String;II)I
+   #63 = NameAndType        #128:#111     // a:(Ljavax/microedition/lcdui/Graphics;CII)I
+   #64 = NameAndType        #128:#112     // a:(Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;II)V
+   #65 = NameAndType        #128:#117     // a:B
+   #66 = NameAndType        #129:#99      // append:(C)Ljava/lang/StringBuffer;
+   #67 = NameAndType        #130:#105     // arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+   #68 = NameAndType        #131:#120     // b:I
+   #69 = NameAndType        #132:#127     // c:[[B
+   #70 = NameAndType        #133:#100     // charAt:(I)C
+   #71 = NameAndType        #134:#97      // close:()V
+   #72 = NameAndType        #135:#125     // d:[I
+   #73 = NameAndType        #136:#102     // drawLine:(IIII)V
+   #74 = NameAndType        #137:#125     // e:[I
+   #75 = NameAndType        #138:#122     // f:Ljava/util/Hashtable;
+   #76 = NameAndType        #139:#121     // g:Ljava/lang/String;
+   #77 = NameAndType        #141:#104     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+   #78 = NameAndType        #142:#95      // getClass:()Ljava/lang/Class;
+   #79 = NameAndType        #143:#94      // getColor:()I
+   #80 = NameAndType        #144:#108     // getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;
+   #81 = NameAndType        #145:#120     // h:I
+   #82 = NameAndType        #146:#118     // i:C
+   #83 = NameAndType        #147:#94      // intValue:()I
+   #84 = NameAndType        #148:#120     // j:I
+   #85 = NameAndType        #160:#94      // length:()I
+   #86 = NameAndType        #162:#97      // printStackTrace:()V
+   #87 = NameAndType        #163:#106     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+   #88 = NameAndType        #164:#93      // readByte:()B
+   #89 = NameAndType        #165:#96      // readUTF:()Ljava/lang/String;
+   #90 = NameAndType        #166:#101     // setColor:(I)V
+   #91 = NameAndType        #167:#96      // toString:()Ljava/lang/String;
+   #92 = Utf8
+   #93 = Utf8               ()B
+   #94 = Utf8               ()I
+   #95 = Utf8               ()Ljava/lang/Class;
+   #96 = Utf8               ()Ljava/lang/String;
+   #97 = Utf8               ()V
+   #98 = Utf8               (C)I
+   #99 = Utf8               (C)Ljava/lang/StringBuffer;
+  #100 = Utf8               (I)C
+  #101 = Utf8               (I)V
+  #102 = Utf8               (IIII)V
+  #103 = Utf8               (Ljava/io/InputStream;)V
+  #104 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+  #105 = Utf8               (Ljava/lang/Object;ILjava/lang/Object;II)V
+  #106 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #107 = Utf8               (Ljava/lang/String;)I
+  #108 = Utf8               (Ljava/lang/String;)Ljava/io/InputStream;
+  #109 = Utf8               (Ljava/lang/String;I)[Ljava/lang/String;
+  #110 = Utf8               (Ljava/lang/String;II)I
+  #111 = Utf8               (Ljavax/microedition/lcdui/Graphics;CII)I
+  #112 = Utf8               (Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;II)V
+  #113 = Utf8               (Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;III)V
+  #114 = Utf8               /font.bin
+  #115 = Utf8               <clinit>
+  #116 = Utf8               <init>
+  #117 = Utf8               B
+  #118 = Utf8               C
+  #119 = Utf8               Code
+  #120 = Utf8               I
+  #121 = Utf8               Ljava/lang/String;
+  #122 = Utf8               Ljava/util/Hashtable;
+  #123 = Utf8               StackMap
+  #124 = Utf8               [B
+  #125 = Utf8               [I
+  #126 = Utf8               [Ljava/lang/String;
+  #127 = Utf8               [[B
+  #128 = Utf8               a
+  #129 = Utf8               append
+  #130 = Utf8               arraycopy
+  #131 = Utf8               b
+  #132 = Utf8               c
+  #133 = Utf8               charAt
+  #134 = Utf8               close
+  #135 = Utf8               d
+  #136 = Utf8               drawLine
+  #137 = Utf8               e
+  #138 = Utf8               f
+  #139 = Utf8               g
+  #140 = Utf8               game/n
+  #141 = Utf8               get
+  #142 = Utf8               getClass
+  #143 = Utf8               getColor
+  #144 = Utf8               getResourceAsStream
+  #145 = Utf8               h
+  #146 = Utf8               i
+  #147 = Utf8               intValue
+  #148 = Utf8               j
+  #149 = Utf8               java/io/DataInputStream
+  #150 = Utf8               java/lang/Class
+  #151 = Utf8               java/lang/Exception
+  #152 = Utf8               java/lang/Integer
+  #153 = Utf8               java/lang/Object
+  #154 = Utf8               java/lang/String
+  #155 = Utf8               java/lang/StringBuffer
+  #156 = Utf8               java/lang/System
+  #157 = Utf8               java/lang/Throwable
+  #158 = Utf8               java/util/Hashtable
+  #159 = Utf8               javax/microedition/lcdui/Graphics
+  #160 = Utf8               length
+  #161 = Utf8               nhung1
+  #162 = Utf8               printStackTrace
+  #163 = Utf8               put
+  #164 = Utf8               readByte
+  #165 = Utf8               readUTF
+  #166 = Utf8               setColor
+  #167 = Utf8               toString
+{
+  public static byte a;
+    descriptor: B
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  private static byte[][] c;
+    descriptor: [[B
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private static int[] d;
+    descriptor: [I
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private static int[] e;
+    descriptor: [I
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private static java.util.Hashtable f;
+    descriptor: Ljava/util/Hashtable;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  public static int b;
+    descriptor: I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  private static java.lang.String g;
+    descriptor: Ljava/lang/String;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private static int h;
+    descriptor: I
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private static char i;
+    descriptor: C
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private static int j;
+    descriptor: I
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=5, locals=7, args_size=0
+         0: getstatic     #22                 // Field c:[[B
+         3: ifnonnull     236
+         6: new           #18                 // class java/util/Hashtable
+         9: dup
+        10: invokespecial #51                 // Method java/util/Hashtable."<init>":()V
+        13: putstatic     #25                 // Field f:Ljava/util/Hashtable;
+        16: new           #9                  // class java/io/DataInputStream
+        19: dup
+        20: ldc           #2                  // String
+        22: invokevirtual #42                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+        25: ldc           #3                  // String /font.bin
+        27: invokevirtual #39                 // Method java/lang/Class.getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;
+        30: invokespecial #35                 // Method java/io/DataInputStream."<init>":(Ljava/io/InputStream;)V
+        33: astore_0
+        34: aload_0
+        35: invokevirtual #38                 // Method java/io/DataInputStream.readUTF:()Ljava/lang/String;
+        38: astore_1
+        39: aload_0
+        40: invokevirtual #37                 // Method java/io/DataInputStream.readByte:()B
+        43: dup
+        44: putstatic     #20                 // Field a:B
+        47: istore_2
+        48: aload_1
+        49: invokevirtual #44                 // Method java/lang/String.length:()I
+        52: dup
+        53: istore_3
+        54: newarray       int
+        56: putstatic     #23                 // Field d:[I
+        59: iload_3
+        60: newarray       int
+        62: putstatic     #24                 // Field e:[I
+        65: iconst_0
+        66: istore        4
+        68: iconst_0
+        69: istore        5
+        71: goto          135
+        74: getstatic     #23                 // Field d:[I
+        77: iload         5
+        79: aload_0
+        80: invokevirtual #37                 // Method java/io/DataInputStream.readByte:()B
+        83: iastore
+        84: getstatic     #24                 // Field e:[I
+        87: iload         5
+        89: iload         4
+        91: iastore
+        92: iload         4
+        94: getstatic     #23                 // Field d:[I
+        97: iload         5
+        99: iaload
+       100: iadd
+       101: istore        4
+       103: getstatic     #25                 // Field f:Ljava/util/Hashtable;
+       106: new           #12                 // class java/lang/Integer
+       109: dup
+       110: aload_1
+       111: iload         5
+       113: invokevirtual #43                 // Method java/lang/String.charAt:(I)C
+       116: invokespecial #40                 // Method java/lang/Integer."<init>":(I)V
+       119: new           #12                 // class java/lang/Integer
+       122: dup
+       123: iload         5
+       125: invokespecial #40                 // Method java/lang/Integer."<init>":(I)V
+       128: invokevirtual #53                 // Method java/util/Hashtable.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+       131: pop
+       132: iinc          5, 1
+       135: iload         5
+       137: iload_3
+       138: if_icmplt     74
+       141: iload_2
+       142: iload         4
+       144: multianewarray #7,  2             // class "[[B"
+       148: putstatic     #22                 // Field c:[[B
+       151: bipush        7
+       153: istore        5
+       155: iconst_0
+       156: istore_1
+       157: iconst_0
+       158: istore_3
+       159: goto          219
+       162: iconst_0
+       163: istore        6
+       165: goto          209
+       168: iinc          5, 1
+       171: iload         5
+       173: bipush        8
+       175: if_icmplt     186
+       178: iconst_0
+       179: istore        5
+       181: aload_0
+       182: invokevirtual #37                 // Method java/io/DataInputStream.readByte:()B
+       185: istore_1
+       186: iload_1
+       187: iconst_1
+       188: iand
+       189: ifeq          201
+       192: getstatic     #22                 // Field c:[[B
+       195: iload_3
+       196: aaload
+       197: iload         6
+       199: iconst_1
+       200: bastore
+       201: iload_1
+       202: iconst_1
+       203: ishr
+       204: i2b
+       205: istore_1
+       206: iinc          6, 1
+       209: iload         6
+       211: iload         4
+       213: if_icmplt     168
+       216: iinc          3, 1
+       219: iload_3
+       220: iload_2
+       221: if_icmplt     162
+       224: aload_0
+       225: invokevirtual #36                 // Method java/io/DataInputStream.close:()V
+       228: goto          236
+       231: dup
+       232: astore_1
+       233: invokevirtual #50                 // Method java/lang/Throwable.printStackTrace:()V
+       236: ldc           #4                  // String nhung1
+       238: invokestatic  #31                 // Method a:(Ljava/lang/String;)I
+       241: putstatic     #21                 // Field b:I
+       244: return
+      Exception table:
+         from    to  target type
+            34   228   231   Class java/lang/Exception
+        StackMap: length = 0x89 (unknown attribute)
+         00 0A 00 4A 00 06 07 00 09 07 00 0E 01 01 01 01
+         00 00 00 87 00 06 07 00 09 07 00 0E 01 01 01 01
+         00 00 00 A2 00 06 07 00 09 01 01 01 01 01 00 00
+         00 A8 00 07 07 00 09 01 01 01 01 01 01 00 00 00
+         BA 00 07 07 00 09 01 01 01 01 01 01 00 00 00 C9
+         00 07 07 00 09 01 01 01 01 01 01 00 00 00 D1 00
+         07 07 00 09 01 01 01 01 01 01 00 00 00 DB 00 06
+         07 00 09 01 01 01 01 01 00 00 00 E7 00 00 00 01
+         07 00 0B 00 EC 00 00 00 00
+
+  public static int a(java.lang.String);
+    descriptor: (Ljava/lang/String;)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: getstatic     #26                 // Field g:Ljava/lang/String;
+         4: if_acmpne     11
+         7: getstatic     #27                 // Field h:I
+        10: ireturn
+        11: aload_0
+        12: putstatic     #26                 // Field g:Ljava/lang/String;
+        15: aload_0
+        16: iconst_0
+        17: aload_0
+        18: invokevirtual #44                 // Method java/lang/String.length:()I
+        21: iconst_1
+        22: isub
+        23: invokestatic  #32                 // Method a:(Ljava/lang/String;II)I
+        26: dup
+        27: putstatic     #27                 // Field h:I
+        30: ireturn
+        StackMap: length = 0xB (unknown attribute)
+         00 01 00 0B 00 01 07 00 0E 00 00
+
+  public static int a(java.lang.String, int, int);
+    descriptor: (Ljava/lang/String;II)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=5, args_size=3
+         0: iconst_0
+         1: istore_3
+         2: iload_1
+         3: istore_1
+         4: goto          49
+         7: new           #12                 // class java/lang/Integer
+        10: dup
+        11: aload_0
+        12: iload_1
+        13: invokevirtual #43                 // Method java/lang/String.charAt:(I)C
+        16: invokespecial #40                 // Method java/lang/Integer."<init>":(I)V
+        19: astore        4
+        21: iload_3
+        22: getstatic     #23                 // Field d:[I
+        25: getstatic     #25                 // Field f:Ljava/util/Hashtable;
+        28: aload         4
+        30: invokevirtual #52                 // Method java/util/Hashtable.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        33: checkcast     #12                 // class java/lang/Integer
+        36: invokevirtual #41                 // Method java/lang/Integer.intValue:()I
+        39: iaload
+        40: iadd
+        41: istore_3
+        42: goto          46
+        45: pop
+        46: iinc          1, 1
+        49: iload_1
+        50: iload_2
+        51: if_icmplt     7
+        54: iload_3
+        55: ireturn
+      Exception table:
+         from    to  target type
+            21    42    45   Class java/lang/Exception
+        StackMap: length = 0x35 (unknown attribute)
+         00 04 00 07 00 04 07 00 0E 01 01 01 00 00 00 2D
+         00 04 07 00 0E 01 01 01 00 01 07 00 0B 00 2E 00
+         04 07 00 0E 01 01 01 00 00 00 31 00 04 07 00 0E
+         01 01 01 00 00
+
+  public static int a(char);
+    descriptor: (C)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=5, locals=1, args_size=1
+         0: iload_0
+         1: getstatic     #28                 // Field i:C
+         4: if_icmpne     11
+         7: getstatic     #29                 // Field j:I
+        10: ireturn
+        11: iload_0
+        12: putstatic     #28                 // Field i:C
+        15: getstatic     #23                 // Field d:[I
+        18: getstatic     #25                 // Field f:Ljava/util/Hashtable;
+        21: new           #12                 // class java/lang/Integer
+        24: dup
+        25: iload_0
+        26: invokespecial #40                 // Method java/lang/Integer."<init>":(I)V
+        29: invokevirtual #52                 // Method java/util/Hashtable.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        32: checkcast     #12                 // class java/lang/Integer
+        35: invokevirtual #41                 // Method java/lang/Integer.intValue:()I
+        38: iaload
+        39: dup
+        40: putstatic     #29                 // Field j:I
+        43: ireturn
+        44: pop
+        45: iconst_0
+        46: dup
+        47: putstatic     #29                 // Field j:I
+        50: ireturn
+      Exception table:
+         from    to  target type
+            11    43    44   Class java/lang/Exception
+        StackMap: length = 0x12 (unknown attribute)
+         00 02 00 0B 00 01 01 00 00 00 2C 00 00 00 01 07
+         00 0B
+
+  public static final void a(javax.microedition.lcdui.Graphics, java.lang.String, int, int, int);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;III)V
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Code:
+      stack=4, locals=5, args_size=5
+         0: aload_0
+         1: invokevirtual #55                 // Method javax/microedition/lcdui/Graphics.getColor:()I
+         4: istore        4
+         6: aload_0
+         7: ldc           #1                  // int 16777215
+         9: invokevirtual #56                 // Method javax/microedition/lcdui/Graphics.setColor:(I)V
+        12: aload_0
+        13: aload_1
+        14: iload_2
+        15: iload_3
+        16: invokestatic  #34                 // Method a:(Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;II)V
+        19: aload_0
+        20: iload         4
+        22: invokevirtual #56                 // Method javax/microedition/lcdui/Graphics.setColor:(I)V
+        25: return
+
+  public static final void a(javax.microedition.lcdui.Graphics, java.lang.String, int, int);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;II)V
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Code:
+      stack=5, locals=6, args_size=4
+         0: aload_1
+         1: invokevirtual #44                 // Method java/lang/String.length:()I
+         4: istore        4
+         6: iconst_0
+         7: istore        5
+         9: goto          30
+        12: iload_2
+        13: aload_0
+        14: aload_1
+        15: iload         5
+        17: invokevirtual #43                 // Method java/lang/String.charAt:(I)C
+        20: iload_2
+        21: iload_3
+        22: invokestatic  #33                 // Method a:(Ljavax/microedition/lcdui/Graphics;CII)I
+        25: iadd
+        26: istore_2
+        27: iinc          5, 1
+        30: iload         5
+        32: iload         4
+        34: if_icmplt     12
+        37: return
+        StackMap: length = 0x22 (unknown attribute)
+         00 02 00 0C 00 06 07 00 13 07 00 0E 01 01 01 01
+         00 00 00 1E 00 06 07 00 13 07 00 0E 01 01 01 01
+         00 00
+
+  public static final void b(javax.microedition.lcdui.Graphics, java.lang.String, int, int, int);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;Ljava/lang/String;III)V
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Code:
+      stack=5, locals=7, args_size=5
+         0: iload_2
+         1: istore        5
+         3: iload_3
+         4: istore        6
+         6: iload         4
+         8: iconst_1
+         9: iand
+        10: ifeq          26
+        13: iload_2
+        14: aload_1
+        15: invokestatic  #31                 // Method a:(Ljava/lang/String;)I
+        18: iconst_2
+        19: idiv
+        20: isub
+        21: istore        5
+        23: goto          42
+        26: iload         4
+        28: bipush        8
+        30: iand
+        31: ifeq          42
+        34: iload_2
+        35: aload_1
+        36: invokestatic  #31                 // Method a:(Ljava/lang/String;)I
+        39: isub
+        40: istore        5
+        42: iload         4
+        44: iconst_2
+        45: iand
+        46: ifeq          61
+        49: iload_3
+        50: getstatic     #20                 // Field a:B
+        53: iconst_2
+        54: idiv
+        55: isub
+        56: istore        6
+        58: goto          76
+        61: iload         4
+        63: bipush        32
+        65: iand
+        66: ifeq          76
+        69: iload_3
+        70: getstatic     #20                 // Field a:B
+        73: isub
+        74: istore        6
+        76: aload_1
+        77: invokevirtual #44                 // Method java/lang/String.length:()I
+        80: istore_2
+        81: iconst_0
+        82: istore_3
+        83: goto          107
+        86: iload         5
+        88: aload_0
+        89: aload_1
+        90: iload_3
+        91: invokevirtual #43                 // Method java/lang/String.charAt:(I)C
+        94: iload         5
+        96: iload         6
+        98: invokestatic  #33                 // Method a:(Ljavax/microedition/lcdui/Graphics;CII)I
+       101: iadd
+       102: istore        5
+       104: iinc          3, 1
+       107: iload_3
+       108: iload_2
+       109: if_icmplt     86
+       112: return
+        StackMap: length = 0x68 (unknown attribute)
+         00 06 00 1A 00 07 07 00 13 07 00 0E 01 01 01 01
+         01 00 00 00 2A 00 07 07 00 13 07 00 0E 00 01 01
+         01 01 00 00 00 3D 00 07 07 00 13 07 00 0E 00 01
+         01 01 01 00 00 00 4C 00 07 07 00 13 07 00 0E 00
+         00 00 01 01 00 00 00 56 00 07 07 00 13 07 00 0E
+         01 01 00 01 01 00 00 00 6B 00 07 07 00 13 07 00
+         0E 01 01 00 01 01 00 00
+
+  public static final int a(javax.microedition.lcdui.Graphics, char, int, int);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;CII)I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Code:
+      stack=6, locals=9, args_size=4
+         0: new           #12                 // class java/lang/Integer
+         3: dup
+         4: iload_1
+         5: invokespecial #40                 // Method java/lang/Integer."<init>":(I)V
+         8: astore_1
+         9: getstatic     #25                 // Field f:Ljava/util/Hashtable;
+        12: aload_1
+        13: invokevirtual #52                 // Method java/util/Hashtable.get:(Ljava/lang/Object;)Ljava/lang/Object;
+        16: checkcast     #12                 // class java/lang/Integer
+        19: invokevirtual #41                 // Method java/lang/Integer.intValue:()I
+        22: istore_1
+        23: getstatic     #23                 // Field d:[I
+        26: iload_1
+        27: iaload
+        28: istore        4
+        30: getstatic     #24                 // Field e:[I
+        33: iload_1
+        34: iaload
+        35: istore_1
+        36: getstatic     #20                 // Field a:B
+        39: istore        5
+        41: iconst_0
+        42: istore        6
+        44: goto          104
+        47: getstatic     #22                 // Field c:[[B
+        50: iload         6
+        52: aaload
+        53: astore        7
+        55: iconst_0
+        56: istore        8
+        58: goto          94
+        61: aload         7
+        63: iload         8
+        65: iload_1
+        66: iadd
+        67: baload
+        68: ifeq          91
+        71: aload_0
+        72: iload_2
+        73: iload         8
+        75: iadd
+        76: iload_3
+        77: iload         6
+        79: iadd
+        80: iload_2
+        81: iload         8
+        83: iadd
+        84: iload_3
+        85: iload         6
+        87: iadd
+        88: invokevirtual #54                 // Method javax/microedition/lcdui/Graphics.drawLine:(IIII)V
+        91: iinc          8, 1
+        94: iload         8
+        96: iload         4
+        98: if_icmplt     61
+       101: iinc          6, 1
+       104: iload         6
+       106: iload         5
+       108: if_icmplt     47
+       111: iload         4
+       113: ireturn
+       114: pop
+       115: iconst_0
+       116: ireturn
+      Exception table:
+         from    to  target type
+             9   113   114   Class java/lang/Exception
+        StackMap: length = 0x62 (unknown attribute)
+         00 06 00 2F 00 07 07 00 13 01 01 01 01 01 01 00
+         00 00 3D 00 09 07 00 13 01 01 01 01 01 01 07 00
+         05 01 00 00 00 5B 00 09 07 00 13 01 01 01 01 01
+         01 07 00 05 01 00 00 00 5E 00 09 07 00 13 01 01
+         01 01 01 01 07 00 05 01 00 00 00 68 00 07 07 00
+         13 01 01 01 01 01 01 00 00 00 72 00 00 00 01 07
+         00 0B
+
+  public static java.lang.String[] a(java.lang.String, int);
+    descriptor: (Ljava/lang/String;I)[Ljava/lang/String;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=5, locals=11, args_size=2
+         0: bipush        50
+         2: anewarray     #14                 // class java/lang/String
+         5: astore_2
+         6: aload_0
+         7: invokevirtual #44                 // Method java/lang/String.length:()I
+        10: istore_3
+        11: iload_1
+        12: getstatic     #21                 // Field b:I
+        15: isub
+        16: istore        4
+        18: iconst_0
+        19: istore        5
+        21: iconst_0
+        22: istore        6
+        24: new           #15                 // class java/lang/StringBuffer
+        27: dup
+        28: invokespecial #45                 // Method java/lang/StringBuffer."<init>":()V
+        31: astore        7
+        33: iconst_0
+        34: istore        8
+        36: goto          143
+        39: aload_0
+        40: iload         8
+        42: invokevirtual #43                 // Method java/lang/String.charAt:(I)C
+        45: dup
+        46: istore        9
+        48: invokestatic  #30                 // Method a:(C)I
+        51: istore        10
+        53: iload         5
+        55: iload         10
+        57: iadd
+        58: dup
+        59: istore        5
+        61: iload_1
+        62: if_icmpgt     79
+        65: iload         9
+        67: bipush        32
+        69: if_icmpne     128
+        72: iload         5
+        74: iload         4
+        76: if_icmple     128
+        79: aload_2
+        80: iload         6
+        82: iinc          6, 1
+        85: aload         7
+        87: invokevirtual #48                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+        90: aastore
+        91: new           #15                 // class java/lang/StringBuffer
+        94: dup
+        95: invokespecial #45                 // Method java/lang/StringBuffer."<init>":()V
+        98: astore        7
+       100: iload         9
+       102: bipush        32
+       104: if_icmpeq     122
+       107: iload         10
+       109: istore        5
+       111: aload         7
+       113: iload         9
+       115: invokevirtual #46                 // Method java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+       118: pop
+       119: goto          136
+       122: iconst_0
+       123: istore        5
+       125: goto          136
+       128: aload         7
+       130: iload         9
+       132: invokevirtual #46                 // Method java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+       135: pop
+       136: iload         5
+       138: istore        5
+       140: iinc          8, 1
+       143: iload         8
+       145: iload_3
+       146: if_icmplt     39
+       149: aload         7
+       151: invokevirtual #47                 // Method java/lang/StringBuffer.length:()I
+       154: ifle          169
+       157: aload_2
+       158: iload         6
+       160: iinc          6, 1
+       163: aload         7
+       165: invokevirtual #48                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+       168: aastore
+       169: iload         6
+       171: anewarray     #14                 // class java/lang/String
+       174: astore        8
+       176: aload_2
+       177: iconst_0
+       178: aload         8
+       180: iconst_0
+       181: iload         6
+       183: invokestatic  #49                 // Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+       186: aload         8
+       188: areturn
+        StackMap: length = 0x92 (unknown attribute)
+         00 07 00 27 00 09 07 00 0E 01 07 00 06 01 01 01
+         01 07 00 0F 01 00 00 00 4F 00 0B 07 00 0E 01 07
+         00 06 01 01 00 01 07 00 0F 01 01 01 00 00 00 7A
+         00 09 07 00 0E 01 07 00 06 01 01 00 01 07 00 0F
+         01 00 00 00 80 00 0A 07 00 0E 01 07 00 06 01 01
+         01 01 07 00 0F 01 01 00 00 00 88 00 09 07 00 0E
+         01 07 00 06 01 01 01 01 07 00 0F 01 00 00 00 8F
+         00 09 07 00 0E 01 07 00 06 01 01 01 01 07 00 0F
+         01 00 00 00 A9 00 07 00 00 07 00 06 00 00 00 01
+         00 00
+}

@@ -1,0 +1,3 @@
+deviceUnavailable
+deviceAvailable
+volumeChanged

@@ -1,0 +1,29 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/d/e.class
+  Last modified Feb 1, 2013; size 146 bytes
+  SHA-256 checksum 6feedfa9cae94a9521218c5c46444de8406264dcbf6487e9a617cecff1b444aa
+public final class d.e extends java.lang.RuntimeException
+  minor version: 3
+  major version: 45
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #2                          // d/e
+  super_class: #3                         // java/lang/RuntimeException
+  interfaces: 0, fields: 0, methods: 1, attributes: 0
+Constant pool:
+   #1 = String             #9             // nil
+   #2 = Class              #6             // d/e
+   #3 = Class              #8             // java/lang/RuntimeException
+   #4 = Utf8               ()Ljava/lang/String;
+   #5 = Utf8               Code
+   #6 = Utf8               d/e
+   #7 = Utf8               getMessage
+   #8 = Utf8               java/lang/RuntimeException
+   #9 = Utf8               nil
+{
+  public final java.lang.String getMessage();
+    descriptor: ()Ljava/lang/String;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: ldc           #1                  // String nil
+         2: areturn
+}

@@ -1,0 +1,28 @@
+path=data/img/img_238.mid
+kind=png
+size=1888
+sha256=0F72D6C75ECD38E050AF3EBDD585064170ECEE121D2868372A59B3B4189897DD
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 5f 00 00 00 7f 08 03 00 00 00 be 3e ee f1 00 00 00 1e 50 4c 54 45 32 42 70 00 2f 54 66 6c 99 a0 91 bc 54 5a 86 3b 29 35 23 44 5e 4b 35
+
+IHDR
+PLTE2Bp
+/Tfl
+;)5#D^K5CfA?
+tRNS
+IDATx
+1=@\
+W|Q~
+ >6~
+K^Hx>
+NOaj
+4=7x
+v,G~
+1%{2
+NU2'K
+4>}L
+:?+>C
+LN`IPi
+9E/mC
+6/^5
+m4/`
+IEND

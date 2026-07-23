@@ -1,0 +1,23 @@
+path=data/img/img_552.mid
+kind=png
+size=1025
+sha256=3A985F530BCED8886EE504ED39D6E1EB14BD99238A93757B06658D6E4D679775
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 2c 00 00 00 37 08 03 00 00 00 40 4b 58 6b 00 00 00 60 50 4c 54 45 bc 75 4b c9 7f 05 bf 95 6f c8 b4 87 6b 33 15 ac 8d 51 fe f9 f4 d7 ca
+
+IHDR
+@KXk
+`PLTE
+H*^(
+ tRNS
+0IDATx
+?1Q7
+DZ;z
+n/1=
+quloI
+#1ccL
+XWtjl
+EJ.l
+u\[[
+%V'F
+)]Ho
+IEND

@@ -1,0 +1,674 @@
+path=data/script/chs.mid
+kind=custom_binary
+size=39764
+sha256=9EBCA83CC4F2C950CF198D629CFBF4C976EE6E371D650807C0B0D6FA3A254267
+hex_prefix=02 7c 00 01 05 00 4b 00 68 00 f4 00 6e 00 67 00 01 08 00 54 1e a1 00 6d 00 20 00 64 1e eb 00 6e 00 67 00 01 08 00 58 00 e1 00 63 00 20 00 6e 00 68 1e ad 00 6e 00 01 08 00 51 00 75 00 61 00 79
+
+c nh
+Quay l
+n tho
+t kh
+t nh
+c kh
+ng t
+Bom tinh ngh
+n Li
+c Th
+a Di
+m Ma
+Long b
+a Th
+o Long Th
+Ly Ng
+u Ng
+u Th
+n Kh
+o Phong T
+c Khuy
+i Linh 
+ Khuy
+ng V
+n Khuy
+n Th
+a Ph
+ng Ho
+n Oa
+Long Oa
+n Nh
+n Ch
+ng Th
+ch V
+i Th
+c Linh
+La Ph
+La ph
+c Oa Oa
+y Quan Ti
+ng Tr
+ng T
+n Ma C
+Uy Qua 
+o Di
+Linh Quang L
+Kim Ch
+o YeDoon
+ Di L
+c Bunny
+a Kh
+i nham Kh
+Nham Nham Quy
+m Gi
+n Quy
+ch Ch
+c Ch
+Nham S
+n Long
+Zombie Nham S
+ Lang Chu Chu
+c Lang Chu
+o long
+ng gi
+i tuy
+ Linh
+y th
+ chim c
+nh c
+c chim c
+n chim c
+ng R
+c Ma
+y Th
+ng Phi
+Phi Th
+c Gi
+c Kim Ng
+ng Qu
+n Gi
+i Quang H
+n Mi
+ Du 
+ Du Qu
+ Long
+u Hi
+c Ba L
+c Qu
+c Kh
+an nh
+n th
+n qu
+i qu
+Thi 
+i Qu
+nh ma
+nh t
+ linh
+ng h
+nh gi
+Minh v
+ng Long
+Chim xanh
+Tai t
+c th
+ng nh
+Phi D
+ng th
+ch d
+c long
+ ma d
+Tinh V
+Ban 
+a tr
+ng vi
+n tri
+i ph
+a di
+c nhi
+t chi x
+t di
+m phong b
+nh h
+p To
+Quang ph
+ng Ph
+o Ch
+ng chi b
+ch l
+o nguy
+n thu
+m Di
+p Tr
+p chi 
+n hu
+ng m
+n nhi
+Quang h
+p hi
+ thu
+Nham b
+a Gi
+ch phu thu
+ng r
+ Chi Lo
+Bong b
+ng lao
+y tr
+u nguy
+o Phong Tuy
+n gi
+ tuy
+ng Phong H
+Ray l
+i thi
+nh cao 
+ng chuy
+Tia l
+n quang th
+ch h
+nh th
+n lo
+ Lao
+n ng
+i nguy
+n cu
+Phong nh
+Phong 
+n phong
+Long quy
+ch Phong 
+t Thu
+i Thi
+Phong Chi Tuy
+n Qua
+Phong Chi T
+Phi Y
+n Ho
+a Ch
+y Lam Ch
+a Phong Ch
+U Linh Ch
+ng Kim Ch
+Gia t
+m nh
+n trong b
+ng lo
+ng c
+i ch
+ng ng
+i tr
+ng ph
+ tan 
+y ch
+ng kh
+ng b
+a ch
+m cho h
+t gi
+ng sinh tr
+n 5%
+Mang theo t
+ng v
+t tuy kh
+ng tham chi
+c gi
+ kinh nghi
+Sau khi chi
+u ch
+ sinh m
+ng s
+ng thu
+nh khu nham th
+a Thu
+ chi
+i hi
+p thu
+nh Gia t
+ng 1%, cao nh
+t 20%.
+Duy tr
+nh hi
+u qu
+a th
+o tr
+Thu th
+p 60 lo
+ La Th
+ng S
+i Loa
+Quy X
+c To
+i Phi
+ Nha U
+ Long C
+t Phong S
+Linh Tr
+ng Thi H
+p Huy
+ng M
+m Chi Di
+Tinh Nguy
+i Tinh Th
+n Tinh Th
+t Tinh
+i Chi Tinh Hoa
+U Linh Tinh Hoa
+Phong Chi Tinh Hoa
+t hi
+n 30%, gia t
+ng l
+ng k
+ch 100%;
+t gia t
+ch 10%;
+t Gia t
+ 15%;
+i kh
+ng 20%;
+m 20%;
+Mang theo 
+Giao tranh b
+ch t
+t ph
+n tr
+ch nh
+nh tr
+c ti
+t lu
+i th
+o, tr
+n 10 
+m (b
+ng);
+t 20%;
+i li
+u li
+n quan 
+n ti
+n quan ti
+c cao;
+c cao hi
+a Li
+a U Linh Ch
+t Trung C
+Cao c
+nh Sandwich
+Chocolate
+ng d
+Sinh m
+Linh H
+u thi
+t chuy
+t hoang d
+o th
+c su
+ 100%.
+u th
+u may m
+n ph
+u cao c
+c to
+Khi s
+i, tr
+i, kh
+c, c
+ng 50 l
+m ph
+c cho 
+p tr
+ng, kh
+n ch
+i, s
+ nhanh ch
+ng su
+ng 1
+ng 2
+ng 3
+ng 4
+Trang s
+Huy hi
+nh minh h
+ch m
+i nh
+ng tr
+n chi
+c bi
+t th
+ng n
+ gia t
+ di chuy
+n (Nh
+t 9 
+ quay v
+a gia t
+m tr
+n Thi
+u kh
+ng gian (v
+t 9);
+ tan ch
+ng g
+ch (v
+t 9 m
+ rang);
+t 5 
+ tra x
+ng tin c
+t 5 tra x
+ng huy hi
+ thay 
+i thu
+nh s
+t, gi
+ng, m
+nh, t
+Gieo H
+n Quanh
+c Lo
+m Ch
+t Ch
+ng Ng
+n Lo
+p gi
+t X 
+ng, duy tr
+c Y hi
+, duy tr
+ thay th
+y, kh
+, ...duy tr
+Sau Y hi
+ng, n
+ vong th
+i bi
+m ch
+ duy tr
+m th
+i gi
+m xu
+ch c
+nh m
+nh, duy tr
+i gian ch
+Kinh C
+n nh
+Linh X
+Man L
+Gia T
+ch H
+ch Phu
+ chuy
+ch, nh
+n kh
+, nh
+ch ti
+p theo s
+m gia t
+n, kh
+m, duy tr
+ng, c
+ch ng
+n, duy tr
+p kh
+c tr
+i ng
+i ti
+ch k
+a, duy tr
+ Linh X
+o, duy tr
+ng ti
+u hao gi
+ng, l
+o, ph
+ Gia t
+c chuy
+n qua cho b
+ch 2 l
+p, l
+ hai kh
+a kh
+n thi
+t hao t
+c 20% h
+c cao nh
+c 3 hi
+ng, s
+ 3 hi
+p mi
+ng kim b
+Phong h
+nh, m
+n, Gia t
+t 5 kh
+t 0 kh
+nh b
+c ch
+Khu v
+n trang b
+ng Chi Th
+a Nam
+Truy 
+c Chi S
+u ph
+a nam
+u nh
+n su
+ng B
+ch Th
+Trung t
+p Sa
+inh Ch
+y Quan H
+ Nguy
+Di Vong Chi S
+m Nguy
+nh nguy
+u tr
+ng L
+Di t
+ch ph
+m Ni
+m Th
+Khu ch
+nh Sa
+ Phi Kh
+ng Ni
+o di t
+Nam H
+ch M
+a lao
+a lao H
+c Long Th
+ch Long Th
+nh n
+ng chan h
+nh H
+ng Kinh Phi
+n Phi
+u Phi V
+y may m
+i gian b
+nh y
+Tia n
+ng ban mai
+c tha th
+m Sao 
+n Di
+n Nhu S
+Khu vui ch
+ng gian minh t
+o khu v
+Nguy
+y Ng
+o Qu
+Minh V
+c giam
+t ch
+Dinh th
+c Long n
+ng ch
+Hang nh
+n Nguy
+ ngo
+n Ni
+Trong th
+i gian ng
+Truy
+ gian truy
+i %s tin nh
+ thanh to
+n %s, b
+Tin nh
+i...
+ng (
+ cung th
+Con 
+ cung cu
+m hi
+y, m
+t tr
+p, c
+ 10% x
+i 2 hi
+p, n
+ang ch
+ 30%, v
+ng chi
+u ti
+ng 50%, Gia t
+n 50%, duy tr
+n gia t
+ cao.
+ng hi
+n cao, c
+ 20% x
+n cao, n
+em Qu
+n Quanh 3 hi
+p, k
+ch r
+i, sau 2 hi
+i cao.
+ 30% th
+i, duy tr
+ trung b
+nh, c
+i cao, c
+i cao, k
+nh Th
+n cao.
+ 10%(c
+ng).
+ 25% x
+i, t
+ng, 3 hi
+ng mi
+p, kh
+i, Gia t
+m gi
+u, duy tr
+ch 10% Linh X
+ch 10% th
+30% x
+50% x
+n cho k
+ch b
+i cao c
+m 10% x
+ch T
+t 3 hi
+o gia t
+ng 5%.
+u hao k
+n 30%, duy tr
+ng 50%, ph
+ng 50%, duy tr
+nh, Linh X
+n cao c
+ch 20% ph
+nh, gi
+nh k
+40% x
+c 4 hi
+ do h
+n, gi
+p, th
+ng cao.
+ch 5% Linh X
+ng 5%, duy tr
+c 2 hi
+ 5% x
+t ti
+i sang m
+ch hai l
+ch 5% nhanh nh
+nh, l
+ng 55, duy tr
+ 8% x
+ng qu
+c Li
+i, 100 lo
+n thu th
+p, nh
+u, nh
+ kinh 
+100% s
+c, b
+o tho
+t ngay 10000 kim ti
+Trong h
+nh trang c
+t li
+p th
+ng 5 c
+p (gi
+ 50 c
+t ngay 10 huy hi
+n %s 
+ng. B
+Trong chi
+u vi
+ xem x
+c huy hi
+a cu
+c ghi ch
+ng xuy
+n minh hu
+n luy
+t. B
+n %s, 
+c ban th
+ng 1 huy hi
+u. Khi b
+i %s, c
+i 1 huy hi
+t. Ch
+n 50 lo
+u. Sau khi s
+i 100 lo
+ng bi
+ng hu
+t cao nh
+t, vinh d
+t. S
+t 100 lo
+i ... ch
+nh Hu
+i xin trao cho b
+n, n
+n mang theo t
+m kinh nghi
+m. B
+nh hu
+a, tr
+p nhi
+u ng
+p ch
+i %s, vui l
+ng thu th
+, Hu
+c, ch
+nh vui v
+m ti
+i 30 c
+p hay 40 c
+p hay nhi

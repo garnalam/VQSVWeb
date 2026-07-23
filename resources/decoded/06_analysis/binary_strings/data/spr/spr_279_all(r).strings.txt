@@ -1,0 +1,6 @@
+path=data/spr/spr_279_all(r)
+kind=custom_binary
+size=156
+sha256=BC96A67324F069D1FF24A3A1F3D9D0C0EC3AF1827AB73DFA7E8AED0A8012A051
+hex_prefix=00 02 00 05 00 00 00 00 00 00 00 1c 00 25 00 00 00 1c 00 01 00 14 00 24 00 02 00 04 00 04 00 01 00 0d ff dd 00 00 00 01 00 1d ff dd 00 00 00 01 ff df ff dd 00 04 00 01 ff cf ff dd 00 04 00 06
+

@@ -1,0 +1,24 @@
+/data/script/pos.mid
+/data/script/cpos.mid
+/data/script/layer.mid
+/data/script/effect.mid
+/data/script/speffect.mid
+/data/script/blood.mid
+/data/script/bufDebuf.mid
+/data/tex/
+blood_
++
+Không còn tinh lực, không cách nào chiến đấu
+Chạy trốn
+Bắt thành công #2
+Không còn không gian, sủng vật này đã phóng sinh
+Ngân hàng và Ba lô đều đã đầy
+Sủng vật ba lô đã đủ, đã để vào ngân hàng
+-
+Né tránh
+Di Lặc thỏ thỏ đã bị thương, nhanh sử dụng #2 phong ấn cầu #1 tiến hành bắt được a
+Hãy nhấn #2nút 5
+Hãy lựa chọn phong ấn cầu
+Đáng tiếc đã bắt trượt, thử dùng loại xịn #2Tất trúng cầu#1 xem sao!
+Tranh thủ thời gian lựa chọn #2Tất trúng cầu#1 để bắt sủng vật
+Lựa chọn #2Tất trúng cầu#1 để bắt sủng vật

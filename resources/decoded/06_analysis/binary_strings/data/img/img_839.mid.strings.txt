@@ -1,0 +1,24 @@
+path=data/img/img_839.mid
+kind=png
+size=916
+sha256=1555312929B41A4D6DEDD6A1C3FC0C69A00D63C80CD6AEE25DFFE7CE8A37E8C4
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 27 00 00 00 38 08 03 00 00 00 49 fd 11 49 00 00 00 7e 50 4c 54 45 ff ff ff f0 52 1c ff fc 00 29 42 73 60 33 0b d1 4e 20 28 35 4e d4 47
+
+IHDR
+~PLTE
+)Bs`3
+N (5N
+TR5l)$iNK
+?*P#
+*tRNS
+IDATx
+*3= 
+qhZa
+5m[k?
+@\()
+*<_)
+k\/A
+jMtg
+o<L8
+qZZix
+IEND

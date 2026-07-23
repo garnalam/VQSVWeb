@@ -1,0 +1,23 @@
+path=data/img/img_13.mid
+kind=png
+size=1013
+sha256=D16D0A266D68039A621651B8B631533A2B96E9431200F469D3D2501A9D08AE1B
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 95 00 00 00 55 08 06 00 00 00 40 4a a6 fb 00 00 03 bc 49 44 41 54 78 da ec 9d e1 71 e3 20 10 46 63 8d 8a b8 eb 86 0a 92 5a d3 c1 76 73
+
+IHDR
+IDATx
+'oHm
+4ZNe
+eRM$
+i]\Tr*
+P(i6
+mh:<J
+AI^U=
+RPrV
+>jt|
+si!}
+[RPt
+O{pSCR
+R'@[
+ YsA
+IEND

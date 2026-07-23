@@ -1,0 +1,14 @@
+path=data/img/img_0.mid
+kind=png
+size=315
+sha256=488D6871B8F89BB3559F630C30669686BB277BFA30F564E460BDCD2535EF9237
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 50 00 00 00 10 08 03 00 00 00 b6 97 08 f3 00 00 00 1e 50 4c 54 45 00 ff f0 f7 ff 52 ff ff ff 99 99 99 46 2d 1d f5 7a 4a fb ff ae 00 00
+
+IHDR
+PLTE
+IDATx
+4bbd=
+aR|4
+K&^[
+0fHe
+IEND

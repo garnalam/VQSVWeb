@@ -1,0 +1,841 @@
+path=data/event/scene_4.mid
+kind=custom_binary
+size=46447
+sha256=3F6611EF2B40ADDBC6EE7791A3F2EDB287835E60592E805BE2410694115DC003
+hex_prefix=00 0d 06 97 06 15 10 64 05 b4 07 7b 41 4c 04 04 07 db 24 34 04 cd 04 bb 06 34 09 f9 00 1f 00 01 00 38 00 01 00 30 00 01 00 31 00 05 00 59 00 61 00 66 00 65 00 69 00 81 00 4e 01 a1 00 69 00 20
+
+Yafei
+m vi th
+c Long Qu
+n, ng
+i kh
+ng s
+t. Gi
+ ta c
+t vi
+n ng
+ang t
+Neil
+Ta ... ch
+o ch
+i th
+i...
+YafeiRV
+y ~ ng
+n Ni
+m Th
+o qu
+i nh
+n tr
+t qu
+ng m
+Neil*C
+i...g
+u ... tr
+ng ... qu
+Yafei"
+m... c
+ng l
+m, t
+y ng
+m Jones h
+i xem c
+c. Hi
+ do di chuy
+Neil-C
+y! C
+m gi
+nh c
+i ... hay l
+Binh l
+nh H
+c Long
+Thuy
+Hagen>Ta kh
+ng nh
+y ch
+?! C
+c ta! Ha ha
+Hagen+Hai huy ch
+ng n
+ng ng
+i, d
+A ... v
+ xong v
+ng gi
+Xuy Phong Ph
+Owen
+Senta#Ng
+p qua 
+a ta Kate?
+NeilK
+ng v
+y ~ Kate ti
+n sinh r
+t, ng
+i mang 
+y cho ng
+ng c
+SentaDA! 
+n! Qu
+ nhi
+n hay l
+n th
+n, ha ha ~
+Senta,
+n ch
+ng trai, c
+SentaLTa c
+ Atai, n
+ chuy
+n nghi
+SentaLTa mu
+p trung v
+ng vi
+c, c
+p ta h
+c kh
+5,10
+p nh
+n, t
+Senta^Th
+u! Phi
+a cho Atai 3 Ki
+m Gi
+n Quy. N
+ang 
+SentaCKi
+n Quy c
+ng qua Nham Nham Quy ti
+c.<Ki
+n Quy l
+c cao h
+a Nham Nham Quy.=Nhi
+t, m
+i ch
+t 1 
+ tra x
+t nhi
+Senta&Th
+i, ta c
+ng kh
+m phi
+Senta
+Kate b
+o ng
+SentabHa ha, 
+y, ta v
+a nghi
+m ti
+n tri
+i, nh
+ng ch
+nh qu
+Ta ph
+t hi
+n ra c
+ hai b
+c ti
+c. Giai 
+n ti
+a sau xa v
+nh h
+n giai 
+u. C
+ chi
+u xem n
+a no kh
+n ...
+7,15"B
+n cu
+c chi
+n kh
+Senta2Ch
+ng trai tr
+, kh
+m. C
+ tri
+SentaQT
+ ta 
+ thu th
+c. Nh
+ng.-Ch
+ng b
+t si
+u hi
+Ha ha, kh
+ng d
+m sao?
+Senta5S
+y, l
+ khu trang b
+Atai#Xem ra ch
+a bi
+Kewpie5Ta kh
+ng bi
+t ng
+i ... kh
+nh nhau v
+ xa l
+35,36
+24,25
+ng 1P
+Atai
+Kewpie
+/01 
+QiuSe9H
+m nay qu
+c nh
+m th
+72,73
+25,26
+Hagen+Ai c
+p ta n
+m tr
+y ta.
+19,20
+26,26
+NashaBH
+ng xem th
+ng ta nh
+y, ta c
+n luy
+35,21
+26,27
+ng 2Q
+QiuSe
+Hani
+Nasha
+10,30
+Neil*Th
+ng th
+y ti
+n ra v
+Stephen7Ng
+i tu
+i tr
+, sao d
+m qu
+a ta h
+Kuluoli
+c! Qua 
+y ph
+69,70
+Tonys8
+y qua lo
+y sao? Ng
+? Ha ha!
+45,44
+27,27
+ng 3R
+Stephen
+Tonys
+Atai?... S
+y qu
+ ngh
+a. L
+t ch
+m, r
+Atai3Oh, t
+i. Ta r
+ch s
+AtaiBCh
+p ta t
+m ki
+m ng
+i anh em Moose 
+y ra chuy
+AtaiTH
+n hi
+ang g
+p kh
+n trong vi
+c nghi
+u, nh
+ ta h
+AtaiHC
+ng li
+n quan c
+ anh ta s
+i ra s
+t..Atai c
+i khu
+t kh
+8,12
+Atai5C
+u. Y hi
+nh, r
+m.(Moose hi
+ang s
+ng t
+i Ni
+nh.<Nhi
+Xin l
+NeilSMoose ti
+n sinh? Ta l
+t, Ti
+n sinh c
+Moose
+Moose/Tr
+ng ta c
+m sao h
+ng ph
+i ...
+Moose?H
+m, c
+i. C
+i, mu
+n khi
+u chi
+n sao h
+2,40
+28,28
+MooseJM
+m, ch
+m ch
+m ta.
+n ta n
+Moose&
+ quy
+p tr
+ng r
+i sao?
+MooseHR
+t, hi
+n ta c
+ch v
+ nghi
+6,10
+Tranh th
+i gian 
+t.=Nhi
+? Ng
+n ta 
+MooseUCh
+nh l
+y! Tranh th
+i gian m
+y th
+ lao 
+i, ta mu
+u th
+nh ...
+Moose;Ng
+u qu
+c truy
+6,12
+Moose$T
+t, h
+y cho Fisher.
+c Th
+ch Th
+nh.#Fisher hi
+nh.=Nhi
+Moose:Kh
+n ni
+m vui n
+o trong cu
+ng sao?
+Neil/Xin h
+i ng
+ Gottardo ti
+n sinh ph
+Gottardo
+nh Ta, ng
+Neil)Ta gi
+p Jahila t
+Gottardo%Ta ch
+a th
+y qua c
+ bao gi
+NeilZTa c
+ng tay m
+. Gottardo ti
+n sinh, c
+m sao c
+? Ta kh
+... Gottardo ti
+n sinh.
+t phi
+n ph
+GottardoA... 
+i. Ng
+y tr
+i cho n
+ng ta 
+Gottardo0(T
+c th
+t ... Sao c
+ ta kh
+...)
+ng tay
+Nailuo%Ng
+t th
+y gi
+p ta 
+Nailuo
+Ta l
+ du kh
+ch ngang qua n
+n qu
+en mai ph
+c ph
+ng h
+p to
+a ta. Gi
+Neil+(l
+c Long th
+ch ki
+m chuy
+7,11
+NailuogL
+i! H
+a ta hi
+n, nh
+n nh
+nh kh
+u giao tr
+. Haizzz!
+i xem sao.=Nhi
+Nailuo5Hix, ng
+nh wa...
+c LongHK
+ kia 
+ang l
+? Kh
+p th
+o sao?!
+Neil0Trong tay ng
+a ng
+c Long%C
+a ai li
+n quan g
+? ...
+70,83
+28,29
+c LongOTh
+u chuy
+n! Sao c
+ch tr
+o chuy
+Nailuo!Ch
+Hughes
+ang c
+?OTh
+ch nh
+t Phong 
+u, th
+, th
+c xin l
+10,4,10,10
+Phong 
+u, c
+ng nhi
+n ki
+Hughes#C
+ng cho c
+ang n
+HughesCTa 
+t phong th
+ Locke, c
+a gi
+ Locke%Gia 
+nh Locke hi
+Hughes$Th
+c, ta s
+c LongKNeil ph
+ quan, Yafei 
+u ng
+ Phi Kh
+nh g
+p ng
+Neil!C
+nh?! N
+a Nam 
+nh t
+m Yafei.
+Neil.
+m nh
+c trong t
+m tay c
+Nghe n
+i ph
+a tr
+ khu v
+ nguy hi
+m. N
+nh th
+ng Ni
+o Qu
+n Nh
+n may ra c
+t hi v
+ng tr
+ ...
+JonesAHi
+c %s lo
+t, c
+n %s lo
+Jones,
+a kh
+Jones
+Hoan ngh
+NeilHNg
+e ch
+, ta l
+ quan c
+a Yafei, xin h
+Jones:Gi
+u mu
+Trong l
+...?!
+Jones.Nh
+m, ta m
+ ghi ch
+p. Ch
+t trong h
+nh trang c
+nh, n
+ng trong qu
+nh ch
+n giao tranh 
+ sinh tr
+y ta c
+ng ra n
+m lo
+c bi
+i ti
+c. N
+i mang c
+y Ti
+y trao 
+n [Nam Giao Th
+p] t
+o giao cho Jones.
+Jones)T
+m tra l
+nh. Khi mang theo tr
+t, v
+n chi
+u nh
+nh, tr
+nh s
+a Yafei 
+n, ta t
+t lo
+i bi
+ng k
+ch th
+ng khi n
+p chi
+Neil=Tuy
+! Ta ch
+y qua 
+t hu
+JonesVL
+n, ch
+ ta m
+i. Cho n
+Neil0Ta mu
+n mang s
+y chi
+ xem sao.
+49,50
+c Long quan qu
+n'Yafei 
+n! T
+c ng
+i Th
+Chris, chuy
+u ra v
+a Phi Kh
+49,-1
+YafeiNT
+t! Ph
+t vui! Ta s
+ ngay l
+c tr
+ Yafei t
+ng qu
+Mau 
+1,1/Theo [
+ch] 
+Sherman
+Rose
+Kela
+ShaLuomu
+TaliSi
+Hagen
+Black
+'() 
+89:;
+HIJK
+tuvw
+Meow~ chi
+u ch
+11,12
+Eliza
+Sula
+Paige
+CageBKh
+ng may! Ta kh
+ tai c
+ 1 l
+ng?)
+Neil*Ng
+ch, c
+ cho ta kh
+Cage
+... Kh
+c! N
+a ta!
+Neil]V
+c mu
+, sao gi
+ng ra sao.
+Cage7Ng
+i mu
+t sao?! 
+nh tr
+i chuy
+n sau!
+43,39,33
+29,30,31
+2,3,3
+Moose Ta thua, s
+ch Ch
+n Nguy
+nh giao cho Amoxic l
+o nh
+Sloss
+Yafei@Nh
+n xem, 
+ng khoa h
+ thu
+a ch
+ng ta.
+Neil$Kh
+ng Phi Long thuy
+n cho l
+YafeipNg
+t Phi Long thuy
+n? K
+t truy
+u nay. Nh
+ch gi
+i quy
+o kh
+Neil,Kh
+c sao?
+Yafei+Hi
+ang nghi
+u, s
+m bi
+Neil C
+ bay 
+n Thi
+n Gi
+m sao ng
+t...?
+Phi Long thuy
+c ch
+, Phi Kh
+nh hao hao gi
+ sao l
+ng, ta ph
+p ph
+n ho
+i nghi
+c; v
+, Thi
+ nguy
+ ta.
+NeilECh
+... r
+ng mang d
+ng Thi
+y. B
+n ta ch
+a Thi
+i, v
+n gian g
+u ph
+n ta m
+u luy
+u tr
+. Sau khi sinh ta, v
+nh 3 ng
+ng... b
+i gi
+t. M
+n ta b
+nh nh
+i. Ph
+ng cu
+i Thi
+i, ta v
+c ghi ch
+i trong l
+Sao l
+i im l
+Ta s
+i an 
+m, ai c
+Neil)Sao l
+i cho ta bi
+t nh
+ng chuy
+Hy v
+i hi
+a ph
+n ta. Ch
+nh v
+ Thi
+n bi k
+ch, nh
+n lo
+ng thi
+ chung s
+ng ho
+Theo c
+a nguy
+n do hai v
+ch tranh 
+u. B
+ch Long Th
+u Thi
+ng H
+c Long Th
+a Gi
+m, b
+n sinh linh v
+ trong cu
+i, th
+ng thua c
+ hy sinh con ng
+n! Ch
+ng ta ch
+nh y
+ng ta, t
+nh m
+t, s
+n tranh.
+Cho n
+ch L
+ng Kh
+o Ch
+u, n
+m hai v
+ trong tay,  v
+ sao?
+p cha con ta ch
+Yafei, ch
+ng ta l
+nh. N
+i, ta s
+p. C
+i qu
+t Ho
+ng Gia 
+nh tan k
+ch c
+14,-1
+13,13
+Yafei"V
+c Ni
+ Nghi
+m Tr
+ng Ba.
+1 Tr
+i [Ni
+ng].
+5,6,7,8,9,10,11,12
+7,7,7,7,7,7,7,7
+RedLNg
+t can 
+m. Nh
+ng ta kh
+i Yafei, kh
+ng tay 
+12,69,74
+35,36,37
+4,4,4
+RedLL
+i chi
+ gia h
+ ... TeYaQi! Ng
+TeYaQiWA la... t
+i, tr
+n, kh
+ch ng
+m...
+Red#Ch
+i! Ng
+i... c
+TeYaQi-Coi n
+o, l
+c gi
+i. Ha ha, th
+TeYaQiATuy c
+t xao nh
+11,67,85
+36,37,38
+TeYaQiXC
+t tr
+n, c
+ng coi nh
+i nguy
+y bi
+TeYaQi1Ha ha, th
+ thua. Nh
+ng x
+Nguy r
+i! Li
+ng(Kh
+n. Ta s
+em n
+ theo tr
+Binh s
+TeYaQi
+DEFG
+UVW 
+bcde
+jkl 
+stuvw
+Kewpie"Th
+a ta th
+ng y
+31,32
+u Nh
+Neil9Ch
+n Th
+i qua khu di t
+Neil&Vi
+nh coi nh
+ xong.
+Hagen)Kh
+ng ai c
+ ta!
+83,82,81
+32,33,34
+3,4,4
+u Th
+ng S
+Xin h
+i..?.
+Mu5C
+n! Ti
+, ng
+nh ph
+MuUH
+n no v
+... ng
+ch, ta t
+ng sao ch
+Mu&H
+m, m
+Neil)H
+Pei Ji
+Mau qu
+41,42,43
+33,34,35

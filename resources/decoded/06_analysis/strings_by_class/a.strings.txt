@@ -1,0 +1,15 @@
+uid
+0
+%1
+Term
+%2
+RefCode
+%cp
+  
+ 
+utf-8
+UTF-8
+ split. aStr == null
+sr
+/l2.bin
+|

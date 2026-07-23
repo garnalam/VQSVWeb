@@ -1,0 +1,18 @@
+path=data/img/img_546.mid
+kind=png
+size=649
+sha256=07BE3045BD3B8C19EC92DD6F1DA6D95030A36B089DE5E1D842900BC1E3B8BE9F
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 28 00 00 00 11 08 06 00 00 00 af 8b ee 08 00 00 02 50 49 44 41 54 78 da c4 96 dd 4e 1a 51 14 85 f7 51 7e 04 05 51 04 8b 22 90 48 d2 8b
+
+IHDR
+PIDATx
+&&61
+6D%_
+8M"`
+Yz)h
+W`7)
+2<!Z&
+@z.l
+,lkxi_
+>,FIP
+IEND

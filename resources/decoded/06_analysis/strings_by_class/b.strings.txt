@@ -1,0 +1,5 @@
+current size: 
+auto close1: 
+new size: 
+auto close2: 
+close error

@@ -1,0 +1,17 @@
+path=data/ui/record.ui
+kind=custom_binary
+size=1827
+sha256=5984BA732C973598AE343C664C70EF02B3E23E4270B5F57B4E95E195E5923D21
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 01 01 01 00 02 00 02 00 00 00 06 00 0c 00 4c 00 52 00 63 00 6d 00 64 00 30 00 07 00 0c 00 4c 00 52 00 63 00 6d 00 64 00 31 00 00 00 1e 01 00 01
+
+LRcmd0
+LRcmd1
+nh Kam
+ng v
+t hi
+c th
+n th
+c huy hi
+ng th
+i gian ch
+Quay l

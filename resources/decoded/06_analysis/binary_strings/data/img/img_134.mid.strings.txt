@@ -1,0 +1,20 @@
+path=data/img/img_134.mid
+kind=png
+size=1176
+sha256=F4E70B7DE61D33877B7B159AB32D47AC98A407C232DF92DB9ACB2EA319CDA829
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 4d 00 00 00 32 08 03 00 00 00 2e a3 a6 96 00 00 00 36 50 4c 54 45 33 33 50 51 51 85 7d a7 f3 6d 6d ae 92 af c8 d0 e2 f0 e2 e2 ff ff ff
+
+IHDR
+6PLTE33PQQ
+tRNS
+IDATx
+Z:cHO
+(re3
+W(^\
+c#M*
+<4Eh
+^U?o
+uw~AS? |Dkj0d
+\/,_h^
+zu32
+IEND

@@ -1,0 +1,40 @@
+Nokia
+Motorokr
+Motorola
+SonyEricsson
+Samsung
+j2me
+SunMicrosystems_wtk
+MX6
+MotoA668
+Gửi tin
+Quay lại
+Đặt hàng
+00
+000
+eeee
+Platform
+microedition.platform
+Hãy nhấn xác nhận để gửi tin nhắn
+Bạn đã gửi 
+ tin nhắn, còn 
+ tin
+ca
+gi
+gs
+gg
+gj
+yc
+m
+n
+as
+_fc
+_fb
+ts
+aa
+/data/event/scene_13.mib
+Xác nhận
+payed=
+count=
+Thoát
+Bạn chưa trả tiền xong, đề nghị tiếp tục trả tiền.

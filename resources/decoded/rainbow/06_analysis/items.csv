@@ -1,0 +1,71 @@
+﻿game_id,name,description,category,frame_id,sound_id
+0,Đồ uống,Hồi phục sinh mệnh 35%,consumable,0,0
+1,Bánh bích quy,Hồi phục sinh mệnh 65%,consumable,1,0
+2,Chocolate,Hồi phục toàn bộ sinh mệnh,consumable,2,1
+3,Năng lượng thạch,Hồi phục giá trị kỹ năng 50%,consumable,3,1
+4,Tụ năng thạch,Khôi phục tất cả giá trị kỹ năng,consumable,4,1
+5,Cây bạch quả quả,Đồng thời hồi phục giá trị sinh mệnh và kỹ năng 35%,consumable,5,3
+6,Hoàng kim đường,Hồi phục toàn bộ giá trị sinh mệnh và kỹ năng,consumable,6,3
+7,sinh mệnh thạch,Hồi sinh kéo theo sủng vật hồi phục giá trị sinh mệnh 30%,consumable,7,1
+8,Vạn năng dược,Giải trừ nơi có trạng thái dị thường,consumable,8,1
+9,Phong ấn cầu,"Chuẩn bị bắt sủng vật, hiệu quả bình thường",consumable,9,1
+10,Cao cấp cầu,"Chuẩn bị bắt sủng vật, hiệu quả rất tốt",consumable,10,3
+11,Đại sư cầu,"Chuẩn bị bắt được, 100% thành công",consumable,11,2
+12,Hưng phấn cô,Hồi phục một phần độ trung thành của sủng vật,consumable,12,2
+13,Mật tâm đường,Hồi phục toàn bộ độ trung thành của sủng vật,consumable,13,2
+14,Tránh quái hoàn,Trong thời gian ngắn sẽ không gặp địch,consumable,14,2
+15,Nước hoa,Thời gian dài sẽ không gặp địch,consumable,15,2
+16,Cứng cỏi thạch,Tài liệu tiến hóa cơ bản của sủng vật Mãnh Thú hệ,mineral,16,2
+17,Thú hồn,Tài liệu tiến hóa bậc cao của sủng vật Mãnh Thú hệ,mineral,17,2
+18,Thụ chướng thạch,Tài liệu tiến hóa cơ bản của sủng vật Thực Vật,mineral,18,2
+19,Chu quả,Tài liệu tiến hóa bậc cao của sủng vật Thực Vật hệ,mineral,19,2
+20,Bong bóng,Tài liệu tiến hóa cơ bản của sủng vật Hải Dương hệ,mineral,20,2
+21,Biển sâu san hô,Tài liệu tiến hóa bậc cao của sủng vật Hải Dương hệ,mineral,21,3
+22,Cách không thạch,Tài liệu tiến hóa cơ bản của sủng vật Phi Hành hệ,mineral,22,3
+23,Thiên vũ,Tài liệu tiến hóa bậc cao của sủng vật Phi Hành hệ,mineral,23,3
+24,Tinh nguyên thạch,Tài liệu tiến hóa cơ bản của sủng vật Kim Loại hệ,mineral,24,8
+25,Bạch kim,Tài liệu tiến hóa bậc cao của sủng vật Kim Loại hệ,mineral,25,8
+26,Bay lượn thiên thạch,Chuẩn bị tài liệu tiến hóa Bạch Kim Long,mineral,26,8
+27,Cổ thụ chi hạch,Chuẩn bị tài liệu tiến hóa Cổ Thụ Chi Vương,mineral,27,1
+28,Tinh khiết thủy tinh,Chuẩn bị tài liệu tiến hóa Thủy Tinh Hùng Sư,mineral,28,4
+29,Cổ kình chi tâm,Chuẩn bị tài liệu tiến hóa Kình Ngư,mineral,29,4
+30,Vương chi chứng minh,Chuẩn bị tài liệu tiến hóa Hổ Vương,mineral,30,1
+31,Trị hết chi tâm,Tìm được tài liệu Đao Thương Tướng Quân,mineral,31,4
+32,Bảo rương,Cần chìa khóa mới có thể mở xem vật phẩm bên trong bảo rương,mineral,32,4
+33,Cái chìa khóa,Dùng chìa khóa mới có thể mở bảo rương,mineral,33,1
+34,Dị hoá tài liệu,Nghe nói sủng vật dị hóa có thể có được hình thái mạnh mẽ hơn để kiềm giữ đạo cụ,mineral,34,1
+35,Quân tâm tan rả,Công kích kẻ địch đồng thời giảm bớt độ trung thành của sủng vật 25%,medal,38,5
+36,Sơ cấp trị liệu,Có thể nắm vững các kỹ năng để tự chữa trị thương tổn trong chiến đấu,medal,35,5
+37,Cao cấp trị liệu,Sủng vật có thể nắm vững kỹ năng tự chữa trị trong chiến đấu,medal,37,5
+38,Tử vong chi sờ,"Tiêu hao một lần duy nhất toàn bộ năng lượng hiện tại, cũng như gia tăng thương tổn.",medal,39,5
+39,Kỹ năng Phong Bế,Kỹ năng này tạm thời có thể làm cho kẻ địch không thể sử dụng nhiều hơn 3 kỹ năng,medal,37,5
+40,Nọc độc công kích,"Kỹ năng bị động, nâng cao uy lực Hủ Thực của sủng vật Thực Vật hệ",medal,37,5
+41,Răng nanh răng nhọn,"Kỹ năng bị động, kéo dài thời gian duy trì liên tục Tê Liệt của sủng vật Mãnh Thú hệ",medal,37,5
+42,Thép thiết cốt,"Kỹ năng bị động, nâng cao hiệu quả phòng ngự của sủng vật Kim Loại hệ",medal,37,5
+43,Tinh thần công kích,"Kỹ năng bị động, sủng vật Phi Hành hệ có thể công kích đồng giảm bớt năng lượng đối thủ",medal,37,0
+44,Triều tịch năng lượng,"Kỹ năng bị động, sủng vật Hải Dương hệ có thể công kích và giảm bớt năng lượng tiêu hao",medal,37,0
+45,Kinh nghiệm nhiều hơn,"Kỹ năng bị động, nắm vững kỹ năng sủng vật sau khi chiến đấu có thể đạt được gấp đôi kinh nghiệm",medal,35,0
+46,Kinh nghiệm phong phú,"Kỹ năng bị động, nắm vững kỹ năng sủng vật sau khi chiến đấu có thể đạt được gấp ba kinh nghiệm",medal,37,0
+47,Trọng sinh làm tâm,"Kỹ năng bị động, sau khi tử vong có 70% tỷ lệ hồi sinh",medal,39,0
+48,May mắn ngôi sao,"Mang theo sủng vật, làm chủ kỹ năng, di chuyển để gia tăng tỷ lệ gặp được sủng vật quý hiếm",medal,36,5
+49,Trung thành đồng bọn,"Kỹ năng bị động, độ trung thành của sủng vật vĩnh không giảm thiếu",medal,38,8
+50,Thân hòa thiên sứ,nắm vững kỹ năng sau khi bắt được kẻ địch thất bại không chạy trốn [chuẩn bị bắt được sủng vật quý hiếm],medal,36,8
+51,Chạy trối chết chuyên gia,"Kỹ năng bị động, chạy trốn nhất định thành công",medal,36,8
+52,Hoa cỏ Ý Chí,"Kỹ năng bị động, Chiến đấu ở khu vực hoa viên là ưu thế của sủng vật Thực Vật hệ",medal,36,3
+53,Kim Loại Ý Chí,"Kỹ năng bị động, Chiến đấu trên vùng di tích là ưu thế của sủng vật Kim Loại hệ",medal,36,5
+54,Bầu trời Ý Chí,"Kỹ năng bị động, Chiến đấu trên không trung là ưu thế của sủng vật Phi Hành hệ",medal,36,0
+55,Dã thú Ý Chí,"Kỹ năng bị động, Chiến đấu ở vùng đồng bằng là ưu thế của sủng vật Mãnh Thú hệ",medal,36,0
+56,Biển rộng Ý Chí,"Kỹ năng bị động, Chiến đấu trên đại dương là ưu thế của sủng vật Hải Dương hệ",medal,36,0
+57,Thế thân tượng gỗ,"Kỹ năng bị động, bị công kích có 30% tỷ lệ né tránh",medal,37,5
+58,Thực Vật hệ,Có thể ấp trứng sủng vật ra sủng vật Thực Vật hệ,ring,40,5
+59,Thực Vật hệ,Có thể ấp trứng sủng vật ra sủng vật Thực Vật hệ,ring,40,0
+60,Kim Loại hệ,Có thể ấp trứng sủng vật ra sủng vật Kim Loại hệ,ring,41,3
+61,Kim Loại hệ,Có thể ấp trứng sủng vật ra sủng vật Kim Loại hệ,ring,41,0
+62,Bầu trời hệ,Có thể ấp trứng sủng vật ra sủng vật Phi Hành hệ,ring,42,0
+63,Mãnh Thú hệ,Có thể ấp trứng sủng vật ra sủng vật Mãnh Thú hệ,ring,43,8
+64,Hải Dương hệ,Có thể ấp trứng sủng vật ra sủng vật Hải Dương hệ,ring,44,8
+65,Thực Vật hệ,Có thể ấp trứng sủng vật ra sủng vật Thực Vật hệ,ring,40,8
+66,Kim Loại hệ,Có thể ấp trứng sủng vật ra sủng vật Kim Loại hệ,ring,41,8
+67,Bầu trời hệ,Có thể ấp trứng sủng vật ra sủng vật Phi Hành hệ,ring,42,0
+68,Mãnh Thú hệ,Có thể ấp trứng sủng vật ra sủng vật Mãnh Thú hệ,ring,43,
+69,Hải Dương hệ trứng sủng vật ,Có thể ấp trứng sủng vật ra sủng vật Hải Dương hệ,ring,44,

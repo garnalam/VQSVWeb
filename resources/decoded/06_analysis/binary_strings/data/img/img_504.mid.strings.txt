@@ -1,0 +1,19 @@
+path=data/img/img_504.mid
+kind=png
+size=1211
+sha256=1D61AA18A931ED48185BE892C317D73D9D02EA875B228E2EF41A33BCCCDCC3D0
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 42 00 00 00 35 08 03 00 00 00 c2 ad cd a3 00 00 00 5d 50 4c 54 45 e2 08 09 9c 13 08 bf 02 02 f3 cd 0d fe fe 2b 50 19 25 ff 73 19 ff f5
+
+IHDR
+]PLTE
+tRNS
+IDATx
+YOMUL
+vD-B
+l`zUU
+m".J
+iw0s
+|V:,
+Yi, 
+I1X[
+IEND

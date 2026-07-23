@@ -1,5 +1,12 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import {
+    Backpack,
+    BookOpen,
+    FolderGit2,
+    LayoutGrid,
+    PawPrint,
+    Sparkles,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -14,6 +21,9 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
+import { index as itemsIndex } from '@/routes/wiki/items';
+import { index as petsIndex } from '@/routes/wiki/pets';
+import { index as skillsIndex } from '@/routes/wiki/skills';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -21,6 +31,21 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'Wiki Pet',
+        href: petsIndex(),
+        icon: PawPrint,
+    },
+    {
+        title: 'Wiki kỹ năng',
+        href: skillsIndex(),
+        icon: Sparkles,
+    },
+    {
+        title: 'Wiki vật phẩm',
+        href: itemsIndex(),
+        icon: Backpack,
     },
 ];
 

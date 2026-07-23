@@ -1,0 +1,7 @@
+path=data/ui/smsInfo.ui
+kind=custom_binary
+size=590
+sha256=C66A1BBA27544EB0F76A89FD3870E11C753896D4DC3AA2FAD2C289D64DAD016B
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 0b 01 00 01 00 2e 00 57 00 96 00 9e 00 00 00 00 00 ff ff ff ff ff 00 00 00 ff 00 00 00 ff ff 04 ff bd e4 ef ff bd e4 ef ff bd e4 ef ff ff
+
+Quay l

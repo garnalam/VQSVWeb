@@ -1,0 +1,6 @@
+path=data/tex/tex_1.mid
+kind=custom_binary
+size=61
+sha256=1B8C1E94FE06BE0D30A09D55452B194C78EDAEBEB9DA6ADD031F93656158A454
+hex_prefix=00 00 00 10 00 00 00 10 08 03 00 00 00 0c 7f 7f 7f ff ff ff d7 d7 d7 b6 b6 b6 00 00 00 1f 78 da 62 60 18 18 c0 8c 06 30 55 30 a1 01 06 46 34 80 29 40 d8 0c 82 00 20 c0 00 39 e8 00 91
+

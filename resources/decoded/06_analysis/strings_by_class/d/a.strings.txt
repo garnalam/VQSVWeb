@@ -1,0 +1,46 @@
+pcall
+print
+select
+type
+tostring
+tonumber
+error
+unpack
+next
+setfenv
+getfenv
+rawequal
+_s
+_ss
+_t
+_a
+rp
+_cn
+_r
+_o
+_c
+_sp
+nc
+_co
+\t
+Not enough arguments
+nil
+string
+number
+boolean
+table
+thread
+userdata
+function
+true
+false
+function 0x
+table 0x
+Argument 2 must be a number
+expected a table
+expected a function or a number
+No closure found at this level: 
+Expected number
+level must be non-negative
+text
+base out of range

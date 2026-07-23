@@ -1,0 +1,45 @@
+path=data/ui/bag.ui
+kind=custom_binary
+size=8110
+sha256=D7D301852F2049C4BECE24A7F7D7675BF9369A76651404B66A8FCD658F79A046
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 01 01 01 00 01 00 04 00 00 00 08 00 0c 00 4c 00 52 00 63 00 6d 00 64 00 30 00 2f 00 0c 00 4c 00 52 00 63 00 6d 00 64 00 31 00 56 00 0c 00 4c 00
+
+LRcmd0/
+LRcmd1V
+LRcmd2}
+LRcmd3
+ng bao
+UDcmd0
+UDcmd1
+UDcmd2
+UDcmd3$
+UDcmd4
+u hao
+t ph
+m trang s
+i li
+c th
+,;w/
+UDcmd0>
+UDcmd1C
+UDcmd2H
+UDcmd3M
+04R 
+1XR 
+2|R 
+5;w/
+ng th
+:7}~
+<M~<
+UDcmd0e
+UDcmd1j
+UDcmd2o
+UDcmd3t
+W4R 
+XXR 
+Y|R 
+\;w/
+a7}~
+cM~<
+UDcmd3
+~4R 

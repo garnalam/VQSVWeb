@@ -1,0 +1,93 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/c/k.class
+  Last modified Feb 1, 2013; size 292 bytes
+  SHA-256 checksum 9d4ddb89fb7959c9d5112bfac996ae52d15d7db0a2e10080eaaa585e1020cb3a
+public final class c.k
+  minor version: 0
+  major version: 47
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #1                          // c/k
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 4, methods: 2, attributes: 0
+Constant pool:
+   #1 = Class              #21            // c/k
+   #2 = Class              #23            // java/lang/Object
+   #3 = Fieldref           #1.#9          // c/k.a:I
+   #4 = Fieldref           #1.#10         // c/k.b:I
+   #5 = Fieldref           #1.#11         // c/k.c:I
+   #6 = Fieldref           #1.#12         // c/k.d:I
+   #7 = Methodref          #2.#8          // java/lang/Object."<init>":()V
+   #8 = NameAndType        #15:#13        // "<init>":()V
+   #9 = NameAndType        #18:#17        // a:I
+  #10 = NameAndType        #19:#17        // b:I
+  #11 = NameAndType        #20:#17        // c:I
+  #12 = NameAndType        #22:#17        // d:I
+  #13 = Utf8               ()V
+  #14 = Utf8               (IIII)V
+  #15 = Utf8               <init>
+  #16 = Utf8               Code
+  #17 = Utf8               I
+  #18 = Utf8               a
+  #19 = Utf8               b
+  #20 = Utf8               c
+  #21 = Utf8               c/k
+  #22 = Utf8               d
+  #23 = Utf8               java/lang/Object
+{
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public int b;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public int c;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public int d;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public c.k();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #7                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #3                  // Field a:I
+         9: aload_0
+        10: iconst_0
+        11: putfield      #4                  // Field b:I
+        14: aload_0
+        15: iconst_0
+        16: putfield      #5                  // Field c:I
+        19: aload_0
+        20: iconst_0
+        21: putfield      #6                  // Field d:I
+        24: return
+
+  public c.k(int, int, int, int);
+    descriptor: (IIII)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=5, args_size=5
+         0: aload_0
+         1: invokespecial #7                  // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iload_1
+         6: putfield      #3                  // Field a:I
+         9: aload_0
+        10: iload_2
+        11: putfield      #4                  // Field b:I
+        14: aload_0
+        15: iload_3
+        16: putfield      #5                  // Field c:I
+        19: aload_0
+        20: iload         4
+        22: putfield      #6                  // Field d:I
+        25: return
+}

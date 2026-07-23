@@ -1,0 +1,28 @@
+path=data/img/img_263.mid
+kind=png
+size=1887
+sha256=F829AA6CA75CB6E5B6596BF63B0709216DF815B197AB99CDE1E55FC24905F03B
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 4c 00 00 00 57 08 03 00 00 00 99 58 53 41 00 00 00 60 50 4c 54 45 7f 4e 1e df 93 29 8f 45 21 de 3e 00 39 25 01 e3 9e 2d 3e 2c 2f e9 a5
+
+IHDR
+`PLTE
+->,/
+n!fLQ
+U!H1F
+ tRNS
+IDATx
+^yL_c
+aAjy
+~?0S
+rPUw
+.IK`
+{L~()
+HbF&
+l:cS
+'l8b
+ky._
+0:3T
+hb1&Z
+R;`<h
+2A3u
+IEND

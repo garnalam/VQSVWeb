@@ -1,0 +1,7255 @@
+{
+  "meta": {
+    "game": "Sủng Vật Cầu Vồng",
+    "slug": "cau-vong",
+    "jar_sha256": "B96B7C627B1F117B66578E78F3A491F481125A9E52161AF0D185C143694FAC70",
+    "data_payload_bytes": 40664
+  },
+  "elements": [
+    {
+      "game_id": 0,
+      "name": "Thực Vật hệ",
+      "slug": "thuc-vat",
+      "color": "#4fbd63"
+    },
+    {
+      "game_id": 1,
+      "name": "Kim Loại hệ",
+      "slug": "kim-loai",
+      "color": "#8593a6"
+    },
+    {
+      "game_id": 2,
+      "name": "Phi Hành hệ",
+      "slug": "phi-hanh",
+      "color": "#65a9ff"
+    },
+    {
+      "game_id": 3,
+      "name": "Mãnh Thú hệ",
+      "slug": "manh-thu",
+      "color": "#f08b45"
+    },
+    {
+      "game_id": 4,
+      "name": "Hải Dương hệ",
+      "slug": "hai-duong",
+      "color": "#30bcd4"
+    },
+    {
+      "game_id": 255,
+      "name": "Vô hệ",
+      "slug": "vo-he",
+      "color": "#9ca3af"
+    }
+  ],
+  "effects": [
+    {
+      "source_table": 10,
+      "game_id": 0,
+      "kind": "neutral",
+      "name": "Không có tư chất thiên bẩm",
+      "description": "",
+      "parameters": {
+        "game_modifier": 0
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 1,
+      "kind": "harmful",
+      "name": "Khí lực suy yếu",
+      "description": "Trời sinh thể chất suy yếu, sinh mệnh so với đồng loại có vẻ yếu hơn",
+      "parameters": {
+        "game_modifier": -15
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 2,
+      "kind": "beneficial",
+      "name": "Khí lực cường tráng",
+      "description": "Có được thể chất cường tráng, sinh mệnh so với đồng loại có vẻ nhiều hơn",
+      "parameters": {
+        "game_modifier": 15
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 3,
+      "kind": "beneficial",
+      "name": "Cành cây khô héo",
+      "description": "Thiêu đốt hoặc Hủ thực sẽ tạo nhiều thương tổn cho chính bản thân",
+      "parameters": {
+        "game_modifier": 20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 4,
+      "kind": "beneficial",
+      "name": "Hồi phục tự nhiên",
+      "description": "Mỗi hiệp hồi phục giá trị sinh mệnh nhất định",
+      "parameters": {
+        "game_modifier": 6
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 5,
+      "kind": "beneficial",
+      "name": "Phá Toái Ngoại Xác",
+      "description": "Cuộc công kích dễ dàng hơn khi tiến vào trạng thái Thạch Hóa",
+      "parameters": {
+        "game_modifier": 20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 6,
+      "kind": "harmful",
+      "name": "Kim Loại Ngoại Xác",
+      "description": "Cuộc công kích không dễ dàng khi tiến vào trạng thái Thạch Hóa",
+      "parameters": {
+        "game_modifier": -20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 7,
+      "kind": "beneficial",
+      "name": "Ý chí phân tán",
+      "description": "Cuộc công kích dễ dàng hơn khi tiến vào trạng thái giam cầm",
+      "parameters": {
+        "game_modifier": 20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 8,
+      "kind": "harmful",
+      "name": "Ý chí kiên định",
+      "description": "Cuộc công kích không dễ dàng khi tiến vào trạng thái giam cầm",
+      "parameters": {
+        "game_modifier": -20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 9,
+      "kind": "beneficial",
+      "name": "Công kích hài hòa",
+      "description": "Công kích có tỷ lệ thương tổn giảm",
+      "parameters": {
+        "game_modifier": 20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 10,
+      "kind": "harmful",
+      "name": "Công kích thô bạo",
+      "description": "Công kích có tỷ lệ thương tổn bạo tăng",
+      "parameters": {
+        "game_modifier": -20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 11,
+      "kind": "beneficial",
+      "name": "Thủy chất đục",
+      "description": "Cuộc công kích rất dễ dàng tiến vào trạng thái tê liệt và hủ thực",
+      "parameters": {
+        "game_modifier": 20
+      }
+    },
+    {
+      "source_table": 10,
+      "game_id": 12,
+      "kind": "harmful",
+      "name": "Nước tinh khiết",
+      "description": "Cuộc công kích có vẻ sẽ không tiến vào trạng thái tê liệt và hủ thực ",
+      "parameters": {
+        "game_modifier": -20
+      }
+    },
+    {
+      "source_table": 11,
+      "game_id": 0,
+      "kind": "harmful",
+      "name": "Thạch Hóa",
+      "description": "Không thể hành động; sát thương nhận vào giảm 30%.",
+      "parameters": null
+    },
+    {
+      "source_table": 11,
+      "game_id": 1,
+      "kind": "harmful",
+      "name": "Thiêu Đốt",
+      "description": "Trạng thái gây sát thương theo thời gian.",
+      "parameters": null
+    },
+    {
+      "source_table": 11,
+      "game_id": 2,
+      "kind": "harmful",
+      "name": "Tê Liệt",
+      "description": "Mỗi hiệp mất 10% sinh mệnh hiện tại.",
+      "parameters": null
+    },
+    {
+      "source_table": 11,
+      "game_id": 3,
+      "kind": "harmful",
+      "name": "Mị Hoặc",
+      "description": "Không thể chạy trốn và dễ bị bắt hơn.",
+      "parameters": null
+    },
+    {
+      "source_table": 11,
+      "game_id": 4,
+      "kind": "harmful",
+      "name": "Giam Cầm",
+      "description": "Không thể chạy trốn, đổi Sủng Vật hoặc dùng đạo cụ.",
+      "parameters": null
+    },
+    {
+      "source_table": 11,
+      "game_id": 5,
+      "kind": "harmful",
+      "name": "Hủ Thực",
+      "description": "Mỗi hiệp nhận một lượng sát thương tăng dần.",
+      "parameters": null
+    },
+    {
+      "source_table": 11,
+      "game_id": 6,
+      "kind": "harmful",
+      "name": "Phong Bế",
+      "description": "Không thể sử dụng kỹ năng vượt quá bậc cho phép.",
+      "parameters": null
+    }
+  ],
+  "pets": [
+    {
+      "game_id": 0,
+      "name": "Thụ quái",
+      "description": "Tiểu Thụ Quái đáng yêu. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 12,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 38,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 6,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 3,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 1,
+      "sprite_variant": 0,
+      "locations": [
+        "Bên ngoài thành phía nam",
+        "Cao nguyên phía đông 2"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        32,
+        80,
+        12,
+        10,
+        12,
+        1,
+        0,
+        38,
+        15,
+        8,
+        6,
+        8,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 1,
+      "name": "Bụi gai",
+      "description": "Kinh Cứu Thụ Quái (bụi gai) toàn thân dài khắp. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 12,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 46,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 1,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        32,
+        80,
+        12,
+        10,
+        12,
+        2,
+        0,
+        46,
+        20,
+        9,
+        8,
+        10,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 2,
+      "name": "Cây chứa dịch độc",
+      "description": "Độc Thụ Quái (cây chứa dịch độc) toàn thân tràn ngập nọc độc trí mạng. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 14,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 62,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 1,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        14,
+        10,
+        14,
+        3,
+        0,
+        62,
+        25,
+        10,
+        10,
+        12,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 3,
+      "name": "Cổ Thụ Chi Vương",
+      "description": "Tính tình ôn hòa trưởng giả, khi tức giận sẽ tạo nên uy lực mạnh mẽ có sức hủy diệt to lớn. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 35,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 12,
+      "defense_base": 16,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 82,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 13,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 2,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        35,
+        80,
+        16,
+        12,
+        16,
+        4,
+        0,
+        82,
+        30,
+        11,
+        12,
+        13,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 4,
+      "name": "Cỏ thơm",
+      "description": "Hoa ăn thịt người. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 13,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 44,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 3,
+      "sprite_variant": 0,
+      "locations": [
+        "Cao nguyên phía đông 1",
+        "Cao nguyên phía đông 3",
+        "Rừng rậm phía tây 1"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        33,
+        80,
+        12,
+        10,
+        13,
+        1,
+        0,
+        44,
+        15,
+        8,
+        7,
+        9,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 5,
+      "name": "Hoa ngũ sắc",
+      "description": "Loài thực vật có đôi môi gợi cảm kỳ lạ. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 11,
+      "defense_base": 14,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 50,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 3,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        33,
+        80,
+        12,
+        11,
+        14,
+        2,
+        0,
+        50,
+        20,
+        9,
+        8,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 6,
+      "name": "Hoa ăn thịt người",
+      "description": "Lợi dụng bề ngoài có 5 sắc màu hấp dẫn con mồi, sau đó xơi tái con mồi chỉ với một ngụm. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 14,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 66,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 3,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -3,
+      "raw_values": [
+        34,
+        80,
+        13,
+        11,
+        14,
+        3,
+        0,
+        66,
+        25,
+        10,
+        10,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 7,
+      "name": "Thảo quả",
+      "description": "Trái cây thần kỳ đã hóa hình hài con người. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 13,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 42,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 6,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 4,
+      "sprite_variant": 0,
+      "locations": [
+        "Cao nguyên phía đông 2",
+        "Rừng rậm phía tây 1",
+        "Rừng rậm phía tây 2"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        32,
+        80,
+        12,
+        10,
+        13,
+        1,
+        0,
+        42,
+        15,
+        8,
+        6,
+        8,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 8,
+      "name": "Mạn đà la",
+      "description": "Có sức mạnh đặc biệt tạo thành ngòi nổ, thực lực bất phàm. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 14,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 58,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 4,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        33,
+        80,
+        13,
+        11,
+        14,
+        2,
+        0,
+        58,
+        20,
+        9,
+        8,
+        10,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 9,
+      "name": "Hoa Mạn đà la",
+      "description": "Đóa hoa tiên nở rộ rất xinh đẹp trong xứ xở của Thực Vật hệ. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 11,
+      "defense_base": 15,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 74,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 4,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        14,
+        11,
+        15,
+        3,
+        0,
+        74,
+        25,
+        10,
+        10,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 10,
+      "name": "Tiên Nhân Chưởng",
+      "description": "Tiên Nhân Chưởng Thực Vật hệ toàn thân bao trùm bộ gai nhọn dài khắp. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 13,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 52,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 5,
+      "sprite_variant": 0,
+      "locations": [
+        "Bên ngoài thành phía nam",
+        "Cao nguyên phía đông 1",
+        "Cao nguyên phía đông 2"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        32,
+        80,
+        12,
+        10,
+        13,
+        1,
+        0,
+        52,
+        15,
+        8,
+        8,
+        8,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 11,
+      "name": "Gai khổng lồ",
+      "description": "Sử dụng những cái gai bọc quanh thân làm thứ vũ khí đánh lui kẻ địch. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 13,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 56,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 5,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        32,
+        80,
+        12,
+        10,
+        13,
+        2,
+        0,
+        56,
+        20,
+        9,
+        8,
+        10,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 12,
+      "name": "Gai độc",
+      "description": "Gai độc quanh thân khi cần có khả năng tạo nên uy lực mạnh mẽ làm kẻ địch lập tức bị mất mạng. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 11,
+      "defense_base": 15,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 68,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 5,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        14,
+        11,
+        15,
+        3,
+        0,
+        68,
+        25,
+        10,
+        10,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 13,
+      "name": "Quả Tử Tiểu Tả",
+      "description": "Tiểu cô nương rất mê bộ môn khiêu vũ. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 12,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 34,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 6,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        32,
+        80,
+        12,
+        10,
+        12,
+        1,
+        0,
+        34,
+        15,
+        8,
+        7,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 14,
+      "name": "Tứ Diệp Tiểu Tả",
+      "description": "Tiểu cô nương Hawaii phong tình. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 13,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 58,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 6,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        33,
+        80,
+        13,
+        11,
+        13,
+        2,
+        0,
+        58,
+        20,
+        9,
+        8,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 15,
+      "name": "Bá Vương Hoa",
+      "description": "Nữ Vương Hoa Tiên khí chất bất phàm. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 12,
+      "defense_base": 14,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 74,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 4,
+      "sprite_variant": 3,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        34,
+        80,
+        14,
+        12,
+        14,
+        4,
+        0,
+        74,
+        25,
+        10,
+        12,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 16,
+      "name": "Ái Tâm Thảo",
+      "description": "Phi Vẫn một đại biểu ái tâm. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 12,
+      "defense_base": 14,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 75,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 6,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        34,
+        80,
+        14,
+        12,
+        14,
+        4,
+        0,
+        75,
+        25,
+        10,
+        11,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 17,
+      "name": "Bạch Liệt Sư",
+      "description": "Sư tử dũng mãnh với một lớp bạch kim bao trùm dáng vẻ bên ngoài. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 36,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 50,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 3,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 7,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        36,
+        80,
+        13,
+        10,
+        11,
+        1,
+        1,
+        50,
+        15,
+        9,
+        7,
+        7,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 18,
+      "name": "Vương Sư",
+      "description": "Kim Loại Chi Vương, trên người tản ra khí phách vô cùng mạnh mẽ. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 37,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 64,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 7,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        37,
+        80,
+        14,
+        10,
+        11,
+        2,
+        1,
+        64,
+        20,
+        10,
+        9,
+        7,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 19,
+      "name": "Đế Vương Sư",
+      "description": "Vương Giả, khí thế làm cho không kẻ nào có thể tới gần. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 38,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 11,
+      "defense_base": 12,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 88,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 8,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        38,
+        80,
+        15,
+        11,
+        12,
+        3,
+        1,
+        88,
+        25,
+        11,
+        11,
+        9,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 20,
+      "name": "Thủy Tinh Hùng Sư",
+      "description": "Phát ra hào quang thần thánh của loài sư tử mạnh mẽ, Kim Loại hệ mạnh nhất! [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 38,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 13,
+      "defense_base": 14,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 100,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 8,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        38,
+        80,
+        16,
+        13,
+        14,
+        4,
+        1,
+        100,
+        30,
+        12,
+        12,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 21,
+      "name": "Xích Đồng Xà",
+      "description": "Hoạt động sâu trong lòng đất, món ăn ưa thích chính là quặng đồng. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 35,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 48,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 9,
+      "sprite_variant": 0,
+      "locations": [
+        "Kim Loại Di Tích 2",
+        "Kim Loại Di Tích 3",
+        "Nam Chi Phế Tích 2"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        35,
+        80,
+        13,
+        10,
+        11,
+        1,
+        1,
+        48,
+        15,
+        9,
+        7,
+        6,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 22,
+      "name": "Thiết Giáp Xà",
+      "description": "Sủng vật bề ngoài được bao bởi một lớp kim loại kỳ quái. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 36,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 60,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 10,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        36,
+        80,
+        14,
+        10,
+        11,
+        2,
+        1,
+        60,
+        20,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 23,
+      "name": "Xích Kim Xà Vương",
+      "description": "Hoa Lệ Kim Bì thể hiện sự vương giả tôn quý, năng lượng mạnh mẽ đủ để cho đối thủ thần phục. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 37,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 11,
+      "defense_base": 12,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 80,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 11,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        37,
+        80,
+        14,
+        11,
+        12,
+        3,
+        1,
+        80,
+        25,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 24,
+      "name": "Xích Kim Xà Hậu",
+      "description": "Xà Vương buồn. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 37,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 12,
+      "defense_base": 13,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 90,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 11,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        37,
+        80,
+        15,
+        12,
+        13,
+        4,
+        1,
+        90,
+        30,
+        11,
+        11,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 25,
+      "name": "Binh lính Thiết Giáp",
+      "description": "Trung thành và chiến đấu anh dũng. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 35,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 60,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 12,
+      "sprite_variant": 0,
+      "locations": [
+        "Kim Loại Di Tích 2",
+        "Kim Loại Di Tích 3",
+        "Bầu trời phương bắc 1"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        35,
+        80,
+        13,
+        11,
+        10,
+        1,
+        1,
+        60,
+        15,
+        9,
+        7,
+        7,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 26,
+      "name": "Đội trưởng Thiết Giáp",
+      "description": "Khát máu và là tay thiện chiến, có thực lực bất phàm. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 36,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 68,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 12,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        36,
+        80,
+        14,
+        11,
+        10,
+        2,
+        1,
+        68,
+        20,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 27,
+      "name": "Tướng Thiết Giáp",
+      "description": "Tướng quân tay cầm trường thương công kích. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 37,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 12,
+      "defense_base": 12,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 76,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 13,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        37,
+        80,
+        15,
+        12,
+        12,
+        3,
+        1,
+        76,
+        25,
+        10,
+        10,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 28,
+      "name": "Song Đao Tướng Quân",
+      "description": "Tướng quân thiện chiến rất dũng mãnh và khát máu. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 35,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 90,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 13,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        35,
+        80,
+        12,
+        10,
+        10,
+        4,
+        1,
+        90,
+        30,
+        11,
+        12,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 29,
+      "name": "Đao Thương Tướng Quân",
+      "description": "Tướng quân tiên phong trí dũng song toàn. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 36,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 95,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 13,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        36,
+        80,
+        13,
+        11,
+        10,
+        4,
+        1,
+        95,
+        30,
+        11,
+        12,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 30,
+      "name": "Thiết Đầu",
+      "description": "Thiết Đầu Công thiên bẩm trời phú. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 35,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 60,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 14,
+      "sprite_variant": 0,
+      "locations": [
+        "Kim Loại Di Tích 1",
+        "Rừng rậm phía tây 5",
+        "Nam Chi Phế Tích 3"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        35,
+        80,
+        12,
+        11,
+        10,
+        1,
+        1,
+        60,
+        15,
+        9,
+        8,
+        6,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 31,
+      "name": "Thiết Cự Nhân",
+      "description": "Được các anh em trong Thiết Đầu gọi là người khổng lồ có bàn tay sắt. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 36,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 68,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 14,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        36,
+        80,
+        13,
+        11,
+        10,
+        2,
+        1,
+        68,
+        20,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 32,
+      "name": "Thiết Cự Linh",
+      "description": "Người khổng lồ Taurus. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 37,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 12,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 84,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 14,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        37,
+        80,
+        14,
+        12,
+        11,
+        3,
+        1,
+        84,
+        25,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 33,
+      "name": "Người điện",
+      "description": "Sủng vật quanh thân tràn ngập từ tính. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 37,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 12,
+      "defense_base": 11,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 94,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 14,
+      "sprite_variant": 3,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        37,
+        80,
+        14,
+        12,
+        11,
+        4,
+        1,
+        94,
+        30,
+        11,
+        12,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 34,
+      "name": "Đồng Cầu huynh đệ",
+      "description": "Ánh mắt thiện lượng khó che đậy bản chất ác ma. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 36,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 90,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 15,
+      "sprite_variant": 0,
+      "locations": [
+        "Nam Chi Phế Tích 1",
+        "Nam Chi Phế Tích 2",
+        "Bến tàu phía bắc Bắc Hải"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        36,
+        80,
+        13,
+        11,
+        10,
+        1,
+        1,
+        90,
+        15,
+        9,
+        7,
+        6,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 35,
+      "name": "Thiết Cầu huynh đệ",
+      "description": "Đam mê bộ môn thể thao ngoài trời. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 38,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 11,
+      "defense_base": 12,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 92,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 16,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        38,
+        80,
+        15,
+        11,
+        12,
+        2,
+        1,
+        92,
+        20,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 36,
+      "name": "Ấu Long",
+      "description": "Ấu tử Bạch Kim Long, tinh nghịch phi thường. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 39,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 3,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 17,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        32,
+        80,
+        12,
+        11,
+        10,
+        1,
+        2,
+        39,
+        15,
+        8,
+        8,
+        5,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 37,
+      "name": "Tiểu Bạch Long",
+      "description": "Thể tiến hóa Tiểu Phi Long, tốc độ rất nhanh. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 12,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 55,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 17,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        33,
+        80,
+        13,
+        12,
+        10,
+        2,
+        2,
+        55,
+        20,
+        9,
+        10,
+        6,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 38,
+      "name": "Kim Dực Long",
+      "description": "Thể trưởng thành Phi Long, cơ thể chứa năng lượng mạnh mẽ. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 13,
+      "defense_base": 10,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 83,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 18,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        14,
+        13,
+        10,
+        3,
+        2,
+        83,
+        25,
+        10,
+        12,
+        8,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 39,
+      "name": "Bạch Kim Long",
+      "description": "Vua bầu trời, có được thực lực thần thánh. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 36,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 14,
+      "defense_base": 11,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 91,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 13,
+      "defense_per_10_levels": 11,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 18,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        36,
+        80,
+        15,
+        14,
+        11,
+        4,
+        2,
+        91,
+        30,
+        11,
+        13,
+        11,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 40,
+      "name": "Ưng",
+      "description": "Loài chim hung mãnh bay lượn trên không trung. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 47,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 19,
+      "sprite_variant": 0,
+      "locations": [
+        "Bầu trời phương bắc 2",
+        "Bầu trời phương bắc 3",
+        "Khu trường cũ Bắc Hải 3"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        32,
+        80,
+        12,
+        11,
+        10,
+        1,
+        2,
+        47,
+        15,
+        8,
+        9,
+        5,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 41,
+      "name": "Vương Thứu",
+      "description": "Ưng Chi Vương, vỗ một sải cánh có thể bay đến trời cao. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 12,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 63,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 19,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        33,
+        80,
+        13,
+        12,
+        10,
+        2,
+        2,
+        63,
+        20,
+        9,
+        10,
+        6,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 42,
+      "name": "Sư Thứu",
+      "description": "Sư Thân Ưng Thú trong truyền thuyết (sự pha trộn giữa sư tử và chim ưng), dã thú dị thường hung mãnh. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 13,
+      "defense_base": 10,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 75,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 19,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        14,
+        13,
+        10,
+        3,
+        2,
+        75,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 43,
+      "name": "Dơi khổng lồ",
+      "description": "Dơi Tặc Mi Thử Nhãn, tên trộm đáng yêu. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 12,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 51,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 20,
+      "sprite_variant": 0,
+      "locations": [
+        "Bầu trời phương bắc 1",
+        "Bầu trời phương bắc 3",
+        "Rừng rậm u ám 2"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        32,
+        80,
+        12,
+        12,
+        10,
+        1,
+        2,
+        51,
+        15,
+        8,
+        9,
+        5,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 44,
+      "name": "Răng nanh của dơi",
+      "description": " Batman có đôi mắt màu hồng rất đẹp. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 13,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 59,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 20,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        33,
+        80,
+        13,
+        13,
+        10,
+        2,
+        2,
+        59,
+        20,
+        9,
+        10,
+        6,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 45,
+      "name": "Tần số của dơi",
+      "description": "Áo choàng thần bí tạo nên sức hút cho những kẻ kiếm tìm. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 14,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 67,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 21,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        14,
+        14,
+        11,
+        3,
+        2,
+        67,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 46,
+      "name": "Thiên Mã cánh bạc",
+      "description": "Thiên Mã cực mạnh ai nhìn cũng muốn gần. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 43,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 22,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        32,
+        80,
+        12,
+        11,
+        10,
+        1,
+        2,
+        43,
+        15,
+        8,
+        8,
+        5,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 47,
+      "name": "Thiên Mã một sừng",
+      "description": "Đôi cánh kim loại vàng rất mạnh rất tốt. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 12,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 63,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 22,
+      "sprite_variant": 1,
+      "locations": [
+        "Bầu trời phương bắc 1",
+        "Bầu trời phương bắc 2",
+        "Bến tàu phía nam Bắc Hải"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        33,
+        80,
+        13,
+        12,
+        10,
+        2,
+        2,
+        63,
+        20,
+        9,
+        10,
+        6,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 48,
+      "name": "Thiên Mã Vương",
+      "description": "Thiên Mã tuấn tú hoàn mỹ, Thiên Mã Hoàng Gia kiểu mẫu. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 13,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 71,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 23,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        34,
+        80,
+        14,
+        13,
+        11,
+        3,
+        2,
+        71,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 49,
+      "name": "Mao Cầu Điểu",
+      "description": "Tiền vệ Tiểu Điểu, chim nhỏ tai kẹo đường đáng yêu. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 33,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 63,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 24,
+      "sprite_variant": 0,
+      "locations": [
+        "Bầu trời phương bắc 2",
+        "Bầu trời phương bắc 3"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        33,
+        80,
+        13,
+        11,
+        10,
+        2,
+        2,
+        63,
+        20,
+        9,
+        10,
+        6,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 50,
+      "name": "Phiêu Phù Mao Cầu",
+      "description": "Tiểu Điểu lông xù, tánh khí táo bạo. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 13,
+      "defense_base": 10,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 79,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 24,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        14,
+        13,
+        10,
+        3,
+        2,
+        79,
+        25,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 51,
+      "name": "Pháp Quan Mao Cầu",
+      "description": "Trạng thái đỉnh cao Mao Cầu, trưởng thành, trang trọng. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 13,
+      "defense_base": 11,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 85,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 24,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -3,
+      "raw_values": [
+        34,
+        80,
+        14,
+        13,
+        11,
+        4,
+        2,
+        85,
+        30,
+        10,
+        12,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 52,
+      "name": "Hổ Thú",
+      "description": "Lão Hổ răng hô đáng yêu. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 43,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 75,
+      "energy_per_10_levels": 18,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 3,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 25,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        1,
+        3,
+        75,
+        18,
+        9,
+        8,
+        6,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 53,
+      "name": "Công phu hổ",
+      "description": "Chiến sỹ ưu tú nhất đứng đầu Hổ Tộc. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 44,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 83,
+      "energy_per_10_levels": 23,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 25,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        44,
+        80,
+        14,
+        11,
+        10,
+        2,
+        3,
+        83,
+        23,
+        10,
+        9,
+        7,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 54,
+      "name": "Hổ Dũng Sĩ",
+      "description": "Hổ Tộc là những chiến sỹ dũng mãnh và quyết liệt. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 47,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 12,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 91,
+      "energy_per_10_levels": 27,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 25,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        47,
+        80,
+        15,
+        12,
+        11,
+        3,
+        3,
+        91,
+        27,
+        11,
+        10,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 55,
+      "name": "Hổ Tù Trường",
+      "description": "Lão hổ sáu tay, sức mạnh phi thường, là đại thủ lĩnh Hổ Tộc. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 47,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 12,
+      "defense_base": 12,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 110,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 25,
+      "sprite_variant": 3,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        47,
+        80,
+        15,
+        12,
+        12,
+        4,
+        3,
+        110,
+        30,
+        11,
+        12,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 56,
+      "name": "Ngựa núi",
+      "description": "Ngựa xanh phi thường, đặc biệt rất bảo vệ môi trường. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 42,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 66,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 26,
+      "sprite_variant": 0,
+      "locations": [
+        "Bên ngoài thành phía nam",
+        "Cao nguyên phía đông 3",
+        "Rừng rậm u ám 1"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        42,
+        80,
+        12,
+        10,
+        10,
+        1,
+        3,
+        66,
+        15,
+        8,
+        7,
+        5,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 57,
+      "name": "Ngựa vằn",
+      "description": "Ánh hào quang lấp lóe xung quanh. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 43,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 88,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 26,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        2,
+        3,
+        88,
+        20,
+        9,
+        8,
+        6,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 58,
+      "name": "Ngựa lưỡi liềm khổng lồ",
+      "description": "Cầm trong tay Song Đao Đường Lang mạnh mẽ. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 44,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 104,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 26,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        44,
+        80,
+        15,
+        10,
+        10,
+        3,
+        3,
+        104,
+        25,
+        10,
+        10,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 59,
+      "name": "Heo núi",
+      "description": "Tiểu Trư phàm ăn phàm ngủ hay chảy nước mũi. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 42,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 66,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 6,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 27,
+      "sprite_variant": 0,
+      "locations": [
+        "Cao nguyên phía đông 1",
+        "Cao nguyên phía đông 4",
+        "Rừng rậm u ám 2"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        42,
+        80,
+        12,
+        10,
+        10,
+        1,
+        3,
+        66,
+        15,
+        8,
+        6,
+        5,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 60,
+      "name": "Heo răng nanh khổng lồ",
+      "description": "Heo rừng trong giới xã hội đen, rõ ràng ngay thẳng. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 43,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 76,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 27,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        43,
+        80,
+        13,
+        10,
+        11,
+        2,
+        3,
+        76,
+        20,
+        9,
+        8,
+        6,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 61,
+      "name": "Trư Vương",
+      "description": "Heo rừng lão đại tánh khí táo bạo. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 44,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 86,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 7,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 27,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        44,
+        80,
+        14,
+        10,
+        11,
+        3,
+        3,
+        86,
+        25,
+        10,
+        10,
+        7,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 62,
+      "name": "Heo đốm",
+      "description": "Heo 101 đốm lấm tấm. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 45,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 12,
+      "defense_base": 12,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 90,
+      "energy_per_10_levels": 28,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 27,
+      "sprite_variant": 3,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        45,
+        80,
+        15,
+        12,
+        12,
+        4,
+        3,
+        90,
+        28,
+        10,
+        10,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 63,
+      "name": "Sơn báo",
+      "description": "Tiểu Báo Tử dễ bị nhầm lẫn là tiểu miêu. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 42,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 62,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 8,
+      "strength_per_10_levels": 6,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 28,
+      "sprite_variant": 0,
+      "locations": [
+        "Rừng rậm phía tây 2",
+        "Rừng rậm phía tây 5"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        42,
+        80,
+        12,
+        10,
+        10,
+        1,
+        3,
+        62,
+        15,
+        8,
+        6,
+        5,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 64,
+      "name": "Beo răng kiếm",
+      "description": "Hàm răng móng vuốt 10 phần sắc bén. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 43,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 92,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 29,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        2,
+        3,
+        92,
+        20,
+        9,
+        8,
+        6,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 65,
+      "name": "Mị Ảnh",
+      "description": "Vương giả ẩn giấu trong bóng tối. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 44,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 96,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 29,
+      "sprite_variant": 1,
+      "locations": [
+        "Rừng rậm u ám 4",
+        "Rừng rậm u ám 5"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        44,
+        80,
+        14,
+        10,
+        11,
+        3,
+        3,
+        96,
+        25,
+        10,
+        10,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 66,
+      "name": "Dị Thú",
+      "description": "Hành Tây Dị Thú hoạt bát. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 43,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 84,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 30,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        43,
+        80,
+        13,
+        10,
+        10,
+        2,
+        3,
+        84,
+        20,
+        9,
+        8,
+        6,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 67,
+      "name": "Chân Dị Thú",
+      "description": "Tốc độ rất nhanh, danh xưng là “ Lôi Điện ”. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 44,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 108,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 31,
+      "sprite_variant": 0,
+      "locations": [
+        "Rừng rậm phía tây 3",
+        "Rừng rậm phía tây 5",
+        "Rừng rậm u ám 4"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        44,
+        80,
+        14,
+        11,
+        10,
+        3,
+        3,
+        108,
+        25,
+        10,
+        10,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 68,
+      "name": "Tiểu Lam Kình",
+      "description": "Tiểu Cá Kình đáng yêu chơi đùa tinh nghịch trong nước. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 12,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 38,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 3,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 32,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        32,
+        80,
+        12,
+        10,
+        10,
+        1,
+        4,
+        38,
+        15,
+        10,
+        7,
+        5,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 69,
+      "name": "Cá Kình khổng lồ",
+      "description": "Kính Quang Lọc, những kẻ yêu hòa bình. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 27,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 54,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 33,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        27,
+        80,
+        15,
+        10,
+        10,
+        2,
+        4,
+        54,
+        20,
+        11,
+        8,
+        6,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 70,
+      "name": "Cá Kình một sừng",
+      "description": "Người bảo vệ hòa bình lạnh lùng. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 28,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 82,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 33,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        3,
+        4,
+        82,
+        25,
+        12,
+        10,
+        8,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 71,
+      "name": "Yếu Tắc Kình",
+      "description": "Cá Kình cuồng điên mang theo đầy đủ võ trang. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 17,
+      "strength_base": 11,
+      "defense_base": 11,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 96,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 13,
+      "strength_per_10_levels": 13,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 34,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        32,
+        80,
+        17,
+        11,
+        11,
+        4,
+        4,
+        96,
+        30,
+        13,
+        13,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 72,
+      "name": "Tiểu Cánh Cụt",
+      "description": "Ca sỹ siêu cấp. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 26,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 50,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 35,
+      "sprite_variant": 0,
+      "locations": [
+        "Bến tàu phía bắc Bắc Hải",
+        "Quảng Trường Bắc Hải",
+        "Khu trường cũ Bắc Hải 4"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        26,
+        80,
+        14,
+        10,
+        10,
+        1,
+        4,
+        50,
+        15,
+        10,
+        7,
+        5,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 73,
+      "name": "Đao Phong Cánh Cụt",
+      "description": "Thân mặc đồng phục hộ vệ. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 27,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 66,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 36,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        27,
+        80,
+        15,
+        11,
+        10,
+        2,
+        4,
+        66,
+        20,
+        11,
+        8,
+        6,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 74,
+      "name": "Đế Vương Cánh Cụt",
+      "description": "Đế Vương Tính cách quái gở. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 28,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 74,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 37,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        3,
+        4,
+        74,
+        25,
+        12,
+        10,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 75,
+      "name": "Hải Quy (rùa biển)",
+      "description": "Hải Quy đáng yêu thích đùa dai. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 26,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 46,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 6,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 38,
+      "sprite_variant": 0,
+      "locations": [
+        "Khu trường cũ Bắc Hải 2",
+        "Khu trường cũ Bắc Hải 3",
+        "Khu trường cũ Bắc Hải 4"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        26,
+        80,
+        14,
+        10,
+        10,
+        1,
+        4,
+        46,
+        15,
+        10,
+        6,
+        5,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 76,
+      "name": "Rùa trinh sát",
+      "description": "Hải Quy thúc thúc 10 phần mị lực. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 27,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 62,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 39,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        27,
+        80,
+        15,
+        10,
+        10,
+        2,
+        4,
+        62,
+        20,
+        11,
+        8,
+        6,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 77,
+      "name": "Rùa ma biển sâu",
+      "description": "Ẩn dưới biển sâu thần bí là năng lượng bí ẩn của loài rùa. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 28,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 10,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 70,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 40,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -3,
+      "raw_values": [
+        28,
+        80,
+        16,
+        10,
+        11,
+        3,
+        4,
+        70,
+        25,
+        12,
+        10,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 78,
+      "name": "Rùa khổng lồ biển sâu",
+      "description": "Hình thể lớn nhưng tâm ôn hòa. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 28,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 92,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 13,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 40,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        4,
+        4,
+        92,
+        30,
+        13,
+        12,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 79,
+      "name": "Cua vàng",
+      "description": "Trời sinh vốn đã ngây thơ, đáng yêu. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 26,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 10,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 42,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 2,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 41,
+      "sprite_variant": 0,
+      "locations": [
+        "Bến tàu phía bắc Bắc Hải",
+        "Quảng Trường Bắc Hải",
+        "Khu trường cũ Bắc Hải 4"
+      ],
+      "acquisition_code": null,
+      "raw_values": [
+        26,
+        80,
+        14,
+        10,
+        10,
+        1,
+        4,
+        42,
+        15,
+        10,
+        7,
+        5,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 80,
+      "name": "Cua vân Bạc",
+      "description": "Cua con thích khóc hay mất bình tĩnh. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 27,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 58,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 8,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 1,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 41,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        27,
+        80,
+        15,
+        11,
+        10,
+        2,
+        4,
+        58,
+        20,
+        11,
+        8,
+        6,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 81,
+      "name": "Cua thiên sứ",
+      "description": "Vì yêu thích những câu chuyện cổ tích mà từ chối trưởng thành. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 28,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 11,
+      "defense_base": 11,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 78,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 41,
+      "sprite_variant": 2,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        28,
+        80,
+        16,
+        11,
+        11,
+        3,
+        4,
+        78,
+        25,
+        12,
+        10,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 82,
+      "name": "Cá heo",
+      "description": "Tiểu cá heo thực dụng, có thể ngồi, có thể chiến đấu. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 27,
+      "energy_base": 80,
+      "agility_base": 15,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 1,
+      "hp_per_10_levels": 38,
+      "energy_per_10_levels": 15,
+      "agility_per_10_levels": 13,
+      "strength_per_10_levels": 7,
+      "defense_per_10_levels": 5,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 42,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        27,
+        80,
+        15,
+        11,
+        10,
+        1,
+        4,
+        38,
+        15,
+        13,
+        7,
+        5,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 83,
+      "name": "Cá heo tốc độ",
+      "description": "Cá heo luôn ôm giấc mộng được bay lên không trung. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 28,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 2,
+      "hp_per_10_levels": 54,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 14,
+      "strength_per_10_levels": 9,
+      "defense_per_10_levels": 6,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 42,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        28,
+        80,
+        16,
+        11,
+        10,
+        2,
+        4,
+        54,
+        20,
+        14,
+        9,
+        6,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 84,
+      "name": "Ngựa chiến",
+      "description": "Dị hoá đem lại sức mạnh phi thường cho sinh vật. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 40,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 11,
+      "defense_base": 10,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 95,
+      "energy_per_10_levels": 20,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 26,
+      "sprite_variant": 3,
+      "locations": [],
+      "acquisition_code": -3,
+      "raw_values": [
+        40,
+        80,
+        13,
+        11,
+        10,
+        4,
+        3,
+        95,
+        20,
+        10,
+        12,
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 85,
+      "name": "Quỷ Vương Địa Phủ",
+      "description": "U Linh hệ. [khắc chế 5 hệ khác]",
+      "element_game_id": 255,
+      "element": "Vô hệ",
+      "hp_base": 60,
+      "energy_base": 80,
+      "agility_base": 20,
+      "strength_base": 17,
+      "defense_base": 18,
+      "evolution_stage": 5,
+      "hp_per_10_levels": 100,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 43,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        60,
+        80,
+        20,
+        17,
+        18,
+        5,
+        -1,
+        100,
+        30,
+        12,
+        10,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 86,
+      "name": "Quỷ Vương Địa Phủ",
+      "description": "U Linh hệ. [khắc chế 5 hệ khác]",
+      "element_game_id": 255,
+      "element": "Vô hệ",
+      "hp_base": 60,
+      "energy_base": 80,
+      "agility_base": 20,
+      "strength_base": 17,
+      "defense_base": 18,
+      "evolution_stage": 5,
+      "hp_per_10_levels": 120,
+      "energy_per_10_levels": 40,
+      "agility_per_10_levels": 14,
+      "strength_per_10_levels": 14,
+      "defense_per_10_levels": 13,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 43,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        60,
+        80,
+        20,
+        17,
+        18,
+        5,
+        -1,
+        120,
+        40,
+        14,
+        14,
+        13,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 87,
+      "name": "Cáp Cáp Thụ",
+      "description": "Khoái Hoạt Thụ Tinh, tinh quái, đáng yêu. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 14,
+      "defense_base": 15,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 60,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 1,
+      "flags": [
+        1,
+        0
+      ],
+      "sprite_group": 44,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        32,
+        80,
+        14,
+        14,
+        15,
+        3,
+        0,
+        60,
+        25,
+        10,
+        10,
+        12,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "game_id": 88,
+      "name": "Thụ tinh ngàn năm",
+      "description": "Thụ Tinh thu hành nhiều năm, thực lực phi phàm. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 16,
+      "strength_base": 15,
+      "defense_base": 16,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 80,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 13,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 44,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        34,
+        80,
+        16,
+        15,
+        16,
+        4,
+        0,
+        80,
+        30,
+        11,
+        11,
+        13,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 89,
+      "name": "Hoa Tiên Tử",
+      "description": "Có được ma lực mạnh mẽ nhất Ailulima. [khắc chế Phi Hành hệ]",
+      "element_game_id": 0,
+      "element": "Thực Vật hệ",
+      "hp_base": 35,
+      "energy_base": 82,
+      "agility_base": 18,
+      "strength_base": 16,
+      "defense_base": 17,
+      "evolution_stage": 5,
+      "hp_per_10_levels": 82,
+      "energy_per_10_levels": 32,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 13,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 45,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        35,
+        82,
+        18,
+        16,
+        17,
+        5,
+        0,
+        82,
+        32,
+        12,
+        12,
+        13,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 90,
+      "name": "Cá Chép Rồng",
+      "description": "Tiểu Tê Tê đáng yêu, công thủ cũng không tệ. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 38,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 15,
+      "defense_base": 13,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 88,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 1,
+      "flags": [
+        1,
+        0
+      ],
+      "sprite_group": 46,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        38,
+        80,
+        13,
+        15,
+        13,
+        3,
+        1,
+        88,
+        25,
+        11,
+        10,
+        10,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "game_id": 91,
+      "name": "Cá Chép Rồng sắt",
+      "description": "Toàn thân mặc bộ giáp Warrior mạnh mẽ. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 38,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 16,
+      "defense_base": 16,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 96,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 46,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        38,
+        80,
+        14,
+        16,
+        16,
+        4,
+        1,
+        96,
+        30,
+        12,
+        11,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 92,
+      "name": "Phá Hư Thần",
+      "description": "Có được lực hủy diệt đáng sợ. [khắc chế Mãnh Thú hệ]",
+      "element_game_id": 1,
+      "element": "Kim Loại hệ",
+      "hp_base": 40,
+      "energy_base": 82,
+      "agility_base": 16,
+      "strength_base": 18,
+      "defense_base": 17,
+      "evolution_stage": 5,
+      "hp_per_10_levels": 100,
+      "energy_per_10_levels": 32,
+      "agility_per_10_levels": 13,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 14,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 47,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        40,
+        82,
+        16,
+        18,
+        17,
+        5,
+        1,
+        100,
+        32,
+        13,
+        12,
+        14,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 93,
+      "name": "Bạch Thiên Sử",
+      "description": "Thần Chi Sứ Giả bay lượn trên không trung lam sắc. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 34,
+      "energy_base": 80,
+      "agility_base": 18,
+      "strength_base": 17,
+      "defense_base": 9,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 83,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 9,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 1,
+      "flags": [
+        1,
+        0
+      ],
+      "sprite_group": 48,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        34,
+        80,
+        18,
+        17,
+        9,
+        3,
+        2,
+        83,
+        25,
+        9,
+        10,
+        8,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "game_id": 94,
+      "name": "Thiên Sử Trường",
+      "description": "Thiên Sứ là biểu tượng của sự uy nghi và quyền lực. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 35,
+      "energy_base": 80,
+      "agility_base": 20,
+      "strength_base": 18,
+      "defense_base": 10,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 91,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 10,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 11,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 48,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        35,
+        80,
+        20,
+        18,
+        10,
+        4,
+        2,
+        91,
+        30,
+        10,
+        11,
+        11,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 95,
+      "name": "Phi Thiên Huyền Nữ",
+      "description": "Hóa thân Cửu Thiên Huyền Nữ. [khắc chế Hải Dương hệ]",
+      "element_game_id": 2,
+      "element": "Phi Hành hệ",
+      "hp_base": 36,
+      "energy_base": 82,
+      "agility_base": 21,
+      "strength_base": 22,
+      "defense_base": 12,
+      "evolution_stage": 5,
+      "hp_per_10_levels": 95,
+      "energy_per_10_levels": 32,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 12,
+      "defense_per_10_levels": 12,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 49,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        36,
+        82,
+        21,
+        22,
+        12,
+        5,
+        2,
+        95,
+        32,
+        11,
+        12,
+        12,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 96,
+      "name": "Sói mặt trăng",
+      "description": "Tắm trong ánh trăng thần bí. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 47,
+      "energy_base": 80,
+      "agility_base": 13,
+      "strength_base": 17,
+      "defense_base": 12,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 100,
+      "energy_per_10_levels": 27,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 1,
+      "flags": [
+        1,
+        0
+      ],
+      "sprite_group": 50,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        47,
+        80,
+        13,
+        17,
+        12,
+        3,
+        3,
+        100,
+        27,
+        11,
+        10,
+        8,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "game_id": 97,
+      "name": "Sói Vương Cao Ngạo",
+      "description": "Vua bóng đêm cao ngạo. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 47,
+      "energy_base": 80,
+      "agility_base": 14,
+      "strength_base": 20,
+      "defense_base": 13,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 115,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 9,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 50,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        47,
+        80,
+        14,
+        20,
+        13,
+        4,
+        3,
+        115,
+        30,
+        11,
+        11,
+        9,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 98,
+      "name": "Ngân Hồ Vương Tử",
+      "description": "Vương tử Ngân Hồ Tộc uy phong lẫm liệt. [khắc chế Thực Vật hệ]",
+      "element_game_id": 3,
+      "element": "Mãnh Thú hệ",
+      "hp_base": 50,
+      "energy_base": 82,
+      "agility_base": 15,
+      "strength_base": 21,
+      "defense_base": 14,
+      "evolution_stage": 5,
+      "hp_per_10_levels": 117,
+      "energy_per_10_levels": 32,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 13,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 51,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        50,
+        82,
+        15,
+        21,
+        14,
+        5,
+        3,
+        117,
+        32,
+        12,
+        13,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 99,
+      "name": "Tê Lợi Sa (cá mập)",
+      "description": "Sát thủ khét tiếng của đại dương. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 28,
+      "energy_base": 80,
+      "agility_base": 18,
+      "strength_base": 12,
+      "defense_base": 12,
+      "evolution_stage": 3,
+      "hp_per_10_levels": 82,
+      "energy_per_10_levels": 25,
+      "agility_per_10_levels": 11,
+      "strength_per_10_levels": 10,
+      "defense_per_10_levels": 8,
+      "evolution_capacity": 1,
+      "flags": [
+        1,
+        0
+      ],
+      "sprite_group": 52,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -5,
+      "raw_values": [
+        28,
+        80,
+        18,
+        12,
+        12,
+        3,
+        4,
+        82,
+        25,
+        11,
+        10,
+        8,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "game_id": 100,
+      "name": "Sa Vương Cuồng Bạo",
+      "description": "Tồn tại mối nguy hiểm nhất chính trong đại dương. [khắc chế Kim Loại hệ]",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 32,
+      "energy_base": 80,
+      "agility_base": 20,
+      "strength_base": 14,
+      "defense_base": 14,
+      "evolution_stage": 4,
+      "hp_per_10_levels": 96,
+      "energy_per_10_levels": 30,
+      "agility_per_10_levels": 12,
+      "strength_per_10_levels": 11,
+      "defense_per_10_levels": 10,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 52,
+      "sprite_variant": 1,
+      "locations": [],
+      "acquisition_code": -2,
+      "raw_values": [
+        32,
+        80,
+        20,
+        14,
+        14,
+        4,
+        4,
+        96,
+        30,
+        12,
+        11,
+        10,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 101,
+      "name": "Mỹ Nhân Ngư",
+      "description": "Ca sỹ xinh đẹp, tuyệt mỹ thiện lương. [khắc chế Kim Loại hệ] ",
+      "element_game_id": 4,
+      "element": "Hải Dương hệ",
+      "hp_base": 34,
+      "energy_base": 82,
+      "agility_base": 16,
+      "strength_base": 18,
+      "defense_base": 15,
+      "evolution_stage": 5,
+      "hp_per_10_levels": 98,
+      "energy_per_10_levels": 32,
+      "agility_per_10_levels": 14,
+      "strength_per_10_levels": 13,
+      "defense_per_10_levels": 11,
+      "evolution_capacity": 0,
+      "flags": [
+        0,
+        0
+      ],
+      "sprite_group": 53,
+      "sprite_variant": 0,
+      "locations": [],
+      "acquisition_code": -1,
+      "raw_values": [
+        34,
+        82,
+        16,
+        18,
+        15,
+        5,
+        4,
+        98,
+        32,
+        14,
+        13,
+        11,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "game_id": 0,
+      "name": "Triền Nhiễu",
+      "description": "Cỏ Hệ Kỹ năng bậc 1",
+      "element_game_id": 0,
+      "power": 15,
+      "energy_cost": 10,
+      "status_chance": 4,
+      "status_effect_game_id": 5,
+      "tier": 1,
+      "category": "elemental_attack",
+      "artwork_group": 0,
+      "artwork_animation": 0,
+      "raw_values": [
+        15,
+        10,
+        4,
+        5
+      ]
+    },
+    {
+      "game_id": 1,
+      "name": "Phong Lợi Tiêm Thứ",
+      "description": "Cỏ Hệ Kỹ năng bậc 2",
+      "element_game_id": 0,
+      "power": 18,
+      "energy_cost": 13,
+      "status_chance": 8,
+      "status_effect_game_id": 5,
+      "tier": 2,
+      "category": "elemental_attack",
+      "artwork_group": 0,
+      "artwork_animation": 1,
+      "raw_values": [
+        18,
+        13,
+        8,
+        5
+      ]
+    },
+    {
+      "game_id": 2,
+      "name": "Bạo Tạc Chủng Tử",
+      "description": "Cỏ Hệ Kỹ năng bậc 3",
+      "element_game_id": 0,
+      "power": 21,
+      "energy_cost": 16,
+      "status_chance": 12,
+      "status_effect_game_id": 5,
+      "tier": 3,
+      "category": "elemental_attack",
+      "artwork_group": 0,
+      "artwork_animation": 2,
+      "raw_values": [
+        21,
+        16,
+        12,
+        5
+      ]
+    },
+    {
+      "game_id": 3,
+      "name": "Phi Diệp Đao Phong",
+      "description": "Cỏ Hệ Kỹ năng bậc 4",
+      "element_game_id": 0,
+      "power": 23,
+      "energy_cost": 19,
+      "status_chance": 16,
+      "status_effect_game_id": 5,
+      "tier": 4,
+      "category": "elemental_attack",
+      "artwork_group": 0,
+      "artwork_animation": 3,
+      "raw_values": [
+        23,
+        19,
+        16,
+        5
+      ]
+    },
+    {
+      "game_id": 4,
+      "name": "Thực Vật Phong Bạo",
+      "description": "Cỏ Hệ Kỹ năng bậc 5",
+      "element_game_id": 0,
+      "power": 27,
+      "energy_cost": 25,
+      "status_chance": 24,
+      "status_effect_game_id": 5,
+      "tier": 5,
+      "category": "elemental_attack",
+      "artwork_group": 0,
+      "artwork_animation": 4,
+      "raw_values": [
+        27,
+        25,
+        24,
+        5
+      ]
+    },
+    {
+      "game_id": 5,
+      "name": "Thiết Chuy",
+      "description": "Kim Loại Hệ Kỹ năng bậc 1",
+      "element_game_id": 1,
+      "power": 13,
+      "energy_cost": 10,
+      "status_chance": 4,
+      "status_effect_game_id": 0,
+      "tier": 1,
+      "category": "elemental_attack",
+      "artwork_group": 1,
+      "artwork_animation": 0,
+      "raw_values": [
+        13,
+        10,
+        4,
+        0
+      ]
+    },
+    {
+      "game_id": 6,
+      "name": "Thiết Phù Đồ",
+      "description": "Kim Loại Hệ Kỹ năng bậc 2",
+      "element_game_id": 1,
+      "power": 16,
+      "energy_cost": 13,
+      "status_chance": 8,
+      "status_effect_game_id": 0,
+      "tier": 2,
+      "category": "elemental_attack",
+      "artwork_group": 1,
+      "artwork_animation": 1,
+      "raw_values": [
+        16,
+        13,
+        8,
+        0
+      ]
+    },
+    {
+      "game_id": 7,
+      "name": "Bạo Liệt Vũ",
+      "description": "Kim Loại Hệ Kỹ năng bậc 3",
+      "element_game_id": 1,
+      "power": 19,
+      "energy_cost": 16,
+      "status_chance": 12,
+      "status_effect_game_id": 0,
+      "tier": 3,
+      "category": "elemental_attack",
+      "artwork_group": 1,
+      "artwork_animation": 2,
+      "raw_values": [
+        19,
+        16,
+        12,
+        0
+      ]
+    },
+    {
+      "game_id": 8,
+      "name": "Toản Thạch Thiết Cát",
+      "description": "Kim Loại Hệ Kỹ năng bậc 4",
+      "element_game_id": 1,
+      "power": 21,
+      "energy_cost": 19,
+      "status_chance": 16,
+      "status_effect_game_id": 0,
+      "tier": 4,
+      "category": "elemental_attack",
+      "artwork_group": 1,
+      "artwork_animation": 3,
+      "raw_values": [
+        21,
+        19,
+        16,
+        0
+      ]
+    },
+    {
+      "game_id": 9,
+      "name": "Kim Loại Liệt Trảm",
+      "description": "Kim Loại Hệ Kỹ năng bậc 5",
+      "element_game_id": 1,
+      "power": 25,
+      "energy_cost": 25,
+      "status_chance": 24,
+      "status_effect_game_id": 0,
+      "tier": 5,
+      "category": "elemental_attack",
+      "artwork_group": 1,
+      "artwork_animation": 4,
+      "raw_values": [
+        25,
+        25,
+        24,
+        0
+      ]
+    },
+    {
+      "game_id": 10,
+      "name": "Phi Tường Trảm",
+      "description": "Phi Hành Hệ Kỹ năng bậc 1",
+      "element_game_id": 2,
+      "power": 13,
+      "energy_cost": 10,
+      "status_chance": 4,
+      "status_effect_game_id": 4,
+      "tier": 1,
+      "category": "elemental_attack",
+      "artwork_group": 2,
+      "artwork_animation": 0,
+      "raw_values": [
+        13,
+        10,
+        4,
+        4
+      ]
+    },
+    {
+      "game_id": 11,
+      "name": "Bạo Phong Toàn Trận",
+      "description": "Phi Hành Hệ Kỹ năng bậc 2",
+      "element_game_id": 2,
+      "power": 16,
+      "energy_cost": 13,
+      "status_chance": 8,
+      "status_effect_game_id": 4,
+      "tier": 2,
+      "category": "elemental_attack",
+      "artwork_group": 2,
+      "artwork_animation": 1,
+      "raw_values": [
+        16,
+        13,
+        8,
+        4
+      ]
+    },
+    {
+      "game_id": 12,
+      "name": "Tật Phong Tốc Hàng",
+      "description": "Phi Hành Hệ Kỹ năng bậc 3",
+      "element_game_id": 2,
+      "power": 19,
+      "energy_cost": 16,
+      "status_chance": 12,
+      "status_effect_game_id": 4,
+      "tier": 3,
+      "category": "elemental_attack",
+      "artwork_group": 2,
+      "artwork_animation": 2,
+      "raw_values": [
+        19,
+        16,
+        12,
+        4
+      ]
+    },
+    {
+      "game_id": 13,
+      "name": "Thánh Linh Khoan Thứ",
+      "description": "Phi Hành Hệ Kỹ năng bậc 4",
+      "element_game_id": 2,
+      "power": 21,
+      "energy_cost": 19,
+      "status_chance": 16,
+      "status_effect_game_id": 4,
+      "tier": 4,
+      "category": "elemental_attack",
+      "artwork_group": 2,
+      "artwork_animation": 3,
+      "raw_values": [
+        21,
+        19,
+        16,
+        4
+      ]
+    },
+    {
+      "game_id": 14,
+      "name": "Thiên Nộ",
+      "description": "Phi Hành hệ kỹ năng bậc 5",
+      "element_game_id": 2,
+      "power": 25,
+      "energy_cost": 25,
+      "status_chance": 24,
+      "status_effect_game_id": 4,
+      "tier": 5,
+      "category": "elemental_attack",
+      "artwork_group": 2,
+      "artwork_animation": 4,
+      "raw_values": [
+        25,
+        25,
+        24,
+        4
+      ]
+    },
+    {
+      "game_id": 15,
+      "name": "Phác Giảo",
+      "description": "Mãnh Thú hệ Kỹ năng bậc 1",
+      "element_game_id": 3,
+      "power": 13,
+      "energy_cost": 10,
+      "status_chance": 4,
+      "status_effect_game_id": 2,
+      "tier": 1,
+      "category": "elemental_attack",
+      "artwork_group": 3,
+      "artwork_animation": 0,
+      "raw_values": [
+        13,
+        10,
+        4,
+        2
+      ]
+    },
+    {
+      "game_id": 16,
+      "name": "Tê Liệt Kích",
+      "description": "Mãnh Thú hệ Kỹ năng bậc 2",
+      "element_game_id": 3,
+      "power": 16,
+      "energy_cost": 13,
+      "status_chance": 8,
+      "status_effect_game_id": 2,
+      "tier": 2,
+      "category": "elemental_attack",
+      "artwork_group": 3,
+      "artwork_animation": 1,
+      "raw_values": [
+        16,
+        13,
+        8,
+        2
+      ]
+    },
+    {
+      "game_id": 17,
+      "name": "Nộ Ý Cuồng Bạo",
+      "description": "Mãnh Thú hệ Kỹ năng bậc 3",
+      "element_game_id": 3,
+      "power": 19,
+      "energy_cost": 16,
+      "status_chance": 12,
+      "status_effect_game_id": 2,
+      "tier": 3,
+      "category": "elemental_attack",
+      "artwork_group": 3,
+      "artwork_animation": 2,
+      "raw_values": [
+        19,
+        16,
+        12,
+        2
+      ]
+    },
+    {
+      "game_id": 18,
+      "name": "Tứ Ngược Trùng Phong",
+      "description": "Mãnh Thú hệ Kỹ năng bậc 4",
+      "element_game_id": 3,
+      "power": 21,
+      "energy_cost": 19,
+      "status_chance": 16,
+      "status_effect_game_id": 2,
+      "tier": 4,
+      "category": "elemental_attack",
+      "artwork_group": 3,
+      "artwork_animation": 3,
+      "raw_values": [
+        21,
+        19,
+        16,
+        2
+      ]
+    },
+    {
+      "game_id": 19,
+      "name": "Cuồng Bạo Tê Hống",
+      "description": "Mãnh Thú hệ Kỹ năng bậc 5",
+      "element_game_id": 3,
+      "power": 25,
+      "energy_cost": 25,
+      "status_chance": 24,
+      "status_effect_game_id": 2,
+      "tier": 5,
+      "category": "elemental_attack",
+      "artwork_group": 3,
+      "artwork_animation": 4,
+      "raw_values": [
+        25,
+        25,
+        24,
+        2
+      ]
+    },
+    {
+      "game_id": 20,
+      "name": "Thủy Trụ",
+      "description": "Hải Dương hệ Kỹ năng bậc 1",
+      "element_game_id": 4,
+      "power": 13,
+      "energy_cost": 10,
+      "status_chance": 4,
+      "status_effect_game_id": 3,
+      "tier": 1,
+      "category": "elemental_attack",
+      "artwork_group": 4,
+      "artwork_animation": 0,
+      "raw_values": [
+        13,
+        10,
+        4,
+        3
+      ]
+    },
+    {
+      "game_id": 21,
+      "name": "Tiên Xạ Thủy Lãng",
+      "description": "Hải Dương hệ Kỹ năng bậc 2",
+      "element_game_id": 4,
+      "power": 16,
+      "energy_cost": 13,
+      "status_chance": 8,
+      "status_effect_game_id": 3,
+      "tier": 2,
+      "category": "elemental_attack",
+      "artwork_group": 4,
+      "artwork_animation": 1,
+      "raw_values": [
+        16,
+        13,
+        8,
+        3
+      ]
+    },
+    {
+      "game_id": 22,
+      "name": "Thủy Cầu Áp Sát",
+      "description": "Hải Dương hệ Kỹ năng bậc 3",
+      "element_game_id": 4,
+      "power": 19,
+      "energy_cost": 16,
+      "status_chance": 12,
+      "status_effect_game_id": 3,
+      "tier": 3,
+      "category": "elemental_attack",
+      "artwork_group": 4,
+      "artwork_animation": 2,
+      "raw_values": [
+        19,
+        16,
+        12,
+        3
+      ]
+    },
+    {
+      "game_id": 23,
+      "name": "Phún Xạ Thủy Trụ",
+      "description": "Hải Dương hệ Kỹ năng bậc 4",
+      "element_game_id": 4,
+      "power": 21,
+      "energy_cost": 19,
+      "status_chance": 16,
+      "status_effect_game_id": 3,
+      "tier": 4,
+      "category": "elemental_attack",
+      "artwork_group": 4,
+      "artwork_animation": 3,
+      "raw_values": [
+        21,
+        19,
+        16,
+        3
+      ]
+    },
+    {
+      "game_id": 24,
+      "name": "Hải Thần Phục Cừu",
+      "description": "Hải Dương hệ Kỹ năng bậc 5",
+      "element_game_id": 4,
+      "power": 25,
+      "energy_cost": 25,
+      "status_chance": 24,
+      "status_effect_game_id": 3,
+      "tier": 5,
+      "category": "elemental_attack",
+      "artwork_group": 4,
+      "artwork_animation": 4,
+      "raw_values": [
+        25,
+        25,
+        24,
+        3
+      ]
+    },
+    {
+      "game_id": 25,
+      "name": "Công Kích thông dụng",
+      "description": "Kỹ năng công kích cơ bản",
+      "element_game_id": null,
+      "power": 8,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 0,
+      "raw_values": [
+        8,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 26,
+      "name": "Tàn quân",
+      "description": "Giảm 25% độ trung thành của sủng vật công kích kẻ địch",
+      "element_game_id": null,
+      "power": 18,
+      "energy_cost": 40,
+      "status_chance": 100,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 1,
+      "raw_values": [
+        18,
+        40,
+        100,
+        25
+      ]
+    },
+    {
+      "game_id": 27,
+      "name": "Trị liệu sơ cấp",
+      "description": "Hồi phục 70 điểm sinh mệnh",
+      "element_game_id": null,
+      "power": 7,
+      "energy_cost": 10,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 2,
+      "raw_values": [
+        7,
+        10
+      ]
+    },
+    {
+      "game_id": 28,
+      "name": "Trị liệu chuyên nghiệp",
+      "description": "Hồi phục 200 điểm sinh mệnh",
+      "element_game_id": null,
+      "power": 20,
+      "energy_cost": 10,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 3,
+      "raw_values": [
+        20,
+        10
+      ]
+    },
+    {
+      "game_id": 29,
+      "name": "Tử Vong Chi Xúc",
+      "description": "Tiêu hao toàn bộ năng lượng hiện tại một lần duy nhất cũng như chuyển hóa thương tổn",
+      "element_game_id": null,
+      "power": 2,
+      "energy_cost": 1,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 4,
+      "raw_values": [
+        2,
+        1
+      ]
+    },
+    {
+      "game_id": 30,
+      "name": "Kỹ năng Phong Bế",
+      "description": "3 hiệp giao đấu không thể sử dụng nhiều hơn 3 kỹ năng công kích",
+      "element_game_id": null,
+      "power": 8,
+      "energy_cost": 50,
+      "status_chance": 100,
+      "status_effect_game_id": 6,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 5,
+      "raw_values": [
+        8,
+        50,
+        100,
+        6
+      ]
+    },
+    {
+      "game_id": 31,
+      "name": "Độc Dịch Công Kích",
+      "description": "Nâng cao hiệu quả Hủ Thực của sủng vật Thực Vật hệ",
+      "element_game_id": null,
+      "power": 3,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 6,
+      "raw_values": [
+        3
+      ]
+    },
+    {
+      "game_id": 32,
+      "name": "Tiêm Nha Lợi Xỉ",
+      "description": "Kéo dài hiệp đấu duy trì liên tục Tê Liệt của sủng vật Mãnh Thú hệ",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 7,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 33,
+      "name": "Cương Cân Thiết Cốt",
+      "description": "Nâng cao hiệu quả phòng ngự của sủng vật Kim Loại hệ",
+      "element_game_id": null,
+      "power": 80,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 8,
+      "raw_values": [
+        80,
+        0
+      ]
+    },
+    {
+      "game_id": 34,
+      "name": "Tinh Thần Công Kích",
+      "description": "Sủng vật Phi Hành hệ công kích đồng thời có thể giảm bớt năng lượng đối thủ",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 9,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 35,
+      "name": "Triều Tịch Năng Lượng",
+      "description": "Sủng vật Hải Dương hệ công kích có thể giảm một phần tiêu hao năng lượng",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 10,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 36,
+      "name": "Kinh nghiệm đa dạng",
+      "description": "Đạt được 2 lần kinh nghiệm (có thể đồng thời sử dụng kinh nghiệm phong phú)",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 11,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 37,
+      "name": "Kinh nghiệm phong phú",
+      "description": "Đạt được 3 lần kinh nghiệm (có thể đồng thời sử dụng nhiều kinh nghiệm hơn)",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 12,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 38,
+      "name": "Trọng Sinh Chi Tâm",
+      "description": "Sau khi tử vong có 70% tỷ lệ hồi sinh",
+      "element_game_id": null,
+      "power": 50,
+      "energy_cost": 60,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 13,
+      "raw_values": [
+        50,
+        60
+      ]
+    },
+    {
+      "game_id": 39,
+      "name": "Hạnh Vận Chi Tinh",
+      "description": "Nâng cao tỷ lệ gặp được sủng vật hiếm",
+      "element_game_id": null,
+      "power": 70,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 14,
+      "raw_values": [
+        70
+      ]
+    },
+    {
+      "game_id": 40,
+      "name": "Đồng bạn trung thành",
+      "description": "Lòng trung thành của sủng vật vĩnh viễn không giảm",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 15,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 41,
+      "name": "Thân Hòa Thiên Sử",
+      "description": "Bắt được kẻ địch thất bại cũng không chạy trốn [bắt sủng chuyên dụng]",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 16,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 42,
+      "name": "Đào tẩu chuyên nghiệp",
+      "description": "Chạy trốn nhất định thành công",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 17,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 43,
+      "name": "Hoa Thảo Ý Chí",
+      "description": "Chiến đấu trên khu hoa viên là thế mạnh có lợi cho sủng vật Thực Vật hệ",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 18,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 44,
+      "name": "Kim Loại Ý Chí",
+      "description": "Chiến đấu ở khu di tích là thế mạnh có lợi cho sủng vật Kim Loại hệ",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 19,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 45,
+      "name": "Phi Hành Ý Chí",
+      "description": "Chiến đấu trên không trung là thế mạnh có lợi cho sủng vật Phi Hành hệ",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 20,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 46,
+      "name": "Mãnh Thú Ý Chí",
+      "description": "Chiến đấu ở vùng đồng bằng là thế mạnh có lợi cho sủng vật Mãnh Thú hệ",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 21,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 47,
+      "name": "Hải Dương Ý Chí",
+      "description": "Chiến đấu trên đại dương là thế mạnh có lợi cho sủng vật Hải Dương hệ",
+      "element_game_id": null,
+      "power": 0,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 22,
+      "raw_values": [
+        0,
+        0
+      ]
+    },
+    {
+      "game_id": 48,
+      "name": "Thế Thân Mộc Ngẫu",
+      "description": "Đã bị công kích giảm 30% tỷ lệ thương tổn ",
+      "element_game_id": null,
+      "power": 30,
+      "energy_cost": 0,
+      "status_chance": 0,
+      "status_effect_game_id": null,
+      "tier": 0,
+      "category": "common_or_passive",
+      "artwork_group": 5,
+      "artwork_animation": 23,
+      "raw_values": [
+        30
+      ]
+    }
+  ],
+  "items": [
+    {
+      "game_id": 0,
+      "name": "Đồ uống",
+      "description": "Hồi phục sinh mệnh 35%",
+      "category": "consumable",
+      "frame_id": 0,
+      "sound_id": 0
+    },
+    {
+      "game_id": 1,
+      "name": "Bánh bích quy",
+      "description": "Hồi phục sinh mệnh 65%",
+      "category": "consumable",
+      "frame_id": 1,
+      "sound_id": 0
+    },
+    {
+      "game_id": 2,
+      "name": "Chocolate",
+      "description": "Hồi phục toàn bộ sinh mệnh",
+      "category": "consumable",
+      "frame_id": 2,
+      "sound_id": 1
+    },
+    {
+      "game_id": 3,
+      "name": "Năng lượng thạch",
+      "description": "Hồi phục giá trị kỹ năng 50%",
+      "category": "consumable",
+      "frame_id": 3,
+      "sound_id": 1
+    },
+    {
+      "game_id": 4,
+      "name": "Tụ năng thạch",
+      "description": "Khôi phục tất cả giá trị kỹ năng",
+      "category": "consumable",
+      "frame_id": 4,
+      "sound_id": 1
+    },
+    {
+      "game_id": 5,
+      "name": "Cây bạch quả quả",
+      "description": "Đồng thời hồi phục giá trị sinh mệnh và kỹ năng 35%",
+      "category": "consumable",
+      "frame_id": 5,
+      "sound_id": 3
+    },
+    {
+      "game_id": 6,
+      "name": "Hoàng kim đường",
+      "description": "Hồi phục toàn bộ giá trị sinh mệnh và kỹ năng",
+      "category": "consumable",
+      "frame_id": 6,
+      "sound_id": 3
+    },
+    {
+      "game_id": 7,
+      "name": "sinh mệnh thạch",
+      "description": "Hồi sinh kéo theo sủng vật hồi phục giá trị sinh mệnh 30%",
+      "category": "consumable",
+      "frame_id": 7,
+      "sound_id": 1
+    },
+    {
+      "game_id": 8,
+      "name": "Vạn năng dược",
+      "description": "Giải trừ nơi có trạng thái dị thường",
+      "category": "consumable",
+      "frame_id": 8,
+      "sound_id": 1
+    },
+    {
+      "game_id": 9,
+      "name": "Phong ấn cầu",
+      "description": "Chuẩn bị bắt sủng vật, hiệu quả bình thường",
+      "category": "consumable",
+      "frame_id": 9,
+      "sound_id": 1
+    },
+    {
+      "game_id": 10,
+      "name": "Cao cấp cầu",
+      "description": "Chuẩn bị bắt sủng vật, hiệu quả rất tốt",
+      "category": "consumable",
+      "frame_id": 10,
+      "sound_id": 3
+    },
+    {
+      "game_id": 11,
+      "name": "Đại sư cầu",
+      "description": "Chuẩn bị bắt được, 100% thành công",
+      "category": "consumable",
+      "frame_id": 11,
+      "sound_id": 2
+    },
+    {
+      "game_id": 12,
+      "name": "Hưng phấn cô",
+      "description": "Hồi phục một phần độ trung thành của sủng vật",
+      "category": "consumable",
+      "frame_id": 12,
+      "sound_id": 2
+    },
+    {
+      "game_id": 13,
+      "name": "Mật tâm đường",
+      "description": "Hồi phục toàn bộ độ trung thành của sủng vật",
+      "category": "consumable",
+      "frame_id": 13,
+      "sound_id": 2
+    },
+    {
+      "game_id": 14,
+      "name": "Tránh quái hoàn",
+      "description": "Trong thời gian ngắn sẽ không gặp địch",
+      "category": "consumable",
+      "frame_id": 14,
+      "sound_id": 2
+    },
+    {
+      "game_id": 15,
+      "name": "Nước hoa",
+      "description": "Thời gian dài sẽ không gặp địch",
+      "category": "consumable",
+      "frame_id": 15,
+      "sound_id": 2
+    },
+    {
+      "game_id": 16,
+      "name": "Cứng cỏi thạch",
+      "description": "Tài liệu tiến hóa cơ bản của sủng vật Mãnh Thú hệ",
+      "category": "mineral",
+      "frame_id": 16,
+      "sound_id": 2
+    },
+    {
+      "game_id": 17,
+      "name": "Thú hồn",
+      "description": "Tài liệu tiến hóa bậc cao của sủng vật Mãnh Thú hệ",
+      "category": "mineral",
+      "frame_id": 17,
+      "sound_id": 2
+    },
+    {
+      "game_id": 18,
+      "name": "Thụ chướng thạch",
+      "description": "Tài liệu tiến hóa cơ bản của sủng vật Thực Vật",
+      "category": "mineral",
+      "frame_id": 18,
+      "sound_id": 2
+    },
+    {
+      "game_id": 19,
+      "name": "Chu quả",
+      "description": "Tài liệu tiến hóa bậc cao của sủng vật Thực Vật hệ",
+      "category": "mineral",
+      "frame_id": 19,
+      "sound_id": 2
+    },
+    {
+      "game_id": 20,
+      "name": "Bong bóng",
+      "description": "Tài liệu tiến hóa cơ bản của sủng vật Hải Dương hệ",
+      "category": "mineral",
+      "frame_id": 20,
+      "sound_id": 2
+    },
+    {
+      "game_id": 21,
+      "name": "Biển sâu san hô",
+      "description": "Tài liệu tiến hóa bậc cao của sủng vật Hải Dương hệ",
+      "category": "mineral",
+      "frame_id": 21,
+      "sound_id": 3
+    },
+    {
+      "game_id": 22,
+      "name": "Cách không thạch",
+      "description": "Tài liệu tiến hóa cơ bản của sủng vật Phi Hành hệ",
+      "category": "mineral",
+      "frame_id": 22,
+      "sound_id": 3
+    },
+    {
+      "game_id": 23,
+      "name": "Thiên vũ",
+      "description": "Tài liệu tiến hóa bậc cao của sủng vật Phi Hành hệ",
+      "category": "mineral",
+      "frame_id": 23,
+      "sound_id": 3
+    },
+    {
+      "game_id": 24,
+      "name": "Tinh nguyên thạch",
+      "description": "Tài liệu tiến hóa cơ bản của sủng vật Kim Loại hệ",
+      "category": "mineral",
+      "frame_id": 24,
+      "sound_id": 8
+    },
+    {
+      "game_id": 25,
+      "name": "Bạch kim",
+      "description": "Tài liệu tiến hóa bậc cao của sủng vật Kim Loại hệ",
+      "category": "mineral",
+      "frame_id": 25,
+      "sound_id": 8
+    },
+    {
+      "game_id": 26,
+      "name": "Bay lượn thiên thạch",
+      "description": "Chuẩn bị tài liệu tiến hóa Bạch Kim Long",
+      "category": "mineral",
+      "frame_id": 26,
+      "sound_id": 8
+    },
+    {
+      "game_id": 27,
+      "name": "Cổ thụ chi hạch",
+      "description": "Chuẩn bị tài liệu tiến hóa Cổ Thụ Chi Vương",
+      "category": "mineral",
+      "frame_id": 27,
+      "sound_id": 1
+    },
+    {
+      "game_id": 28,
+      "name": "Tinh khiết thủy tinh",
+      "description": "Chuẩn bị tài liệu tiến hóa Thủy Tinh Hùng Sư",
+      "category": "mineral",
+      "frame_id": 28,
+      "sound_id": 4
+    },
+    {
+      "game_id": 29,
+      "name": "Cổ kình chi tâm",
+      "description": "Chuẩn bị tài liệu tiến hóa Kình Ngư",
+      "category": "mineral",
+      "frame_id": 29,
+      "sound_id": 4
+    },
+    {
+      "game_id": 30,
+      "name": "Vương chi chứng minh",
+      "description": "Chuẩn bị tài liệu tiến hóa Hổ Vương",
+      "category": "mineral",
+      "frame_id": 30,
+      "sound_id": 1
+    },
+    {
+      "game_id": 31,
+      "name": "Trị hết chi tâm",
+      "description": "Tìm được tài liệu Đao Thương Tướng Quân",
+      "category": "mineral",
+      "frame_id": 31,
+      "sound_id": 4
+    },
+    {
+      "game_id": 32,
+      "name": "Bảo rương",
+      "description": "Cần chìa khóa mới có thể mở xem vật phẩm bên trong bảo rương",
+      "category": "mineral",
+      "frame_id": 32,
+      "sound_id": 4
+    },
+    {
+      "game_id": 33,
+      "name": "Cái chìa khóa",
+      "description": "Dùng chìa khóa mới có thể mở bảo rương",
+      "category": "mineral",
+      "frame_id": 33,
+      "sound_id": 1
+    },
+    {
+      "game_id": 34,
+      "name": "Dị hoá tài liệu",
+      "description": "Nghe nói sủng vật dị hóa có thể có được hình thái mạnh mẽ hơn để kiềm giữ đạo cụ",
+      "category": "mineral",
+      "frame_id": 34,
+      "sound_id": 1
+    },
+    {
+      "game_id": 35,
+      "name": "Quân tâm tan rả",
+      "description": "Công kích kẻ địch đồng thời giảm bớt độ trung thành của sủng vật 25%",
+      "category": "medal",
+      "frame_id": 38,
+      "sound_id": 5
+    },
+    {
+      "game_id": 36,
+      "name": "Sơ cấp trị liệu",
+      "description": "Có thể nắm vững các kỹ năng để tự chữa trị thương tổn trong chiến đấu",
+      "category": "medal",
+      "frame_id": 35,
+      "sound_id": 5
+    },
+    {
+      "game_id": 37,
+      "name": "Cao cấp trị liệu",
+      "description": "Sủng vật có thể nắm vững kỹ năng tự chữa trị trong chiến đấu",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 5
+    },
+    {
+      "game_id": 38,
+      "name": "Tử vong chi sờ",
+      "description": "Tiêu hao một lần duy nhất toàn bộ năng lượng hiện tại, cũng như gia tăng thương tổn.",
+      "category": "medal",
+      "frame_id": 39,
+      "sound_id": 5
+    },
+    {
+      "game_id": 39,
+      "name": "Kỹ năng Phong Bế",
+      "description": "Kỹ năng này tạm thời có thể làm cho kẻ địch không thể sử dụng nhiều hơn 3 kỹ năng",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 5
+    },
+    {
+      "game_id": 40,
+      "name": "Nọc độc công kích",
+      "description": "Kỹ năng bị động, nâng cao uy lực Hủ Thực của sủng vật Thực Vật hệ",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 5
+    },
+    {
+      "game_id": 41,
+      "name": "Răng nanh răng nhọn",
+      "description": "Kỹ năng bị động, kéo dài thời gian duy trì liên tục Tê Liệt của sủng vật Mãnh Thú hệ",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 5
+    },
+    {
+      "game_id": 42,
+      "name": "Thép thiết cốt",
+      "description": "Kỹ năng bị động, nâng cao hiệu quả phòng ngự của sủng vật Kim Loại hệ",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 5
+    },
+    {
+      "game_id": 43,
+      "name": "Tinh thần công kích",
+      "description": "Kỹ năng bị động, sủng vật Phi Hành hệ có thể công kích đồng giảm bớt năng lượng đối thủ",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 0
+    },
+    {
+      "game_id": 44,
+      "name": "Triều tịch năng lượng",
+      "description": "Kỹ năng bị động, sủng vật Hải Dương hệ có thể công kích và giảm bớt năng lượng tiêu hao",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 0
+    },
+    {
+      "game_id": 45,
+      "name": "Kinh nghiệm nhiều hơn",
+      "description": "Kỹ năng bị động, nắm vững kỹ năng sủng vật sau khi chiến đấu có thể đạt được gấp đôi kinh nghiệm",
+      "category": "medal",
+      "frame_id": 35,
+      "sound_id": 0
+    },
+    {
+      "game_id": 46,
+      "name": "Kinh nghiệm phong phú",
+      "description": "Kỹ năng bị động, nắm vững kỹ năng sủng vật sau khi chiến đấu có thể đạt được gấp ba kinh nghiệm",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 0
+    },
+    {
+      "game_id": 47,
+      "name": "Trọng sinh làm tâm",
+      "description": "Kỹ năng bị động, sau khi tử vong có 70% tỷ lệ hồi sinh",
+      "category": "medal",
+      "frame_id": 39,
+      "sound_id": 0
+    },
+    {
+      "game_id": 48,
+      "name": "May mắn ngôi sao",
+      "description": "Mang theo sủng vật, làm chủ kỹ năng, di chuyển để gia tăng tỷ lệ gặp được sủng vật quý hiếm",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 5
+    },
+    {
+      "game_id": 49,
+      "name": "Trung thành đồng bọn",
+      "description": "Kỹ năng bị động, độ trung thành của sủng vật vĩnh không giảm thiếu",
+      "category": "medal",
+      "frame_id": 38,
+      "sound_id": 8
+    },
+    {
+      "game_id": 50,
+      "name": "Thân hòa thiên sứ",
+      "description": "nắm vững kỹ năng sau khi bắt được kẻ địch thất bại không chạy trốn [chuẩn bị bắt được sủng vật quý hiếm]",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 8
+    },
+    {
+      "game_id": 51,
+      "name": "Chạy trối chết chuyên gia",
+      "description": "Kỹ năng bị động, chạy trốn nhất định thành công",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 8
+    },
+    {
+      "game_id": 52,
+      "name": "Hoa cỏ Ý Chí",
+      "description": "Kỹ năng bị động, Chiến đấu ở khu vực hoa viên là ưu thế của sủng vật Thực Vật hệ",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 3
+    },
+    {
+      "game_id": 53,
+      "name": "Kim Loại Ý Chí",
+      "description": "Kỹ năng bị động, Chiến đấu trên vùng di tích là ưu thế của sủng vật Kim Loại hệ",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 5
+    },
+    {
+      "game_id": 54,
+      "name": "Bầu trời Ý Chí",
+      "description": "Kỹ năng bị động, Chiến đấu trên không trung là ưu thế của sủng vật Phi Hành hệ",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 0
+    },
+    {
+      "game_id": 55,
+      "name": "Dã thú Ý Chí",
+      "description": "Kỹ năng bị động, Chiến đấu ở vùng đồng bằng là ưu thế của sủng vật Mãnh Thú hệ",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 0
+    },
+    {
+      "game_id": 56,
+      "name": "Biển rộng Ý Chí",
+      "description": "Kỹ năng bị động, Chiến đấu trên đại dương là ưu thế của sủng vật Hải Dương hệ",
+      "category": "medal",
+      "frame_id": 36,
+      "sound_id": 0
+    },
+    {
+      "game_id": 57,
+      "name": "Thế thân tượng gỗ",
+      "description": "Kỹ năng bị động, bị công kích có 30% tỷ lệ né tránh",
+      "category": "medal",
+      "frame_id": 37,
+      "sound_id": 5
+    },
+    {
+      "game_id": 58,
+      "name": "Thực Vật hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Thực Vật hệ",
+      "category": "ring",
+      "frame_id": 40,
+      "sound_id": 5
+    },
+    {
+      "game_id": 59,
+      "name": "Thực Vật hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Thực Vật hệ",
+      "category": "ring",
+      "frame_id": 40,
+      "sound_id": 0
+    },
+    {
+      "game_id": 60,
+      "name": "Kim Loại hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Kim Loại hệ",
+      "category": "ring",
+      "frame_id": 41,
+      "sound_id": 3
+    },
+    {
+      "game_id": 61,
+      "name": "Kim Loại hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Kim Loại hệ",
+      "category": "ring",
+      "frame_id": 41,
+      "sound_id": 0
+    },
+    {
+      "game_id": 62,
+      "name": "Bầu trời hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Phi Hành hệ",
+      "category": "ring",
+      "frame_id": 42,
+      "sound_id": 0
+    },
+    {
+      "game_id": 63,
+      "name": "Mãnh Thú hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Mãnh Thú hệ",
+      "category": "ring",
+      "frame_id": 43,
+      "sound_id": 8
+    },
+    {
+      "game_id": 64,
+      "name": "Hải Dương hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Hải Dương hệ",
+      "category": "ring",
+      "frame_id": 44,
+      "sound_id": 8
+    },
+    {
+      "game_id": 65,
+      "name": "Thực Vật hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Thực Vật hệ",
+      "category": "ring",
+      "frame_id": 40,
+      "sound_id": 8
+    },
+    {
+      "game_id": 66,
+      "name": "Kim Loại hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Kim Loại hệ",
+      "category": "ring",
+      "frame_id": 41,
+      "sound_id": 8
+    },
+    {
+      "game_id": 67,
+      "name": "Bầu trời hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Phi Hành hệ",
+      "category": "ring",
+      "frame_id": 42,
+      "sound_id": 0
+    },
+    {
+      "game_id": 68,
+      "name": "Mãnh Thú hệ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Mãnh Thú hệ",
+      "category": "ring",
+      "frame_id": 43,
+      "sound_id": null
+    },
+    {
+      "game_id": 69,
+      "name": "Hải Dương hệ trứng sủng vật ",
+      "description": "Có thể ấp trứng sủng vật ra sủng vật Hải Dương hệ",
+      "category": "ring",
+      "frame_id": 44,
+      "sound_id": null
+    }
+  ],
+  "pet_evolutions": [
+    {
+      "from_pet_game_id": 0,
+      "to_pet_game_id": 1,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 1,
+      "to_pet_game_id": 2,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 19,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 2,
+      "to_pet_game_id": 3,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 19,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 27,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 4,
+      "to_pet_game_id": 5,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 4,
+      "to_pet_game_id": 6,
+      "evolution_type": "mutation",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 34,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 7,
+      "to_pet_game_id": 8,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 8,
+      "to_pet_game_id": 9,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 19,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 10,
+      "to_pet_game_id": 11,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 11,
+      "to_pet_game_id": 12,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 18,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 19,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 17,
+      "to_pet_game_id": 18,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 18,
+      "to_pet_game_id": 19,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 25,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 19,
+      "to_pet_game_id": 20,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 25,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 28,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 21,
+      "to_pet_game_id": 22,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 22,
+      "to_pet_game_id": 23,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 25,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 25,
+      "to_pet_game_id": 26,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 26,
+      "to_pet_game_id": 27,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 25,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 30,
+      "to_pet_game_id": 31,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 31,
+      "to_pet_game_id": 32,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 25,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 34,
+      "to_pet_game_id": 35,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 24,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 36,
+      "to_pet_game_id": 37,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 37,
+      "to_pet_game_id": 38,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 23,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 38,
+      "to_pet_game_id": 39,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 23,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 26,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 40,
+      "to_pet_game_id": 41,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 41,
+      "to_pet_game_id": 42,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 23,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 43,
+      "to_pet_game_id": 44,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 44,
+      "to_pet_game_id": 45,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 23,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 49,
+      "to_pet_game_id": 50,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 23,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 49,
+      "to_pet_game_id": 51,
+      "evolution_type": "mutation",
+      "materials": [
+        {
+          "item_game_id": 22,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 23,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 34,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 52,
+      "to_pet_game_id": 53,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 16,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 53,
+      "to_pet_game_id": 54,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 16,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 17,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 54,
+      "to_pet_game_id": 55,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 17,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 30,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 56,
+      "to_pet_game_id": 57,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 16,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 56,
+      "to_pet_game_id": 84,
+      "evolution_type": "mutation",
+      "materials": [
+        {
+          "item_game_id": 16,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 34,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 59,
+      "to_pet_game_id": 60,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 16,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 60,
+      "to_pet_game_id": 61,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 16,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 17,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 63,
+      "to_pet_game_id": 64,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 16,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 68,
+      "to_pet_game_id": 69,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 69,
+      "to_pet_game_id": 70,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 21,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 70,
+      "to_pet_game_id": 71,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 21,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 29,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 72,
+      "to_pet_game_id": 73,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 73,
+      "to_pet_game_id": 74,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 21,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 75,
+      "to_pet_game_id": 76,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 75,
+      "to_pet_game_id": 77,
+      "evolution_type": "mutation",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 3
+        },
+        {
+          "item_game_id": 34,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 79,
+      "to_pet_game_id": 80,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 80,
+      "to_pet_game_id": 81,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 20,
+          "quantity": 2
+        },
+        {
+          "item_game_id": 21,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 87,
+      "to_pet_game_id": 88,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 19,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 90,
+      "to_pet_game_id": 91,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 25,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 93,
+      "to_pet_game_id": 94,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 23,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 96,
+      "to_pet_game_id": 97,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 17,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "from_pet_game_id": 99,
+      "to_pet_game_id": 100,
+      "evolution_type": "evolution",
+      "materials": [
+        {
+          "item_game_id": 21,
+          "quantity": 3
+        }
+      ]
+    }
+  ],
+  "skill_unlock_matrix": [
+    [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35
+    ],
+    [
+      1,
+      6,
+      11,
+      16,
+      21,
+      26,
+      31,
+      36
+    ],
+    [
+      2,
+      7,
+      12,
+      17,
+      22,
+      27,
+      32,
+      37
+    ],
+    [
+      3,
+      8,
+      13,
+      18,
+      23,
+      28,
+      33,
+      -1
+    ],
+    [
+      4,
+      9,
+      14,
+      19,
+      24,
+      29,
+      34,
+      -1
+    ]
+  ],
+  "locations": [
+    "Khu Quý tộc",
+    "Quảng Trường Cầu Vồng",
+    "Thao trường của Học Viện Cầu Vồng",
+    "Phòng học",
+    "Cầu Vồng Đấu trường bậc trung",
+    "Kim Loại Di Tích 1",
+    "Kim Loại Di Tích 2",
+    "Khu quản lý Trường học sủng vật",
+    "Cầu Vồng Đấu trường sơ cấp",
+    "Phòng trung chuyển Học Viện Cầu Vồng",
+    "Kim Loại Di Tích 3",
+    "Bên ngoài thành phía nam",
+    "Cao nguyên phía đông 1",
+    "Cao nguyên phía đông 2",
+    "Cao nguyên phía đông 3",
+    "Cao nguyên phía đông 4",
+    "Rừng rậm phía tây 1",
+    "Rừng rậm phía tây 2",
+    "Rừng rậm phía tây 3",
+    "Rừng rậm phía tây 4",
+    "Rừng rậm phía tây 5",
+    "Nam Chi Phế Tích 1",
+    "Nam Chi Phế Tích 2",
+    "Nam Chi Phế Tích 3",
+    "Bầu trời phương bắc 1",
+    "Bầu trời phương bắc 2",
+    "Bầu trời phương bắc 3",
+    "Khu làm việc Học Viện Cầu Vồng",
+    "Bến tàu phía nam Bắc Hải",
+    "Bến tàu phía bắc Bắc Hải",
+    "Học viện Bắc Hải",
+    "Vực Bắc Bắc Hải",
+    "Vực Nam Bắc Hải",
+    "Phòng học Bắc Hải 1",
+    "Phòng học Bắc Hải 2",
+    "Khu trường cũ Bắc Hải 1",
+    "Khu trường cũ Bắc Hải 2",
+    "Khu trường cũ Bắc Hải 3",
+    "Rừng rậm u ám 1",
+    "Rừng rậm u ám 2",
+    "Rừng rậm u ám 3",
+    "Rừng rậm u ám 4",
+    "Rừng rậm u ám 5",
+    "Trung Tâm Thương Mại",
+    "Cầu Vồng Tửu Quán",
+    "Nhà dân",
+    "Hanabusa",
+    "Thành Đấu trường Cầu Vồng",
+    "Quảng Trường Bắc Hải",
+    "Thiên Không Thành 1",
+    "Thiên Không Thành 2",
+    "Phòng Cầu Vồng triệu tập",
+    "Nam Chi Phế Tích 4",
+    "Khu trường cũ Bắc Hải 4",
+    "Tắc Kỳ Gia",
+    "Người hầu phòng",
+    "Trung Tâm Thương Mại",
+    "Rừng rậm thần bí 1",
+    "Rừng rậm thần bí 2",
+    "Khu ký túc xá học sinh của Học Viện Cầu Vồng",
+    "Phòng trung chuyển Kim Loại Di Tích",
+    "Gian phòng Bắc Hải thần bí",
+    "Gian phòng thần bí tại Học Viện Cầu Vồng",
+    "Phòng trung chuyển Bạch Kim",
+    "Phòng trung chuyển Kim",
+    "Phòng trung chuyển Tử Chi",
+    "Phòng trung chuyển Lam Chi",
+    "Phòng sinh hoạt của Học Viện Cầu Vồng",
+    "Thao trường của Học Viện Cầu Vồng",
+    "Lối thông nhanh đến Bắc Hải",
+    "Phòng trung chuyển Học Viện Cầu Vồng",
+    "Cao nguyên phía đông",
+    "Nam Chi Phế Tích",
+    "Rừng rậm phía tây",
+    "Bầu trời phương bắc",
+    "Bắc Hải Học Viện",
+    "Trung Tâm Thương Mại Bắc Hải",
+    "Phòng học bỏ hoang",
+    "Đấu trường Bắc Hải",
+    "Phòng học Bắc Hải 1",
+    "Phòng học Bắc Hải 2",
+    "Phòng học Bắc Hải 2 "
+  ],
+  "internal": {
+    "short_sprite_groups": [
+      4,
+      6,
+      8,
+      13,
+      18,
+      19,
+      23,
+      25,
+      26,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53
+    ],
+    "map_rows": [
+      [
+        19,
+        18,
+        19,
+        5,
+        14,
+        5,
+        14,
+        0,
+        11,
+        15,
+        15,
+        15,
+        15,
+        5,
+        5,
+        5,
+        5,
+        0,
+        14,
+        18,
+        10,
+        18,
+        10,
+        0,
+        6,
+        21
+      ],
+      [
+        20,
+        23,
+        22,
+        4,
+        8,
+        3
+      ],
+      [
+        8,
+        19,
+        8,
+        13,
+        20,
+        13,
+        20,
+        3
+      ],
+      [
+        14,
+        13,
+        4,
+        13,
+        4,
+        9
+      ],
+      [
+        4,
+        13,
+        14,
+        13,
+        16,
+        13
+      ],
+      [
+        8,
+        4,
+        22,
+        4,
+        22,
+        20,
+        20,
+        20
+      ],
+      [
+        6,
+        29,
+        10,
+        18,
+        14,
+        27,
+        5,
+        5,
+        15,
+        5,
+        15,
+        15,
+        10,
+        15,
+        10,
+        23,
+        14,
+        5,
+        19,
+        20,
+        14,
+        19
+      ],
+      [
+        20,
+        3,
+        20,
+        13,
+        8,
+        13,
+        8,
+        19,
+        12,
+        18
+      ]
+    ],
+    "encounter_rows": [
+      [
+        14,
+        16,
+        24,
+        28,
+        48,
+        62,
+        78,
+        87,
+        90,
+        93,
+        96,
+        99
+      ],
+      [
+        2,
+        14,
+        24,
+        35,
+        14,
+        8,
+        34,
+        14,
+        14,
+        35,
+        24,
+        40
+      ]
+    ]
+  }
+}

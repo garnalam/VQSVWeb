@@ -1,0 +1,81 @@
+PK6_RMS_ACTOR
+PK6_RMS_WORLD
+PK6_RMS_EVENT
+PK6_RMS_RMS
+PK6_RMS_SMS
+PK6_RMS_CNTSMS
+PK6_RMS_GOLD
+PK6_RMS_POKPET
+PK6_RMS_CONITEM
+PK6_RMS_PETBALL
+Gỗ thô
+Ngoại trừ tiến hóa, sủng vật còn có thể dị hoá, dị hoá sau sủng vật đem càng cụ tính công kích. Mặt khác từng chủ thành liên minh huấn luyện sư cũng sẽ cung cấp tiến hóa cùng dị hoá phục vụ, ngươi có thể thường đi xem.
+/data/event/
+/data/script/petArea.mid
+/data/script/media.mid
+/data/sound/
+/data/script/petRide.mid
+/data/script/backPic.mid
+/data/img/
+img_
+/data/tex/
+gold
+img_10023
+down
+init
+ savePlayer ex = 
+ loadPlayer ex = 
+ sceneId ex = 
+ isHaveSms = 
+/data/ui/battle.ui
+scene_
+.mid
+ k = 
+ e = 
+ initRoom = 
+ bug = 
+Có lưu dữ liệu không?
+Muốn lên thuyền đi đâu?
+%s
+Tiến hóa
+Dị hoá
+Nhấn #2
+#0 đạt tới có thể
+ điều kiện
+Nhấn nút 5 tiếp tục
+#2
+#0 có thể
+Cửa ra vào
+Bến tàu
+Cửa Đạo quán
++
+Khu này không có bản đồ
+Có thể tiến hành sản xuất trứng sủng vật
+Đạt được 1 huy hiệu
+Đạt được hoàng kim huy hiệu
+Hãy lựa chọn #2Sủng vật
+Hãy lựa chọn #2
+Hãy nhấn #2nút 5
+Hãy lựa chọn #2Vật phẩm trang sức
+Nhấn #2nút 5#1 trang thượng vật phẩm trang sức
+Nhấn #2nút mềm phải#0 để quay lại
+Hãy nhấn vào mục #2Mua sắm
+Trước tiên hãy mua #2Hồng sắc ốc biển#1
+Nhấn #2nút 5#1 mua sắm
+Hãy nhấn #2nút mềm phải#1 để quay lại
+#0 tiến hành tiến hóa
+Hãy nhấn #2nút 5#0 để tiếp tục
+Nhấn #2nút 5#0 để vào mục Tiến hóa
+Nhấn #2nút mềm trái#0 để Tiến hóa
+Hãy lựa chọn #2Ba lô#0
+Nhấn #2nút mềm trái#0 vào Tuyển hạng
+Hãy sử dụng #2Gia tốc dược#0
+Nhấn #2nút mềm trái#0 sử dụng
+Hãy lựa chọn #2Đặc thù đạo cụ#0 ấp trứng trứng sủng vật
+Nhấn #2nút mềm trái#0 để Ấp trứng
+Hãy lựa chọn #2Trứng sủng vật#0 để ấp trứng
+0'00\"000
+00
+0
+\"
+'

@@ -1,0 +1,6 @@
+path=data/ui/world.ui
+kind=custom_binary
+size=362
+sha256=89F9718AB84DBBDD1F048C7E08702A216D0A7C6F8E66D0E7531B0D45FC58D658
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 07 01 00 01 00 03 ff ec 00 55 00 2f 00 00 08 00 00 00 ff ff ff 00 00 00 00 00 00 00 00 ff ff 04 00 ff a5 00 00 ff 00 00 00 ff cc 99 00 03
+

@@ -1,0 +1,22 @@
+path=data/img/img_17.mid
+kind=png
+size=1623
+sha256=6B35D1204C4026EDF1B9E6BF64170BBC0AE7D79F7A4B038B2F787798D9B68A68
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 01 00 00 00 00 20 08 03 00 00 00 ca 77 56 d6 00 00 00 60 50 4c 54 45 4b 2d 39 7b 73 67 d1 81 1f c4 7a 21 e1 92 30 d9 88 26 ad 70 26 d7 96
+
+IHDR
+`PLTEK-9{sg
+aGfLQ
+ tRNS
+IDATx
+Kn\t
+p?^)u
+}2l)+
+e*0\y
+xu9G_
+SfqU
+H,'T
+4fg:
+oB<o@
+y7_3
+IEND

@@ -1,0 +1,560 @@
+path=data/event/scene_9.mid
+kind=custom_binary
+size=27705
+sha256=69286395FC9F9BE4F413F28054AE4024A9446BE9F0B13714ABC32A3C7FBAA984
+hex_prefix=00 08 14 9d 22 0e 05 d4 05 20 08 ac 0e 46 08 97 0a ff 00 39 00 08 00 32 00 37 00 2c 00 32 00 38 00 2c 00 32 00 39 00 05 00 30 00 2c 00 30 00 2c 00 30 00 00 00 92 00 51 00 75 00 79 00 20 00 74
+
+27,28,29
+0,0,0
+Quy t
+o qu
+n: C
+n ph
+i chi
+n th
+ng t
+ng ng
+i trong 
+n, n
+u tr
+ng th
+i, b
+i quay l
+m xu
+t ph
+nh b
+u qu
+n ch
+Larry
+ng l
+Binh l
+nh H
+c Long
+ng v
+PasiLi
+ sau c
+ng kia l
+ ai? ...
+Aida)T
+o ph
+i ch
+57,61
+i ...
+ch Th
+Coi b
+ chu
+ xong.
+50,52,55
+10,11,11
+2,2,3
+NeilLTa 
+i tr
+n, sau khi tr
+i cho ta chuy
+a Yafei.*Th
+y Lam Ch
+ng: C
+o Thu
+AlulunaCh
+ng ta s
+p ng
+i ng
+c Long Qu
+n, ng
+ng nam 
+Neil
+t!'H
+a nam gi
+...?
+Ta t
+i!CNeil g
+y tr
+i cho m
+ thu
+i qua.
+Ra l
+y. C
+n Yafei ...
+ng c
+a Thi
+n Gi
+i... Tr
+ng nhi
+i, c
+i ta 
+i cu
+ng, c
+u ch
+n. Hi
+ang b
+i Ph
+a Nam B
+y Th
+nh trong m
+ng nh
+, theo c
+ch th
+ng kh
+o qua 
+c, ph
+ng Th
+Neil9Th
+ng?! M
+t trong 8 huy hi
+a th
+i sao?!
+nh n
+. Tr
+ 8 huy hi
+u. M
+i lo
+ng ri
+ng. N
+c ng
+ch n
+o tr
+u ki
+nh l
+i qu
+ang coi gi
+NeilJTa hi
+u! Ta mu
+ng! mu
+n bi
+t th
+a Yafei.
+#ffffff Neil l
+m sao 
+nh? Yafei li
+ Sophie m
+ Neil ng
+m mong nh
+ng li
+i? C
+p thanh mai tr
+i nhau?
+o Qu
+Kane
+Millie
+Eliza
+Aida
+^b0 
+ nhi
+n ...
+Neil0(b
+n kia c
+t ti
+ng, qua h
+i xem sao.)-H
+a ti
+ng h
+i th
+m tin t
+Kela+V
+i hi
+n gi
+n ai 
+Chuy
+y ra v
+Kela
+ chi
+t Ho
+ng Gia 
+t nhi
+ tri
+n dinh th
+n, sau 
+ng m
+t ai tr
+. Ngay sau 
+n ti
+(xem ra H
+ chia l
+m hai h
+ng mu
+i kh
+ng ch
+ng Nguy
+c.) M
+ch c
+o Ch
+Ca ca l
+m sao bi
+ tra x
+t tung t
+u, nh
+ng bi
+t. Ca ca l
+n luy
+? Ca s
+u Nguy
+c Th
+nh ch
+Neil'
+, ta 
+n xem sao.
+n ngo
+i dinh r
+u ng
+i canh g
+c. Ca kh
+o ban ng
+u. Trong th
+o li
+m ng
+a dinh th
+, ca c
+i theo h
+n hi
+i ph
+Ta c
+n.=Theo m
+t trong 
+o dinh th
+Neil1Qu
+, th
+c xin l
+i, kh
+i. Ta 
+i Arnold, sau 
+u, ch
+ng ta nh
+nh ph
+ch ra ngo
+n kh
+i Nguy
+NeilnKh
+ng n
+n cho ta bi
+ch t
+c chi
+n ta tu
+n theo ch
+y. N
+i ta s
+ng r
+t gi
+n. Th
+ng ph
+Neil&Tuy bi
+ thay 
+i, nh
+ng...
+ntTuy ta kh
+t chuy
+n tr
+c kia gi
+a hai ng
+ng...c
+ kia kh
+ ngo
+Neil;Ng
+nh tr
+ng nhau.
+ng ta 
+ng tr
+i, s
+y tu
+p kh
+t ng
+i, ch
+nNTh
+ qua chuy
+y, theo quy t
+n, h
+i khi
+u chi
+n ta 
+17,30,9
+20,21,21
+3,3,4
+n?Ta trao cho c
+c Qu
+ng, ph
+ng cho s
+c th
+y nh
+u nh
+y. M
+t kh
+t lo
+NeilaRa v
+y. Ta th
+ng b
+y bao k
+n. C
+p ta th
+ng qua m
+ch d
+n, m
+ch l
+nh c
+ nguy hi
+m do 
+ xung quanh.
+i ta l
+m th
+t hu
+y ch
+nWHa ha, ta bi
+y. H
+nh nguy
+y th
+m hi
+c bi
+t tr
+ng (
+t 5 khi 
+n lo
+i giao v
+Olden
+McCanQi
+Hoan ngh
+16,29
+19,20
+p theo!
+ChiNiyaKC
+ng ta, nh
+ng ta v
+n mu
+ xem th
+54,27
+20,20
+ChiNiya)Kh
+ anh h
+17,19,20,23
+1,0,2,0
+ng gi
+ng B
+n. Chi
+i cho 
+n qu
+i, th
+ quay tr
+t, t
+Nguy
+n Ch
+ChiNiya
++,- 
+BCD 
+IJK 
+Fanny&
+i ta ng
+p qu
+20,7,40
+28,29,29
+3,3,3
+TaliSi2Th
+c qu
+i ho
+nh cu
+u ra t
+y? C
+21,41,45
+29,30,30
+3,4,4
+n0Ta thua r
+ng u
+m nh
+y ...JH
+a Phong Ch
+ng: T
+ng thu
+a ph
+m Th
+n Th
+Fanny
+Camille5Mu
+n qua 
+c ta 
+32,43
+28,28
+Camille8Qu
+nh! Ch
+t qua cu
+c ki
+m tra.
+Jacklyn7
+ ta cho ng
+i bi
+c ch
+33,38
+28,29
+Jacklyn Xem ra c
+n hu
+n nhi
+Neil-G
+t sao? ... xem ra kh
+Camille
+Jacklyn
+Quincy=Mu
+35,35
+Quincy4Tr
+i tu
+Sade
+n nh
+11,13
+35,36
+Sade"K
+Raleigh"Kh
+ sao qua 
+c, ha ha!
+82,44
+36,36
+Raleigh
+i mau 
+Dbell*
+i ta m
+ qua 
+8,77,96,5
+35,36,37,37
+4,4,4,5
+DbellRLi
+a Ch
+i xua tan h
+m, chi
+ng con 
+a tr
+c.LLi
+ng: Gia t
+c nh
+n trong ph
+m vi r
+ng khi v
+n [Ch
+n] t
+m Yafei.
+Quincy
+ch Qu
+EdfKh
+ khen cho d
+a ng
+i. Cho ng
+t, th
+4,36
+ng qua.
+SadieHCh
+y qu
+ng d
+ng... nh
+ng s
+12,90
+36,37
+Sadie*H
+, kh
+ng ngh
+ ta l
+ thua. Th
+i...
+Walter
+Oa a a a a a a!! !! !!
+14,42,92
+36,37,37
+4,4,4
+ ...
+u kh
+y con ng
+i xu
+t hi
+n, ta kh
+i nhanh 
+42,78,58,81
+39,37,38,38
+5,4,5,5
+ng ...
+NeilP
+ch, v
+t qua m
+*To gan th
+t! D
+m tranh l
+i tho
+a ta 
+Neil;Gi
+a nh
+i thu
+t ch
+ sao. N
+y ai c
+! Ha ha
+Oh, Ta sai r
+i ...c
+ng (Nh
+a lao H
+ch] l
+c Tinh Th
+Sadie
+ng ta l
+n canh gi
+8,74,59
+37,37,37
+Abe4Ng
+n ti, d
+m khinh th
+c Long Th
+73,5,84
+37,38,38
+Gaelle$Ng
+i, ha ha!
+a ta, th
+ huy hi
+u cho ng
+i, H
+86,97,70,53,46
+37,38,38,36,39
+4,4,5,4,5
+i!ML
+ng: Mang theo t
+ng k
+c Long 
+Gaelle
+Phi%Ch
+ng ta kh
+ng hoan ngh
+nh con ng
+1,25
+40,40
+Phi.Con ng
+i lu
+Joey
+y mau tr
+26,67,84
+40,41,41
+nh kh
+Yuri*Ta s
+ cho ng
+c huy hi
+39,74,89,94
+40,41,42,42
+4,4,4,4
+YaQila
+Ta b
+BurchCCon ng
+ch B
+u, hay c
+n e ng
+18,30,33,58
+41,41,42,42
+4,5,5,5
+Burch
+. Ta c
+64,53,85,96,73,13
+41,41,42,42,43,43
+5,5,5,5,5,5
+i, B
+ch Long 
+i nh
+ang ch
+i.OU Linh Ch
+ng: c
+m cho h
+ng sinh tr
+t 5).D
+n [B
+ch Long Th
+n] g
+p Tomas 
+ xem h
+ng quay l
+a Gi
+Yuri

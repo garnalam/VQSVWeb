@@ -1,0 +1,49 @@
+﻿Classfile jar:file:///C:/Users/Dell/Downloads/VQSV-Web/resources/decoded/01_original/AowVN.org-S60-VuongQuoc-Pokemon-240x320.jar!/a/b.class
+  Last modified Feb 1, 2013; size 219 bytes
+  SHA-256 checksum e45a25a1bca389ab36c8ec906357a4220b9c5b3dcb704139fb5d123685af9895
+public final class a.b extends java.util.TimerTask
+  minor version: 0
+  major version: 47
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #1                          // a/b
+  super_class: #3                         // java/util/TimerTask
+  interfaces: 0, fields: 0, methods: 2, attributes: 0
+Constant pool:
+   #1 = Class              #15            // a/b
+   #2 = Class              #16            // game/m
+   #3 = Class              #17            // java/util/TimerTask
+   #4 = Methodref          #2.#8          // game/m.a:()Lgame/m;
+   #5 = Methodref          #2.#9          // game/m.repaint:()V
+   #6 = Methodref          #3.#7          // java/util/TimerTask."<init>":()V
+   #7 = NameAndType        #12:#11        // "<init>":()V
+   #8 = NameAndType        #14:#10        // a:()Lgame/m;
+   #9 = NameAndType        #18:#11        // repaint:()V
+  #10 = Utf8               ()Lgame/m;
+  #11 = Utf8               ()V
+  #12 = Utf8               <init>
+  #13 = Utf8               Code
+  #14 = Utf8               a
+  #15 = Utf8               a/b
+  #16 = Utf8               game/m
+  #17 = Utf8               java/util/TimerTask
+  #18 = Utf8               repaint
+  #19 = Utf8               run
+{
+  public a.b();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #6                  // Method java/util/TimerTask."<init>":()V
+         4: return
+
+  public final void run();
+    descriptor: ()V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #4                  // Method game/m.a:()Lgame/m;
+         3: invokevirtual #5                  // Method game/m.repaint:()V
+         6: return
+}

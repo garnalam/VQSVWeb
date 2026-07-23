@@ -1,0 +1,7 @@
+/data/img/
+img_833
+/data/ui/msgtip.ui
+Bạn có muốn thoát không?
+Không
+/data/ui/menu.ui
+Có chắc chắn xóa dữ liệu cũ để chơi mới không?

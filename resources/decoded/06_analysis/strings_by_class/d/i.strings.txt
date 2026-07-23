@@ -1,0 +1,4 @@
+Stack underflow
+Stack overflow
+Level must be non-negative
+Level too high

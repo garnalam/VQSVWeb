@@ -1,0 +1,543 @@
+path=data/event/scene_3.mid
+kind=custom_binary
+size=32541
+sha256=9303300822248DB5AEBC32C14BDA9A816CCB0F9B53D62BFA3597503F9E75ACA6
+hex_prefix=00 08 03 4d 08 6d 04 64 34 eb 05 10 07 d5 16 9d 16 80 00 07 00 05 00 48 00 69 00 6c 00 64 00 65 00 1a 00 54 00 72 00 f4 00 6e 00 67 00 20 00 63 00 f3 00 20 00 73 1e e9 00 63 00 20 00 73 1e d1
+
+Hilde
+ng c
+y ch
+23,22
+16,17
+i tr
+i cao...
+ng S
+Neil*Haizz.. qua bao tr
+c tr
+m th
+Neil
+n gi
+n sao?
+Neil4L
+m sao 
+ng b
+nh ph
+i th
+GeorgeaN
+m hu
+n luy
+ng v
+t nh
+t, ta kh
+ng cho ph
+t lu
+i qu
+26,24
+19,19
+George8Ta 
+ thua r
+i, ng
+ trong m
+t th
+i gian!
+ Thung M
+ Cung+
+o Di
+George
+Lian9Kh
+ch t
+i xa 
+? Cho ta coi s
+t ng
+ang c
+29,29
+18,19
+LianNHoan ngh
+n Nguy
+c Th
+nh, nh
+ng th
+ng ng
+i coi nh
+Nguy
+nh Th
+Lian
+41,42,43,44,45,46,47,48
+0,0,0,0,0,0,1,3,
+1,1,1,1,1,1,1,1
+NeilGQu
+ nhi
+n, H
+c Long Qu
+m sao c
+ chi
+ng B
+ch Th
+y Th
+Binh l
+nh H
+c LongJNg
+i! N
+ng l
+m, mau 
+i mua cho gia gia ng
+i ch
+Sullbac
+i mua 
+c ...
+c Long9N
+c Long 
+i gia mu
+n ai d
+NeilUL
+ Binh l
+c Long n
+y th
+c. C
+o qu
+nh h
+nh xem sao.&
+o Qu
+Kate.La ph
+ Eliza b
+o ng
+n cho ta?
+Kate
+p ta 
+em nh
+y giao cho th
+a ta, Senta 
+c kh
+ng? 
+y hi
+m Th
+nh nghi
+u tinh qu
+ng m
+p nh
+n, t
+7Senta 
+ang t
+i Ni
+.GNhi
+t, vui l
+ng nh
+t 1 
+ tra x
+t nhi
+Kate"Qu
+i, kh
+n quan g
+ Fisher b
+em t
+Neil6
+nh l
+t qu
+ nghi
+KateCN
+y. Ch
+nh c
+ coi v
+m tr
+ ta t
+nh, khi nghi
+n tri
+t ph
+ ta s
+n xem Thi 
+i Qu
+, nh
+ng ta kh
+ng mu
+n nh
+en s
+Kate>B
+n th
+o, c
+n ngu ng
+c kia.
+Kate]Th
+y Senta hi
+ang nghi
+i ph
+t hi
+i, c
+ch cho ng
+i:Senta hi
+ang 
+, kh
+i li
+Ta bi
+Neil)Ta mu
+i kh
+ng r
+ sai?
+ng sai.
+n ng
+ng n
+Kate$... t
+ lao cho c
+NeilDTho
+i cho ta bi
+y ra chuy
+ sao?
+c ra ta nghe m
+u th
+n ta n
+i, ph
+t, quy
+t ch
+t hu
+i. S
+ch Ch
+i gian s
+ng nhi
+u, ng
+nh, v
+ng qu
+ng. R
+nng 
+ sau ph
+nh hu
+o. B
+ng. Gi
+ng tr
+ ai qua 
+ng lu
+n hy v
+o cho m
+Ta... th
+t xin l
+i ...
+ng sao.
+Neil1(mu
+n hay kh
+ng t
+ nay v
+ sau gi
+14,19
+Tuy l
+t kh
+y nh
+o kh
+ng? N
+c ta s
+ mang n
+KatevN
+u qu
+t. Theo ph
+i, B
+ tai.
+m ki
+o.GNhi
+Kate"Th
+i, h
+i, ch
+ng trai tr
+ArnoldHNg
+i bi
+i nhanh nh
+t tr
+ng ph
+u sao?
+Arnold
+i. Trong truy
+n thuy
+t lo
+y, t
+c nhanh, khi c
+ng s
+p ph
+ng ta c
+ng ch
+i sinh s
+u nh
+i nguy
+p chi
+t ho
+nh m
+ gian kh
+, ch
+ng ta s
+i cho ng
+c. Ng
+ suy ngh
+t, h
+nh tr
+a nhi
+ng k
+n ph
+i ki
+n tr
+n cu
+c ph
+ng cu
+8,13
+t ta giao cho ng
+n Ni
+nh giao cho m
+ Hughes. M
+u li
+ " th
+ch nh
+t Phong 
+u ".
+nh.GNhi
+Arnold!Th
+c, ta t
+m ng
+ArnoldLV
+ mang 
+ch th
+i ba ng
+y, ta e b
+Neil5
+y, tuy nhi
+i ng
+c gi
+m! C
+ng. Ta 
+i di
+n cho d
+em than s
+m trong nh
+y tuy
+Bao v
+c LongGH
+m, m
+ng d
+? Mau c
+Neil.
+nh quan tr
+ng h
+4e#FFFFFF Nh
+c xu
+i Nguy
+n kh
+ do ho
+n to
+ang ch
+ ta sao?
+Yafei6
+... ta v
+ chuy
+NeilKTa ch
+i vi
+c li
+n quan 
+c th
+Yafei1T
+m, h
+p ng
+c chi
+... ph
+YafeiwKh
+ng, v
+nh x
+c. Cho ng
+ng L
+ nhanh h
+n, ta c
+ng H
+t 9 
+a ch
+t, sau 
+p Yafei.
+nh Nh
+c Long
+Dalits
+Maxim
+Blacksta
+Rose
++,-.(
+GHIJ
+[\]^
+opqr*
+uvwx*
+<Zy-
+Kate;Khi
+u chi
+y lo
+y ta ch
+y qua.
+24,29
+20,21
+Kate*
+c! S
+a ng
+nh T
+Kama
+Neil)L
+t, chuy
+y qu
+ng Th
+nh M
+u] g
+Neil*Hay l
+ng T
+t Trung C
+Tonys*Ng
+y qua l
+a ta ch
+21,22
+Tonys/Ha ha ... S
+a ta 
+i hi
+Stephen2Ti
+ ta cho ng
+91,51
+22,22
+Stephen
+ng Giang s
+n Chi3
+Tonys
+Amoxic0V
+ch n
+y, c
+t sao?
+Amoxic
+p ta t
+m ..?
+c, s
+8,12
+i sao?2
+Amoxic Th
+AmoxicZNh
+i, con trai ta, Kate 
+ thay ta g
+ lao.
+Neil>L
+o sao?
+Amoxic-Tr
+ tai c
+ng ... c
+Neil&Ng
+c ch
+Ta ch
+t ta bi
+ng. C
+t. T
+ sau ta s
+c? Ng
+m sao v
+ch ... l
+i sao?!
+Amoxic Ra l
+y! Ra l
+y ...#Amoxic 
+c Ch
+NeilnB
+a th
+m, nh
+o, l
+y sao?
+ ta m
+u ... tuy n
+ ta v
+n mu
+n bi
+n ta. B
+ch d
+nh. Ta kh
+. Ta 
+n ra n
+...0H
+y ti
+ng... 
+AmoxicASau bao l
+a ra l
+n lu
+. Nh
+i nh
+n ra s
+ ta y
+i xa ta. 
+n thu
+ng cho ng
+26,27
+Yafei
+Ha ha, t
+Yafei? Qu
+ so v
+Yafei b
+Thuy
+Poli
+Jill
+n ch
+u tr
+u, lu
+a tr
+nh th
+i gian thi ch
+y ~ n
+u trong th
+i gian quy 
+ch, s
+ng ~ B
+u ch
+?0Xem c
+c quy t
+4,6,19
+Jill5Ph
+ tham gia 500 kim ti
+n, mu
+11,19
++Quy t
+u, ph
+ng, quay tr
+7,9,3
+n trong m
+n, ng
+ch trong th
+nh v
+ tho
+u nhi
+i. M
+t khi 
+ng, c
+ng kh
+ng trong v
+ng 200 gi
+c Tam 
+ng 600 kim ti
+n. 130 gi
+t Nh
+ng, 750 kim ti
+n. 70 gi
+ng 1000 kim ti
+n. 65 gi
+2,3,4,5,6,7,8,9
+0,0,0,0,0,0,0,0
+Jill+Ng
+y %s l
+n, th
+i gian c
+i %s.
+JillDT
+t, n
+ng thi L
+u. Mu
+i, xem x
+t quy t
+c, r
+7,9,22
+14,22
+*Quy t
+10,12,6
+n. K
+ch tr
+c trong th
+t qua c
+n. M
+y tr
+ng trong 200 gi
+ng, 1000 kim ti
+Jill?
+n trong h
+m nay, kh
+c tham gia!
+n thi 
+#$%#
+-./<
+2345*
+89:;*

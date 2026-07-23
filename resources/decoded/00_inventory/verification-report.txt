@@ -1,0 +1,27 @@
+﻿VQSV decode verification
+Timestamp=2026-07-23T10:28:47.4602592+07:00
+Root=C:\Users\Dell\Downloads\VQSV-Web\resources\decoded
+
+PASS	Original JAR SHA-256	actual=9CF2992B1540EBF6BCDD8FF62A66288D0EB639F002D4532AE7C5B4A101AC9B0E	expected=9CF2992B1540EBF6BCDD8FF62A66288D0EB639F002D4532AE7C5B4A101AC9B0E
+PASS	Extracted archive files	actual=931	expected=931
+PASS	Original class files	actual=72	expected=72
+PASS	Raw resource files	actual=858	expected=858
+PASS	CFR Java files	actual=72	expected=72
+PASS	Vineflower Java files	actual=72	expected=72
+PASS	Javap disassembly files	actual=72	expected=72
+PASS	Class inventory rows	actual=72	expected=72
+PASS	Resource inventory rows	actual=858	expected=858
+PASS	JAR entry inventory rows	actual=931	expected=931
+PASS	Module directories	actual=9	expected=9
+PASS	Module Vineflower source copies	actual=72	expected=72
+PASS	Module CFR source copies	actual=72	expected=72
+PASS	Module javap copies	actual=72	expected=72
+PASS	Recognized PNG images	actual=311	expected=311
+PASS	Recognized MIDI files	actual=7	expected=7
+PASS	Image contact sheets	actual=5	expected=5
+PASS	Class dependency edges	actual=363	expected=363
+PASS	Required documentation	actual=7	expected=7
+
+TotalFiles=3504
+TotalBytes=25476611
+

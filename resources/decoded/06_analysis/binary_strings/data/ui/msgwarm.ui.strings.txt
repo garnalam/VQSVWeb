@@ -1,0 +1,11 @@
+path=data/ui/msgwarm.ui
+kind=custom_binary
+size=406
+sha256=0404DA6314FE1BC7FDE5212BEF57318F3B13622F7873FD5B619A8B9A4A7708D4
+hex_prefix=ff ff 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 07 01 00 01 00 4f 00 6d 00 51 00 08 00 00 00 00 00 ff ff ff ff ff 00 00 00 00 00 00 00 ff ff 04 ff c6 f3 ff ff c6 f3 ff 00 ff f3 ae ff ff
+
+OtQ<
+RtL/
+t 5 
+UwF(
+LjYV

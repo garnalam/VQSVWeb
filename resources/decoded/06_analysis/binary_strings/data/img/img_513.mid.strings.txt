@@ -1,0 +1,25 @@
+path=data/img/img_513.mid
+kind=png
+size=1728
+sha256=61A13B8199BF25556D269388B1304C1EDDFBA5F485BB311A6790EDB4686BE287
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 5d 00 00 00 47 08 03 00 00 00 52 e2 bb 0c 00 00 00 60 50 4c 54 45 e7 e2 a8 7e 80 7c fd f7 ef 52 15 0b e0 6c 18 ff bd 0d c4 63 02 d6 4c
+
+IHDR
+`PLTE
+C=:d\X
+pA%.p?@>
+ tRNS
+IDATx
+``@Q
+:u4{
+r5f87V
+<kL"
+0x,j
+nnVAn
+rXR>
+Fsz(
+3:t8
+9{J/
+1rLb
+)7<a
+IEND

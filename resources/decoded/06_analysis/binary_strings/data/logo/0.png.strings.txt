@@ -1,0 +1,140 @@
+path=data/logo/0.png
+kind=png
+size=10806
+sha256=57B03B47D2B7C445702E65DAEAA80130C99D2D95D89883D822F5EC2FEDBF4F1D
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 c8 00 00 00 2f 08 06 00 00 00 a6 19 85 a4 00 00 00 04 67 41 4d 41 00 00 b1 8e 7c fb 51 93 00 00 00 20 63 48 52 4d 00 00 87 0f 00 00 8c
+
+IHDR
+gAMA
+ cHRM
+9iCCPPhotoshop ICC profile
+P$VD
+ET,oF
+4432
++-%M
+u*@~
+0 ~y
+a!2D
+zQ7Qc
+xb"1I
+D.q#
+8F|K
+$^RS
+3Rx)-)
+R#Rs
+2Z2n2l
+BaQ6S
+Pgeed
+VJ;N
+tAiF
+|FyZ
+U)W9
+YUEUOU
+:C=^
+G}VCE
+Os^K[+\k
+w3=3
+g=,<
+by5{
+c &0 
+iP^P_0%8&
+glGv9{
+?G/g{
+kQkYk{
+]-6)
+QN//*
+{G+}+
+IcXc
+K?7s>
+}N}g/
+;SwS
+V<R|
+|IDATx^
+q@h_!8$84
+4GN4
+;uT'
+~;xT
+O_<o
+(xqp|
+{>6x
+<?xIp\
+m;he
+~!8%`4
+7Z^u
+<%O{
+;v|3
+ON=g
+48?(
+R=j)|
+v?'u
+)xKpB
+eLib
+#[`~ X]
+W.\8v
+D5zW
+@,0Z,
+BQdt
+<sk,
+@(Xy
+yz[*lp
+A1]=
+"L|m`
+4xy\
+Oy`{
+)D:?
+$=Zh*
+KOyy/Jw
+Yq/hO
+2r<(
+xWo|+[
+x.a,
+JBa)
+^MOW=
+Mz'U
+g F6N
+oW\o
+ @@O
+dJ/O
+.xUp\
+L~+Pg
+<) o|
+U#a B
+Szy+
+e}0`
+@Tu0
+1Pd9
+tn:J
+zYs?
+0*i?`U
+s*=m
+b?pV
+H?eW
+K{j 
+zF<v
+oh-3
+!:8/i
+VJA}
+g s?^1
+zGX:
+>GW~i
+]&Lt
+A,g?
+DQvz
+ ;=-:
+iFc`t
+?:7v
+E_9v
+\u,y
+#Cyf`
+C8U^
+0Vc)
+)y<-
+:bNa
+=4p2
+S>40
+< 8z
+zs`<
+'?oSt
+'We*
+*oNFU
+IEND

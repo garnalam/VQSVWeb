@@ -1,0 +1,23 @@
+path=data/img/img_133.mid
+kind=png
+size=984
+sha256=543373E39B441D33F8BC0338C31865F821BDB7D1B8CA41F05116F82F43EC877D
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 43 00 00 00 2f 08 03 00 00 00 8f 22 87 60 00 00 00 33 50 4c 54 45 51 26 1a d5 4b 4b ff 6d 6d ff ff ff f3 e7 e7 ff ae af 9d 26 26 6d 6d
+
+IHDR
+3PLTEQ&
+&&mm
+@+l%
+tRNS
+CIDATx
+_[=x
+AQFV
+Sd A^gy
+2ir|'
+bxnsd($T
+{1d9Y
+{/#N
+7MN7
+~zYO
+A<kQ
+IEND

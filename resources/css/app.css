@@ -141,3 +141,269 @@
         @apply bg-background text-foreground;
     }
 }
+
+@keyframes wiki-aurora-drift {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(2.5rem, -1.5rem, 0) scale(1.08);
+    }
+}
+
+@keyframes wiki-float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-0.45rem) rotate(1deg);
+    }
+}
+
+@keyframes wiki-pulse-ring {
+    0% {
+        transform: scale(0.82);
+        opacity: 0.7;
+    }
+
+    75%,
+    100% {
+        transform: scale(1.24);
+        opacity: 0;
+    }
+}
+
+@keyframes wiki-hologram-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes wiki-scan {
+    0% {
+        transform: translateY(-140%);
+    }
+
+    100% {
+        transform: translateY(420%);
+    }
+}
+
+@keyframes wiki-spark {
+    0%,
+    100% {
+        transform: scale(0.65);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+}
+
+@keyframes wiki-reveal {
+    from {
+        opacity: 0;
+        filter: blur(0.5rem);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes wiki-signal {
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0.75rem rgb(52 211 153 / 0.8);
+    }
+
+    50% {
+        opacity: 0.35;
+        box-shadow: 0 0 0.2rem rgb(52 211 153 / 0.35);
+    }
+}
+
+@layer components {
+    .wiki-pixel-art {
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+    }
+
+    .wiki-grid {
+        background-image:
+            linear-gradient(rgb(103 232 249 / 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgb(103 232 249 / 0.08) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+
+    .wiki-console::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 4.5rem;
+        height: 1.25rem;
+        border-right: 2px solid var(--wiki-accent);
+        border-bottom: 2px solid var(--wiki-accent);
+        content: '';
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    .wiki-dossier {
+        clip-path: polygon(
+            0 0,
+            calc(100% - 18px) 0,
+            100% 18px,
+            100% 100%,
+            18px 100%,
+            0 calc(100% - 18px)
+        );
+    }
+
+    .wiki-dossier::after {
+        position: absolute;
+        z-index: 30;
+        right: 0;
+        bottom: 0;
+        width: 1.8rem;
+        height: 1.8rem;
+        border-right: 1px solid
+            color-mix(
+                in oklab,
+                var(--element-color, var(--wiki-shell-accent)) 65%,
+                transparent
+            );
+        border-bottom: 1px solid
+            color-mix(
+                in oklab,
+                var(--element-color, var(--wiki-shell-accent)) 65%,
+                transparent
+            );
+        content: '';
+        pointer-events: none;
+    }
+
+    .wiki-signal {
+        animation: wiki-signal 1.8s ease-in-out infinite;
+    }
+
+    .wiki-aurora {
+        animation: wiki-aurora-drift 13s ease-in-out infinite;
+        will-change: transform;
+    }
+
+    .wiki-float {
+        animation: wiki-float 4.5s ease-in-out infinite;
+        will-change: transform;
+    }
+
+    .wiki-pulse-ring::before,
+    .wiki-pulse-ring::after {
+        position: absolute;
+        inset: -0.55rem;
+        border: 1px solid color-mix(in oklab, currentColor 42%, transparent);
+        border-radius: inherit;
+        content: '';
+        animation: wiki-pulse-ring 2.8s ease-out infinite;
+    }
+
+    .wiki-pulse-ring::after {
+        animation-delay: 1.35s;
+    }
+
+    .wiki-card-fx {
+        isolation: isolate;
+        animation: wiki-reveal 560ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .wiki-card-fx::before {
+        position: absolute;
+        z-index: 20;
+        top: -45%;
+        bottom: -45%;
+        left: -75%;
+        width: 42%;
+        transform: rotate(18deg);
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgb(255 255 255 / 0.42),
+            transparent
+        );
+        content: '';
+        opacity: 0;
+        pointer-events: none;
+        transition:
+            left 800ms cubic-bezier(0.2, 0.7, 0.2, 1),
+            opacity 250ms ease;
+    }
+
+    .wiki-card-fx:hover::before {
+        left: 135%;
+        opacity: 0.8;
+    }
+
+    .wiki-scanline::after {
+        position: absolute;
+        z-index: 5;
+        right: 0;
+        left: 0;
+        height: 32%;
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(255 255 255 / 0.13),
+            transparent
+        );
+        content: '';
+        pointer-events: none;
+        animation: wiki-scan 5.5s linear infinite;
+    }
+
+    .wiki-hologram {
+        background-size: 220% 220%;
+        animation: wiki-hologram-shift 8s ease infinite;
+    }
+
+    .wiki-spark {
+        animation: wiki-spark 2.4s ease-in-out infinite;
+        box-shadow: 0 0 1rem currentColor;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wiki-aurora,
+    .wiki-float,
+    .wiki-hologram,
+    .wiki-scanline::after,
+    .wiki-spark,
+    .wiki-signal,
+    .wiki-pulse-ring::before,
+    .wiki-pulse-ring::after {
+        animation: none;
+    }
+
+    .wiki-card-fx::before {
+        display: none;
+    }
+
+    .wiki-card-fx {
+        animation: none;
+    }
+}

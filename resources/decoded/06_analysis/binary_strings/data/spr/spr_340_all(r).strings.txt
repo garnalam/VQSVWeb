@@ -1,0 +1,6 @@
+path=data/spr/spr_340_all(r)
+kind=custom_binary
+size=216
+sha256=B77F20E335BE792ED5FF6A364EF0607CF347DEEF9B96C77999F230E4A9CC1F9F
+hex_prefix=00 01 00 05 00 00 00 00 00 00 00 16 00 18 00 07 00 04 00 01 00 00 ff f5 ff e9 00 00 00 01 00 00 ff f5 ff ed 00 00 00 01 00 00 ff f5 ff f1 00 00 00 01 00 00 ff f5 ff f4 00 00 00 01 00 00 ff f5
+

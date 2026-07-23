@@ -1,0 +1,2 @@
+/data/spr/spr_
+_all(r)

@@ -1,0 +1,18 @@
+path=data/img/img_550.mid
+kind=png
+size=866
+sha256=A3C68712B007EE758460C282DEBDE45C4DE0B5B0416998F85511272334D4D38B
+hex_prefix=89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52 00 00 00 33 00 00 00 2f 08 03 00 00 00 79 6b 02 f8 00 00 00 bd 50 4c 54 45 ff ff fb fe f0 2c fd f6 da fb ee 95 fc f0 ae ff ff ca fd f0 49 fe fc
+
+IHDR
+PLTE
+?tRNS
+IDATx
+nvWg#
+<EQ4
+/Vn9
+W}uL
+f6X/
+R5Vw
+QC:5
+IEND

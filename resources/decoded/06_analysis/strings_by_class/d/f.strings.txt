@@ -1,0 +1,6 @@
+unknown constant type: 
+Too long str: 
+strload
+utf-8
+Couldn't load bytecode:
+Signature 1

@@ -1,0 +1,1248 @@
+path=data/event/scene_11.mid
+kind=custom_binary
+size=78837
+sha256=E0C2EAE6A59C38929EA7AB584239D0BDEA18493BFA01ECAEE7FF54A1D18A57FC
+hex_prefix=00 1d 1b 23 10 b3 20 b8 2e 41 02 38 02 2d 02 73 02 20 0e 10 1f 90 07 31 0b 35 08 44 1c 53 09 d0 02 cf 02 e3 03 ad 03 a5 06 7d 03 3e 08 f1 0b 9c 03 20 03 48 03 de 04 12 03 b0 04 31 00 51 00 10
+
+2,7,8,9,10,11,12
+0,0,0,0,0,0,0,0
+1,1,1,1,1,1,1,1
+Neil$S
+nh l
+y, ta qu
+ ngu ng
+n Ch
+o Qu
+ng ta kh
+ng ph
+ng c
+nh ng
+ sao? Ai c
+ ngh
+m tr
+c, H
+c Long Qu
+n ph
+i ng
+n Nguy
+c Th
+nh do th
+m, l
+n tr
+nh tr
+ng th
+Chie
+ cho r
+ng v
+i th
+p ni
+o Ch
+t tr
+ do chi
+y ra, cho n
+ ra kh
+i qu
+i, tr
+nh hu
+n luy
+t, h
+ng kh
+ng bu
+ng tha.
+ch b
+y. L
+y tr
+ng gi
+ nghi
+m ng
+t. V
+t kh
+ng m
+ng ta 
+ng H
+u. Gi
+ xem ra ch
+t. Th
+ng ta.
+Neil
+m th
+n|Ch
+ch r
+i. Gi
+ch duy nh
+m sao ch
+ng l
+c khi H
+n cho ng
+i gi
+t ch
+7,8,9,10,11,12,-1
+7,7,7,7,7,7,7,7
+NeilGB
+n ch
+ng mu
+ ta sao? T
+ch Th
+y Th
+nvChuy
+nh ta kh
+ng r
+, nh
+m binh l
+nh n
+ng h
+c kh
+. Ta e l
+ng tha cho ch
+2,7,8,9,10,11,12,-1
+i sao?
+Yafei=Con ng
+u th
+c Long th
+n, kh
+c ng
+y danh H
+n ti
+i, ch
+i quan h
+Yafei
+n kh
+c. V
+p trung m
+i quy
+n tranh gi
+nh ch
+m gi
+Ha ha ... ha ha ha ha!
+NeilRN
+y ngh
+i xem trong l
+ch s
+ng n
+o kh
+ng chi
+n tranh?
+YafeiVNh
+ch c
+n th
+n, c
+n nh
+n lo
+y nh
+nh v
+a Binh l
+nh H
+c Long trong th
+nh xem, c
+u manh? V
+Yafei*Ta kh
+ng cho ph
+p ng
+i ph
+Neil!H
+a cha ru
+ng sao?
+ng nhi
+n! V
+y! C
+i chi ti
+n chi
+y. Ta v
+c cha m
+ng... qu
+ nhi
+ Sophie.
+Yafeiz
+ sao? Kh
+ sao?! Ng
+i ch
+ng qua l
+ng t
+ng nh
+ng ta!
+Ta... 
+u con ng
+y th
+ trong s
+y, Sophie, t
+i nh
+u ti
+n. Tuy ta ng
+c ngh
+ch kh
+o, nh
+ng trong l
+ng ta lu
+n ngh
+ ai l
+n Sophie!
+NeilJD
+ sao, n
+i, ta m
+ng cho n
+ng, Sophie.
+Yafei"C
+i kh
+n quy h
+Yafei.C
+n ng
+i? Ng
+ng ngh
+ch n
+Yafei_N
+u ng
+m ph
+ quan c
+a ta, ph
+nh c
+a ta, ta s
+ tha ch
+t cho l
+Neil, 
+ng nghe c
+ ta!
+u tr
+c giamW
+Mebene
+Abra
+Dodo
+Westa
+Fruita
+Rose
+Blacksta
+Neil$Gi
+a ph
+c, ch
+a th
+Neil:Abra 
+t, ho
+Neil l
+t nh
+ng trang s
+nh ph
+: Ti
+ng di
+c gia t
+ng. D
+t th
+p trung t
+ng k
+: Tr
+i lo
+c chia l
+m 4 lo
+i, th
+u, ngo
+ bay l
+ng ch
+ng ki
+m so
+: Th
+y chia l
+m hai t
+ng, l
+ng trung. Con ng
+i sinh s
+t. C
+ng trung c
+ng xinh 
+p, th
+ng g
+i Thi
+n Kh
+ng Th
+nh. Nh
+ng ng
+n Gi
+t xinh 
+p, thu
+n khi
+t, n
+m nh
+n bi
+Neil)Sophie ... qu
+Con ng
+i lu
+i xinh 
+p, v
+ng cam l
+n, v
+t minh Phi Long thuy
+ng Thi
+c xa x
+i, n
+ng b
+nh th
+c. Qu
+ ra l
+nh d
+n Phi Long thuy
+NeilbKh
+ Phi Long thuy
+n sao ... Thi
+i ... n
+u nh
+i, c
+c Sophie?
+Neil nh
+Sophie l
+ chi
+n tranh, nh
+n tranh. M
+c chi
+n tranh x
+y ra, H
+nh t
+i, Thi
+n cu
+NeilW(Sophie l
+i... H
+t Sophie ... Yafei tr
+ ...)%Mau 
+n Th
+m chu
+`<  
+a Ph
+ng Ho
+ng`Phi Kh
+ang bay l
+n. H
+y ng
+ng, th
+a ng
+ng*C
+m, ta 
+SiliadHa ha! 
+y. Th
+o nh
+?! Silia ta s
+p Thi
+SiliaWQu
+ kia m
+i ra H
+ng. Yafei, l
+m kh
+YafeiFN
+ cha n
+i, kh
+Silia
+i tho
+, ti
+ kia c
+nh r
+c. Ta ph
+i tra qua, h
+n sinh ra v
+o ng
+ng ti
+o Li
+a Th
+ sau, n
+ng Chi Th
+YafeiRCon c
+c nh
+ quan h
+Con c
+ huy
+i, m
+t nhi
+n thu
+c gi
+i, l
+m sao c
+n quan.
+Yafei6Nh
+nh kh
+nh con.
+i, hai v
+ch ch
+ tranh 
+u, khi
+n Thi
+a kh
+a, nh
+ng x
+c lo
+i cung ph
+SiliaWKh
+ng sai! Ch
+ng ta t
+i sao ph
+nh qu
+ng tr
+SophieJN
+ duy tr
+, sinh s
+ con l
+ ...!!
+Silia b
+Cha kh
+ sao?
+ ta 
+n Ph
+ng Di T
+ch, th
+ thu h
+i tr
+ cho ta con 
+ng s
+ng. Cho n
+n ta ngh
+ ta c
+c tr
+a con. C
+Yafei0Con v
+u ...
+SiliaDHa ha! Ch
+i ta ch
+a con 
+ sao?! Ha ha ha ha!
+YafeiGV
+ng, con kh
+ng quan t
+nh, nh
+ Yafei ...
+i! Con kh
+SilialQu
+! Ta 
+n su
+m, long 
+ong 
+a con c
+Sophie
+ ...?
+Silia$Sophie, con th
+ con g
+i ta?
+Sophie7Chi
+ di v
+u con...
+c th
+a ta. 
+n gi
+ ta v
+ con. 
+c khi ch
+t chi
+a ta. Ta kh
+i chi
+. Kh
+i coi l
+t. Ha ha ha!
+Ta th
+c ngu xu
+n! N
+ ta s
+nh, 
+ng, c
+ch B
+u! R
+t ng
+c! Cho n
+n ...
+i!!!
+27,28
+6,7,13,20,21,22,27,28
+Nhanh 
+n xem Sophie th
+1$Sophie l
+ang b
+Neil3Sophie! Phi Kh
+Neil8B
+t! Kh
+p an to
+! Li
+Neil.C
+u Sophie 
+i! Mau d
+i ngay nhanh l
+y ra ngo
+10,11
+Sophie'Con 
+u...
+SiliaDKh
+i ngh
+a con sao?
+Con bi
+t, nh
+Binh l
+c Long
+defg8
+Neil6Doranle b
+ Karen nh
+i giao cho ng
+Doranle|Oh, qu
+ may m
+n, nghe n
+m ch
+ ra v
+n vui v
+. Nh
+y ta r
+Neil0Camille 
+a Karen giao cho t
+Camille
+Ta c
+Doranle5Kh
+nh m
+... th
+nh thi
+ ...
+DoranleNQu
+n, ng
+i li
+ng L
+ng con ng
+i kia...
+ Thi
+ng. Ta l
+ Neil, ng
+y, ta kh
+. Ch
+ng ta theo b
+ Silia bay l
+i ...
+16,17,19
+7,7,7
+Silia!
+y, h
+ng ...
+Ta m
+ng qu
+u... m
+c Thi
+i nhu
+u. Tr
+u, B
+ bay, 
+ tung t
+ch. Gi
+u ch
+NeillKh
+ khoanh tay ch
+t. Ch
+n mu
+m sao? Th
+u ph
+???lTi
+, ng
+i hi
+ quay nh
+y, t
+ khi ng
+a sinh ra!
+16,17,19,-1
+7,7,7,7
+Silia2
+ ta n
+i cho c
+i bi
+Silia ch
+o Sophie.
+u chuy
+ ta! Ta l
+p th
+y ch
+m, h
+a ra l
+nh, ha ha! Th
+ chuy
+SiliaQK
+ truy
+n ki
+a ta, gi
+Sophie8Kh
+ng! 
+a ch
+ng ta, t
+18,20
+ng*Ch
+n, l
+y ta ch
+i sao?!
+ng&B
+i Nguy
+y Ng
+Sao?
+Doranle
+m li
+i, Sophie 
+ hai tr
+a Chi S
+. Khi 
+, Thi
+n ho
+. Nguy
+ hai v
+ng quan 
+m. M
+t cho r
+ kia cho r
+n. Hai ng
+ tranh lu
+t, cu
+t ph
+ch ra. M
+o tr
+o ra 
+a Gi
+y Sophie ch
+ ...?!
+Doranle%N
+NeilFKh
+ng quan tr
+ng. Ta ch
+ mang h
+nh b
+u so v
+ tan bi
+n. Thi
+ng ta v
+nh vi
+ng hi
+u. Ch
+ng trai ta s
+Du h
+nh qua th
+i gian v
+i ba v
+i. Ba v
+ang ng
+ say, h
+y mau th
+n [Phi
+u phi 
+ch v
+ linh] th
+nh L
+Tomas
+i, Tinh V
+ng Minh V
+ng Long th
+ thi
+ bay qua. Tr
+n, sau khi ho
+m ta, ta s
+ cho ng
+Tuy nhi
+ch, nh
+ khi 
+ng tham gia, cho n
+i hay kh
+u. Th
+i Gi
+i tuy c
+nh, kh
+ thu ph
+c sao?
+ nghe qua v
+y. Nh
+ ai th
+ng. V
+u hy v
+ng sao?)
+t Trung C
+n 80 n
+a Thi
+ng, ta l
+y?2Tomas m
+i sao tr
+t xu
+t hi
+TomasMTr
+ mang v
+ ba v
+i ta t
+ch gi
+m phi
+i. Hi
+ do di chuy
+TomasHV
+nh. C
+y cho c
+u, n
+u bay l
+ chim.6
+n [Kh
+ng Gian Minh T
+ng] th
+nh Minh V
+ng Long. Hi
+NeilDTh
+n quan 
+n, ba v
+p ta!
+t!4Tomas h
+ng ra ph
+nh k
+TomasxBa v
+ ra Thi
+a chi m
+n, ta s
+ch Long Th
+n chu
+ nghi th
+y ta ...
+ng+Truy
+n thuy
+t U Linh Ch
+Tomas+Kh
+ng sai, 
+ngRC
+c ... th
+ Linh Quang L
+n U Linh Ch
+ ra.
+Tomas[
+m. V
+ trong th
+i gian ta chu
+c, Neil, c
+o qu
+y huy hi
+c. Ta s
+i ngay,
+n [Thi
+n] l
+y U Linh Ch
+XianLa
+t ngon!
+Xin g
+XianLa-H
+m? Aimie cho Tomas sao? Ta c
+c! C
+'()H
+Stephen
+YaQi
+Alicia
+m Th
+ABell
+Lily
+u Th
+Bell, Lily*Hoan ngh
+nh gh
+ qua Th
+ABelly
+ mua s
+m thi
+u trong chi
+u. C
+ mua 
+c sinh m
+c cho s
+t%Tr
+ sinh m
+nh s
+a ta l
+ kho h
+nh trang c
+ mang 
+c 6 s
+t, cho n
+a ta c
+DbellFCh
+a ta chuy
+n xu
+m trang s
+c, c
+ cho s
+Neil!
+o ta...
+Fruita`Ta l
+ Fruita. Abra 
+o ta giao cho c
+m huy ch
+y, mau mua s
+c ph
+m cho s
+Fruita)Th
+i nhanh 
+i, ta b
+c, ta 
+Neil&Ta ngh
+n mua s
+Dbell)
+a cho ng
+Neil"Ta mu
+t trang th
+FruitaQN
+y, trang b
+ chu
+ xong. Cho s
+NeilMC
+ng ta mu
+ng cao kh
+FruitaJ
+a Nam l
+m. Ta s
+a nam b
+Dbell
+!"#$
+/012
+9:;<
+Neil. Ta l
+ Abra.
+Ra l
+ Abra 
+Abra4C
+i tham gia cu
+c thi chi
+nh ...
+AbraiB
+t lu
+c ti
+Abra V
+m theo ch
+a ta.
+Ok.'Abra b
+n nghi
+Abra&Tr
+t chia l
+m 5 ph
+t, l
+ #2 tinh c
+p #0, ph
+ng cao c
+ #2 ti
+a #0 ho
+c #2 d
+ #0 s
+nh h
+AbraGKh
+ng sai, nh
+u bi
+o ph
+p cao ch
+Neils
+nh, s
+p phi
+ tinh c
+u, #2 n
+m tinh s
+ng #0 
+t, v
+n trong t
+NeilPS
+ng lo
+p, c
+p kh
+c nhau.
+Abra$V
+y sau 
+m sao 
+NeilsS
+t gi
+a,  d
+t ti
+AbraiXem ra c
+c. Nh
+i #212 c
+p #0 gi
+c thi l
+ thuy
+nh. K
+p, ta 
+nh cho c
+u chi
+ khi
+n qu
+. Tuy nhi
+y...
+Neil.Chi
+t Ho
+ng Gia 
+ giam c
+Abra%
+ng, b
+ giam t
+AbraGCho n
+nh sau 
+c cu
+c thi.
+NeilAN
+n tham gia chi
+ng Gia l
+t sinh ra kh
+ch ng
+nh ngang ng
+c sao? N
+u ta l
+p trong 
+m qu
+a j n
+Abra+R
+t, ta qu
+Neil, ng
+p nh
+ng nhau 
+ng? 
+ch cu
+a cu
+Neil]N
+u qu
+ tuy
+i! Ta 
+m ngh
+ch l
+ng d
+Abra7Ha ha. V
+i, chu
+ xong r
+m ta.=
+i Th
+m mua m
+t trang b
+ng. Hi
+u xong.
+t! Fruita 
+o cho d
+n trong th
+nh, trong ch
+o ra m
+t cu
+nh. Nhi
+ binh s
+n, t
+Ta hi
+n. Hi
+AbraNNgh
+m, gi
+n nhi
+c giao.
+Neil,Ng
+i! Ta nh
+ do di 
+AbraVNeil qu
+i cho ng
+t, ng
+i xem c
+a ra v
+o hai s
+c nhau kh
+Neil0Kh
+t sao?
+AbraAB
+NeilNRa l
+n uy phong h
+AbraX
+y, b
+a hay d
+t sinh bi
+n Abra 
+JackuC
+n?! Tuy nhi
+n vi
+c chuy
+t quan tr
+i mau ch
+Neil%Jack ti
+n sinh, chuy
+y ra sao?
+Jack
+A, th
+n phong t
+nh, ta v
+nh nh
+6,11
+Jack>V
+t qu
+! Th
+y giao cho c
+u, phi
+y mang 
+n cung c
+em mang 
+nh.@Nhi
+t, vui l
+t 1 
+ tra x
+Mau ch
+y 2L
+Lilia
+ ... 
+y, l
+m sao v
+Lilia0N
+a ta, 
+i! Ch
+n ta l
+Neil.Ch
+n ngu ng
+c! S
+nh! Ta r
+n vo c
+m qua 
+i mao r
+ng y
+u, ta v
+o th
+m xu
+ng...
+Lilia*L
+m sao b
+y gi
+nh gi
+9,13
+Lilia5C
+y ta s
+ tin t
+nh [c
+c ch
+y] b
+c.@Nhi
+Ta ph
+u Manh! Ng
+Lilia 
+Lilia!T
+ nay v
+ sau ta s
+Lilia&Ta kh
+i Ti
+u Manh 
+LiliaeTi
+, cu
+u cho ta r
+! Ta ch
+ng qua v
+Lilia'C
+y 3M
+Westa"C
+Neil=Ta..., c
+a qu
+n li
+n minh?
+Westan
+y. Ta t
+ do s
+a ti
+n, h
+u gi
+u Nguy
+WestaW
+ 5 huy ch
+y, d
+May qu
+WestaiCh
+ng ta m
+ quy
+nh sinh t
+ng Nguy
+nh, ta tin nh
+n Dinh th
+a tr
+ng Gia.
+Nguy
+Tonys
+n sao?
+Neill
+ng Gia hu
+ang t
+n$Ra v
+y... ch
+ng trai, c
+Neil.
+n|Neil, c
+ ta l
+i mu
+Ba ng
+n, gi
+a ta tri
+i. Ch
+ng ta ph
+a gi
+a do ai gi
+i giam gi
+m tra. C
+i, sau 
+ ta chu
+ sau 2 gi
+u nay.$
+ ra ngo
+Neil.Ta t
+i. L
+n Neil, ch
+ng, ch
+nh ta.
+67,25
+19,20
+Yafei\Tuy ng
+a nh
+i cho r
+y tho
+o?...
+YafeicNg
+i! Tr
+c ta 
+ tha cho ng
+i xu
+n. Ng
+c mu
+NeildH
+c. Ta m
+Yafei r
+t ra chi
+... mu
+YafeiYTa th
+n danh d
+u kh
+nh ta s
+y di v
+Yafei+Ng
+ng. Nh
+y, ta ch
+m ...SYafei c
+, gi
+c ... ta ...
+10,11,12
+2,0,0
+1,1,1
+em h
+n ra!
+11,12
+Red>Yafei, ti
+y kh
+i mau gi
+i sau.
+ch nhau. Do 
+ng tuy
+t. Nh
+c hi
+a Silia 
+ duy nh
+u di
+ng. Th
+t khi
+Redw
+! Ng
+o, l
+m sao bi
+ch chi
+nh gian nan v
+Yafei3Sao c
+y... 
+ ... ph
+n Tr
+ng Nh
+`P0 
+-./0
+1234
+9:; 
+^_`a
+jklm
+nopq
+n6A! C
+ anh ch
+ng, ng
+i theo ta 
+7,-1
+Yafei*Kh
+em tr
+Neil(H
+c! Vi
+65,24
+14,15
+A!2Neil v
+ Yafei c
+ hai c
+a cho ta!
+i sao h
+Neil1
+i ta y
+Yafei-N
+i giao h
+n cho ta, ta s
+Ta s
+i Trung t
+y Tr
+"#$ 
+6789
+@ABC
+ ngo
+MeiLishaOCoi b
+nh? C
+p ta 
+em c
+y cho M
+MeiLisha<C
+n! H
+n hi
+ tinh qu
+, ch
+ang 
+p ti
+ng$M
+c].@Nhi
+MeiLisha$Th
+ ta t
+n Ni
+nh 1
+MeiLisha
+nh 2L
+Jahila"L
+y, ai c
+p ta ...
+y ra chuy
+Jahila
+Ta l
+t danh v
+y bi
+m nay ta 
+nh bi
+i chu
+ng tay nh
+JahilayC
+ Gottardo 
+y ra r
+ng ta l
+n.. Ng
+i cho ta 
+7,10
+i#Gottardo hi
+i Ni
+Jahila"Th
+ng tay
+JahilaHA, 
+n. Nh
+y cho ng
+nh 3
+Neil=Locke ti
+n sinh ph
+ng? Ng
+t phong th
+Locke 
+y phong th
+Locke nhanh ch
+c ra 
+Locke
+NeilWTa l
+ng Gia Neil, 
+ Hughes 
+a cho ta, ng
+ Neil, ta 
+t chuy
+i. H
+i Arnold s
+n ngo
+Neil#C
+i cho ta bi
+t ...
+Locke}
+ng ta c
+i, hi
+ do xu
+LockePTa 
+ ghi m
+ cho H
+nh JaniLa, 
+a qua cho n
+p ta?
+JaniLa t
+Neil9Hi
+i ta c
+ do 
+c, th
+nh 4M
+ch Ti
+ch M
+m 1K
+m 2J

@@ -1,0 +1,232 @@
+Thủy Kimura
+Bích Thủy thành
+Nguyên Mộc Thành
+Niêm Thổ Thành
+Hắc Thạch thành
+Thiên không
+Xa cổ
+/data/ui/option.ui
+/data/ui/answer.ui
+/data/ui/wharf1.ui
+Đạt được 2000 kim tiền
+Đạt được 5 Phong ấn cầu
+Đạt được 5 Bánh Sandwich
+Đạt được 2 Sinh mệnh thạch
+Đạt được 2 huy hiệu
+Dẫn thưởng
+Tiến hóa
+Dị hóa
+Tài liệu
+Cách mở
+/data/ui/world.ui
+/data/ui/openbox.ui
+/data/ui/taskTip.ui
+/data/ui/transmit.ui
+Tùy thân cửa hàng
+Sủng vật
+Lưng bao
+Đồ giám
+Nhiệm vụ
+Lưu dữ liệu
+/data/ui/gamemenu.ui
+/data/ui/gamesystem.ui
+Không
+/data/ui/help1.ui
+Trợ giúp
+Nhấn nút 2, 4, 6, 8 để di chuyển#nNút 5: công kích, đối thoại, xác nhận#nNút 1: Xem nhiệm vụ#nNút 9: lựa chọn sủng vật cưỡi#nNút 0: Xem bản đồ#nNút mềm trái: menu hệ thống#nNút mềm phải: menu trò chơi
+/3
+/data/ui/help.ui
+Quan tại
+Tên trò chơi: Sủng vật Vương quốc - Liệt hỏa#nViệt hóa: BIGAME
+Tùy chọn
+/data/ui/menu.ui
+/data/ui/menu1.ui
+/data/ui/petstate.ui
+Ngân hàng Sủng vật
+#P
+#P0
+Có thể tiến hóa
+Có thể dị hoá
+Lấy ra
+Phóng sinh
+/data/ui/msgwarm.ui
+Ba lô Sủng vật đã đủ
+Nhấn nút 5 tiếp tục
+Thần thú không thể phóng sinh
+/data/ui/msgconfirm.ui
+Bạn muốn phóng sinh sủng vật này?
+Xác nhận
+/data/ui/shop.ui
+Gởi lại
+Toàn bộ trạng thái đã đầy, không cần khôi phục
+Ba lô sủng vật trạng thái toàn bộ khôi phục
+/data/ui/msgRecover.ui
+Có khôi phục trạng thái ba lô sủng vật không?
+Cần tiền tài: 
+Kim tiền chưa đủ
+Đang lưu...
+Lưu thành công
+/data/ui/shopbuy.ui
+Mua
+Mua sắm
+Quay lại
+Đạo cụ đã đủ
+Công năng còn chưa mở
+Đạo cụ này đã đủ
+/data/ui/msgyn.ui
+Đã thành công mua sắm #2
+ * 
+Số lượng Huy hiệu chưa đủ
+/data/ui/msgtip.ui
+Bán ra
+Bán đi
+/data/ui/record.ui
+Không đạt được sủng vật sách tranh đạo cụ
+/data/ui/petmap.ui
+/
+/data/ui/task.ui
+Đầu mối chính hoàn thành độ: 
+.
+%
+Chi nhánh hoàn thành độ: 
+Hoàn thành
+1
+/data/ui/badge.ui
+Chưa đạt
+Đã đạt được
+/data/ui/smsTip.ui
+:
+Sử dụng
+Xuất chiến
+Sủng vật này không thể tham chiến
+/data/ui/petsetting.ui
+Sủng vật này đã đặt ở vị trí chiến đấu
+Ba lô phải lưu ít nhất 1 sủng vật
+Ngân hàng đã đầy, không thể gởi lại
+Dị hoá
+Sủng vật này không thể tiến hóa
+Sủng vật này không thể dị hoá
+Không thể vào hóa cùng dị hoá
+Sủng vật này đã xuất chiến
+/data/ui/choice.ui
+Vật phẩm trang sức
+Trạng thái
+Mang theo
+Dỡ xuống
+Đã mang theo
+Bị mang theo
+Đạo cụ
+Số lượng
+/data/ui/skill.ui
+Nhất định
+/data/ui/evolve.ui
+Thành công dỡ xuống
+Thành công mang theo
+Đạo cụ này không thể sử dụng
+Sủng vật này đã tử vong, không thể sử dụng
+Sủng vật này không có, không thể sử dụng
+Máu đầy, không cần sử dụng
+Kỹ năng giá trị đã đầy, không cần sử dụng
+Trên người đều bị lợi hiệu quả
+Trong hưng phấn, không thể dùng
+Thành công sử dụng đạo cụ
+Máu và tinh khí đều đã đầy, không cần sử dụng
+Sủng vật đã chết, không thể sử dụng
+Dị hoá thành #2
+Tiến hóa thành #2
+Không thể lại tiến hóa hoặc dị hoá
+Tài liệu chưa đủ, không thể dị hoá
+Tài liệu chưa đủ, không thể tiến hóa
+Còn chưa tới
+ cấp, không thể vào hóa
+/data/ui/bag.ui
+Vật phẩm
+Ấp trứng
+/10
+/30
+Mở ra
+Chìa khóa vàng
+1 cái
+0 cái
+Đóng cửa
+Gia tốc
+Triệu hồi
+Triệu hoán
+Chỉ có thể cho 50 cấp sủng vật sử dụng
+Sử dụng thành công
+Không thể sử dụng
+Nơi này không cách nào sử dụng tránh quái hoàn
+Thành công sử dụng đạo cụ, cũng có thời gian ngắn tránh quái hiệu quả
+Đã có được thời gian ngắn tránh quái hiệu quả
+Thành công sử dụng, tranh thủ thời gian đi ấp trứng trứng sủng vật a!
+Không có trứng có thể ấp trứng
+Không gian không đủ, hãy thanh lý lại không gian ấp trứng
+Ấp trứng thành công
+Vẫn chưa thể ấp trứng
+Ấp trứng tìm được #2
+#0 để vào ba lô
+#0 để vào ngân hàng
+Không có không gian, đã phóng sinh
+/data/ui/ride.ui
+Lục đi điểu
+Hư không hành giả
+Hải âu
+Nham sơn long
+Nơi này không thể sử dụng sủng vật cưỡi
+Chưa có sủng vật cưỡi này
+/data/ui/battle.ui
+100%
+300%
+60%
+lv
+Trận chiến này không cho bắt sủng vật
+Không gian không đủ, không cách nào bắt được
+Trạng thái bị quấn, không thể sử dụng đạo cụ
+Trạng thái bị quấn, không thể đổi sủng vật
+Trạng thái bị quấn, không thể chạy trốn
+Chạy trốn thất bại
+Trận chiến này không thể trốn chạy
+/data/ui/choiceskill.ui
+Kỹ năng giá trị chưa đủ
+Không có kỹ năng giá trị, không cách nào chiến đấu
+Pokemon ball
+Tỉ lệ bắt
+Số lượng: 
+ cái 
+Số lượng Pokemon ball không đủ
+Trong chiến đấu không thể sử dụng
+Không có đạo này cụ, hãy mua sắm
+/data/ui/levelUp.ui
+Có thể học tập kỹ năng mới
+Có thể nhấn #1nút mềm trái#0 để học tập kỹ năng
+Học tập
+Ba lô sủng vật đều thăng 5 cấp
+/data/ui/bodyShop.ui
+Nhấn nút 5 học tập kỹ năng mới
+/data/ui/npcEnemy.ui
+Không có cái chìa khóa, có thể đến tài liệu cửa hàng mua sắm
+ x 
+Tùy thời mua sắm các loại đạo cụ, già trẻ không gạt.
+Trong ba lô sủng vật đều đã max level
+/data/ui/dialog.ui
+Trò chơi
+/data/ui/taskOption.ui
+#2
+ #0
+Có dùng 10000 kim tiền để khôi phục trạng thái của tất cả sủng vật trong ba lô không?
+Tại chỗ sống lại
+Kích hoạt trò chơi
+Mua sắm tất trúng cầu
+Mua huy hiệu
+Mua kim tiền
+/data/ui/smsInfo.ui
+/data/ui/wharf2.ui
+Không ra hàng
+Đường thủy chưa mở
+5000
+Ấp trứng ra sủng vật
+Đã có trứng sủng vật, không cần mua sắm
+Đã thành công mua sắm #2 trứng sủng vật
+Tiện lợi điếm
+Tiến vào
+Công năng theo đạo học sau mở ra

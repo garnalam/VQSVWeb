@@ -1,0 +1,34 @@
+ikon_1
+ikon_2
+ikon_3
+ikon_4
+ikon_5
+/data/script/bTask.mid
+/data/script/mTask.mid
+/data/script/bqTask.mid
+ ex = 
+ event init 
+star0
+star1
+star2
+star3
+fire0
+fire1
+fire2
+Đạt được: 
+Ba lô đã đủ đạo cụ này
+Mất: 
+Ba lô đã đủ loại đạo cụ này
+ kim tiền
+Huy hiệu
+ huy hiệu
+/data/tex/
+Ba lô đã đủ, đã để vào ngân hàng
+Không có không gian, đã phóng sinh
+Đang lưu...
+Lưu thành công
+Đạt được #2Lục hành điểu
+Đạt được #2Lục hành điểu#0 ba lô đã đủ, đã để vào ngân hàng
+Thưởng 1000 kim
+Thưởng 750 kim
+Thưởng 600 kim
