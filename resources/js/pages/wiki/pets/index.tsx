@@ -2,16 +2,31 @@ import { Head, Link, router } from '@inertiajs/react';
 import {
     ArrowRight,
     ChevronLeft,
+    ChevronDown,
     ChevronRight,
+    Gauge,
     GitBranch,
-    Leaf,
+    HeartPulse,
     PawPrint,
-    Search,
+    Shield,
     Sparkles,
+    Swords,
 } from 'lucide-react';
 import type { CSSProperties, FormEvent } from 'react';
 import { useState } from 'react';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
 import { GameArtwork } from '@/components/wiki/game-artwork';
+import { PetArtworkMotion } from '@/components/wiki/pet-artwork-motion';
+import { TraitBadge } from '@/components/wiki/trait-badge';
+import { WikiFilterPanel } from '@/components/wiki/wiki-filter-panel';
+import { WikiPageHeader } from '@/components/wiki/wiki-page-header';
+import { WikiResultsBar } from '@/components/wiki/wiki-results-bar';
 import { elementIconUrl, petArtworkUrl } from '@/lib/game-assets';
 import { compactWikiQuery } from '@/lib/wiki';
 import { index as petsIndex, show as petShow } from '@/routes/wiki/pets';
@@ -43,8 +58,36 @@ type PetFamily = {
     pets: WikiPet[];
 };
 
-const fieldClass =
-    'h-12 w-full rounded-2xl border border-white/10 bg-[#0b1b2a] px-4 text-[15px] font-semibold text-slate-100 outline-none transition focus:border-emerald-400/55 focus:ring-4 focus:ring-emerald-400/10';
+const petCardStats = [
+    {
+        key: 'hp',
+        label: 'Sinh mệnh',
+        shortLabel: 'HP',
+        icon: HeartPulse,
+        color: '#fb7185',
+    },
+    {
+        key: 'strength',
+        label: 'Sức mạnh',
+        shortLabel: 'ATK',
+        icon: Swords,
+        color: '#fb923c',
+    },
+    {
+        key: 'defense',
+        label: 'Phòng ngự',
+        shortLabel: 'DEF',
+        icon: Shield,
+        color: '#60a5fa',
+    },
+    {
+        key: 'agility',
+        label: 'Linh xảo',
+        shortLabel: 'SPD',
+        icon: Gauge,
+        color: '#22d3ee',
+    },
+] as const;
 
 export default function PetIndex({
     pets,
@@ -59,27 +102,29 @@ export default function PetIndex({
     const [speciesFilter, setSpeciesFilter] = useState(
         filters.species ?? 'all',
     );
-    const [learningGroup, setLearningGroup] = useState(
-        filters.learning_group === null
-            ? 'all'
-            : String(filters.learning_group),
-    );
     const [evolution, setEvolution] = useState(filters.evolution ?? 'all');
-    const [sort, setSort] = useState(filters.sort);
-    const appliedQuery = compactWikiQuery(filters);
+    const [sort, setSort] = useState(
+        filters.sort === 'learning_group' ? 'family' : filters.sort,
+    );
+    const appliedQuery = compactWikiQuery({
+        ...filters,
+        learning_group: null,
+    });
     const families = groupPetFamilies(pets.data);
 
     function submit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
+        visitCatalog(element);
+    }
+
+    function visitCatalog(nextElement: string) {
         router.visit(
             petsIndex({
                 query: compactWikiQuery({
                     q: query,
-                    element: element === 'all' ? null : element,
+                    element: nextElement === 'all' ? null : nextElement,
                     species: speciesFilter === 'all' ? null : speciesFilter,
-                    learning_group:
-                        learningGroup === 'all' ? null : Number(learningGroup),
                     evolution: evolution === 'all' ? null : evolution,
                     sort,
                 }),
@@ -92,140 +137,95 @@ export default function PetIndex({
         <div className="flex flex-col gap-6 text-slate-100">
             <Head title="Hồ sơ Pet" />
 
-            <section className="relative isolate overflow-hidden rounded-[2rem] border border-cyan-200/12 bg-[linear-gradient(120deg,#091725_0%,#10243a_48%,#15302b_100%)] px-6 py-9 shadow-[0_24px_70px_rgba(0,0,0,.3)] sm:px-10 sm:py-12">
-                <div className="absolute -top-24 -right-10 -z-10 size-72 rounded-full bg-[#ffd777]/45 blur-3xl" />
-                <div className="absolute -bottom-28 left-1/3 -z-10 size-72 rounded-full bg-[#7ddfc3]/30 blur-3xl" />
-                <div className="max-w-3xl">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300/25 bg-emerald-300/8 px-4 py-2 text-sm font-bold text-emerald-200 shadow-sm">
-                        <Leaf className="size-4" />
-                        Cẩm nang sinh vật VQSV
+            <WikiPageHeader
+                eyebrow="VQSV Bestiary"
+                title="Cẩm nang Pet"
+                description="Tra cứu Hệ, Chủng, chỉ số, kỹ năng và toàn bộ dòng tiến hóa trong một kho dữ liệu thống nhất."
+                total={pets.total}
+                unit="Pet phù hợp"
+                icon={<PawPrint className="size-4" />}
+                theme="pets"
+            />
+
+            <section className="wiki-panel overflow-hidden p-3 sm:p-4">
+                <div className="mb-3 flex items-center justify-between gap-3">
+                    <strong className="text-sm text-white">Hệ chiến đấu</strong>
+                    <span className="text-xs text-slate-500">
+                        {elements.length} nguyên tố
                     </span>
-                    <h1 className="mt-5 text-4xl leading-tight font-black tracking-[-0.04em] text-white sm:text-6xl">
-                        Gặp gỡ từng Pet,
-                        <span className="block text-emerald-300">
-                            hiểu rõ từng sức mạnh.
-                        </span>
-                    </h1>
-                    <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-                        Các dạng tiến hóa được xếp thành gia phả liền nhau. Chọn
-                        một Pet để xem chỉ số theo cấp, kỹ năng có thể học và
-                        nguyên liệu tiến hóa.
-                    </p>
                 </div>
-                <div className="mt-8 flex flex-wrap gap-3">
-                    <span className="rounded-2xl bg-emerald-400 px-5 py-3 text-base font-bold text-[#06131c] shadow-lg shadow-emerald-400/15">
-                        {pets.total} Pet được ghi nhận
-                    </span>
-                    <span className="rounded-2xl border border-white/12 bg-white/6 px-5 py-3 text-base font-semibold text-slate-200">
-                        {elements.length} hệ chiến đấu · {species.length} chủng
-                    </span>
+                <div className="flex [scrollbar-width:none] gap-2 overflow-x-auto pb-1 [&::-webkit-scrollbar]:hidden">
+                    <ElementTab
+                        active={element === 'all'}
+                        label="Tất cả"
+                        onClick={() => {
+                            setElement('all');
+                            visitCatalog('all');
+                        }}
+                    />
+                    {elements.map((option) => (
+                        <ElementTab
+                            key={option.slug}
+                            active={element === option.slug}
+                            label={option.name}
+                            color={option.color}
+                            icon={elementIconUrl(option.game_id)}
+                            onClick={() => {
+                                setElement(option.slug);
+                                visitCatalog(option.slug);
+                            }}
+                        />
+                    ))}
                 </div>
             </section>
 
-            <form
+            <WikiFilterPanel
+                query={query}
+                onQueryChange={setQuery}
                 onSubmit={submit}
-                className="rounded-[1.75rem] border border-white/10 bg-[#081522]/92 p-4 shadow-[0_16px_45px_rgba(0,0,0,.24)] sm:p-6"
+                resetHref={petsIndex()}
+                placeholder="Tên hoặc ID Pet..."
             >
-                <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-[1.4fr_repeat(5,minmax(0,1fr))_auto]">
-                    <label className="relative block">
-                        <span className="sr-only">Tìm Pet</span>
-                        <Search className="absolute top-1/2 left-4 size-5 -translate-y-1/2 text-slate-500" />
-                        <input
-                            value={query}
-                            onChange={(event) => setQuery(event.target.value)}
-                            placeholder="Tìm theo tên hoặc ID..."
-                            className={`${fieldClass} pl-12`}
-                        />
-                    </label>
-                    <select
-                        value={speciesFilter}
-                        onChange={(event) =>
-                            setSpeciesFilter(event.target.value)
-                        }
-                        className={fieldClass}
-                        aria-label="Lọc theo chủng"
-                    >
-                        <option value="all">Tất cả chủng</option>
+                <Select value={speciesFilter} onValueChange={setSpeciesFilter}>
+                    <SelectTrigger className="h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none">
+                        <SelectValue placeholder="Chủng Pet" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">Tất cả chủng</SelectItem>
                         {species.map((option) => (
-                            <option key={option.slug} value={option.slug}>
-                                Chủng {option.name}
-                            </option>
+                            <SelectItem key={option.slug} value={option.slug}>
+                                {option.name}
+                            </SelectItem>
                         ))}
-                    </select>
-                    <select
-                        value={element}
-                        onChange={(event) => setElement(event.target.value)}
-                        className={fieldClass}
-                        aria-label="Lọc theo hệ"
-                    >
-                        <option value="all">Tất cả hệ</option>
-                        {elements.map((option) => (
-                            <option key={option.slug} value={option.slug}>
-                                Hệ {option.name}
-                            </option>
-                        ))}
-                    </select>
-                    <select
-                        value={learningGroup}
-                        onChange={(event) =>
-                            setLearningGroup(event.target.value)
-                        }
-                        className={fieldClass}
-                        aria-label="Lọc theo nhóm học"
-                    >
-                        <option value="all">Mọi nhóm học</option>
-                        {[0, 1, 2, 3, 4].map((group) => (
-                            <option key={group} value={String(group)}>
-                                Nhóm học {group}
-                            </option>
-                        ))}
-                    </select>
-                    <select
-                        value={evolution}
-                        onChange={(event) => setEvolution(event.target.value)}
-                        className={fieldClass}
-                        aria-label="Lọc theo tiến hóa"
-                    >
-                        <option value="all">Mọi gia phả</option>
-                        <option value="has">Thuộc chuỗi tiến hóa</option>
-                        <option value="none">Pet độc lập</option>
-                    </select>
-                    <select
-                        value={sort}
-                        onChange={(event) => setSort(event.target.value)}
-                        className={fieldClass}
-                        aria-label="Sắp xếp Pet"
-                    >
-                        <option value="family">Theo gia phả</option>
-                        <option value="name">Theo tên gia phả</option>
-                        <option value="learning_group">Theo nhóm học</option>
-                    </select>
-                    <button
-                        type="submit"
-                        className="h-12 rounded-2xl bg-emerald-400 px-6 text-[15px] font-extrabold text-[#06131c] shadow-lg shadow-emerald-400/20 transition hover:-translate-y-0.5 hover:bg-emerald-300"
-                    >
-                        Áp dụng
-                    </button>
-                </div>
-            </form>
+                    </SelectContent>
+                </Select>
+                <Select value={evolution} onValueChange={setEvolution}>
+                    <SelectTrigger className="h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none">
+                        <SelectValue placeholder="Dòng tiến hóa" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">Mọi dòng tiến hóa</SelectItem>
+                        <SelectItem value="has">Có tiến hóa</SelectItem>
+                        <SelectItem value="none">Pet độc lập</SelectItem>
+                    </SelectContent>
+                </Select>
+                <Select value={sort} onValueChange={setSort}>
+                    <SelectTrigger className="h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none">
+                        <SelectValue placeholder="Sắp xếp" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="family">Theo gia phả</SelectItem>
+                        <SelectItem value="name">Theo tên gia phả</SelectItem>
+                    </SelectContent>
+                </Select>
+            </WikiFilterPanel>
 
-            <div className="flex flex-wrap items-end justify-between gap-3 px-1">
-                <div>
-                    <p className="text-sm font-bold text-emerald-300">
-                        Kết quả tra cứu
-                    </p>
-                    <h2 className="mt-1 text-2xl font-black tracking-tight text-white">
-                        {pets.total === 0
-                            ? 'Chưa tìm thấy Pet phù hợp'
-                            : `${pets.total} Pet trong cẩm nang`}
-                    </h2>
-                </div>
-                {pets.from !== null && (
-                    <p className="text-sm font-semibold text-slate-400">
-                        Đang xem {pets.from}–{pets.to}
-                    </p>
-                )}
-            </div>
+            <WikiResultsBar
+                label="Danh sách Pet"
+                from={pets.from}
+                to={pets.to}
+                total={pets.total}
+            />
 
             {pets.data.length === 0 ? (
                 <div className="rounded-[2rem] border border-dashed border-white/15 bg-[#081522]/80 px-6 py-20 text-center">
@@ -238,20 +238,13 @@ export default function PetIndex({
                     </p>
                 </div>
             ) : (
-                <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                    {families.map((family) =>
-                        family.pets.length > 1 ? (
-                            <PetFamilyRow
-                                key={`family-${family.rootId}`}
-                                family={family}
-                            />
-                        ) : (
-                            <PetCard
-                                key={`pet-${family.pets[0].id}`}
-                                pet={family.pets[0]}
-                            />
-                        ),
-                    )}
+                <section className="grid gap-5">
+                    {families.map((family) => (
+                        <PetFamilyRow
+                            key={`family-${family.rootId}`}
+                            family={family}
+                        />
+                    ))}
                 </section>
             )}
 
@@ -296,40 +289,68 @@ export default function PetIndex({
 }
 
 function PetFamilyRow({ family }: { family: PetFamily }) {
+    const firstPet = family.pets[0];
+    const accent = firstPet.combat_element.color;
+
     return (
-        <section className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(8,21,34,.97),rgba(12,35,39,.94))] p-4 shadow-[0_18px_50px_rgba(0,0,0,.24)] sm:col-span-2 sm:p-5 xl:col-span-3">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 px-1">
-                <div className="flex items-center gap-3">
-                    <span className="flex size-10 items-center justify-center rounded-2xl bg-emerald-300/12 text-emerald-300">
-                        <GitBranch className="size-5" />
-                    </span>
-                    <div>
-                        <h3 className="text-lg font-black text-white">
-                            Gia phả {family.pets[0].family_root_name}
-                        </h3>
-                        <p className="text-sm text-slate-400">
-                            {family.pets.length} dạng được xếp theo thứ tự tiến
-                            hóa
-                        </p>
-                    </div>
-                </div>
-                <span className="rounded-full bg-amber-300/12 px-4 py-2 text-sm font-bold text-amber-200">
-                    Xem từ trái sang phải
-                </span>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {family.pets.map((pet, index) => (
-                    <div key={pet.id} className="relative">
-                        <PetCard pet={pet} compact />
-                        {index < family.pets.length - 1 && (
-                            <span className="absolute top-1/2 -right-4 z-20 hidden size-8 -translate-y-1/2 items-center justify-center rounded-full border-4 border-[#0b1b29] bg-emerald-400 text-[#06131c] shadow-md xl:flex">
-                                <ArrowRight className="size-4" />
-                            </span>
+        <details
+            style={{ '--pet-accent': accent } as CSSProperties}
+            className="group wiki-panel overflow-hidden"
+        >
+            <summary className="grid cursor-pointer list-none items-center gap-4 p-4 marker:hidden sm:grid-cols-[7rem_minmax(0,1fr)_auto] sm:p-5">
+                <div className="relative flex h-24 items-center justify-center overflow-hidden bg-[var(--pet-accent)]/8">
+                    <span className="absolute size-20 rounded-full border border-[var(--pet-accent)]/20" />
+                    <GameArtwork
+                        src={petArtworkUrl(
+                            firstPet.sprite_id,
+                            firstPet.game_source.asset_key,
                         )}
+                        alt={firstPet.name}
+                        className="relative z-10 size-22 transition group-open:scale-110"
+                        fallback={
+                            <PawPrint className="size-9 text-[var(--pet-accent)]" />
+                        }
+                    />
+                </div>
+                <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <span className="flex items-center gap-2 text-sm font-black text-[var(--pet-accent)]">
+                            <GitBranch className="size-4" />
+                            Dòng tiến hóa
+                        </span>
+                        <span className="border border-white/10 bg-white/4 px-2.5 py-1 text-xs font-bold text-slate-300">
+                            {family.pets.length} dạng
+                        </span>
                     </div>
-                ))}
+                    <h3 className="mt-2 truncate text-2xl font-black text-white">
+                        {firstPet.family_root_name}
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-400">
+                        Pet #{firstPet.game_id} · {firstPet.combat_element.name}{' '}
+                        · {firstPet.species.name}
+                    </p>
+                </div>
+                <span className="flex items-center justify-between gap-3 text-sm font-black text-[var(--pet-accent)] sm:justify-end">
+                    Mở chuỗi
+                    <ChevronDown className="size-5 transition group-open:rotate-180" />
+                </span>
+            </summary>
+
+            <div className="border-t border-white/8 bg-black/12 p-4 sm:p-5">
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                    {family.pets.map((pet, index) => (
+                        <div key={pet.id} className="relative">
+                            <PetCard pet={pet} compact />
+                            {index < family.pets.length - 1 && (
+                                <span className="absolute top-1/2 -right-4 z-20 hidden size-8 -translate-y-1/2 items-center justify-center border-4 border-[#0b0f17] bg-[var(--pet-accent)] text-[#06131c] shadow-md xl:flex">
+                                    <ArrowRight className="size-4" />
+                                </span>
+                            )}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </section>
+        </details>
     );
 }
 
@@ -346,25 +367,28 @@ function PetCard({
         ? pet.is_final_stage
             ? 'Dạng cuối'
             : `Dạng ${pet.evolution_stage}/${pet.evolution_family_size}`
-        : 'Pet độc lập';
+        : 'Dạng duy nhất';
 
     return (
         <Link
             href={petShow(pet.id)}
             prefetch
             style={style}
-            className={`group relative flex overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#091725] shadow-[0_14px_36px_rgba(0,0,0,.24)] transition duration-300 hover:-translate-y-1 hover:border-[var(--pet-accent)]/55 hover:shadow-[0_22px_50px_rgba(0,0,0,.34)] ${compact ? 'min-h-58' : 'min-h-62'}`}
+            className={`wiki-dossier wiki-card-fx group relative flex overflow-hidden border border-white/10 bg-[#161c28]/90 shadow-[0_14px_36px_rgba(0,0,0,.24)] transition duration-300 hover:-translate-y-1 hover:border-[var(--pet-accent)]/55 hover:shadow-[0_22px_50px_rgba(0,0,0,.34)] ${compact ? 'min-h-78' : 'min-h-82'}`}
         >
             <div className="relative flex w-[42%] shrink-0 items-center justify-center overflow-hidden bg-[linear-gradient(155deg,color-mix(in_oklab,var(--pet-accent)_18%,#07111e),color-mix(in_oklab,var(--pet-accent)_32%,#0a1724))] p-4">
                 <div className="absolute size-30 rounded-full border border-[var(--pet-accent)]/25 bg-white/4" />
                 <div className="absolute size-22 rounded-full border border-[var(--pet-accent)]/18" />
-                <GameArtwork
-                    src={petArtworkUrl(
+                <PetArtworkMotion
+                    spriteId={pet.sprite_id}
+                    assetKey={pet.game_source.asset_key}
+                    staticSrc={petArtworkUrl(
                         pet.sprite_id,
                         pet.game_source.asset_key,
                     )}
                     alt={pet.name}
-                    className="relative z-10 h-30 w-full transition duration-300 group-hover:scale-110 sm:h-34"
+                    className="relative z-10 flex h-full w-full items-center justify-center"
+                    imageClassName="h-30 w-full sm:h-34"
                     fallback={
                         <PawPrint className="size-10 text-[var(--pet-accent)]" />
                     }
@@ -397,7 +421,51 @@ function PetCard({
                 <span className="mt-3 w-fit rounded-full bg-[var(--pet-accent)]/10 px-3 py-1.5 text-sm font-bold text-[var(--pet-accent)]">
                     {stageLabel}
                 </span>
-                <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+                <TraitBadge
+                    trait={pet.species_trait}
+                    color={pet.species.color}
+                    className="mt-2"
+                />
+                <div className="mt-3 border-y border-white/8 bg-black/14 py-2">
+                    <div className="flex items-center justify-between gap-2 px-2 pb-1.5 font-mono text-[8px] font-black tracking-[.12em] uppercase">
+                        <span className="text-slate-500">Chỉ số chiến đấu</span>
+                        <span className="text-[var(--pet-accent)]">
+                            LV.{pet.preview_level}
+                        </span>
+                    </div>
+                    <div className="grid gap-px">
+                        {petCardStats.map((stat) => {
+                            const StatIcon = stat.icon;
+
+                            return (
+                                <div
+                                    key={stat.key}
+                                    className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 border-t border-white/5 px-2 py-1.5"
+                                >
+                                    <StatIcon
+                                        className="size-3.5"
+                                        style={{ color: stat.color }}
+                                    />
+                                    <span className="truncate text-[10px] font-bold text-slate-400">
+                                        {stat.label}
+                                        <span className="ml-1 font-mono text-[8px] text-slate-600">
+                                            {stat.shortLabel}
+                                        </span>
+                                    </span>
+                                    <strong
+                                        className="font-mono text-xs tabular-nums"
+                                        style={{ color: stat.color }}
+                                    >
+                                        {pet.preview_stats[
+                                            stat.key
+                                        ].toLocaleString('vi-VN')}
+                                    </strong>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className="mt-auto flex items-center justify-between gap-3 pt-3">
                     <span
                         className="flex items-center gap-1 text-[#e0a72f]"
                         aria-label={`${pet.quality_tier} sao`}
@@ -416,6 +484,47 @@ function PetCard({
                 </div>
             </div>
         </Link>
+    );
+}
+
+function ElementTab({
+    active,
+    label,
+    color = '#f8fafc',
+    icon,
+    onClick,
+}: {
+    active: boolean;
+    label: string;
+    color?: string;
+    icon?: string;
+    onClick: () => void;
+}) {
+    const style = { '--element-tab': color } as CSSProperties;
+
+    return (
+        <button
+            type="button"
+            style={style}
+            onClick={onClick}
+            aria-pressed={active}
+            className={`flex h-11 shrink-0 items-center gap-2 border px-3.5 text-sm font-black transition ${
+                active
+                    ? 'border-[var(--element-tab)] bg-[var(--element-tab)]/14 text-white shadow-[0_0_18px_color-mix(in_oklab,var(--element-tab)_20%,transparent)]'
+                    : 'border-white/8 bg-white/3 text-slate-400 hover:border-[var(--element-tab)]/40 hover:text-white'
+            }`}
+        >
+            {icon !== undefined ? (
+                <img
+                    src={icon}
+                    alt=""
+                    className="wiki-pixel-art size-6 object-contain"
+                />
+            ) : (
+                <span className="size-2 rounded-full bg-current" />
+            )}
+            {label}
+        </button>
     );
 }
 

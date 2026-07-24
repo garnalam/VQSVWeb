@@ -48,6 +48,16 @@ class Item extends Model
     }
 
     /**
+     * Get canonical evolution recipe rows that consume this item.
+     *
+     * @return HasMany<PetEvolutionIngredient, $this>
+     */
+    public function evolutionIngredients(): HasMany
+    {
+        return $this->hasMany(PetEvolutionIngredient::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

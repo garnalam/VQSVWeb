@@ -12,7 +12,10 @@ from PIL import Image
 
 from extract_rainbow_assets import (
     GAME_TRANSFORM_TO_J2ME,
+    SpriteData,
+    animation_frames,
     render_effects,
+    scale_animation_frames,
     transform_region,
 )
 
@@ -72,6 +75,32 @@ class RenderEffectsTest(unittest.TestCase):
                     self.assertEqual(icon.mode, "RGBA")
                     self.assertIsNotNone(icon.getbbox())
                     self.assertEqual(max(icon.size), 96)
+
+
+class PetAnimationTest(unittest.TestCase):
+    def test_attack_frames_keep_a_shared_canvas_and_original_tick_duration(self) -> None:
+        atlas = Image.new("RGBA", (4, 2), (0, 0, 0, 0))
+        atlas.putpixel((0, 0), (255, 0, 0, 255))
+        atlas.putpixel((1, 0), (0, 255, 0, 255))
+        sprite = SpriteData(
+            regions=[[0, 0, 1, 1], [1, 0, 1, 1]],
+            compositions=[[[0, -1, 0, 0]], [[1, 2, -1, 0]]],
+            animations=[[[0, 1], [1, 3]]],
+        )
+
+        frames, durations = animation_frames(atlas, sprite, 0)
+
+        self.assertEqual([frame.size for frame in frames], [(4, 2), (4, 2)])
+        self.assertEqual(durations, [120, 240])
+        self.assertEqual(frames[0].getpixel((0, 1)), (255, 0, 0, 255))
+        self.assertEqual(frames[1].getpixel((3, 0)), (0, 255, 0, 255))
+
+    def test_animation_scaling_preserves_the_shared_frame_size(self) -> None:
+        frames = [Image.new("RGBA", (2, 4)), Image.new("RGBA", (2, 4))]
+
+        scaled = scale_animation_frames(frames, 8)
+
+        self.assertEqual([frame.size for frame in scaled], [(4, 8), (4, 8)])
 
 
 if __name__ == "__main__":

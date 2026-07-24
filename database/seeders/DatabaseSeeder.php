@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(VqsvGameDataSeeder::class);
         $this->call(RainbowGameDataSeeder::class);
+        $this->call(PetTraitSeeder::class);
+        $this->call(PetLearnsetSeeder::class);
+        $this->call(EvolutionRecipeSeeder::class);
     }
 }

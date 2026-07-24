@@ -49,13 +49,11 @@ export function SkillSigil({
                 alt=""
                 className={cn(
                     'wiki-pixel-art relative z-10 object-contain drop-shadow-[0_5px_3px_rgba(0,0,0,.45)]',
-                    gameSource?.asset_key === 'cau-vong'
-                        ? 'size-13'
-                        : 'size-8',
+                    gameSource?.asset_key === 'cau-vong' ? 'size-13' : 'size-8',
                 )}
             />
             <span className="absolute -right-1 -bottom-1 flex size-4 items-center justify-center border border-[var(--sigil-accent)]/55 bg-[#071421] font-mono text-[7px] font-black text-[var(--sigil-accent)]">
-                {effectMode === 0 ? 'DM' : 'FX'}
+                {effectMode === 0 ? 'PWR' : 'EFF'}
             </span>
         </div>
     );

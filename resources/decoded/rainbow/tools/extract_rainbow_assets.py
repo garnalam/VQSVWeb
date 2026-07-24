@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW_ROOT = ROOT / "04_resources" / "raw" / "data"
 ANALYSIS_PATH = ROOT / "06_analysis" / "game-data.json"
 PUBLIC_ROOT = ROOT.parents[2] / "public" / "assets" / "game" / "cau-vong"
+GAME_TICK_MS = 60
 
 # The metadata stores the game's compact transform index, not the constants
 # accepted by Graphics.drawRegion(). This lookup is copied from ah.java.
@@ -87,7 +88,12 @@ def transform_region(region: Image.Image, transform: int) -> Image.Image:
     }[j2me_transform](region)
 
 
-def render_composition(atlas: Image.Image, sprite: SpriteData, composition_id: int) -> Image.Image:
+def render_composition(
+    atlas: Image.Image,
+    sprite: SpriteData,
+    composition_id: int,
+    bounds: tuple[int, int, int, int] | None = None,
+) -> Image.Image:
     parts: list[tuple[Image.Image, int, int]] = []
     for component in sprite.compositions[composition_id]:
         if len(component) < 4:
@@ -100,14 +106,109 @@ def render_composition(atlas: Image.Image, sprite: SpriteData, composition_id: i
 
     if not parts:
         return Image.new("RGBA", (1, 1), (0, 0, 0, 0))
-    left = min(x for part, x, _ in parts)
-    top = min(y for part, _, y in parts)
-    right = max(x + part.width for part, x, _ in parts)
-    bottom = max(y + part.height for part, _, y in parts)
+    if bounds is None:
+        left = min(x for part, x, _ in parts)
+        top = min(y for part, _, y in parts)
+        right = max(x + part.width for part, x, _ in parts)
+        bottom = max(y + part.height for part, _, y in parts)
+    else:
+        left, top, right, bottom = bounds
     canvas = Image.new("RGBA", (max(1, right - left), max(1, bottom - top)), (0, 0, 0, 0))
     for part, x, y in parts:
         canvas.alpha_composite(part, (x - left, y - top))
     return canvas
+
+
+def animation_frames(
+    atlas: Image.Image,
+    sprite: SpriteData,
+    animation_id: int,
+) -> tuple[list[Image.Image], list[int]]:
+    """Render one original Rainbow animation on a stable shared canvas."""
+    if animation_id < 0 or animation_id >= len(sprite.animations):
+        return [], []
+
+    animation = sprite.animations[animation_id]
+    if not animation:
+        return [], []
+
+    frame_bounds: list[tuple[int, int, int, int]] = []
+    for frame in animation:
+        if len(frame) < 2:
+            return [], []
+
+        composition_id = frame[0]
+        parts: list[tuple[Image.Image, int, int]] = []
+        for component in sprite.compositions[composition_id]:
+            if len(component) < 4:
+                continue
+            region_id, x, y, transform = component[:4]
+            rx, ry, width, height = sprite.regions[region_id][:4]
+            part = transform_region(
+                atlas.crop((rx, ry, rx + width, ry + height)),
+                transform,
+            )
+            parts.append((part, x, y))
+
+        if not parts:
+            return [], []
+
+        frame_bounds.append(
+            (
+                min(x for _, x, _ in parts),
+                min(y for _, _, y in parts),
+                max(x + image.width for image, x, _ in parts),
+                max(y + image.height for image, _, y in parts),
+            )
+        )
+
+    shared_bounds = (
+        min(bounds[0] for bounds in frame_bounds),
+        min(bounds[1] for bounds in frame_bounds),
+        max(bounds[2] for bounds in frame_bounds),
+        max(bounds[3] for bounds in frame_bounds),
+    )
+    frames = [
+        render_composition(atlas, sprite, frame[0], bounds=shared_bounds)
+        for frame in animation
+    ]
+    durations = [(max(0, frame[1]) + 1) * GAME_TICK_MS for frame in animation]
+
+    return frames, durations
+
+
+def scale_animation_frames(
+    frames: list[Image.Image], max_size: int
+) -> list[Image.Image]:
+    """Scale every animation frame uniformly so their shared origin is retained."""
+    if not frames or max(frames[0].size) >= max_size:
+        return frames
+
+    scale = max_size / max(frames[0].size)
+    size = (
+        max(1, round(frames[0].width * scale)),
+        max(1, round(frames[0].height * scale)),
+    )
+    return [frame.resize(size, Image.Resampling.NEAREST) for frame in frames]
+
+
+def save_animation(
+    frames: list[Image.Image], durations: list[int], path: Path
+) -> None:
+    """Save lossless animated WebP while preserving source frame timing."""
+    if not frames or len(frames) != len(durations):
+        raise ValueError("Animation frames and durations must be non-empty and aligned")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    frames[0].save(
+        path,
+        save_all=True,
+        append_images=frames[1:],
+        duration=durations,
+        loop=0,
+        lossless=True,
+        method=6,
+    )
 
 
 def representative_composition(sprite: SpriteData, animation_id: int, skip_control_frames: bool = False) -> int:
@@ -134,9 +235,10 @@ def save_scaled(image: Image.Image, path: Path, max_size: int) -> None:
     image.save(path, optimize=True)
 
 
-def render_pets(data: dict) -> None:
+def render_pets(data: dict) -> dict[str, dict[str, object]]:
     short_groups = set(data["internal"]["short_sprite_groups"])
     cache: dict[int, tuple[Image.Image, SpriteData]] = {}
+    animation_manifest: dict[str, dict[str, object]] = {}
     for pet in data["pets"]:
         group = pet["sprite_group"]
         if group not in cache:
@@ -152,6 +254,29 @@ def render_pets(data: dict) -> None:
         composition_id = sprite.animations[animation_id][0][0]
         artwork = render_composition(atlas, sprite, composition_id)
         save_scaled(artwork, PUBLIC_ROOT / "pets" / f"{pet['game_id']}.png", 144)
+
+        attack_animation_id = animation_id + 1
+        frames, durations = animation_frames(atlas, sprite, attack_animation_id)
+        if not frames:
+            continue
+
+        frames = scale_animation_frames(frames, 144)
+        filename = f"{pet['game_id']}-skill.webp"
+        save_animation(
+            frames,
+            durations,
+            PUBLIC_ROOT / "pet-animations" / filename,
+        )
+        animation_manifest[str(pet["game_id"])] = {
+            "action": "skill",
+            "source_action_id": attack_animation_id,
+            "url": f"/assets/game/cau-vong/pet-animations/{filename}",
+            "frame_count": len(frames),
+            "duration_ms": sum(durations),
+            "tick_ms": GAME_TICK_MS,
+        }
+
+    return animation_manifest
 
 
 def render_items(data: dict) -> None:
@@ -199,12 +324,27 @@ def render_effects(data: dict) -> None:
 
 def main() -> None:
     data = json.loads(ANALYSIS_PATH.read_text(encoding="utf-8"))
-    render_pets(data)
+    animation_manifest = render_pets(data)
     render_items(data)
     render_skills(data)
     render_effects(data)
+    animation_manifest_path = PUBLIC_ROOT / "pet-animations" / "manifest.json"
+    animation_manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    animation_manifest_path.write_text(
+        json.dumps(
+            {
+                "source": "Decoded Rainbow J2ME Pet battle sprites",
+                "animations": animation_manifest,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     print(
-        f"Rendered {len(data['pets'])} pets, {len(data['skills'])} skills and "
+        f"Rendered {len(data['pets'])} pets, {len(animation_manifest)} original "
+        f"Pet skill animations, {len(data['skills'])} skills and "
         f"{len(data['items'])} item images into {PUBLIC_ROOT}."
     )
 

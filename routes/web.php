@@ -13,6 +13,7 @@ Route::prefix('wiki')->name('wiki.')->group(function () {
     Route::get('skills', [SkillController::class, 'index'])->name('skills.index');
     Route::get('skills/{skill}', [SkillController::class, 'show'])->name('skills.show');
     Route::get('items', [ItemController::class, 'index'])->name('items.index');
+    Route::get('items/{item}', [ItemController::class, 'show'])->name('items.show');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

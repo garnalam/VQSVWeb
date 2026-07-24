@@ -102,6 +102,808 @@
     "184": "/assets/game/pets/184.png",
     "185": "/assets/game/pets/185.png"
   },
+  "pet_animations": {
+    "86": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/86-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1320,
+      "tick_ms": 66
+    },
+    "87": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/87-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1518,
+      "tick_ms": 66
+    },
+    "88": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/88-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1320,
+      "tick_ms": 66
+    },
+    "89": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/89-skill.webp",
+      "frame_count": 8,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "90": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/90-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 990,
+      "tick_ms": 66
+    },
+    "91": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/91-skill.webp",
+      "frame_count": 14,
+      "duration_ms": 1584,
+      "tick_ms": 66
+    },
+    "92": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/92-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1452,
+      "tick_ms": 66
+    },
+    "93": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/93-skill.webp",
+      "frame_count": 15,
+      "duration_ms": 1980,
+      "tick_ms": 66
+    },
+    "94": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/94-skill.webp",
+      "frame_count": 26,
+      "duration_ms": 3366,
+      "tick_ms": 66
+    },
+    "95": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/95-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1254,
+      "tick_ms": 66
+    },
+    "96": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/96-skill.webp",
+      "frame_count": 12,
+      "duration_ms": 1584,
+      "tick_ms": 66
+    },
+    "97": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/97-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1188,
+      "tick_ms": 66
+    },
+    "98": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/98-skill.webp",
+      "frame_count": 12,
+      "duration_ms": 1650,
+      "tick_ms": 66
+    },
+    "99": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/99-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 924,
+      "tick_ms": 66
+    },
+    "100": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/100-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 726,
+      "tick_ms": 66
+    },
+    "101": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/101-skill.webp",
+      "frame_count": 15,
+      "duration_ms": 1254,
+      "tick_ms": 66
+    },
+    "102": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/102-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 924,
+      "tick_ms": 66
+    },
+    "103": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/103-skill.webp",
+      "frame_count": 14,
+      "duration_ms": 1848,
+      "tick_ms": 66
+    },
+    "104": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/104-skill.webp",
+      "frame_count": 19,
+      "duration_ms": 2112,
+      "tick_ms": 66
+    },
+    "105": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/105-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1122,
+      "tick_ms": 66
+    },
+    "106": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/106-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 594,
+      "tick_ms": 66
+    },
+    "107": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/107-skill.webp",
+      "frame_count": 14,
+      "duration_ms": 1848,
+      "tick_ms": 66
+    },
+    "108": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/108-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1452,
+      "tick_ms": 66
+    },
+    "109": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/109-skill.webp",
+      "frame_count": 12,
+      "duration_ms": 1584,
+      "tick_ms": 66
+    },
+    "110": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/110-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1716,
+      "tick_ms": 66
+    },
+    "111": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/111-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 990,
+      "tick_ms": 66
+    },
+    "112": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/112-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 858,
+      "tick_ms": 66
+    },
+    "113": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/113-skill.webp",
+      "frame_count": 8,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "114": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/114-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 990,
+      "tick_ms": 66
+    },
+    "115": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/115-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1188,
+      "tick_ms": 66
+    },
+    "116": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/116-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 726,
+      "tick_ms": 66
+    },
+    "117": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/117-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 726,
+      "tick_ms": 66
+    },
+    "118": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/118-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1452,
+      "tick_ms": 66
+    },
+    "119": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/119-skill.webp",
+      "frame_count": 18,
+      "duration_ms": 2574,
+      "tick_ms": 66
+    },
+    "120": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/120-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1716,
+      "tick_ms": 66
+    },
+    "121": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/121-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 1254,
+      "tick_ms": 66
+    },
+    "122": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/122-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1386,
+      "tick_ms": 66
+    },
+    "123": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/123-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1452,
+      "tick_ms": 66
+    },
+    "124": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/124-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1518,
+      "tick_ms": 66
+    },
+    "125": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/125-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 2244,
+      "tick_ms": 66
+    },
+    "126": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/126-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1980,
+      "tick_ms": 66
+    },
+    "127": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/127-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 1122,
+      "tick_ms": 66
+    },
+    "128": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/128-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 1188,
+      "tick_ms": 66
+    },
+    "129": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/129-skill.webp",
+      "frame_count": 8,
+      "duration_ms": 1254,
+      "tick_ms": 66
+    },
+    "130": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/130-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 2178,
+      "tick_ms": 66
+    },
+    "131": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/131-skill.webp",
+      "frame_count": 5,
+      "duration_ms": 330,
+      "tick_ms": 66
+    },
+    "132": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/132-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "133": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/133-skill.webp",
+      "frame_count": 8,
+      "duration_ms": 858,
+      "tick_ms": 66
+    },
+    "134": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/134-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1320,
+      "tick_ms": 66
+    },
+    "135": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/135-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "136": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/136-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1188,
+      "tick_ms": 66
+    },
+    "137": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/137-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 924,
+      "tick_ms": 66
+    },
+    "138": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/138-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 792,
+      "tick_ms": 66
+    },
+    "139": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/139-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 792,
+      "tick_ms": 66
+    },
+    "140": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/140-skill.webp",
+      "frame_count": 5,
+      "duration_ms": 660,
+      "tick_ms": 66
+    },
+    "141": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/141-skill.webp",
+      "frame_count": 17,
+      "duration_ms": 2244,
+      "tick_ms": 66
+    },
+    "142": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/142-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "143": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/143-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 1716,
+      "tick_ms": 66
+    },
+    "144": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/144-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1122,
+      "tick_ms": 66
+    },
+    "145": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/145-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 924,
+      "tick_ms": 66
+    },
+    "146": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/146-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 924,
+      "tick_ms": 66
+    },
+    "147": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/147-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 924,
+      "tick_ms": 66
+    },
+    "148": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/148-skill.webp",
+      "frame_count": 18,
+      "duration_ms": 1716,
+      "tick_ms": 66
+    },
+    "149": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/149-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 858,
+      "tick_ms": 66
+    },
+    "150": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/150-skill.webp",
+      "frame_count": 5,
+      "duration_ms": 858,
+      "tick_ms": 66
+    },
+    "151": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/151-skill.webp",
+      "frame_count": 12,
+      "duration_ms": 1584,
+      "tick_ms": 66
+    },
+    "152": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/152-skill.webp",
+      "frame_count": 8,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "153": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/153-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "154": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/154-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 1188,
+      "tick_ms": 66
+    },
+    "155": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/155-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 1980,
+      "tick_ms": 66
+    },
+    "156": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/156-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 1782,
+      "tick_ms": 66
+    },
+    "157": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/157-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1650,
+      "tick_ms": 66
+    },
+    "158": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/158-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1320,
+      "tick_ms": 66
+    },
+    "159": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/159-skill.webp",
+      "frame_count": 13,
+      "duration_ms": 1980,
+      "tick_ms": 66
+    },
+    "160": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/160-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1188,
+      "tick_ms": 66
+    },
+    "161": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/161-skill.webp",
+      "frame_count": 18,
+      "duration_ms": 1254,
+      "tick_ms": 66
+    },
+    "162": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/162-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1122,
+      "tick_ms": 66
+    },
+    "163": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/163-skill.webp",
+      "frame_count": 8,
+      "duration_ms": 792,
+      "tick_ms": 66
+    },
+    "164": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/164-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 990,
+      "tick_ms": 66
+    },
+    "165": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/165-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1122,
+      "tick_ms": 66
+    },
+    "166": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/166-skill.webp",
+      "frame_count": 5,
+      "duration_ms": 594,
+      "tick_ms": 66
+    },
+    "167": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/167-skill.webp",
+      "frame_count": 5,
+      "duration_ms": 858,
+      "tick_ms": 66
+    },
+    "168": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/168-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1122,
+      "tick_ms": 66
+    },
+    "169": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/169-skill.webp",
+      "frame_count": 8,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "170": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/170-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 858,
+      "tick_ms": 66
+    },
+    "171": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/171-skill.webp",
+      "frame_count": 12,
+      "duration_ms": 1716,
+      "tick_ms": 66
+    },
+    "172": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/172-skill.webp",
+      "frame_count": 15,
+      "duration_ms": 1518,
+      "tick_ms": 66
+    },
+    "173": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/173-skill.webp",
+      "frame_count": 25,
+      "duration_ms": 3300,
+      "tick_ms": 66
+    },
+    "174": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/174-skill.webp",
+      "frame_count": 5,
+      "duration_ms": 660,
+      "tick_ms": 66
+    },
+    "175": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/175-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 660,
+      "tick_ms": 66
+    },
+    "176": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/176-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 660,
+      "tick_ms": 66
+    },
+    "177": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/177-skill.webp",
+      "frame_count": 6,
+      "duration_ms": 528,
+      "tick_ms": 66
+    },
+    "178": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/178-skill.webp",
+      "frame_count": 12,
+      "duration_ms": 990,
+      "tick_ms": 66
+    },
+    "179": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/179-skill.webp",
+      "frame_count": 9,
+      "duration_ms": 1056,
+      "tick_ms": 66
+    },
+    "180": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/180-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 858,
+      "tick_ms": 66
+    },
+    "181": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/181-skill.webp",
+      "frame_count": 7,
+      "duration_ms": 990,
+      "tick_ms": 66
+    },
+    "182": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/182-skill.webp",
+      "frame_count": 10,
+      "duration_ms": 1320,
+      "tick_ms": 66
+    },
+    "183": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/183-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1452,
+      "tick_ms": 66
+    },
+    "184": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/184-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1254,
+      "tick_ms": 66
+    },
+    "185": {
+      "action": "skill",
+      "source_action_id": 1,
+      "url": "/assets/game/pet-animations/185-skill.webp",
+      "frame_count": 11,
+      "duration_ms": 1386,
+      "tick_ms": 66
+    }
+  },
   "items": {
     "0": "/assets/game/items/0.png",
     "1": "/assets/game/items/1.png",

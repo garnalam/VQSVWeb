@@ -8,6 +8,7 @@ export type WikiGameSource = {
 };
 
 export type WikiElement = {
+    id?: number;
     game_id: number;
     name: string;
     slug: string;
@@ -28,6 +29,39 @@ export type WikiSpecies = {
     color: string;
 };
 
+export type WikiPetProvenance = {
+    identity: 'decoded';
+    taxonomy: 'unified';
+    combat_profile: 'calculated';
+    learnset: 'unified';
+};
+
+export type WikiSkillProvenance = {
+    identity: 'decoded';
+    description: 'decoded' | 'unified';
+    combat_rules: 'unified';
+    learnset: 'unified';
+};
+
+export type WikiPetTraitPolarity =
+    'neutral' | 'beneficial' | 'harmful' | 'mixed';
+
+export type WikiPetTrait = {
+    code: string;
+    name: string;
+    slot_type: 'physical' | 'species';
+    species: string | null;
+    polarity: WikiPetTraitPolarity;
+    description: string;
+    parameters: Record<string, unknown> | null;
+    roll_weight: number;
+    is_cleanse_eligible: boolean;
+};
+
+export type WikiPetTraitSystem = {
+    physical_traits: WikiPetTrait[];
+};
+
 export type WikiPet = {
     id: number;
     game_source: WikiGameSource;
@@ -37,6 +71,8 @@ export type WikiPet = {
     sprite_id: number;
     learning_group: number;
     quality_tier: number;
+    preview_level: number;
+    preview_stats: WikiPetStatValues;
     belongs_to_evolution_family: boolean;
     can_evolve: boolean;
     is_final_stage: boolean;
@@ -46,6 +82,8 @@ export type WikiPet = {
     family_root_name: string;
     combat_element: WikiCombatElement;
     species: WikiSpecies;
+    species_trait: WikiPetTrait;
+    provenance: WikiPetProvenance;
 };
 
 export type WikiPetStatFormula = {
@@ -55,8 +93,17 @@ export type WikiPetStatFormula = {
     per_ten_levels: boolean;
 };
 
+export type WikiPetStats = {
+    hp: WikiPetStatFormula;
+    energy: WikiPetStatFormula | null;
+    strength: WikiPetStatFormula;
+    defense: WikiPetStatFormula;
+    agility: WikiPetStatFormula;
+};
+
 export type WikiPetSkill = {
     id: number;
+    game_source: WikiGameSource;
     game_id: number;
     name: string;
     slug: string;
@@ -64,9 +111,24 @@ export type WikiPetSkill = {
     power_percent: number;
     tier: number;
     max_uses: number;
-    energy_cost: number | null;
     status_chance: number | null;
     unlock_level: number;
+    source_type: 'element' | 'species' | 'universal';
+    combat_category: string;
+    combat_category_label: string;
+    target_pattern: string;
+    target_label: string;
+    battle_format: 'single' | 'double' | 'any';
+    is_signature: boolean;
+    is_available_on_current_form: boolean;
+    is_evolution_locked: boolean;
+    is_alternate_branch: boolean;
+    grant_pet: Pick<
+        WikiEvolutionPet,
+        'id' | 'game_id' | 'name' | 'slug' | 'sprite_id' | 'stage'
+    >;
+    element: WikiCombatElement | null;
+    species_affinity: WikiSpecies | null;
     effect: WikiEffect | null;
 };
 
@@ -77,6 +139,14 @@ export type WikiEvolutionPet = {
     slug: string;
     sprite_id: number;
     quality_tier: number;
+    quality_multiplier: number;
+    combat_element: WikiCombatElement;
+    species: WikiSpecies;
+    primary_role: string;
+    primary_role_label: string;
+    secondary_role: string;
+    secondary_role_label: string;
+    stats: WikiPetStats;
     stage: number;
     is_current: boolean;
 };
@@ -87,6 +157,26 @@ export type WikiEvolutionTransition = {
     type: 'evolution' | 'mutation';
     quantity: number;
     materials?: { item_game_id: number; quantity: number }[] | null;
+    cost_rank: number;
+    cost_rank_label: string;
+    balance_notes: string | null;
+    ingredients: WikiEvolutionIngredient[];
+    item: Pick<
+        WikiItem,
+        | 'id'
+        | 'game_source'
+        | 'source_table'
+        | 'game_id'
+        | 'name'
+        | 'slug'
+        | 'frame_id'
+    >;
+};
+
+export type WikiEvolutionIngredient = {
+    quantity: number;
+    role: 'core' | 'species' | 'signature';
+    role_label: string;
     item: Pick<
         WikiItem,
         | 'id'
@@ -112,6 +202,13 @@ export type WikiPetDetail = {
     rarity_or_growth_code: number;
     learning_group: number;
     effectiveness_class: number;
+    primary_role: string;
+    primary_role_label: string;
+    secondary_role: string;
+    secondary_role_label: string;
+    preferred_battle_format: 'single' | 'double' | 'any';
+    playstyle_summary: string;
+    equipped_skill_limit: number;
     raw_values: unknown[] | null;
     description: string | null;
     lore: string;
@@ -122,12 +219,10 @@ export type WikiPetDetail = {
         locations: string[];
     };
     quality_multiplier: number;
-    stats: {
-        hp: WikiPetStatFormula;
-        energy: WikiPetStatFormula | null;
-        strength: WikiPetStatFormula;
-        defense: WikiPetStatFormula;
-        agility: WikiPetStatFormula;
+    stats: WikiPetStats;
+    stat_benchmarks: {
+        level_one: WikiPetStatValues;
+        level_fifty: WikiPetStatValues;
     };
     evolution_stage: number;
     evolution_stage_count: number;
@@ -136,11 +231,20 @@ export type WikiPetDetail = {
     is_final_stage: boolean;
     combat_element: WikiCombatElement;
     species: WikiSpecies;
+    species_trait: WikiPetTrait;
     skills: WikiPetSkill[];
     evolution_family: {
         pets: WikiEvolutionPet[];
         transitions: WikiEvolutionTransition[];
     };
+    provenance: WikiPetProvenance;
+};
+
+export type WikiPetStatValues = {
+    hp: number;
+    strength: number;
+    defense: number;
+    agility: number;
 };
 
 export type WikiEffect = {
@@ -162,13 +266,33 @@ export type WikiSkill = {
     power_percent: number;
     tier: number;
     max_uses: number;
-    energy_cost: number | null;
     status_chance: number | null;
     effect_mode: number;
     effect_parameter: number | null;
-    target_side: number;
-    element: WikiElement;
+    combat_category: string;
+    combat_category_label: string;
+    target_pattern: string;
+    target_label: string;
+    effect_target_pattern: string | null;
+    effect_target_label: string | null;
+    battle_format: 'single' | 'double' | 'any';
+    element: WikiCombatElement;
+    species_affinity: WikiSpecies | null;
     effect: WikiEffect | null;
+    provenance: WikiSkillProvenance;
+};
+
+export type WikiSkillCatalogEntry = WikiSkill & {
+    source_types: Array<'element' | 'species' | 'universal'>;
+    unlock_levels: number[];
+    is_signature: boolean;
+    learned_by_count: number;
+    compatible_pet_preview: Array<{
+        id: number;
+        name: string;
+        sprite_id: number;
+        game_source: WikiGameSource;
+    }>;
 };
 
 export type WikiSkillUnlockRule = {
@@ -179,19 +303,124 @@ export type WikiSkillUnlockRule = {
 
 export type WikiCompatiblePet = {
     id: number;
+    game_source: WikiGameSource;
     game_id: number;
     name: string;
     slug: string;
     sprite_id: number;
-    learning_group: number;
+    primary_role: string;
+    primary_role_label: string;
+    combat_element: WikiCombatElement;
+    species: WikiSpecies;
     unlock_level: number;
+    source_type: 'element' | 'species' | 'universal';
+    is_signature: boolean;
+    is_inherited: boolean;
+    grant_pet: Pick<WikiEvolutionPet, 'id' | 'game_id' | 'name' | 'slug'>;
+};
+
+export type WikiSkillPoolOrigin = {
+    type: 'element' | 'species' | 'universal' | 'signature';
+    label: string;
+    name: string;
+    pet_id: number | null;
+};
+
+export type WikiSkillNavigationEntry = {
+    id: number;
+    name: string;
+};
+
+export type WikiSkillLearnsetPet = {
+    id: number;
+    game_id: number;
+    name: string;
+    slug: string;
+    sprite_id: number;
+    stage: number;
+    game_source: WikiGameSource;
+    combat_element: WikiCombatElement;
+    species: WikiSpecies;
+    learning_state: 'direct' | 'inherited' | 'unavailable';
+    unlock_level: number | null;
+    grant_pet: { id: number; name: string } | null;
+};
+
+export type WikiSkillLearnsetFamily = {
+    root_pet: Omit<
+        WikiSkillLearnsetPet,
+        'learning_state' | 'unlock_level' | 'grant_pet'
+    >;
+    pets: WikiSkillLearnsetPet[];
+    transitions: Array<{ from_pet_id: number; to_pet_id: number }>;
+};
+
+export type WikiSkillSpeciesDistribution = WikiSpecies & {
+    count: number;
+    percentage: number;
+};
+
+export type WikiSkillSynergyEntry = {
+    id: number;
+    game_id: number;
+    name: string;
+    description: string;
+    power_percent: number;
+    tier: number;
+    max_uses: number;
+    status_chance: number | null;
+    combat_category_label: string;
+    element: WikiCombatElement;
+    effect: Pick<WikiEffect, 'name' | 'kind' | 'duration'> | null;
+    game_source: WikiGameSource;
+};
+
+export type WikiSkillTeammate = {
+    id: number;
+    name: string;
+    sprite_id: number;
+    primary_role_label: string;
+    reason: string;
+    game_source: WikiGameSource;
 };
 
 export type WikiSkillDetail = WikiSkill & {
     name_original: string;
     description_original: string;
     raw_values: unknown[] | null;
-    unlock_rules: WikiSkillUnlockRule[];
+    combat_category: string;
+    combat_category_label: string;
+    target_pattern: string;
+    target_label: string;
+    effect_target_pattern: string | null;
+    effect_target_label: string | null;
+    battle_format: 'single' | 'double' | 'any';
+    species_affinity: WikiSpecies | null;
+    is_signature: boolean;
+    pool_origin: WikiSkillPoolOrigin;
+    navigation: {
+        previous: WikiSkillNavigationEntry | null;
+        next: WikiSkillNavigationEntry | null;
+    };
+    learnset_families: WikiSkillLearnsetFamily[];
+    species_distribution: WikiSkillSpeciesDistribution[];
+    synergies: {
+        setup_skills: WikiSkillSynergyEntry[];
+        finisher_skills: WikiSkillSynergyEntry[];
+        teammate_pets: WikiSkillTeammate[];
+        provenance: 'calculated';
+    };
+    related_skills: WikiSkillSynergyEntry[];
+    simulator: {
+        formula: string;
+        provenance: 'unified_estimate';
+        variance: { minimum: number; maximum: number };
+        element_multipliers: {
+            advantage: number;
+            neutral: number;
+            disadvantage: number;
+        };
+    };
     compatible_pets: WikiCompatiblePet[];
 };
 
@@ -209,6 +438,32 @@ export type WikiItem = {
     currency_code: number | null;
     effect_type: number | null;
     effect_parameters: Record<string, unknown> | null;
+};
+
+export type WikiItemEvolutionPet = {
+    id: number;
+    game_source: WikiGameSource;
+    game_id: number;
+    name: string;
+    slug: string;
+    sprite_id: number;
+};
+
+export type WikiItemEvolutionUsage = {
+    id: number;
+    type: 'evolution' | 'mutation';
+    quantity: number;
+    role: 'core' | 'species' | 'signature';
+    cost_rank: number;
+    from_pet: WikiItemEvolutionPet;
+    to_pet: WikiItemEvolutionPet;
+};
+
+export type WikiItemDetail = WikiItem & {
+    name_original: string;
+    description_original: string | null;
+    raw_values: unknown[] | null;
+    evolution_usages: WikiItemEvolutionUsage[];
 };
 
 export type PaginatedWikiData<T> = {

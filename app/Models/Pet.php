@@ -15,6 +15,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'element_id',
     'combat_element',
     'species',
+    'species_trait_id',
+    'primary_role',
+    'secondary_role',
+    'preferred_battle_format',
+    'playstyle_summary',
     'name_original',
     'name',
     'slug',
@@ -52,11 +57,11 @@ class Pet extends Model
     /** @var array<string, array{name: string, color: string, game_id: int}> */
     public const COMBAT_ELEMENTS = [
         'hoa' => ['name' => 'Hỏa', 'color' => '#ef4444', 'game_id' => 0],
-        'moc' => ['name' => 'Mộc', 'color' => '#22c55e', 'game_id' => 1],
-        'tho' => ['name' => 'Thổ', 'color' => '#a16207', 'game_id' => 2],
-        'thuy' => ['name' => 'Thủy', 'color' => '#3b82f6', 'game_id' => 3],
+        'moc' => ['name' => 'Mộc', 'color' => '#10b981', 'game_id' => 1],
+        'tho' => ['name' => 'Thổ', 'color' => '#b45309', 'game_id' => 2],
+        'thuy' => ['name' => 'Thủy', 'color' => '#0284c7', 'game_id' => 3],
         'dien' => ['name' => 'Điện', 'color' => '#eab308', 'game_id' => 4],
-        'quy' => ['name' => 'Quỷ', 'color' => '#7e22ce', 'game_id' => 5],
+        'quy' => ['name' => 'Quỷ', 'color' => '#8b5cf6', 'game_id' => 5],
         'phong' => ['name' => 'Phong', 'color' => '#06b6d4', 'game_id' => 6],
     ];
 
@@ -67,6 +72,16 @@ class Pet extends Model
         'phi-hanh' => ['name' => 'Phi Hành', 'color' => '#38bdf8'],
         'manh-thu' => ['name' => 'Mãnh Thú', 'color' => '#f97316'],
         'hai-duong' => ['name' => 'Hải Dương', 'color' => '#14b8a6'],
+    ];
+
+    /** @var array<string, string> */
+    public const COMBAT_ROLES = [
+        'striker' => 'Công kích',
+        'bruiser' => 'Đấu sĩ',
+        'guardian' => 'Phòng thủ',
+        'controller' => 'Khống chế',
+        'support' => 'Hỗ trợ',
+        'versatile' => 'Đa dụng',
     ];
 
     /** @return BelongsTo<GameSource, $this> */
@@ -83,6 +98,12 @@ class Pet extends Model
     public function element(): BelongsTo
     {
         return $this->belongsTo(Element::class);
+    }
+
+    /** @return BelongsTo<PetTrait, $this> */
+    public function speciesTrait(): BelongsTo
+    {
+        return $this->belongsTo(PetTrait::class, 'species_trait_id');
     }
 
     /**
@@ -103,6 +124,12 @@ class Pet extends Model
     public function previousEvolutions(): HasMany
     {
         return $this->hasMany(PetEvolution::class, 'to_pet_id');
+    }
+
+    /** @return HasMany<PetSkillLearnset, $this> */
+    public function learnsetEntries(): HasMany
+    {
+        return $this->hasMany(PetSkillLearnset::class);
     }
 
     /**

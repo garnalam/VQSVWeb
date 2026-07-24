@@ -5,6 +5,8 @@ use App\Models\Element;
 use App\Models\Item;
 use App\Models\Pet;
 use App\Models\PetEvolution;
+use App\Models\PetEvolutionIngredient;
+use App\Models\PetTrait;
 use App\Models\Skill;
 use App\Models\SkillUnlockRule;
 
@@ -41,13 +43,35 @@ test('pet evolution connects source pet target pet and required item', function 
         ->for($targetPet, 'targetPet')
         ->for($item)
         ->create();
+    $ingredient = PetEvolutionIngredient::factory()
+        ->for($evolution)
+        ->for($item)
+        ->create();
 
     expect($evolution->sourcePet->is($sourcePet))->toBeTrue()
         ->and($evolution->targetPet->is($targetPet))->toBeTrue()
         ->and($evolution->item->is($item))->toBeTrue()
         ->and($sourcePet->evolutions->contains($evolution))->toBeTrue()
         ->and($targetPet->previousEvolutions->contains($evolution))->toBeTrue()
-        ->and($item->petEvolutions->contains($evolution))->toBeTrue();
+        ->and($item->petEvolutions->contains($evolution))->toBeTrue()
+        ->and($evolution->ingredients->contains($ingredient))->toBeTrue()
+        ->and($ingredient->item->is($item))->toBeTrue()
+        ->and($item->evolutionIngredients->contains($ingredient))->toBeTrue();
+});
+
+test('pets belong to their fixed species trait', function () {
+    $trait = PetTrait::factory()->create([
+        'slot_type' => PetTrait::SLOT_SPECIES,
+        'species' => 'thuc-vat',
+        'roll_weight' => 0,
+        'is_cleanse_eligible' => false,
+    ]);
+    $pet = Pet::factory()->for($trait, 'speciesTrait')->create([
+        'species' => 'thuc-vat',
+    ]);
+
+    expect($pet->speciesTrait->is($trait))->toBeTrue()
+        ->and($trait->speciesPets->contains($pet))->toBeTrue();
 });
 
 test('skill unlock rules are connected by learning group', function () {

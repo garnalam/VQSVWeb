@@ -47,111 +47,14 @@ export default function WikiLayout({ children }: PropsWithChildren) {
     const activeNavigation =
         wikiNavigation.find((item) => page.url.startsWith(item.href.url)) ??
         wikiNavigation[0];
-    const isPetSection = false;
     const shellStyle = {
         '--wiki-shell-accent': activeNavigation.accent,
     } as CSSProperties;
-    const petShellStyle = {
-        ...shellStyle,
-        '--wiki-shell-accent': '#5b9a70',
-    } as CSSProperties;
-
-    if (isPetSection) {
-        return (
-            <div
-                style={petShellStyle}
-                className="relative min-h-screen overflow-hidden bg-[#f3f5ed] font-sans text-[#28372e]"
-            >
-                <div
-                    style={{
-                        backgroundImage: `url(${gameDecor.scenicBackground})`,
-                    }}
-                    className="wiki-pixel-art pointer-events-none fixed inset-0 bg-cover bg-center opacity-[0.09]"
-                />
-                <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(180deg,rgba(250,251,244,.76),#f3f5ed_56%,#edf2e8)]" />
-
-                <header className="relative z-40 border-b border-[#d8e0d5]/90 bg-[#fffef9]/90 shadow-[0_10px_35px_rgba(55,78,59,.08)] backdrop-blur-xl">
-                    <div className="mx-auto flex min-h-20 w-full max-w-[1440px] items-center gap-4 px-4 sm:px-6">
-                        <Link
-                            href={home()}
-                            className="flex shrink-0 items-center gap-3"
-                        >
-                            <img
-                                src={gameDecor.logo}
-                                alt="Vương Quốc Siêu Thú"
-                                className="wiki-pixel-art h-13 w-auto max-w-30 object-contain drop-shadow-[0_4px_0_rgba(54,75,58,.12)]"
-                            />
-                            <span className="hidden border-l border-[#d8e0d5] pl-3 lg:block">
-                                <strong className="block text-sm font-black text-[#2d4434]">
-                                    Cẩm nang VQSV
-                                </strong>
-                                <span className="mt-0.5 block text-xs font-semibold text-[#789080]">
-                                    Dữ liệu từ game gốc
-                                </span>
-                            </span>
-                        </Link>
-
-                        <nav className="flex min-w-0 flex-1 [scrollbar-width:none] items-center justify-center gap-1.5 overflow-x-auto [&::-webkit-scrollbar]:hidden">
-                            {wikiNavigation.map((item) => {
-                                const isActive = page.url.startsWith(
-                                    item.href.url,
-                                );
-
-                                return (
-                                    <Link
-                                        key={item.code}
-                                        href={item.href}
-                                        prefetch
-                                        className={cn(
-                                            'flex h-11 shrink-0 items-center gap-2 rounded-full px-3 text-sm font-extrabold transition sm:px-5',
-                                            isActive
-                                                ? 'bg-[#e0efe0] text-[#3f7651] shadow-[inset_0_0_0_1px_rgba(91,154,112,.16)]'
-                                                : 'text-[#6e7d73] hover:bg-[#f0f3eb] hover:text-[#314b39]',
-                                        )}
-                                    >
-                                        <item.icon className="size-4" />
-                                        <span className="hidden sm:inline">
-                                            {item.title}
-                                        </span>
-                                    </Link>
-                                );
-                            })}
-                        </nav>
-
-                        <Link
-                            href={auth.user ? dashboard() : login()}
-                            className="flex h-11 shrink-0 items-center gap-2 rounded-full border border-[#d4ded3] bg-white px-3 text-sm font-extrabold text-[#466653] shadow-sm transition hover:border-[#94b69e] hover:bg-[#edf5ea] sm:px-5"
-                        >
-                            {auth.user ? (
-                                <LayoutDashboard className="size-4 text-[#5b9a70]" />
-                            ) : (
-                                <LogIn className="size-4 text-[#5b9a70]" />
-                            )}
-                            <span className="hidden md:inline">
-                                {auth.user ? 'Quản lý' : 'Đăng nhập'}
-                            </span>
-                        </Link>
-                    </div>
-                </header>
-
-                <main className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col px-3 py-5 sm:px-6 sm:py-8">
-                    {children}
-                </main>
-
-                <footer className="relative z-10 mt-12 border-t border-[#d7dfd4] bg-[#fffef9]/80">
-                    <div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-7 text-sm font-semibold text-[#718077] sm:flex-row sm:items-center sm:justify-between sm:px-6">
-                        <span>VQSV Wiki · Dữ liệu giải mã từ game gốc</span>
-                        <span>Pet · Kỹ năng · Vật phẩm</span>
-                    </div>
-                </footer>
-            </div>
-        );
-    }
 
     return (
         <div
             style={shellStyle}
-            className="wiki-shell relative min-h-screen overflow-hidden bg-[#07111e] text-white"
+            className="wiki-shell relative min-h-screen overflow-hidden text-white"
         >
             <div
                 style={{
@@ -255,7 +158,7 @@ export default function WikiLayout({ children }: PropsWithChildren) {
                 <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-6 text-[10px] font-bold tracking-[.16em] text-slate-500 uppercase sm:flex-row sm:items-center sm:justify-between sm:px-6">
                     <span className="flex items-center gap-2">
                         <i className="size-1.5 bg-[var(--wiki-shell-accent)] shadow-[0_0_10px_var(--wiki-shell-accent)]" />
-                        VQSV Database · Dữ liệu giải mã từ game gốc
+                        VQSV Database · Dữ liệu giải mã & luật hợp nhất
                     </span>
                     <img
                         src={gameUi.actionToolbar}

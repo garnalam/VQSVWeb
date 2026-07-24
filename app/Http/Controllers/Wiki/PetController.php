@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Wiki\PetIndexRequest;
 use App\Models\Pet;
 use App\Models\PetEvolution;
+use App\Models\PetEvolutionIngredient;
+use App\Models\PetSkillLearnset;
+use App\Models\PetTrait;
 use App\Models\Skill;
-use App\Models\SkillUnlockRule;
+use App\Support\EvolutionRecipeData;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -19,6 +22,8 @@ use UnexpectedValueException;
 class PetController extends Controller
 {
     private const QUALITY_MULTIPLIERS = [1 => 90, 2 => 95, 3 => 100, 4 => 110, 5 => 125];
+
+    private const CARD_PREVIEW_LEVEL = 50;
 
     /**
      * Display the searchable pet catalog grouped by evolution family.
@@ -52,14 +57,28 @@ class PetController extends Controller
                 'element_id',
                 'combat_element',
                 'species',
+                'species_trait_id',
                 'name',
                 'slug',
                 'sprite_id',
                 'learning_group',
                 'quality_tier',
+                'hp_base',
+                'hp_per_level',
+                'hp_offset',
+                'stat_2_base',
+                'stat_2_per_level',
+                'stat_2_offset',
+                'stat_3_base',
+                'stat_3_per_10_levels',
+                'stat_3_offset',
+                'stat_4_base',
+                'stat_4_per_10_levels',
+                'stat_4_offset',
             ])
             ->with([
                 'gameSource:id,name,slug,asset_key,color',
+                'speciesTrait:id,code,name,slot_type,species,polarity,description,parameters,roll_weight,is_cleanse_eligible',
             ])
             ->withCount(['evolutions', 'previousEvolutions'])
             ->when($gameSlug, fn (Builder $query): Builder => $query->whereHas(
@@ -115,6 +134,8 @@ class PetController extends Controller
                     'sprite_id' => $pet->sprite_id,
                     'learning_group' => $pet->learning_group,
                     'quality_tier' => $pet->quality_tier,
+                    'preview_level' => self::CARD_PREVIEW_LEVEL,
+                    'preview_stats' => $this->calculatedStats($pet, self::CARD_PREVIEW_LEVEL),
                     'belongs_to_evolution_family' => $metadata['family_size'] > 1,
                     'can_evolve' => $pet->evolutions_count > 0,
                     'is_final_stage' => $pet->previous_evolutions_count > 0 && $pet->evolutions_count === 0,
@@ -125,6 +146,8 @@ class PetController extends Controller
                     'family_root_learning_group' => $metadata['root_learning_group'],
                     'combat_element' => $this->combatElement($pet),
                     'species' => $this->species($pet),
+                    'species_trait' => $this->trait($pet->speciesTrait),
+                    'provenance' => $this->petProvenance(),
                 ];
             })
             ->sort(function (array $left, array $right) use ($sort): int {
@@ -184,17 +207,49 @@ class PetController extends Controller
     {
         $pet->load([
             'gameSource:id,name,slug,asset_key,color',
+            'speciesTrait:id,code,name,slot_type,species,polarity,description,parameters,roll_weight,is_cleanse_eligible',
         ]);
 
         $allPets = Pet::query()
-            ->select(['id', 'game_source_id', 'game_id', 'name', 'slug', 'sprite_id', 'learning_group', 'quality_tier'])
+            ->select([
+                'id',
+                'game_source_id',
+                'game_id',
+                'name',
+                'slug',
+                'sprite_id',
+                'learning_group',
+                'quality_tier',
+                'combat_element',
+                'species',
+                'primary_role',
+                'secondary_role',
+                'hp_base',
+                'hp_per_level',
+                'hp_offset',
+                'stat_2_base',
+                'stat_2_per_level',
+                'stat_2_offset',
+                'stat_3_base',
+                'stat_3_per_10_levels',
+                'stat_3_offset',
+                'stat_4_base',
+                'stat_4_per_10_levels',
+                'stat_4_offset',
+            ])
             ->where('game_source_id', $pet->game_source_id)
             ->get()
             ->keyBy('id');
         $evolutions = PetEvolution::query()
-            ->select(['id', 'from_pet_id', 'to_pet_id', 'item_id', 'quantity', 'materials', 'evolution_type'])
+            ->select(['id', 'from_pet_id', 'to_pet_id', 'item_id', 'quantity', 'materials', 'evolution_type', 'cost_rank', 'balance_notes'])
             ->whereHas('sourcePet', fn (Builder $query): Builder => $query->where('game_source_id', $pet->game_source_id))
-            ->with(['item:id,game_source_id,source_table,game_id,name,slug,frame_id', 'item.gameSource:id,name,slug,asset_key,color'])
+            ->with([
+                'item:id,game_source_id,source_table,game_id,name,slug,frame_id',
+                'item.gameSource:id,name,slug,asset_key,color',
+                'ingredients:id,pet_evolution_id,item_id,quantity,role,position',
+                'ingredients.item:id,game_source_id,source_table,game_id,name,slug,frame_id',
+                'ingredients.item.gameSource:id,name,slug,asset_key,color',
+            ])
             ->orderBy('id')
             ->get();
         $familyMetadata = $this->buildFamilyMetadata($allPets, $evolutions);
@@ -207,45 +262,38 @@ class PetController extends Controller
         $familyEvolutions = $evolutions
             ->filter(fn (PetEvolution $evolution): bool => $familyPetIds->contains($evolution->from_pet_id))
             ->values();
-
-        $unlockRules = SkillUnlockRule::query()
-            ->select(['level', 'maximum_skill_tier'])
-            ->where('game_source_id', $pet->game_source_id)
-            ->where('learning_group', $pet->learning_group)
-            ->orderBy('level')
-            ->get();
-        $skills = Skill::query()
-            ->select([
-                'id',
-                'game_id',
-                'element_id',
-                'effect_id',
-                'name',
-                'slug',
-                'description',
-                'power_percent',
-                'tier',
-                'max_uses',
-                'energy_cost',
-                'status_chance',
+        $incomingPetIds = $familyEvolutions->groupBy('to_pet_id')->map->pluck('from_pet_id');
+        $outgoingPetIds = $familyEvolutions->groupBy('from_pet_id')->map->pluck('to_pet_id');
+        $currentPathIds = $this->ancestorPetIds($pet->id, $incomingPetIds);
+        $futurePathIds = $this->descendantPetIds($pet->id, $outgoingPetIds);
+        $skills = PetSkillLearnset::query()
+            ->whereIn('pet_id', $familyPetIds)
+            ->with([
+                'pet:id,game_id,name,slug,sprite_id',
+                'skill:id,game_source_id,game_id,effect_id,name,slug,description,power_percent,tier,max_uses,status_chance,combat_element,species_affinity,combat_category,target_pattern,effect_target_pattern,battle_format',
+                'skill.gameSource:id,name,slug,asset_key,color',
+                'skill.effect:id,game_source_id,source_table,game_id,name,kind,duration',
             ])
-            ->with('effect:id,game_source_id,source_table,game_id,name,kind,duration')
-            ->where('game_source_id', $pet->game_source_id)
-            ->where('element_id', $pet->element_id)
-            ->orderBy('tier')
-            ->orderBy('game_id')
             ->get()
-            ->map(function (Skill $skill) use ($unlockRules): ?array {
-                $unlockRule = $unlockRules->first(
-                    fn (SkillUnlockRule $rule): bool => $rule->maximum_skill_tier >= $skill->tier,
-                );
-
-                if ($unlockRule === null) {
-                    return null;
-                }
+            ->sortBy(fn (PetSkillLearnset $entry): array => [
+                $familyMetadata[$entry->pet_id]['stage'],
+                $entry->sort_order,
+                $entry->unlock_level,
+            ])
+            ->map(function (PetSkillLearnset $entry) use ($currentPathIds, $futurePathIds, $familyMetadata): array {
+                $skill = $entry->skill;
+                $skillElement = $skill->combat_element === null
+                    ? null
+                    : Pet::COMBAT_ELEMENTS[$skill->combat_element];
 
                 return [
                     'id' => $skill->id,
+                    'game_source' => [
+                        'name' => $skill->gameSource->name,
+                        'slug' => $skill->gameSource->slug,
+                        'asset_key' => $skill->gameSource->asset_key,
+                        'color' => $skill->gameSource->color,
+                    ],
                     'game_id' => $skill->game_id,
                     'name' => $skill->name,
                     'slug' => $skill->slug,
@@ -253,9 +301,38 @@ class PetController extends Controller
                     'power_percent' => $skill->power_percent,
                     'tier' => $skill->tier,
                     'max_uses' => $skill->max_uses,
-                    'energy_cost' => $skill->energy_cost,
                     'status_chance' => $skill->status_chance,
-                    'unlock_level' => $unlockRule->level,
+                    'unlock_level' => $entry->unlock_level,
+                    'source_type' => $entry->source_type,
+                    'combat_category' => $skill->combat_category,
+                    'combat_category_label' => Skill::COMBAT_CATEGORIES[$skill->combat_category],
+                    'target_pattern' => $skill->target_pattern,
+                    'target_label' => Skill::TARGET_PATTERNS[$skill->target_pattern],
+                    'battle_format' => $skill->battle_format,
+                    'is_signature' => $entry->is_signature,
+                    'is_available_on_current_form' => $currentPathIds->contains($entry->pet_id),
+                    'is_evolution_locked' => $futurePathIds->contains($entry->pet_id),
+                    'is_alternate_branch' => ! $currentPathIds->contains($entry->pet_id)
+                        && ! $futurePathIds->contains($entry->pet_id),
+                    'grant_pet' => [
+                        'id' => $entry->pet->id,
+                        'game_id' => $entry->pet->game_id,
+                        'name' => $entry->pet->name,
+                        'slug' => $entry->pet->slug,
+                        'sprite_id' => $entry->pet->sprite_id,
+                        'stage' => $familyMetadata[$entry->pet_id]['stage'] + 1,
+                    ],
+                    'element' => $skillElement === null ? null : [
+                        'game_id' => $skillElement['game_id'],
+                        'name' => $skillElement['name'],
+                        'slug' => $skill->combat_element,
+                        'color' => $skillElement['color'],
+                    ],
+                    'species_affinity' => $skill->species_affinity === null ? null : [
+                        'name' => Pet::SPECIES[$skill->species_affinity]['name'],
+                        'slug' => $skill->species_affinity,
+                        'color' => Pet::SPECIES[$skill->species_affinity]['color'],
+                    ],
                     'effect' => $skill->effect === null ? null : [
                         'source_table' => $skill->effect->source_table,
                         'game_id' => $skill->effect->game_id,
@@ -265,8 +342,8 @@ class PetController extends Controller
                     ],
                 ];
             })
-            ->filter()
             ->values();
+        $statBenchmarks = $this->statBenchmarks();
         $description = Str::of((string) $pet->description)->trim();
         $hasCombatNote = $description->contains('[') && $description->contains(']');
 
@@ -289,6 +366,13 @@ class PetController extends Controller
                 'rarity_or_growth_code' => $pet->rarity_or_growth_code,
                 'learning_group' => $pet->learning_group,
                 'effectiveness_class' => $pet->effectiveness_class,
+                'primary_role' => $pet->primary_role,
+                'primary_role_label' => Pet::COMBAT_ROLES[$pet->primary_role],
+                'secondary_role' => $pet->secondary_role,
+                'secondary_role_label' => Pet::COMBAT_ROLES[$pet->secondary_role],
+                'preferred_battle_format' => $pet->preferred_battle_format,
+                'playstyle_summary' => $pet->playstyle_summary,
+                'equipped_skill_limit' => 5,
                 'raw_values' => $pet->raw_values,
                 'description' => $pet->description,
                 'lore' => $hasCombatNote
@@ -304,16 +388,9 @@ class PetController extends Controller
                         : null,
                     'locations' => $pet->discovery_locations ?? [],
                 ],
-                'quality_multiplier' => $pet->gameSource->slug === 'liet-hoa'
-                    ? self::QUALITY_MULTIPLIERS[$pet->quality_tier]
-                    : 100,
-                'stats' => [
-                    'hp' => ['base' => $pet->hp_base, 'per_level' => $pet->hp_per_level, 'offset' => $pet->hp_offset, 'per_ten_levels' => $pet->gameSource->slug === 'cau-vong'],
-                    'energy' => $pet->energy_base === null ? null : ['base' => $pet->energy_base, 'per_level' => $pet->energy_per_10_levels, 'offset' => 0, 'per_ten_levels' => true],
-                    'strength' => ['base' => $pet->stat_2_base, 'per_level' => $pet->stat_2_per_level, 'offset' => $pet->stat_2_offset, 'per_ten_levels' => $pet->gameSource->slug === 'cau-vong'],
-                    'defense' => ['base' => $pet->stat_3_base, 'per_level' => $pet->stat_3_per_10_levels, 'offset' => $pet->stat_3_offset, 'per_ten_levels' => true],
-                    'agility' => ['base' => $pet->stat_4_base, 'per_level' => $pet->stat_4_per_10_levels, 'offset' => $pet->stat_4_offset, 'per_ten_levels' => true],
-                ],
+                'quality_multiplier' => self::QUALITY_MULTIPLIERS[$pet->quality_tier],
+                'stats' => $this->statFormulas($pet),
+                'stat_benchmarks' => $statBenchmarks,
                 'evolution_stage' => $currentMetadata['stage'] + 1,
                 'evolution_stage_count' => $familyPets->max(fn (Pet $candidate): int => $familyMetadata[$candidate->id]['stage']) + 1,
                 'belongs_to_evolution_family' => $familyPets->count() > 1,
@@ -322,7 +399,9 @@ class PetController extends Controller
                     && ! $familyEvolutions->contains('from_pet_id', $pet->id),
                 'combat_element' => $this->combatElement($pet),
                 'species' => $this->species($pet),
+                'species_trait' => $this->trait($pet->speciesTrait),
                 'skills' => $skills,
+                'provenance' => $this->petProvenance(),
                 'evolution_family' => [
                     'pets' => $familyPets->map(fn (Pet $familyPet): array => [
                         'id' => $familyPet->id,
@@ -331,6 +410,14 @@ class PetController extends Controller
                         'slug' => $familyPet->slug,
                         'sprite_id' => $familyPet->sprite_id,
                         'quality_tier' => $familyPet->quality_tier,
+                        'quality_multiplier' => self::QUALITY_MULTIPLIERS[$familyPet->quality_tier],
+                        'combat_element' => $this->combatElement($familyPet),
+                        'species' => $this->species($familyPet),
+                        'primary_role' => $familyPet->primary_role,
+                        'primary_role_label' => Pet::COMBAT_ROLES[$familyPet->primary_role],
+                        'secondary_role' => $familyPet->secondary_role,
+                        'secondary_role_label' => Pet::COMBAT_ROLES[$familyPet->secondary_role],
+                        'stats' => $this->statFormulas($familyPet),
                         'stage' => $familyMetadata[$familyPet->id]['stage'] + 1,
                         'is_current' => $familyPet->is($pet),
                     ])->values(),
@@ -340,6 +427,12 @@ class PetController extends Controller
                         'type' => $evolution->evolution_type,
                         'quantity' => $evolution->quantity,
                         'materials' => $evolution->materials,
+                        'cost_rank' => $evolution->cost_rank,
+                        'cost_rank_label' => EvolutionRecipeData::RANK_LABELS[$evolution->cost_rank],
+                        'balance_notes' => $evolution->balance_notes,
+                        'ingredients' => $evolution->ingredients
+                            ->map(fn (PetEvolutionIngredient $ingredient): array => $this->evolutionIngredient($ingredient))
+                            ->values(),
                         'item' => [
                             'id' => $evolution->item->id,
                             'game_source' => [
@@ -357,7 +450,36 @@ class PetController extends Controller
                     ])->values(),
                 ],
             ],
+            'trait_system' => $this->physicalTraitSystem(),
         ]);
+    }
+
+    /** @return array<string, mixed> */
+    private function evolutionIngredient(PetEvolutionIngredient $ingredient): array
+    {
+        return [
+            'quantity' => $ingredient->quantity,
+            'role' => $ingredient->role,
+            'role_label' => match ($ingredient->role) {
+                PetEvolutionIngredient::ROLE_CORE => 'Lõi tiến hóa',
+                PetEvolutionIngredient::ROLE_SPECIES => 'Nguyên liệu Chủng',
+                PetEvolutionIngredient::ROLE_SIGNATURE => 'Xúc tác đặc trưng',
+            },
+            'item' => [
+                'id' => $ingredient->item->id,
+                'game_source' => [
+                    'name' => $ingredient->item->gameSource->name,
+                    'slug' => $ingredient->item->gameSource->slug,
+                    'asset_key' => $ingredient->item->gameSource->asset_key,
+                    'color' => $ingredient->item->gameSource->color,
+                ],
+                'source_table' => $ingredient->item->source_table,
+                'game_id' => $ingredient->item->game_id,
+                'name' => $ingredient->item->name,
+                'slug' => $ingredient->item->slug,
+                'frame_id' => $ingredient->item->frame_id,
+            ],
+        ];
     }
 
     /**
@@ -413,6 +535,152 @@ class PetController extends Controller
     }
 
     /**
+     * @return array{code: string, name: string, slot_type: string, species: string|null, polarity: string, description: string, parameters: array<string, mixed>|null, roll_weight: int, is_cleanse_eligible: bool}
+     */
+    private function trait(?PetTrait $trait): array
+    {
+        if ($trait === null) {
+            throw new UnexpectedValueException('Pet has no assigned species trait.');
+        }
+
+        return [
+            'code' => $trait->code,
+            'name' => $trait->name,
+            'slot_type' => $trait->slot_type,
+            'species' => $trait->species,
+            'polarity' => $trait->polarity,
+            'description' => $trait->description,
+            'parameters' => $trait->parameters,
+            'roll_weight' => $trait->roll_weight,
+            'is_cleanse_eligible' => $trait->is_cleanse_eligible,
+        ];
+    }
+
+    /**
+     * Describe which pet fields came from decoded files and which belong to the unified ruleset.
+     *
+     * @return array{identity: string, taxonomy: string, combat_profile: string, learnset: string}
+     */
+    private function petProvenance(): array
+    {
+        return [
+            'identity' => 'decoded',
+            'taxonomy' => 'unified',
+            'combat_profile' => 'calculated',
+            'learnset' => 'unified',
+        ];
+    }
+
+    /**
+     * @return array{physical_traits: list<array<string, mixed>>}
+     */
+    private function physicalTraitSystem(): array
+    {
+        $traits = PetTrait::query()
+            ->physical()
+            ->active()
+            ->select([
+                'id',
+                'code',
+                'name',
+                'slot_type',
+                'species',
+                'polarity',
+                'description',
+                'parameters',
+                'roll_weight',
+                'is_cleanse_eligible',
+            ])
+            ->orderBy('code')
+            ->get();
+        if ($traits->count() !== 13 || $traits->pluck('roll_weight')->unique()->count() !== 1) {
+            throw new UnexpectedValueException('The physical trait pool must contain 13 equally weighted traits.');
+        }
+
+        return [
+            'physical_traits' => $traits
+                ->map(fn (PetTrait $trait): array => $this->trait($trait))
+                ->values()
+                ->all(),
+        ];
+    }
+
+    /**
+     * Build the four unified stat formulas used by the dossier and form comparison.
+     *
+     * @return array{hp: array{base: int, per_level: int, offset: int, per_ten_levels: bool}, energy: null, strength: array{base: int, per_level: int, offset: int, per_ten_levels: bool}, defense: array{base: int, per_level: int, offset: int, per_ten_levels: bool}, agility: array{base: int, per_level: int, offset: int, per_ten_levels: bool}}
+     */
+    private function statFormulas(Pet $pet): array
+    {
+        return [
+            'hp' => ['base' => $pet->hp_base, 'per_level' => $pet->hp_per_level, 'offset' => $pet->hp_offset, 'per_ten_levels' => false],
+            'energy' => null,
+            'strength' => ['base' => $pet->stat_2_base, 'per_level' => $pet->stat_2_per_level, 'offset' => $pet->stat_2_offset, 'per_ten_levels' => false],
+            'defense' => ['base' => $pet->stat_3_base, 'per_level' => $pet->stat_3_per_10_levels, 'offset' => $pet->stat_3_offset, 'per_ten_levels' => true],
+            'agility' => ['base' => $pet->stat_4_base, 'per_level' => $pet->stat_4_per_10_levels, 'offset' => $pet->stat_4_offset, 'per_ten_levels' => true],
+        ];
+    }
+
+    /**
+     * Calculate the unified combat stats for a Pet at a selected level.
+     *
+     * @return array{hp: int, strength: int, defense: int, agility: int}
+     */
+    private function calculatedStats(Pet $pet, int $level): array
+    {
+        $formulas = $this->statFormulas($pet);
+        $qualityMultiplier = self::QUALITY_MULTIPLIERS[$pet->quality_tier];
+        $stats = [];
+
+        foreach (['hp', 'strength', 'defense', 'agility'] as $stat) {
+            $formula = $formulas[$stat];
+            $levelFactor = $formula['per_ten_levels'] ? $level / 10 : $level;
+            $stats[$stat] = (int) (($formula['base'] + $formula['per_level'] * $levelFactor + $formula['offset']) * $qualityMultiplier / 100);
+        }
+
+        return $stats;
+    }
+
+    /**
+     * Calculate the unified all-Pet average used as the radar-chart benchmark.
+     *
+     * @return array{level_one: array{hp: int, strength: int, defense: int, agility: int}, level_fifty: array{hp: int, strength: int, defense: int, agility: int}}
+     */
+    private function statBenchmarks(): array
+    {
+        $pets = Pet::query()
+            ->select([
+                'quality_tier',
+                'hp_base',
+                'hp_per_level',
+                'hp_offset',
+                'stat_2_base',
+                'stat_2_per_level',
+                'stat_2_offset',
+                'stat_3_base',
+                'stat_3_per_10_levels',
+                'stat_3_offset',
+                'stat_4_base',
+                'stat_4_per_10_levels',
+                'stat_4_offset',
+            ])
+            ->get();
+
+        return collect(['level_one' => 1, 'level_fifty' => 50])
+            ->map(function (int $level) use ($pets): array {
+                $calculatedStats = $pets->map(fn (Pet $pet): array => $this->calculatedStats($pet, $level));
+
+                return [
+                    'hp' => (int) round($calculatedStats->avg('hp')),
+                    'strength' => (int) round($calculatedStats->avg('strength')),
+                    'defense' => (int) round($calculatedStats->avg('defense')),
+                    'agility' => (int) round($calculatedStats->avg('agility')),
+                ];
+            })
+            ->all();
+    }
+
+    /**
      * Build stable family roots and stages for every pet in the catalog.
      *
      * @param  Collection<int, Pet>  $pets
@@ -454,5 +722,56 @@ class PetController extends Controller
                 'family_size' => (int) $familySizes->get($metadata['root_id'], 1),
             ]];
         })->all();
+    }
+
+    /**
+     * Resolve the current form and every ancestor on its active evolution branch.
+     *
+     * @param  Collection<int, Collection<int, int>>  $incomingPetIds
+     * @return Collection<int, int>
+     */
+    private function ancestorPetIds(int $petId, Collection $incomingPetIds): Collection
+    {
+        $petIds = collect();
+        $currentPetId = $petId;
+
+        while (! $petIds->contains($currentPetId)) {
+            $petIds->push($currentPetId);
+
+            if (! $incomingPetIds->has($currentPetId)) {
+                break;
+            }
+
+            $currentPetId = (int) $incomingPetIds->get($currentPetId)->first();
+        }
+
+        return $petIds;
+    }
+
+    /**
+     * Resolve every future form reachable from the current form.
+     *
+     * @param  Collection<int, Collection<int, int>>  $outgoingPetIds
+     * @return Collection<int, int>
+     */
+    private function descendantPetIds(int $petId, Collection $outgoingPetIds): Collection
+    {
+        $descendantIds = collect();
+        $pendingIds = collect([$petId]);
+
+        while ($pendingIds->isNotEmpty()) {
+            $currentPetId = (int) $pendingIds->shift();
+
+            foreach ($outgoingPetIds->get($currentPetId, collect()) as $descendantId) {
+                if ($descendantIds->contains($descendantId)) {
+                    continue;
+                }
+
+                $descendantIds->push((int) $descendantId);
+                $pendingIds->push((int) $descendantId);
+            }
+        }
+
+        return $descendantIds;
     }
 }

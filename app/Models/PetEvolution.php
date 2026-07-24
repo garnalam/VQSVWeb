@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'from_pet_id',
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'quantity',
     'materials',
     'evolution_type',
+    'cost_rank',
+    'balance_notes',
 ])]
 class PetEvolution extends Model
 {
@@ -24,7 +27,10 @@ class PetEvolution extends Model
     /** @return array<string, string> */
     protected function casts(): array
     {
-        return ['materials' => 'array'];
+        return [
+            'materials' => 'array',
+            'cost_rank' => 'integer',
+        ];
     }
 
     /**
@@ -55,5 +61,15 @@ class PetEvolution extends Model
     public function item(): BelongsTo
     {
         return $this->belongsTo(Item::class);
+    }
+
+    /**
+     * Get every canonical ingredient consumed by this evolution.
+     *
+     * @return HasMany<PetEvolutionIngredient, $this>
+     */
+    public function ingredients(): HasMany
+    {
+        return $this->hasMany(PetEvolutionIngredient::class)->orderBy('position');
     }
 }

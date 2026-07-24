@@ -37,15 +37,23 @@ export function elementIconUrl(elementId: number): string {
     return `${GAME_ASSET_ROOT}/ui/element_${iconName}.png`;
 }
 
-export function petArtworkUrl(
-    spriteId: number,
-    assetKey = 'liet-hoa',
-): string {
+export function petArtworkUrl(spriteId: number, assetKey = 'liet-hoa'): string {
     if (assetKey === 'cau-vong') {
         return `${GAME_ASSET_ROOT}/cau-vong/pets/${spriteId}.png`;
     }
 
     return `${GAME_ASSET_ROOT}/pets/${spriteId}.png`;
+}
+
+export function petSkillAnimationUrl(
+    spriteId: number,
+    assetKey = 'liet-hoa',
+): string {
+    const filename = `${spriteId}-skill.webp`;
+
+    return assetKey === 'cau-vong'
+        ? `${GAME_ASSET_ROOT}/cau-vong/pet-animations/${filename}`
+        : `${GAME_ASSET_ROOT}/pet-animations/${filename}`;
 }
 
 export function itemArtworkUrl(

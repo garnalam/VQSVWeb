@@ -240,6 +240,20 @@
 }
 
 @layer components {
+    .wiki-shell {
+        --wiki-surface: #0b0f17;
+        --wiki-surface-variant: rgb(22 28 40 / 0.9);
+        --wiki-border: #1e293b;
+        background-color: var(--wiki-surface);
+    }
+
+    .wiki-panel {
+        border: 1px solid var(--wiki-border);
+        background: var(--wiki-surface-variant);
+        box-shadow: 0 18px 48px rgb(0 0 0 / 0.28);
+        backdrop-filter: blur(12px);
+    }
+
     .wiki-pixel-art {
         image-rendering: crisp-edges;
         image-rendering: pixelated;

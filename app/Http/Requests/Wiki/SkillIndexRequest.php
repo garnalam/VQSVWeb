@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Wiki;
 
-use App\Models\Element;
-use App\Models\GameSource;
+use App\Models\Pet;
+use App\Models\Skill;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -27,13 +27,14 @@ class SkillIndexRequest extends FormRequest
     {
         return [
             'q' => ['nullable', 'string', 'max:100'],
-            'game' => ['nullable', 'string', Rule::exists(GameSource::class, 'slug')],
-            'element' => ['nullable', 'integer', Rule::exists(Element::class, 'game_id')],
-            'tier' => ['nullable', 'integer', 'between:0,5'],
-            'kind' => ['nullable', Rule::in(['damage', 'status'])],
+            'element' => ['nullable', Rule::in(array_keys(Pet::COMBAT_ELEMENTS))],
+            'tier' => ['nullable', 'integer', 'between:0,3'],
             'effect' => ['nullable', Rule::in(['none', 'beneficial', 'harmful'])],
-            'target' => ['nullable', Rule::in(['opponent', 'self'])],
-            'sort' => ['nullable', Rule::in(['game_id', 'name', 'power', 'tier'])],
+            'target' => ['nullable', Rule::in(array_keys(Skill::TARGET_PATTERNS))],
+            'source' => ['nullable', Rule::in(['element', 'species', 'universal', 'signature'])],
+            'role' => ['nullable', Rule::in(['attack', 'defense', 'heal', 'control', 'disrupt', 'modifier'])],
+            'unlock' => ['nullable', 'integer', Rule::in([5, 10, 20, 30, 40])],
+            'sort' => ['nullable', Rule::in(['id', 'name', 'power', 'tier'])],
         ];
     }
 }

@@ -20,6 +20,7 @@ DECODED_ROOT = PROJECT_ROOT / "resources" / "decoded" / "04_resources"
 RAW_ROOT = DECODED_ROOT / "raw" / "data"
 IMAGE_ROOT = DECODED_ROOT / "recognized" / "images" / "data" / "img"
 OUTPUT_ROOT = PROJECT_ROOT / "public" / "assets" / "game"
+GAME_TICK_MS = 66
 
 
 @dataclass(frozen=True)
@@ -103,6 +104,7 @@ def render_composition(
     atlas_ids: list[int],
     composition_id: int,
     padding: int = 3,
+    bounds: tuple[int, int, int, int] | None = None,
 ) -> Image.Image | None:
     if composition_id < 0 or composition_id >= len(definition.compositions):
         return None
@@ -135,10 +137,13 @@ def render_composition(
             (transform_region(cropped, j2me_transform), destination_x, destination_y)
         )
 
-    left = min(x for _, x, _ in pieces)
-    top = min(y for _, _, y in pieces)
-    right = max(x + image.width for image, x, _ in pieces)
-    bottom = max(y + image.height for image, _, y in pieces)
+    if bounds is None:
+        left = min(x for _, x, _ in pieces)
+        top = min(y for _, _, y in pieces)
+        right = max(x + image.width for image, x, _ in pieces)
+        bottom = max(y + image.height for image, _, y in pieces)
+    else:
+        left, top, right, bottom = bounds
     canvas = Image.new(
         "RGBA", (right - left + padding * 2, bottom - top + padding * 2)
     )
@@ -149,6 +154,117 @@ def render_composition(
         )
 
     return canvas
+
+
+def animation_frames(
+    definition: SpriteDefinition,
+    atlas_ids: list[int],
+    animation_id: int,
+    padding: int = 3,
+) -> tuple[list[Image.Image], list[int]]:
+    """Render one original action with a shared canvas and source timing."""
+    if animation_id < 0 or animation_id >= len(definition.animations):
+        return [], []
+
+    animation = definition.animations[animation_id]
+    if len(animation) < 2 or len(animation) % 2 != 0:
+        return [], []
+
+    rendered_frames: list[Image.Image] = []
+    durations: list[int] = []
+    frame_bounds: list[tuple[int, int, int, int]] = []
+
+    for composition_id in animation[1::2]:
+        composition = definition.compositions[composition_id]
+        if not composition:
+            continue
+
+        atlases = [
+            Image.open(IMAGE_ROOT / f"img_{atlas_id}.png").convert("RGBA")
+            for atlas_id in atlas_ids
+        ]
+        pieces: list[tuple[Image.Image, int, int]] = []
+
+        for index in range(0, len(composition), 4):
+            region_id, destination_x, destination_y, transform_index = composition[
+                index : index + 4
+            ]
+            region_offset = region_id * 5
+            atlas_slot, source_x, source_y, width, height = definition.regions[
+                region_offset : region_offset + 5
+            ]
+            cropped = atlases[atlas_slot].crop(
+                (source_x, source_y, source_x + width, source_y + height)
+            )
+            j2me_transform = (0, 5, 3, 6, 2, 4, 1, 7)[transform_index]
+            pieces.append(
+                (
+                    transform_region(cropped, j2me_transform),
+                    destination_x,
+                    destination_y,
+                )
+            )
+
+        frame_bounds.append(
+            (
+                min(x for _, x, _ in pieces),
+                min(y for _, _, y in pieces),
+                max(x + image.width for image, x, _ in pieces),
+                max(y + image.height for image, _, y in pieces),
+            )
+        )
+
+    if not frame_bounds:
+        return [], []
+
+    shared_bounds = (
+        min(bounds[0] for bounds in frame_bounds),
+        min(bounds[1] for bounds in frame_bounds),
+        max(bounds[2] for bounds in frame_bounds),
+        max(bounds[3] for bounds in frame_bounds),
+    )
+
+    for duration_ticks, composition_id in zip(
+        animation[0::2], animation[1::2], strict=True
+    ):
+        frame = render_composition(
+            definition,
+            atlas_ids,
+            composition_id,
+            padding=padding,
+            bounds=shared_bounds,
+        )
+        if frame is None:
+            left, top, right, bottom = shared_bounds
+            frame = Image.new(
+                "RGBA",
+                (right - left + padding * 2, bottom - top + padding * 2),
+                (0, 0, 0, 0),
+            )
+
+        rendered_frames.append(frame)
+        durations.append(max(1, duration_ticks) * GAME_TICK_MS)
+
+    return rendered_frames, durations
+
+
+def save_animation(
+    frames: list[Image.Image], durations: list[int], path: Path
+) -> None:
+    """Save lossless animated WebP while preserving per-frame durations."""
+    if not frames or len(frames) != len(durations):
+        raise ValueError("Animation frames and durations must be non-empty and aligned")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    frames[0].save(
+        path,
+        save_all=True,
+        append_images=frames[1:],
+        duration=durations,
+        loop=0,
+        lossless=True,
+        method=6,
+    )
 
 
 def default_composition_id(definition: SpriteDefinition) -> int | None:
@@ -293,6 +409,7 @@ def extract_badge_icons(sprite_map: list[list[int]]) -> dict[str, str]:
 def main() -> None:
     sprite_map = read_sprite_map()
     pet_manifest: dict[str, str] = {}
+    pet_animation_manifest: dict[str, dict[str, object]] = {}
     item_manifest: dict[str, str] = {}
     skill_manifest: dict[str, str] = {}
 
@@ -303,6 +420,27 @@ def main() -> None:
 
         save_image(image, OUTPUT_ROOT / "pets" / f"{sprite_id}.png")
         pet_manifest[str(sprite_id)] = f"/assets/game/pets/{sprite_id}.png"
+
+        sprite_file_id, *atlas_ids = sprite_map[sprite_id]
+        definition = read_sprite_definition(sprite_file_id)
+        frames, durations = animation_frames(definition, atlas_ids, animation_id=1)
+        if not frames:
+            continue
+
+        animation_url = f"/assets/game/pet-animations/{sprite_id}-skill.webp"
+        save_animation(
+            frames,
+            durations,
+            OUTPUT_ROOT / "pet-animations" / f"{sprite_id}-skill.webp",
+        )
+        pet_animation_manifest[str(sprite_id)] = {
+            "action": "skill",
+            "source_action_id": 1,
+            "url": animation_url,
+            "frame_count": len(frames),
+            "duration_ms": sum(durations),
+            "tick_ms": GAME_TICK_MS,
+        }
 
     item_definition = read_sprite_definition(sprite_map[258][0])
     item_atlas_ids = sprite_map[258][1:]
@@ -337,6 +475,7 @@ def main() -> None:
     manifest = {
         "source": "Decoded VQSV J2ME sprite pipeline",
         "pets": pet_manifest,
+        "pet_animations": pet_animation_manifest,
         "items": item_manifest,
         "badges": badge_manifest,
         "skill_motifs": skill_manifest,
@@ -351,7 +490,9 @@ def main() -> None:
     )
 
     print(
-        f"Extracted {len(pet_manifest)} pets, {len(item_manifest)} item frames, "
+        f"Extracted {len(pet_manifest)} pets, "
+        f"{len(pet_animation_manifest)} original Pet skill animations, "
+        f"{len(item_manifest)} item frames, "
         f"{len(badge_manifest)} badges, "
         f"{len(skill_manifest)} skill motifs, and "
         f"{sum(len(group) for group in effect_manifest.values())} effect icons "

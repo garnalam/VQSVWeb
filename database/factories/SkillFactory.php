@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Element;
 use App\Models\GameSource;
+use App\Models\Pet;
 use App\Models\Skill;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,6 +26,12 @@ class SkillFactory extends Factory
             'game_source_id' => GameSource::factory(),
             'game_id' => fake()->unique()->numberBetween(0, 255),
             'element_id' => Element::factory(),
+            'combat_element' => fake()->randomElement(array_keys(Pet::COMBAT_ELEMENTS)),
+            'combat_category' => 'damage',
+            'target_pattern' => 'single_enemy',
+            'battle_format' => 'any',
+            'role_tags' => ['striker'],
+            'is_active' => true,
             'effect_id' => null,
             'name_original' => $name,
             'name' => $name,

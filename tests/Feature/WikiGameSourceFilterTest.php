@@ -22,16 +22,31 @@ test('filters pet catalog by rainbow source', function () {
             ->where('pets.data.0.species.slug', 'thuc-vat'));
 });
 
-test('filters skill catalog by rainbow source and exposes real combat data', function () {
-    $this->get(route('wiki.skills.index', ['game' => 'cau-vong', 'q' => 'Triền Nhiễu']))
+test('unifies the skill catalog around combat data instead of source and energy filters', function () {
+    $this->get(route('wiki.skills.index', [
+        'q' => 'Triền Nhiễu',
+        'source' => 'species',
+        'role' => 'attack',
+        'unlock' => 5,
+        'target' => 'single_enemy',
+    ]))
         ->assertOk()
         ->assertInertia(fn (Assert $page): Assert => $page
             ->component('wiki/skills/index')
             ->has('skills.data', 1)
-            ->where('skills.data.0.game_source.slug', 'cau-vong')
-            ->where('skills.data.0.energy_cost', 10)
+            ->where('skills.data.0.max_uses', 45)
             ->where('skills.data.0.status_chance', 4)
-            ->where('skills.data.0.effect.name', 'Hủ Thực'));
+            ->where('skills.data.0.effect.name', 'Hủ Thực')
+            ->where('skills.data.0.combat_category', 'hybrid')
+            ->where('skills.data.0.target_pattern', 'single_enemy')
+            ->where('skills.data.0.source_types', fn ($sourceTypes): bool => collect($sourceTypes)->contains('species'))
+            ->where('skills.data.0.unlock_levels', fn ($levels): bool => collect($levels)->contains(5))
+            ->where('skills.data.0.learned_by_count', fn (int $count): bool => $count > 0)
+            ->has('skills.data.0.compatible_pet_preview')
+            ->missing('gameSources')
+            ->missing('skills.data.0.energy_cost')
+            ->where('catalogStats.element_total', 7)
+            ->where('catalogStats.tier_total', 4));
 });
 
 test('filters item catalog by rainbow source', function () {

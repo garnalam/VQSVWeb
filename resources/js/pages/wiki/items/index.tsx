@@ -1,4 +1,4 @@
-import { Head, router } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import {
     Backpack,
     BadgeCheck,
@@ -17,7 +17,6 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { GameArtwork } from '@/components/wiki/game-artwork';
-import { GameSourceBadge } from '@/components/wiki/game-source-badge';
 import { WikiEmptyState } from '@/components/wiki/wiki-empty-state';
 import { WikiFilterPanel } from '@/components/wiki/wiki-filter-panel';
 import { WikiPageHeader } from '@/components/wiki/wiki-page-header';
@@ -25,45 +24,16 @@ import { WikiPagination } from '@/components/wiki/wiki-pagination';
 import { WikiResultsBar } from '@/components/wiki/wiki-results-bar';
 import { badgeArtworkUrl, itemArtworkUrl } from '@/lib/game-assets';
 import { compactWikiQuery } from '@/lib/wiki';
-import { index as itemsIndex } from '@/routes/wiki/items';
+import {
+    ITEM_CATEGORY_LABELS,
+    ITEM_SOURCE_ARTWORK,
+    ITEM_SOURCE_LABELS,
+    itemCategoryLabel,
+    itemEffectLabel,
+    itemSourceLabel,
+} from '@/lib/wiki-presenters';
+import { index as itemsIndex, show as itemShow } from '@/routes/wiki/items';
 import type { PaginatedWikiData, WikiGameSource, WikiItem } from '@/types';
-
-const SOURCE_TABLE_LABELS: Record<number, string> = {
-    0: 'Kho vật phẩm Cầu Vồng',
-    2: 'Huy chương',
-    3: 'Trang sức & nguyên liệu',
-    4: 'Tiêu hao',
-    5: 'Đặc thù',
-};
-
-const CATEGORY_LABELS: Record<string, string> = {
-    consumable: 'Đạo cụ',
-    mineral: 'Khoáng thạch',
-    medal: 'Huy chương',
-    ring: 'Vòng',
-    accessory: 'Trang sức',
-    badge: 'Huy chương',
-    badge_book: 'Sổ huy chương',
-    capture_ball: 'Cầu phong ấn',
-    encyclopedia: 'Đồ giám',
-    evolution_material: 'Nguyên liệu tiến hóa',
-    key: 'Chìa khóa',
-    mount: 'Thú cưỡi',
-    mutation_material: 'Nguyên liệu dị hóa',
-    pet_egg: 'Trứng Pet',
-    recovery: 'Hồi phục',
-    stat_modifier: 'Chỉnh thuộc tính',
-    teleport: 'Truyền tống',
-    utility: 'Tiện ích',
-};
-
-const SOURCE_TABLE_ARTWORK: Record<number, string> = {
-    0: 'from-cyan-400 via-sky-500 to-violet-600',
-    2: 'from-amber-400 via-orange-500 to-rose-600',
-    3: 'from-violet-500 via-fuchsia-500 to-pink-600',
-    4: 'from-emerald-400 via-teal-500 to-cyan-600',
-    5: 'from-sky-400 via-blue-600 to-indigo-700',
-};
 
 type ItemFilters = {
     q: string;
@@ -157,14 +127,16 @@ export default function ItemIndex({
 
                 <Select value={sourceTable} onValueChange={setSourceTable}>
                     <SelectTrigger className="h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none focus:border-[var(--wiki-shell-accent)]/55 focus:ring-[var(--wiki-shell-accent)]/15">
-                        <SelectValue placeholder="Bảng nguồn" />
+                        <SelectValue placeholder="Nhóm vật phẩm" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="all">Tất cả bảng nguồn</SelectItem>
-                        {Object.entries(SOURCE_TABLE_LABELS).map(
+                        <SelectItem value="all">
+                            Tất cả nhóm vật phẩm
+                        </SelectItem>
+                        {Object.entries(ITEM_SOURCE_LABELS).map(
                             ([value, label]) => (
                                 <SelectItem key={value} value={value}>
-                                    db[{value}] · {label}
+                                    {label}
                                 </SelectItem>
                             ),
                         )}
@@ -179,7 +151,7 @@ export default function ItemIndex({
                         <SelectItem value="all">Tất cả phân loại</SelectItem>
                         {categories.map((value) => (
                             <SelectItem key={value} value={value}>
-                                {CATEGORY_LABELS[value] ?? value}
+                                {ITEM_CATEGORY_LABELS[value] ?? value}
                             </SelectItem>
                         ))}
                     </SelectContent>
@@ -209,26 +181,27 @@ export default function ItemIndex({
             ) : (
                 <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {items.data.map((item, index) => (
-                        <article
+                        <Link
                             key={item.id}
+                            href={itemShow(item.id)}
+                            prefetch
                             style={{
                                 animationDelay: `${Math.min(index, 7) * 55}ms`,
                             }}
                             className="wiki-dossier wiki-card-fx group relative flex min-h-82 flex-col overflow-hidden border border-white/10 bg-[#091725] shadow-[0_18px_42px_rgba(0,0,0,.26)] transition duration-300 hover:-translate-y-1 hover:border-[var(--wiki-shell-accent)]/50 hover:shadow-[0_22px_48px_color-mix(in_oklab,var(--wiki-shell-accent)_14%,rgba(0,0,0,.35))]"
                         >
                             <div
-                                className={`wiki-hologram wiki-scanline relative flex h-34 items-center justify-center overflow-hidden bg-linear-to-br ${SOURCE_TABLE_ARTWORK[item.source_table] ?? 'from-slate-500 to-slate-800'}`}
+                                className={`wiki-hologram wiki-scanline relative flex h-34 items-center justify-center overflow-hidden bg-linear-to-br ${ITEM_SOURCE_ARTWORK[item.source_table] ?? 'from-slate-500 to-slate-800'}`}
                             >
                                 <span className="absolute -top-9 -left-8 size-28 rounded-full border-[18px] border-white/10" />
                                 <span className="absolute -right-8 -bottom-12 size-36 rounded-full border border-white/20" />
                                 <span className="wiki-spark absolute top-8 left-[34%] size-1.5 rounded-full bg-white text-white [animation-delay:-.4s]" />
                                 <span className="wiki-spark absolute right-[28%] bottom-5 size-1 rounded-full bg-yellow-200 text-yellow-200 [animation-delay:-1.4s]" />
                                 <span className="absolute top-4 right-4 rounded-full border border-white/20 bg-slate-950/25 px-2.5 py-1 font-mono text-[10px] font-black tracking-wider text-white backdrop-blur-sm">
-                                    db[{item.source_table}]#{item.game_id}
+                                    Vật phẩm #{item.game_id}
                                 </span>
                                 <span className="absolute top-4 left-4 rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[9px] font-black tracking-widest text-white uppercase backdrop-blur-sm">
-                                    {SOURCE_TABLE_LABELS[item.source_table] ??
-                                        `Bảng ${item.source_table}`}
+                                    {itemSourceLabel(item.source_table)}
                                 </span>
 
                                 <div
@@ -253,23 +226,16 @@ export default function ItemIndex({
                                             <PackageOpen className="size-9" />
                                         }
                                     />
-                                    <span className="absolute -right-2 -bottom-2 rounded-lg bg-[#0d1b33] px-2 py-1 text-[9px] font-black shadow-lg">
-                                        {item.source_table === 2
-                                            ? `C${item.game_id + 46}`
-                                            : `F${item.frame_id ?? '—'}`}
-                                    </span>
                                 </div>
                             </div>
 
                             <div className="flex flex-1 flex-col p-5">
-                                <GameSourceBadge source={item.game_source} />
                                 <div>
                                     <Badge
                                         variant="outline"
                                         className="rounded-none border-[var(--wiki-shell-accent)]/30 bg-[var(--wiki-shell-accent)]/8 text-[9px] font-black tracking-wide text-[var(--wiki-shell-accent)] uppercase"
                                     >
-                                        {CATEGORY_LABELS[item.category] ??
-                                            item.category}
+                                        {itemCategoryLabel(item.category)}
                                     </Badge>
                                     <h2 className="mt-3 min-h-12 text-lg leading-6 font-black tracking-tight text-white">
                                         {item.name}
@@ -289,8 +255,10 @@ export default function ItemIndex({
                                         </span>
                                         <strong className="mt-1 block text-sm text-white tabular-nums">
                                             {item.cost === null
-                                                ? '—'
-                                                : `${item.cost} · C${item.currency_code}`}
+                                                ? 'Không bán'
+                                                : item.cost.toLocaleString(
+                                                      'vi-VN',
+                                                  )}
                                         </strong>
                                     </div>
                                     <div className="border border-cyan-300/12 bg-cyan-500/8 px-3 py-2.5">
@@ -300,17 +268,15 @@ export default function ItemIndex({
                                             ) : (
                                                 <BadgeCheck className="size-3.5" />
                                             )}
-                                            Effect
+                                            Công dụng
                                         </span>
                                         <strong className="mt-1 block text-sm text-white">
-                                            {item.effect_type === null
-                                                ? 'Dữ liệu riêng'
-                                                : `Type ${item.effect_type}`}
+                                            {itemEffectLabel(item)}
                                         </strong>
                                     </div>
                                 </div>
                             </div>
-                        </article>
+                        </Link>
                     ))}
                 </section>
             )}
