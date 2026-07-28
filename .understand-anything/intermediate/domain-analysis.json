@@ -1,0 +1,1941 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "VQSV-Web",
+    "languages": [
+      "PHP",
+      "TypeScript",
+      "Java",
+      "Python",
+      "Blade"
+    ],
+    "frameworks": [
+      "Laravel",
+      "Inertia.js",
+      "React",
+      "Tailwind CSS",
+      "Laravel Fortify",
+      "Pest"
+    ],
+    "description": "A web encyclopedia that unifies decoded Liệt Hỏa and Cầu Vồng game data into searchable Pet, Skill, Effect, Item, and evolution dossiers, with player account management and deterministic Pet balance auditing tools.",
+    "analyzedAt": "2026-07-28T11:05:33.3933316Z",
+    "gitCommitHash": "f59f7f69e12340d907d57ec915c5b55e635de1db"
+  },
+  "nodes": [
+    {
+      "id": "domain:pet-encyclopedia",
+      "type": "domain",
+      "name": "Pet Encyclopedia",
+      "summary": "Handles discovery and detailed inspection of the unified Pet roster. It joins taxonomy, combat roles, star-scaled statistics, traits, divine abilities, evolution families, recipes, and inherited learnsets into player-facing Pet records.",
+      "tags": [
+        "pet",
+        "wiki",
+        "evolution",
+        "stats",
+        "learnset"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "Pet",
+          "PetEvolution",
+          "PetEvolutionIngredient",
+          "PetTrait",
+          "DivineAbility",
+          "PetSkillLearnset"
+        ],
+        "businessRules": [
+          "Pet catalog results are grouped and ordered by game source, evolution-family root, and evolution stage unless another supported sort is selected.",
+          "Pet card statistics are calculated at level 50 and the default three-star multiplier.",
+          "A Pet profile distinguishes skills available on the current lineage, skills locked behind later forms, and skills belonging to alternate branches.",
+          "A divine power class is exposed only when the Pet has an active DivineAbility record."
+        ],
+        "crossDomainInteractions": [
+          "Consumes Skill and Effect data through Pet learnsets.",
+          "Consumes Item data through evolution ingredient recipes.",
+          "Receives normalized Pet, trait, learnset, divine, and evolution data from the content curation pipeline."
+        ]
+      }
+    },
+    {
+      "id": "domain:skill-effect-encyclopedia",
+      "type": "domain",
+      "name": "Skill and Effect Encyclopedia",
+      "summary": "Provides the active Skill catalog and complete Skill dossiers, including Power, PP, tier, element, species affinity, targets, buffs or debuffs, and learnset coverage. Detailed profiles also derive evolution-aware learning states, related skills, synergies, and an estimated battle preview.",
+      "tags": [
+        "skill",
+        "effect",
+        "buff",
+        "debuff",
+        "battle-preview"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "Skill",
+          "Effect",
+          "PetSkillLearnset",
+          "Pet",
+          "PetEvolution"
+        ],
+        "businessRules": [
+          "Only active Skills appear in the public catalog.",
+          "Skill role filters are derived from combat category, damage presence, and whether a linked Effect is beneficial or harmful.",
+          "A later evolution can inherit a Skill granted by an ancestor in its evolution family.",
+          "The damage simulator is explicitly labeled a unified estimate using elemental multipliers and bounded variance, not decoded original battle output."
+        ],
+        "crossDomainInteractions": [
+          "Reads Pet evolution families and learnsets to determine compatible Pets and inheritance.",
+          "Supplies Skill and Effect information to Pet profiles.",
+          "Receives normalized Skill mechanics and learnset assignments from the content curation pipeline."
+        ]
+      }
+    },
+    {
+      "id": "domain:item-evolution-catalog",
+      "type": "domain",
+      "name": "Item and Evolution Material Catalog",
+      "summary": "Manages the searchable active Item catalog and Item dossiers. It preserves source variants while linking canonical equivalents and shows every Pet evolution recipe that consumes a material.",
+      "tags": [
+        "item",
+        "material",
+        "equipment",
+        "canonicalization",
+        "evolution-recipe"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entities": [
+          "Item",
+          "PetEvolutionIngredient",
+          "PetEvolution",
+          "Pet"
+        ],
+        "businessRules": [
+          "Only Items marked active are listed publicly.",
+          "Source-specific Item variants can point to a canonical Item without deleting their original identity and artwork fields.",
+          "Evolution usage is resolved from PetEvolutionIngredient records, including quantity, role, cost rank, source Pet, and target Pet."
+        ],
+        "crossDomainInteractions": [
+          "Supplies evolution materials to Pet evolution-family profiles.",
+          "Reads Pet evolution transitions to explain where an Item is consumed.",
+          "Receives active-state, canonical mapping, mechanic, and recipe data from the content curation pipeline."
+        ]
+      }
+    },
+    {
+      "id": "domain:player-account-management",
+      "type": "domain",
+      "name": "Player Identity and Account Settings",
+      "summary": "Handles account registration, authentication, forgotten-password recovery, profile maintenance, account deletion, and password changes. Laravel Fortify owns the authentication endpoints while application actions, requests, and controllers provide validation and account persistence behavior.",
+      "tags": [
+        "account",
+        "authentication",
+        "profile",
+        "password",
+        "fortify"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entities": [
+          "User",
+          "Session",
+          "PasswordResetToken"
+        ],
+        "businessRules": [
+          "Registration validates the shared profile and password rules before creating a User.",
+          "Passwords are stored through the User model hashed cast.",
+          "Login attempts are limited to five per minute per normalized email and IP combination.",
+          "Changing an email clears email_verified_at.",
+          "Deleting an account requires an authenticated and verified user, logs the user out, deletes the record, invalidates the session, and regenerates the CSRF token."
+        ],
+        "crossDomainInteractions": [
+          "Provides authenticated access to the dashboard and account settings; the public encyclopedia routes do not require authentication."
+        ]
+      }
+    },
+    {
+      "id": "domain:game-content-curation-balance",
+      "type": "domain",
+      "name": "Game Content Curation and Balance",
+      "summary": "Builds the unified database from decoded Liệt Hỏa and Cầu Vồng source data, then layers canonical Item mappings, Pet taxonomy, balanced stats, learnsets, divine abilities, and evolution recipes. It also provides a deterministic command-line audit for level-50, three-star, one-versus-one Pet balance.",
+      "tags": [
+        "seeding",
+        "normalization",
+        "balance",
+        "simulation",
+        "decoded-data"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entities": [
+          "GameSource",
+          "Element",
+          "Pet",
+          "Skill",
+          "Effect",
+          "Item",
+          "PetTrait",
+          "DivineAbility",
+          "PetSkillLearnset",
+          "PetEvolution"
+        ],
+        "businessRules": [
+          "Decoded source catalogs are seeded before unified balance layers are applied.",
+          "Item normalization precedes evolution recipe assignment so recipes can resolve canonical active materials.",
+          "Pet learnsets are rebuilt after Pet balance and trait data are available.",
+          "The balance audit compares Pets within the same power class and evolution tier before considering combat score and element relation.",
+          "The audit flags standard Pets below 35 percent or above 65 percent wins, stalled matches, and decks with fewer than two damage Skills."
+        ],
+        "crossDomainInteractions": [
+          "Populates all Pet Encyclopedia records.",
+          "Populates and normalizes all Skill and Effect Encyclopedia records.",
+          "Populates, canonicalizes, activates, or retires Item records and assigns evolution recipes."
+        ]
+      }
+    },
+    {
+      "id": "flow:explore-pet-catalog",
+      "type": "flow",
+      "name": "Explore Pet Catalog",
+      "summary": "Search, filter, family-sort, and paginate the unified Pet roster for the public Wiki.",
+      "tags": [
+        "pet",
+        "search",
+        "filter",
+        "pagination"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "GET /wiki/pets",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:inspect-pet-dossier",
+      "type": "flow",
+      "name": "Inspect Pet Dossier",
+      "summary": "Assemble a complete Pet profile covering combat identity, statistics, evolution branches, recipes, learnsets, traits, and divine authority.",
+      "tags": [
+        "pet",
+        "profile",
+        "evolution",
+        "learnset"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "GET /wiki/pets/{pet}",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:explore-skill-catalog",
+      "type": "flow",
+      "name": "Explore Skill Catalog",
+      "summary": "Search and filter active Skills by element, tier, tactical role, Effect kind, target, source, and unlock level.",
+      "tags": [
+        "skill",
+        "search",
+        "effect",
+        "filter"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "GET /wiki/skills",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:inspect-skill-dossier",
+      "type": "flow",
+      "name": "Inspect Skill Dossier",
+      "summary": "Build a complete Skill profile with Effect rules, compatible Pets, evolution-aware learning states, synergy suggestions, and battle preview data.",
+      "tags": [
+        "skill",
+        "profile",
+        "effect",
+        "simulation"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "GET /wiki/skills/{skill}",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:explore-item-catalog",
+      "type": "flow",
+      "name": "Explore Item Catalog",
+      "summary": "Search, filter, sort, and paginate active Items while preserving source and canonical-variant metadata.",
+      "tags": [
+        "item",
+        "search",
+        "filter",
+        "catalog"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "GET /wiki/items",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:inspect-item-dossier",
+      "type": "flow",
+      "name": "Inspect Item Dossier",
+      "summary": "Inspect an Item's original and normalized identity, canonical variants, mechanics, and all Pet evolution recipes that consume it.",
+      "tags": [
+        "item",
+        "profile",
+        "evolution",
+        "canonical"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "GET /wiki/items/{item}",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:register-player-account",
+      "type": "flow",
+      "name": "Register Player Account",
+      "summary": "Create a new player account through Fortify after profile and password validation.",
+      "tags": [
+        "registration",
+        "user",
+        "password"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "POST /register",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:authenticate-player",
+      "type": "flow",
+      "name": "Authenticate Player",
+      "summary": "Authenticate an existing player through Fortify with an email-and-IP rate limit and redirect successful sessions to the dashboard.",
+      "tags": [
+        "login",
+        "fortify",
+        "session",
+        "rate-limit"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "POST /login",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:recover-forgotten-password",
+      "type": "flow",
+      "name": "Recover Forgotten Password",
+      "summary": "Use Fortify's reset-password feature to present the recovery screens and persist a validated replacement password.",
+      "tags": [
+        "password-reset",
+        "fortify",
+        "recovery"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "POST /reset-password",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:manage-player-profile",
+      "type": "flow",
+      "name": "Manage Player Profile",
+      "summary": "Allow an authenticated player to view or update profile identity and to permanently delete a verified account.",
+      "tags": [
+        "profile",
+        "account",
+        "email",
+        "deletion"
+      ],
+      "complexity": "moderate",
+      "domainMeta": {
+        "entryPoint": "GET/PATCH/DELETE /settings/profile",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:update-account-password",
+      "type": "flow",
+      "name": "Update Account Password",
+      "summary": "Allow an authenticated player to inspect password requirements and replace the current account password.",
+      "tags": [
+        "password",
+        "security",
+        "settings"
+      ],
+      "complexity": "simple",
+      "domainMeta": {
+        "entryPoint": "PUT /settings/password",
+        "entryType": "http"
+      }
+    },
+    {
+      "id": "flow:seed-unified-game-catalog",
+      "type": "flow",
+      "name": "Seed Unified Game Catalog",
+      "summary": "Populate decoded source catalogs and apply all approved normalization layers in their required order.",
+      "tags": [
+        "seeding",
+        "decoded-data",
+        "normalization"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "php artisan db:seed",
+        "entryType": "cli"
+      }
+    },
+    {
+      "id": "flow:audit-pet-battle-balance",
+      "type": "flow",
+      "name": "Audit Pet Battle Balance",
+      "summary": "Run deterministic level-50, three-star 1v1 simulations and report roster balance by evolution tier, power class, element, species, role, and source.",
+      "tags": [
+        "audit",
+        "simulation",
+        "pet-balance",
+        "1v1"
+      ],
+      "complexity": "complex",
+      "domainMeta": {
+        "entryPoint": "php artisan game:audit-pet-balance",
+        "entryType": "cli"
+      }
+    },
+    {
+      "id": "step:explore-pet-catalog:validate-catalog-filters",
+      "type": "step",
+      "name": "Validate Pet Catalog Filters",
+      "summary": "Validate search, game source, combat element, species, learning group, evolution, and sort inputs before querying.",
+      "tags": [
+        "explore",
+        "validate-catalog-filters"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Wiki/PetIndexRequest.php",
+      "lineRange": [
+        1,
+        38
+      ]
+    },
+    {
+      "id": "step:explore-pet-catalog:build-family-topology",
+      "type": "step",
+      "name": "Build Evolution Family Topology",
+      "summary": "Load Pets and evolution edges for the selected source and derive each Pet's family root, stage, and family size.",
+      "tags": [
+        "explore",
+        "build-family-topology"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        39,
+        51
+      ]
+    },
+    {
+      "id": "step:explore-pet-catalog:query-filtered-pets",
+      "type": "step",
+      "name": "Query Filtered Pets",
+      "summary": "Select Pet combat fields, traits, source metadata, and evolution counts while applying validated search and taxonomy filters.",
+      "tags": [
+        "explore",
+        "query-filtered-pets"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        53,
+        120
+      ]
+    },
+    {
+      "id": "step:explore-pet-catalog:calculate-card-profiles",
+      "type": "step",
+      "name": "Calculate Pet Card Profiles",
+      "summary": "Calculate level-50 three-star preview stats and attach family, element, species, trait, and provenance metadata to each card.",
+      "tags": [
+        "explore",
+        "calculate-card-profiles"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        121,
+        154
+      ]
+    },
+    {
+      "id": "step:explore-pet-catalog:sort-paginate-render",
+      "type": "step",
+      "name": "Sort, Paginate, and Render Pets",
+      "summary": "Order Pets by source and family-aware sort keys, paginate 24 records, and render the Inertia Pet index.",
+      "tags": [
+        "explore",
+        "sort-paginate-render"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        155,
+        202
+      ]
+    },
+    {
+      "id": "step:inspect-pet-dossier:load-pet-identity",
+      "type": "step",
+      "name": "Load Pet Identity and Traits",
+      "summary": "Load source metadata, fixed species trait, and any active divine ability for the selected Pet.",
+      "tags": [
+        "inspect",
+        "load-pet-identity"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        208,
+        214
+      ]
+    },
+    {
+      "id": "step:inspect-pet-dossier:resolve-evolution-family",
+      "type": "step",
+      "name": "Resolve Evolution Family and Recipes",
+      "summary": "Build the selected Pet's full source-local family, transitions, branch ancestry, descendants, Items, and ordered recipe ingredients.",
+      "tags": [
+        "inspect",
+        "resolve-evolution-family"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        216,
+        271
+      ]
+    },
+    {
+      "id": "step:inspect-pet-dossier:classify-family-learnsets",
+      "type": "step",
+      "name": "Classify Family Learnsets",
+      "summary": "Load Skill grants across the family and mark each as current-lineage available, evolution locked, or alternate-branch only.",
+      "tags": [
+        "inspect",
+        "classify-family-learnsets"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        272,
+        348
+      ]
+    },
+    {
+      "id": "step:inspect-pet-dossier:calculate-stat-profiles",
+      "type": "step",
+      "name": "Calculate Pet Stat Profiles",
+      "summary": "Prepare star multipliers, per-level stat formulas, roster benchmarks, roles, power class, and form-comparison statistics.",
+      "tags": [
+        "inspect",
+        "calculate-stat-profiles"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        349,
+        435
+      ]
+    },
+    {
+      "id": "step:inspect-pet-dossier:render-pet-profile",
+      "type": "step",
+      "name": "Render Complete Pet Profile",
+      "summary": "Return the Pet dossier with family nodes, transition costs, combat identity, learnset, lore, acquisition data, and trait-system metadata.",
+      "tags": [
+        "inspect",
+        "render-pet-profile"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/PetController.php",
+      "lineRange": [
+        356,
+        469
+      ]
+    },
+    {
+      "id": "step:explore-skill-catalog:validate-skill-filters",
+      "type": "step",
+      "name": "Validate Skill Catalog Filters",
+      "summary": "Validate the supported search, element, tier, role, Effect, target, source, unlock-level, and sort inputs.",
+      "tags": [
+        "explore",
+        "validate-skill-filters"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Wiki/SkillIndexRequest.php",
+      "lineRange": [
+        1,
+        40
+      ]
+    },
+    {
+      "id": "step:explore-skill-catalog:query-active-skills",
+      "type": "step",
+      "name": "Query Active Skills",
+      "summary": "Load active Skills and linked Effects and learnset entries while applying tactical and mechanical filters.",
+      "tags": [
+        "explore",
+        "query-active-skills"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        31,
+        122
+      ]
+    },
+    {
+      "id": "step:explore-skill-catalog:derive-learnset-coverage",
+      "type": "step",
+      "name": "Derive Learnset Coverage",
+      "summary": "Resolve source types, unlock levels, signature status, compatible Pet counts, and preview Pets for each Skill on the current page.",
+      "tags": [
+        "explore",
+        "derive-learnset-coverage"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        124,
+        183
+      ]
+    },
+    {
+      "id": "step:explore-skill-catalog:compute-catalog-statistics",
+      "type": "step",
+      "name": "Compute Skill Catalog Statistics",
+      "summary": "Count decoded and active Skills, represented combat elements and tiers, and double-battle Skills.",
+      "tags": [
+        "explore",
+        "compute-catalog-statistics"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        185,
+        192
+      ]
+    },
+    {
+      "id": "step:explore-skill-catalog:render-skill-catalog",
+      "type": "step",
+      "name": "Render Skill Catalog",
+      "summary": "Render the paginated Inertia Skill index with filter state, element metadata, and catalog statistics.",
+      "tags": [
+        "explore",
+        "render-skill-catalog"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        194,
+        222
+      ]
+    },
+    {
+      "id": "step:inspect-skill-dossier:load-skill-mechanics",
+      "type": "step",
+      "name": "Load Skill Mechanics",
+      "summary": "Load source identity, element, linked buff or debuff, and all direct Pet learnset grants for the selected Skill.",
+      "tags": [
+        "inspect",
+        "load-skill-mechanics"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        307,
+        314
+      ]
+    },
+    {
+      "id": "step:inspect-skill-dossier:resolve-compatible-pets",
+      "type": "step",
+      "name": "Resolve Compatible Pets",
+      "summary": "Walk evolution ancestors to determine direct and inherited Skill access for every Pet and record the granting form and unlock level.",
+      "tags": [
+        "inspect",
+        "resolve-compatible-pets"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        316,
+        407
+      ]
+    },
+    {
+      "id": "step:inspect-skill-dossier:derive-tactical-context",
+      "type": "step",
+      "name": "Derive Tactical Context",
+      "summary": "Build pool origin, neighboring Skill navigation, evolution-family learning matrices, species distribution, synergies, and related Skills.",
+      "tags": [
+        "inspect",
+        "derive-tactical-context"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        408,
+        510
+      ]
+    },
+    {
+      "id": "step:inspect-skill-dossier:build-battle-preview",
+      "type": "step",
+      "name": "Build Battle Preview",
+      "summary": "Generate the unified-estimate damage formula metadata and a SkillBattlePreview using compatible and opposing Pets plus effective status chance.",
+      "tags": [
+        "inspect",
+        "build-battle-preview"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        511,
+        526
+      ]
+    },
+    {
+      "id": "step:inspect-skill-dossier:render-skill-profile",
+      "type": "step",
+      "name": "Render Complete Skill Profile",
+      "summary": "Return the Inertia Skill dossier with normalized mechanics, provenance, compatibility, tactical context, and preview data.",
+      "tags": [
+        "inspect",
+        "render-skill-profile"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/SkillController.php",
+      "lineRange": [
+        441,
+        530
+      ]
+    },
+    {
+      "id": "step:explore-item-catalog:validate-item-filters",
+      "type": "step",
+      "name": "Validate Item Catalog Filters",
+      "summary": "Validate Item search, category, and sort inputs.",
+      "tags": [
+        "explore",
+        "validate-item-filters"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Wiki/ItemIndexRequest.php",
+      "lineRange": [
+        1,
+        37
+      ]
+    },
+    {
+      "id": "step:explore-item-catalog:query-active-items",
+      "type": "step",
+      "name": "Query Active Items",
+      "summary": "Select active Items, source metadata, canonical links, mechanics, equipment fields, price data, and source-variant counts.",
+      "tags": [
+        "explore",
+        "query-active-items"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/ItemController.php",
+      "lineRange": [
+        24,
+        69
+      ]
+    },
+    {
+      "id": "step:explore-item-catalog:paginate-item-cards",
+      "type": "step",
+      "name": "Paginate Item Cards",
+      "summary": "Paginate 24 Items and transform each record into its player-facing card representation.",
+      "tags": [
+        "explore",
+        "paginate-item-cards"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/ItemController.php",
+      "lineRange": [
+        70,
+        97
+      ]
+    },
+    {
+      "id": "step:explore-item-catalog:render-item-catalog",
+      "type": "step",
+      "name": "Render Item Catalog",
+      "summary": "Render the Inertia Item index with the active category list and current filter state.",
+      "tags": [
+        "explore",
+        "render-item-catalog"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/ItemController.php",
+      "lineRange": [
+        99,
+        111
+      ]
+    },
+    {
+      "id": "step:inspect-item-dossier:load-item-variants",
+      "type": "step",
+      "name": "Load Item and Variants",
+      "summary": "Load the selected Item, its source, canonical Item, and source-specific variants.",
+      "tags": [
+        "inspect",
+        "load-item-variants"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/ItemController.php",
+      "lineRange": [
+        117,
+        125
+      ]
+    },
+    {
+      "id": "step:inspect-item-dossier:resolve-evolution-usages",
+      "type": "step",
+      "name": "Resolve Evolution Usages",
+      "summary": "Find ordered PetEvolutionIngredient records and load their transition, quantity, ingredient role, cost rank, source Pet, and target Pet.",
+      "tags": [
+        "inspect",
+        "resolve-evolution-usages"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/ItemController.php",
+      "lineRange": [
+        127,
+        175
+      ]
+    },
+    {
+      "id": "step:inspect-item-dossier:assemble-normalized-item",
+      "type": "step",
+      "name": "Assemble Normalized Item Data",
+      "summary": "Combine original identity, normalized description and category, mechanic key, equipment scope, effect parameters, raw values, and canonical mapping.",
+      "tags": [
+        "inspect",
+        "assemble-normalized-item"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/ItemController.php",
+      "lineRange": [
+        177,
+        213
+      ]
+    },
+    {
+      "id": "step:inspect-item-dossier:render-item-profile",
+      "type": "step",
+      "name": "Render Complete Item Profile",
+      "summary": "Render the Item dossier with source variants and evolution usages for navigation back to affected Pets.",
+      "tags": [
+        "inspect",
+        "render-item-profile"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Wiki/ItemController.php",
+      "lineRange": [
+        177,
+        240
+      ]
+    },
+    {
+      "id": "step:register-player-account:show-registration-form",
+      "type": "step",
+      "name": "Show Registration Form",
+      "summary": "Render the Inertia registration page with the configured default password rules.",
+      "tags": [
+        "register",
+        "show-registration-form"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Providers/FortifyServiceProvider.php",
+      "lineRange": [
+        70,
+        72
+      ]
+    },
+    {
+      "id": "step:register-player-account:validate-registration-data",
+      "type": "step",
+      "name": "Validate Registration Data",
+      "summary": "Apply shared profile rules and password rules to the submitted registration payload.",
+      "tags": [
+        "register",
+        "validate-registration-data"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/CreateNewUser.php",
+      "lineRange": [
+        20,
+        25
+      ]
+    },
+    {
+      "id": "step:register-player-account:create-user-record",
+      "type": "step",
+      "name": "Create User Record",
+      "summary": "Persist name, email, and password; the User model's hashed cast stores the password securely.",
+      "tags": [
+        "register",
+        "create-user-record"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/CreateNewUser.php",
+      "lineRange": [
+        27,
+        31
+      ]
+    },
+    {
+      "id": "step:authenticate-player:show-login-form",
+      "type": "step",
+      "name": "Show Login Form",
+      "summary": "Render the Inertia login page with password-reset availability and session status.",
+      "tags": [
+        "authenticate",
+        "show-login-form"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Providers/FortifyServiceProvider.php",
+      "lineRange": [
+        51,
+        54
+      ]
+    },
+    {
+      "id": "step:authenticate-player:build-throttle-key",
+      "type": "step",
+      "name": "Build Login Throttle Key",
+      "summary": "Normalize the submitted Fortify username and combine it with the client IP for rate limiting.",
+      "tags": [
+        "authenticate",
+        "build-throttle-key"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Providers/FortifyServiceProvider.php",
+      "lineRange": [
+        83,
+        85
+      ]
+    },
+    {
+      "id": "step:authenticate-player:enforce-login-limit",
+      "type": "step",
+      "name": "Enforce Login Attempt Limit",
+      "summary": "Limit authentication attempts to five per minute for each email and IP combination.",
+      "tags": [
+        "authenticate",
+        "enforce-login-limit"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Providers/FortifyServiceProvider.php",
+      "lineRange": [
+        83,
+        87
+      ]
+    },
+    {
+      "id": "step:authenticate-player:establish-session",
+      "type": "step",
+      "name": "Establish Authenticated Session",
+      "summary": "Let Fortify's configured web guard verify the credentials and establish the authenticated session before redirecting to /dashboard.",
+      "tags": [
+        "authenticate",
+        "establish-session"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "step:recover-forgotten-password:show-recovery-views",
+      "type": "step",
+      "name": "Show Password Recovery Views",
+      "summary": "Render forgotten-password and reset-password Inertia pages with session status, token, email, and password rules as applicable.",
+      "tags": [
+        "recover",
+        "show-recovery-views"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Providers/FortifyServiceProvider.php",
+      "lineRange": [
+        56,
+        64
+      ]
+    },
+    {
+      "id": "step:recover-forgotten-password:validate-new-password",
+      "type": "step",
+      "name": "Validate Replacement Password",
+      "summary": "Apply the shared password rules to the submitted replacement password.",
+      "tags": [
+        "recover",
+        "validate-new-password"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/ResetUserPassword.php",
+      "lineRange": [
+        19,
+        23
+      ]
+    },
+    {
+      "id": "step:recover-forgotten-password:persist-new-password",
+      "type": "step",
+      "name": "Persist Replacement Password",
+      "summary": "Force-fill and save the validated password on the recovered User account.",
+      "tags": [
+        "recover",
+        "persist-new-password"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Actions/Fortify/ResetUserPassword.php",
+      "lineRange": [
+        25,
+        27
+      ]
+    },
+    {
+      "id": "step:manage-player-profile:show-profile-settings",
+      "type": "step",
+      "name": "Show Profile Settings",
+      "summary": "Render profile settings with verification requirements and any current session status.",
+      "tags": [
+        "manage",
+        "show-profile-settings"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        20,
+        25
+      ]
+    },
+    {
+      "id": "step:manage-player-profile:validate-profile-update",
+      "type": "step",
+      "name": "Validate Profile Update",
+      "summary": "Authorize the authenticated request and validate the submitted profile fields before mutation.",
+      "tags": [
+        "manage",
+        "validate-profile-update"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Settings/ProfileUpdateRequest.php",
+      "lineRange": [
+        1,
+        22
+      ]
+    },
+    {
+      "id": "step:manage-player-profile:update-profile-identity",
+      "type": "step",
+      "name": "Update Profile Identity",
+      "summary": "Fill and save validated fields, clearing email verification when the email address changes, then flash a success toast.",
+      "tags": [
+        "manage",
+        "update-profile-identity"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        31,
+        43
+      ]
+    },
+    {
+      "id": "step:manage-player-profile:validate-account-deletion",
+      "type": "step",
+      "name": "Validate Account Deletion",
+      "summary": "Require the authenticated and verified deletion request to satisfy its password confirmation rules.",
+      "tags": [
+        "manage",
+        "validate-account-deletion"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Settings/ProfileDeleteRequest.php",
+      "lineRange": [
+        1,
+        24
+      ]
+    },
+    {
+      "id": "step:manage-player-profile:delete-account-and-session",
+      "type": "step",
+      "name": "Delete Account and Session",
+      "summary": "Log out, delete the User, invalidate the session, regenerate the CSRF token, and redirect to the public root.",
+      "tags": [
+        "manage",
+        "delete-account-and-session"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/ProfileController.php",
+      "lineRange": [
+        49,
+        60
+      ]
+    },
+    {
+      "id": "step:update-account-password:show-security-settings",
+      "type": "step",
+      "name": "Show Security Settings",
+      "summary": "Render the security settings page with the active default password rules.",
+      "tags": [
+        "update",
+        "show-security-settings"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/SecurityController.php",
+      "lineRange": [
+        18,
+        24
+      ]
+    },
+    {
+      "id": "step:update-account-password:validate-password-change",
+      "type": "step",
+      "name": "Validate Password Change",
+      "summary": "Validate the authenticated player's current password and replacement password fields.",
+      "tags": [
+        "update",
+        "validate-password-change"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Requests/Settings/PasswordUpdateRequest.php",
+      "lineRange": [
+        1,
+        25
+      ]
+    },
+    {
+      "id": "step:update-account-password:persist-password-change",
+      "type": "step",
+      "name": "Persist Password Change",
+      "summary": "Update the User password through its hashed cast and flash a success toast before returning to settings.",
+      "tags": [
+        "update",
+        "persist-password-change"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Http/Controllers/Settings/SecurityController.php",
+      "lineRange": [
+        30,
+        38
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:seed-liet-hoa-source",
+      "type": "step",
+      "name": "Seed Liệt Hỏa Source Data",
+      "summary": "Decode the Liệt Hỏa binary tables and strings and upsert its elements, Effects, Items, Pets, Skills, unlock rules, and evolution links.",
+      "tags": [
+        "seed",
+        "seed-liet-hoa-source"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/VqsvGameDataSeeder.php",
+      "lineRange": [
+        46,
+        64
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:seed-rainbow-source",
+      "type": "step",
+      "name": "Seed Cầu Vồng Source Data",
+      "summary": "Upsert the extracted Cầu Vồng catalog and normalize its Pet statistics while preserving original source fields.",
+      "tags": [
+        "seed",
+        "seed-rainbow-source"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/RainbowGameDataSeeder.php",
+      "lineRange": [
+        40,
+        68
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:normalize-item-catalog",
+      "type": "step",
+      "name": "Normalize Item Catalog",
+      "summary": "Apply approved Item mechanics, active-state decisions, and canonical links, then validate the resulting catalog.",
+      "tags": [
+        "seed",
+        "normalize-item-catalog"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/ItemBalanceSeeder.php",
+      "lineRange": [
+        19,
+        128
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:seed-pet-traits",
+      "type": "step",
+      "name": "Seed Pet Traits",
+      "summary": "Upsert the approved Pet trait definitions used by the unified species and physical-trait systems.",
+      "tags": [
+        "seed",
+        "seed-pet-traits"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/PetTraitSeeder.php",
+      "lineRange": [
+        19,
+        33
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:apply-pet-balance",
+      "type": "step",
+      "name": "Apply Pet Combat Profiles",
+      "summary": "Assign approved Pet elements, species, roles, stat profiles, and playstyle summaries across the roster.",
+      "tags": [
+        "seed",
+        "apply-pet-balance"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/PetBalanceSeeder.php",
+      "lineRange": [
+        20,
+        78
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:normalize-skills-and-learnsets",
+      "type": "step",
+      "name": "Normalize Skills and Build Learnsets",
+      "summary": "Apply unified Skill mechanics, rebuild Pet learnsets, enforce signature restrictions, and validate Skill coverage.",
+      "tags": [
+        "seed",
+        "normalize-skills-and-learnsets"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/PetLearnsetSeeder.php",
+      "lineRange": [
+        95,
+        617
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:seed-divine-abilities",
+      "type": "step",
+      "name": "Seed Divine Abilities",
+      "summary": "Upsert the approved active Divine Ability assigned to each explicitly classified divine Pet.",
+      "tags": [
+        "seed",
+        "seed-divine-abilities"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/DivineAbilitySeeder.php",
+      "lineRange": [
+        120,
+        143
+      ]
+    },
+    {
+      "id": "step:seed-unified-game-catalog:assign-evolution-recipes",
+      "type": "step",
+      "name": "Assign Evolution Recipes",
+      "summary": "Resolve active Items into ordered core, species, and catalyst ingredients and replace each evolution transition's recipe.",
+      "tags": [
+        "seed",
+        "assign-evolution-recipes"
+      ],
+      "complexity": "moderate",
+      "filePath": "database/seeders/EvolutionRecipeSeeder.php",
+      "lineRange": [
+        21,
+        90
+      ]
+    },
+    {
+      "id": "step:audit-pet-battle-balance:validate-audit-options",
+      "type": "step",
+      "name": "Validate Audit Options",
+      "summary": "Clamp requested opponent count and deterministic seed count to supported minimums.",
+      "tags": [
+        "audit",
+        "validate-audit-options"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Console/Commands/PetBalanceAuditCommand.php",
+      "lineRange": [
+        17,
+        21
+      ]
+    },
+    {
+      "id": "step:audit-pet-battle-balance:load-audit-participants",
+      "type": "step",
+      "name": "Load Audit Participants",
+      "summary": "Load Pets with source, trait, divine, learnset, Effect, and evolution data, then resolve normalized evolution stages.",
+      "tags": [
+        "audit",
+        "load-audit-participants"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Support/PetBalanceAudit.php",
+      "lineRange": [
+        44,
+        59
+      ]
+    },
+    {
+      "id": "step:audit-pet-battle-balance:build-comparable-matchups",
+      "type": "step",
+      "name": "Build Comparable Matchups",
+      "summary": "Construct participants and opponent pairs using power class, evolution tier, combat score, and element relation constraints.",
+      "tags": [
+        "audit",
+        "build-comparable-matchups"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Support/PetBalanceAudit.php",
+      "lineRange": [
+        57,
+        60
+      ]
+    },
+    {
+      "id": "step:audit-pet-battle-balance:simulate-seeded-battles",
+      "type": "step",
+      "name": "Simulate Seeded Battles",
+      "summary": "Run each matchup for the requested deterministic seeds, alternating sides and recording the simulator result.",
+      "tags": [
+        "audit",
+        "simulate-seeded-battles"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Support/PetBalanceAudit.php",
+      "lineRange": [
+        62,
+        76
+      ]
+    },
+    {
+      "id": "step:audit-pet-battle-balance:aggregate-balance-results",
+      "type": "step",
+      "name": "Aggregate Balance Results",
+      "summary": "Calculate roster summaries, grouped performance, standard-Pet win-rate outliers, stalls, divine observations, and invalid decks.",
+      "tags": [
+        "audit",
+        "aggregate-balance-results"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Support/PetBalanceAudit.php",
+      "lineRange": [
+        78,
+        115
+      ]
+    },
+    {
+      "id": "step:audit-pet-battle-balance:render-audit-report",
+      "type": "step",
+      "name": "Render Audit Report",
+      "summary": "Emit either the full JSON report or CLI tables for summary groups, balance outliers, stalls, and invalid decks.",
+      "tags": [
+        "audit",
+        "render-audit-report"
+      ],
+      "complexity": "moderate",
+      "filePath": "app/Console/Commands/PetBalanceAuditCommand.php",
+      "lineRange": [
+        23,
+        56
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "domain:pet-encyclopedia",
+      "target": "flow:explore-pet-catalog",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:explore-pet-catalog",
+      "target": "step:explore-pet-catalog:validate-catalog-filters",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:explore-pet-catalog",
+      "target": "step:explore-pet-catalog:build-family-topology",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:explore-pet-catalog",
+      "target": "step:explore-pet-catalog:query-filtered-pets",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:explore-pet-catalog",
+      "target": "step:explore-pet-catalog:calculate-card-profiles",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "flow:explore-pet-catalog",
+      "target": "step:explore-pet-catalog:sort-paginate-render",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "domain:pet-encyclopedia",
+      "target": "flow:inspect-pet-dossier",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:inspect-pet-dossier",
+      "target": "step:inspect-pet-dossier:load-pet-identity",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:inspect-pet-dossier",
+      "target": "step:inspect-pet-dossier:resolve-evolution-family",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:inspect-pet-dossier",
+      "target": "step:inspect-pet-dossier:classify-family-learnsets",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:inspect-pet-dossier",
+      "target": "step:inspect-pet-dossier:calculate-stat-profiles",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "flow:inspect-pet-dossier",
+      "target": "step:inspect-pet-dossier:render-pet-profile",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "domain:skill-effect-encyclopedia",
+      "target": "flow:explore-skill-catalog",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:explore-skill-catalog",
+      "target": "step:explore-skill-catalog:validate-skill-filters",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:explore-skill-catalog",
+      "target": "step:explore-skill-catalog:query-active-skills",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:explore-skill-catalog",
+      "target": "step:explore-skill-catalog:derive-learnset-coverage",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:explore-skill-catalog",
+      "target": "step:explore-skill-catalog:compute-catalog-statistics",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "flow:explore-skill-catalog",
+      "target": "step:explore-skill-catalog:render-skill-catalog",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "domain:skill-effect-encyclopedia",
+      "target": "flow:inspect-skill-dossier",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:inspect-skill-dossier",
+      "target": "step:inspect-skill-dossier:load-skill-mechanics",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:inspect-skill-dossier",
+      "target": "step:inspect-skill-dossier:resolve-compatible-pets",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:inspect-skill-dossier",
+      "target": "step:inspect-skill-dossier:derive-tactical-context",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:inspect-skill-dossier",
+      "target": "step:inspect-skill-dossier:build-battle-preview",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "flow:inspect-skill-dossier",
+      "target": "step:inspect-skill-dossier:render-skill-profile",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "domain:item-evolution-catalog",
+      "target": "flow:explore-item-catalog",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:explore-item-catalog",
+      "target": "step:explore-item-catalog:validate-item-filters",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:explore-item-catalog",
+      "target": "step:explore-item-catalog:query-active-items",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:explore-item-catalog",
+      "target": "step:explore-item-catalog:paginate-item-cards",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:explore-item-catalog",
+      "target": "step:explore-item-catalog:render-item-catalog",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "domain:item-evolution-catalog",
+      "target": "flow:inspect-item-dossier",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:inspect-item-dossier",
+      "target": "step:inspect-item-dossier:load-item-variants",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:inspect-item-dossier",
+      "target": "step:inspect-item-dossier:resolve-evolution-usages",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:inspect-item-dossier",
+      "target": "step:inspect-item-dossier:assemble-normalized-item",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:inspect-item-dossier",
+      "target": "step:inspect-item-dossier:render-item-profile",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "domain:player-account-management",
+      "target": "flow:register-player-account",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:register-player-account",
+      "target": "step:register-player-account:show-registration-form",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:register-player-account",
+      "target": "step:register-player-account:validate-registration-data",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:register-player-account",
+      "target": "step:register-player-account:create-user-record",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "domain:player-account-management",
+      "target": "flow:authenticate-player",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:authenticate-player",
+      "target": "step:authenticate-player:show-login-form",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:authenticate-player",
+      "target": "step:authenticate-player:build-throttle-key",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:authenticate-player",
+      "target": "step:authenticate-player:enforce-login-limit",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:authenticate-player",
+      "target": "step:authenticate-player:establish-session",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "domain:player-account-management",
+      "target": "flow:recover-forgotten-password",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:recover-forgotten-password",
+      "target": "step:recover-forgotten-password:show-recovery-views",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:recover-forgotten-password",
+      "target": "step:recover-forgotten-password:validate-new-password",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:recover-forgotten-password",
+      "target": "step:recover-forgotten-password:persist-new-password",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "domain:player-account-management",
+      "target": "flow:manage-player-profile",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:manage-player-profile",
+      "target": "step:manage-player-profile:show-profile-settings",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:manage-player-profile",
+      "target": "step:manage-player-profile:validate-profile-update",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:manage-player-profile",
+      "target": "step:manage-player-profile:update-profile-identity",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:manage-player-profile",
+      "target": "step:manage-player-profile:validate-account-deletion",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "flow:manage-player-profile",
+      "target": "step:manage-player-profile:delete-account-and-session",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "domain:player-account-management",
+      "target": "flow:update-account-password",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:update-account-password",
+      "target": "step:update-account-password:show-security-settings",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:update-account-password",
+      "target": "step:update-account-password:validate-password-change",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:update-account-password",
+      "target": "step:update-account-password:persist-password-change",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "domain:game-content-curation-balance",
+      "target": "flow:seed-unified-game-catalog",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:seed-liet-hoa-source",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:seed-rainbow-source",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:normalize-item-catalog",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:seed-pet-traits",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:apply-pet-balance",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:normalize-skills-and-learnsets",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:seed-divine-abilities",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "flow:seed-unified-game-catalog",
+      "target": "step:seed-unified-game-catalog:assign-evolution-recipes",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "domain:game-content-curation-balance",
+      "target": "flow:audit-pet-battle-balance",
+      "type": "contains_flow",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "flow:audit-pet-battle-balance",
+      "target": "step:audit-pet-battle-balance:validate-audit-options",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.1
+    },
+    {
+      "source": "flow:audit-pet-battle-balance",
+      "target": "step:audit-pet-battle-balance:load-audit-participants",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.2
+    },
+    {
+      "source": "flow:audit-pet-battle-balance",
+      "target": "step:audit-pet-battle-balance:build-comparable-matchups",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.3
+    },
+    {
+      "source": "flow:audit-pet-battle-balance",
+      "target": "step:audit-pet-battle-balance:simulate-seeded-battles",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.4
+    },
+    {
+      "source": "flow:audit-pet-battle-balance",
+      "target": "step:audit-pet-battle-balance:aggregate-balance-results",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "flow:audit-pet-battle-balance",
+      "target": "step:audit-pet-battle-balance:render-audit-report",
+      "type": "flow_step",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:pet-encyclopedia",
+      "target": "domain:skill-effect-encyclopedia",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Pet dossiers consume Skill, Effect, and learnset data to show direct, inherited, locked, and alternate-branch abilities.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:skill-effect-encyclopedia",
+      "target": "domain:pet-encyclopedia",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Skill dossiers consume Pet and evolution data to derive compatible Pets and learning matrices.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:pet-encyclopedia",
+      "target": "domain:item-evolution-catalog",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Pet evolution profiles resolve Item ingredients and transition costs.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:item-evolution-catalog",
+      "target": "domain:pet-encyclopedia",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "Item dossiers resolve the Pet evolution transitions that consume each material.",
+      "weight": 0.6
+    },
+    {
+      "source": "domain:game-content-curation-balance",
+      "target": "domain:pet-encyclopedia",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "The seeding pipeline populates Pet identity, taxonomy, stats, roles, traits, divine abilities, learnsets, and evolution recipes.",
+      "weight": 0.8
+    },
+    {
+      "source": "domain:game-content-curation-balance",
+      "target": "domain:skill-effect-encyclopedia",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "The seeding pipeline imports original Skill and Effect identities and applies the unified mechanics and learnset rules.",
+      "weight": 0.8
+    },
+    {
+      "source": "domain:game-content-curation-balance",
+      "target": "domain:item-evolution-catalog",
+      "type": "cross_domain",
+      "direction": "forward",
+      "description": "The seeding pipeline imports Items, applies canonical mappings and active-state decisions, and assigns evolution ingredient recipes.",
+      "weight": 0.8
+    }
+  ],
+  "layers": [],
+  "tour": []
+}

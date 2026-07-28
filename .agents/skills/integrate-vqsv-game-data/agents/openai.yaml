@@ -1,0 +1,5 @@
+interface:
+  display_name: "Integrate VQSV Game Data"
+  short_description: "Port unified gameplay data into Liet Hoa"
+  brand_color: "#EF5B3F"
+  default_prompt: "Use $integrate-vqsv-game-data to port one unified gameplay domain into the Liet Hoa rebuild with provenance and compatibility gates."
