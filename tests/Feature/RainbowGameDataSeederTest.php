@@ -61,7 +61,8 @@ test('preserves decoded rainbow stats effects evolutions and artwork', function 
         ->and($pet->evolutions)->toHaveCount(1)
         ->and($skill->name)->toBe('Triền Nhiễu')
         ->and($skill->energy_cost)->toBeNull()
-        ->and($skill->status_chance)->toBe(4)
+        ->and($skill->raw_values['status_chance'])->toBe(4)
+        ->and($skill->status_chance)->toBe(100)
         ->and($skill->effect?->name)->toBe('Hủ Thực')
         ->and($item->name)->toBe('Đồ uống')
         ->and(public_path('assets/game/cau-vong/pets/0.png'))->toBeFile()
@@ -94,7 +95,10 @@ test('preserves rainbow acquisition codes and exposes a complete pet dossier', f
                 'Bên ngoài thành phía nam',
                 'Cao nguyên phía đông 2',
             ])
-            ->where('pet.quality_multiplier', 90)
+            ->where('pet.default_star', 3)
+            ->where('pet.star_multipliers.1', 90)
+            ->where('pet.star_multipliers.3', 100)
+            ->where('pet.star_multipliers.5', 125)
             ->where('pet.stats.hp.base', $capturedPet->hp_base)
             ->where('pet.stats.hp.per_level', $capturedPet->hp_per_level)
             ->where('pet.stats.hp.per_ten_levels', false)
@@ -112,7 +116,7 @@ test('preserves rainbow acquisition codes and exposes a complete pet dossier', f
             ->where('pet.acquisition.locations', []));
 });
 
-test('normalizes rainbow evolution families to shared Liệt Hỏa level fifty budgets', function () {
+test('balances rainbow evolution families with distinct progressive level fifty profiles', function () {
     seed(DatabaseSeeder::class);
 
     $rainbow = GameSource::query()->where('slug', 'cau-vong')->firstOrFail();
@@ -130,19 +134,16 @@ test('normalizes rainbow evolution families to shared Liệt Hỏa level fifty b
         ->and($pets[85]->quality_tier)->toBe(5);
 
     $finalForms = $pets->filter(
-        fn (Pet $pet): bool => $pet->previousEvolutions->isNotEmpty() && $pet->evolutions->isEmpty(),
+        fn (Pet $pet): bool => $pet->previousEvolutions->isNotEmpty()
+            && $pet->evolutions->isEmpty(),
     );
 
-    expect($finalForms)->not->toBeEmpty();
-
-    foreach ($finalForms as $pet) {
-        expect(rainbowLevelFiftyTotal($pet))->toBeBetween(1476, 1484);
-    }
-
-    expect(rainbowLevelFiftyTotal($pets[3]))->toBeBetween(1476, 1484)
-        ->and(rainbowLevelFiftyTotal($pets[9]))->toBeBetween(1476, 1484)
-        ->and(abs(rainbowLevelFiftyTotal($pets[3]) - rainbowLevelFiftyTotal($pets[9])))->toBeLessThanOrEqual(4)
-        ->and(rainbowLevelFiftyTotal($pets[85]))->toBeBetween(2781, 2789);
+    expect($finalForms)->not->toBeEmpty()
+        ->and($finalForms->map(fn (Pet $pet): int => rainbowLevelFiftyTotal($pet))->unique()->count())
+        ->toBeGreaterThanOrEqual(15)
+        ->and(rainbowLevelFiftyTotal($pets[3]))->toBeGreaterThan(rainbowLevelFiftyTotal($pets[2]))
+        ->and(rainbowLevelFiftyTotal($pets[9]))->toBeGreaterThan(rainbowLevelFiftyTotal($pets[8]))
+        ->and(rainbowLevelFiftyTotal($pets[85]))->toBeGreaterThan(rainbowLevelFiftyTotal($pets[3]));
 });
 
 test('item dossier includes cross game usages from canonical evolution recipes', function () {

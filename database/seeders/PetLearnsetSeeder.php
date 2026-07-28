@@ -7,17 +7,19 @@ use App\Models\Pet;
 use App\Models\PetEvolution;
 use App\Models\PetSkillLearnset;
 use App\Models\Skill;
+use App\Support\SkillBalance;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
 class PetLearnsetSeeder extends Seeder
 {
-    private const BALANCE_VERSION = 'unified-v1';
+    private const BALANCE_VERSION = SkillBalance::VERSION;
 
-    /** @var array<int, int> */
-    private const QUALITY_MULTIPLIERS = [1 => 90, 2 => 95, 3 => 100, 4 => 110, 5 => 125];
+    /** @var list<int> */
+    private const UNLOCK_MILESTONES = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
 
     /** @var array<int, string> */
     private const ELEMENT_BY_GAME_ID = [
@@ -30,6 +32,35 @@ class PetLearnsetSeeder extends Seeder
         6 => 'phong',
     ];
 
+    /** @var array<int, string> */
+    private const RAINBOW_SKILL_ELEMENT_BY_GAME_ID = [
+        0 => 'moc',
+        1 => 'moc',
+        2 => 'hoa',
+        3 => 'phong',
+        4 => 'moc',
+        5 => 'tho',
+        6 => 'tho',
+        7 => 'hoa',
+        8 => 'dien',
+        9 => 'dien',
+        10 => 'phong',
+        11 => 'phong',
+        12 => 'phong',
+        13 => 'quy',
+        14 => 'dien',
+        15 => 'tho',
+        16 => 'dien',
+        17 => 'hoa',
+        18 => 'tho',
+        19 => 'hoa',
+        20 => 'thuy',
+        21 => 'thuy',
+        22 => 'thuy',
+        23 => 'thuy',
+        24 => 'quy',
+    ];
+
     /** @var array<string, list<string>> */
     private const ROLE_CATEGORY_PRIORITY = [
         'striker' => ['damage', 'hybrid', 'buff', 'disrupt', 'control', 'defense', 'heal', 'capture'],
@@ -40,14 +71,22 @@ class PetLearnsetSeeder extends Seeder
         'versatile' => ['hybrid', 'damage', 'control', 'buff', 'defense', 'disrupt', 'heal', 'capture'],
     ];
 
-    /** @var array<string, array{hp: float, strength: float, defense: float, agility: float}> */
-    private const ROLE_PROFILES = [
-        'striker' => ['hp' => 0.90, 'strength' => 1.20, 'defense' => 0.84, 'agility' => 1.18],
-        'bruiser' => ['hp' => 1.05, 'strength' => 1.12, 'defense' => 1.05, 'agility' => 0.90],
-        'guardian' => ['hp' => 1.18, 'strength' => 0.82, 'defense' => 1.22, 'agility' => 0.78],
-        'controller' => ['hp' => 0.90, 'strength' => 0.86, 'defense' => 0.90, 'agility' => 1.26],
-        'support' => ['hp' => 1.08, 'strength' => 0.78, 'defense' => 1.08, 'agility' => 1.08],
-        'versatile' => ['hp' => 1.00, 'strength' => 1.00, 'defense' => 1.00, 'agility' => 1.00],
+    /** @var array<string, list<string>> */
+    private const CATEGORY_GROUPS = [
+        'offense' => ['damage', 'hybrid'],
+        'sustain' => ['heal', 'defense', 'buff'],
+        'control' => ['control', 'disrupt'],
+        'utility' => ['heal', 'defense', 'buff', 'control', 'disrupt'],
+    ];
+
+    /** @var array<string, array<string, int>> */
+    private const ROLE_GROUP_REQUIREMENTS = [
+        'striker' => ['offense' => 6, 'utility' => 1],
+        'bruiser' => ['offense' => 5, 'utility' => 2],
+        'guardian' => ['sustain' => 1, 'offense' => 3],
+        'controller' => ['control' => 1, 'offense' => 4],
+        'support' => ['sustain' => 2, 'control' => 1, 'offense' => 2],
+        'versatile' => ['offense' => 4, 'utility' => 2, 'control' => 1],
     ];
 
     /**
@@ -66,19 +105,9 @@ class PetLearnsetSeeder extends Seeder
                     'name',
                     'combat_element',
                     'species',
+                    'primary_role',
+                    'secondary_role',
                     'quality_tier',
-                    'hp_base',
-                    'hp_per_level',
-                    'hp_offset',
-                    'stat_2_base',
-                    'stat_2_per_level',
-                    'stat_2_offset',
-                    'stat_3_base',
-                    'stat_3_per_10_levels',
-                    'stat_3_offset',
-                    'stat_4_base',
-                    'stat_4_per_10_levels',
-                    'stat_4_offset',
                 ])
                 ->with('gameSource:id,slug')
                 ->orderBy('game_source_id')
@@ -89,7 +118,10 @@ class PetLearnsetSeeder extends Seeder
                 throw new RuntimeException('The unified learnset requires all 202 pets to be seeded first.');
             }
 
-            $this->assignCombatRoles($pets);
+            if ($pets->contains(fn (Pet $pet): bool => $pet->primary_role === null || $pet->secondary_role === null)) {
+                throw new RuntimeException('Every Pet must have an approved balance role before seeding learnsets.');
+            }
+
             $this->seedLearnsets($pets);
         });
     }
@@ -150,6 +182,7 @@ class PetLearnsetSeeder extends Seeder
                 $effectTargetPattern = in_array($skill->game_id, $offensiveTeamBuffs, true)
                     ? 'all_allies'
                     : $targetPattern;
+                $profile = SkillBalance::profile('liet-hoa', $skill->game_id);
 
                 $skill->update([
                     'combat_element' => self::ELEMENT_BY_GAME_ID[$skill->element->game_id],
@@ -161,6 +194,11 @@ class PetLearnsetSeeder extends Seeder
                     'role_tags' => $this->roleTags($category),
                     'balance_version' => self::BALANCE_VERSION,
                     'is_active' => true,
+                    'description' => $profile['description'],
+                    'power_percent' => $profile['power'],
+                    'status_chance' => $profile['status_chance'],
+                    'tier' => $profile['tier'],
+                    'max_uses' => $profile['pp'],
                 ]);
             });
     }
@@ -168,32 +206,26 @@ class PetLearnsetSeeder extends Seeder
     private function normalizeRainbowSkills(GameSource $gameSource): void
     {
         $speciesGroups = [
-            0 => ['species' => 'thuc-vat', 'element' => 'moc', 'powers' => [70, 80, 105, 130, 160]],
-            1 => ['species' => 'kim-loai', 'element' => 'tho', 'powers' => [60, 70, 90, 110, 140]],
-            2 => ['species' => 'phi-hanh', 'element' => 'phong', 'powers' => [85, 95, 120, 145, 175]],
-            3 => ['species' => 'manh-thu', 'element' => 'hoa', 'powers' => [70, 80, 105, 130, 160]],
-            4 => ['species' => 'hai-duong', 'element' => 'thuy', 'powers' => [90, 100, 130, 155, 190]],
+            0 => 'thuc-vat',
+            1 => 'kim-loai',
+            2 => 'phi-hanh',
+            3 => 'manh-thu',
+            4 => 'hai-duong',
         ];
-        $ppByRank = [45, 40, 30, 25, 15];
-        $tierByRank = [0, 0, 1, 2, 3];
 
         Skill::query()
             ->whereBelongsTo($gameSource)
             ->with('effect:id,name')
             ->orderBy('game_id')
             ->get()
-            ->each(function (Skill $skill) use ($speciesGroups, $ppByRank, $tierByRank): void {
+            ->each(function (Skill $skill) use ($speciesGroups): void {
                 if ($skill->game_id <= 24) {
-                    $group = $speciesGroups[intdiv($skill->game_id, 5)];
-                    $rank = $skill->game_id % 5;
-                    $speciesName = Pet::SPECIES[$group['species']]['name'];
-                    $elementName = Pet::COMBAT_ELEMENTS[$group['element']]['name'];
-                    $effectDescription = $skill->effect === null || $skill->status_chance <= 0
-                        ? ''
-                        : " Có {$skill->status_chance}% xác suất gây {$skill->effect->name}.";
+                    $species = $speciesGroups[intdiv($skill->game_id, 5)];
+                    $combatElement = self::RAINBOW_SKILL_ELEMENT_BY_GAME_ID[$skill->game_id];
+                    $profile = SkillBalance::profile('cau-vong', $skill->game_id);
                     $skill->update([
-                        'combat_element' => $group['element'],
-                        'species_affinity' => $group['species'],
+                        'combat_element' => $combatElement,
+                        'species_affinity' => $species,
                         'combat_category' => 'hybrid',
                         'target_pattern' => 'single_enemy',
                         'effect_target_pattern' => 'single_enemy',
@@ -201,11 +233,12 @@ class PetLearnsetSeeder extends Seeder
                         'role_tags' => $this->roleTags('hybrid'),
                         'balance_version' => self::BALANCE_VERSION,
                         'is_active' => true,
-                        'power_percent' => $group['powers'][$rank],
-                        'description' => "Kỹ thuật chủng {$speciesName} được chuẩn hóa về hệ {$elementName}, gây {$group['powers'][$rank]}% uy lực.{$effectDescription}",
+                        'power_percent' => $profile['power'],
+                        'description' => $profile['description'],
                         'energy_cost' => null,
-                        'tier' => $tierByRank[$rank],
-                        'max_uses' => $ppByRank[$rank],
+                        'status_chance' => $profile['status_chance'],
+                        'tier' => $profile['tier'],
+                        'max_uses' => $profile['pp'],
                         'target_side' => 0,
                     ]);
 
@@ -215,7 +248,9 @@ class PetLearnsetSeeder extends Seeder
                 $skill->update([
                     ...$this->rainbowSpecialSkill($skill->game_id),
                     'energy_cost' => null,
-                    'balance_version' => self::BALANCE_VERSION,
+                    'balance_version' => in_array($skill->game_id, [27, 28, 29, 30], true)
+                        ? self::BALANCE_VERSION
+                        : null,
                 ]);
             });
     }
@@ -240,6 +275,10 @@ class PetLearnsetSeeder extends Seeder
             ];
         }
 
+        $profile = in_array($gameId, [27, 28, 29, 30], true)
+            ? SkillBalance::profile('cau-vong', $gameId)
+            : null;
+
         return match ($gameId) {
             25 => [
                 ...$this->rainbowSpecialAttributes(null, 'fallback', 'single_enemy', 'any', ['striker', 'bruiser'], 60, 0, 0, 0),
@@ -251,21 +290,24 @@ class PetLearnsetSeeder extends Seeder
                 'description' => 'Gây sát thương và giảm 25% kháng bắt của Pet hoang trong 3 hiệp; không có hiệu lực PvP.',
             ],
             27 => [
-                ...$this->rainbowSpecialAttributes('moc', 'heal', 'self_or_ally', 'double', ['support', 'guardian'], 0, 0, 20, 1),
-                'description' => 'Hồi 25% Sinh mệnh tối đa cho bản thân hoặc một đồng đội.',
+                ...$this->rainbowSpecialAttributes('moc', 'heal', 'self_or_ally', 'double', ['support', 'guardian'], $profile['power'], $profile['tier'], $profile['pp'], 1),
+                'status_chance' => $profile['status_chance'],
+                'description' => $profile['description'],
             ],
             28 => [
-                ...$this->rainbowSpecialAttributes('moc', 'heal', 'self_or_ally', 'double', ['support'], 0, 2, 10, 1),
-                'description' => 'Hồi 50% Sinh mệnh tối đa cho bản thân hoặc một đồng đội.',
+                ...$this->rainbowSpecialAttributes('moc', 'heal', 'self_or_ally', 'double', ['support'], $profile['power'], $profile['tier'], $profile['pp'], 1),
+                'status_chance' => $profile['status_chance'],
+                'description' => $profile['description'],
             ],
             29 => [
-                ...$this->rainbowSpecialAttributes('quy', 'damage', 'single_enemy', 'any', ['striker'], 250, 3, 1, 0),
-                'description' => 'Tuyệt kỹ dùng một lần mỗi trận; sau khi thi triển, PP hiện tại của năm Skill đang mang trở về 0.',
+                ...$this->rainbowSpecialAttributes('quy', 'damage', 'single_enemy', 'any', ['striker'], $profile['power'], $profile['tier'], $profile['pp'], 0),
+                'status_chance' => $profile['status_chance'],
+                'description' => $profile['description'],
             ],
             30 => [
-                ...$this->rainbowSpecialAttributes('quy', 'control', 'single_enemy', 'any', ['controller', 'support'], 0, 2, 5, 0),
-                'status_chance' => 70,
-                'description' => 'Có 70% xác suất Phong Bế Skill tier 2–3 của một đối thủ trong 2 hiệp.',
+                ...$this->rainbowSpecialAttributes('quy', 'control', 'single_enemy', 'any', ['controller', 'support'], $profile['power'], $profile['tier'], $profile['pp'], 0),
+                'status_chance' => $profile['status_chance'],
+                'description' => $profile['description'],
             ],
             default => throw new RuntimeException("Missing Rainbow skill conversion for {$gameId}."),
         };
@@ -318,105 +360,6 @@ class PetLearnsetSeeder extends Seeder
     }
 
     /** @param  Collection<int, Pet>  $pets */
-    private function assignCombatRoles(Collection $pets): void
-    {
-        $statsByPet = $pets->mapWithKeys(fn (Pet $pet): array => [$pet->id => $this->levelFiftyStats($pet)]);
-        $tierMedians = $pets
-            ->groupBy('quality_tier')
-            ->map(function (Collection $tierPets) use ($statsByPet): array {
-                $medians = [];
-                foreach (['hp', 'strength', 'defense', 'agility'] as $stat) {
-                    $medians[$stat] = $this->median(
-                        $tierPets->map(fn (Pet $pet): int => $statsByPet[$pet->id][$stat])->all(),
-                    );
-                }
-
-                return $medians;
-            });
-
-        foreach ($pets as $pet) {
-            $medians = $tierMedians[$pet->quality_tier];
-            $ratios = [];
-            foreach (['hp', 'strength', 'defense', 'agility'] as $stat) {
-                $ratios[$stat] = $statsByPet[$pet->id][$stat] / max(1, $medians[$stat]);
-            }
-
-            $rankedRoles = collect(self::ROLE_PROFILES)
-                ->map(function (array $profile, string $role) use ($ratios, $pet): float {
-                    $distance = 0.0;
-                    foreach ($profile as $stat => $target) {
-                        $distance += ($ratios[$stat] - $target) ** 2;
-                    }
-
-                    return $distance + $this->speciesRoleBias($pet->species, $role);
-                })
-                ->sort()
-                ->keys()
-                ->values();
-            $primaryRole = (string) $rankedRoles[0];
-            $secondaryRole = (string) $rankedRoles[1];
-
-            $pet->update([
-                'primary_role' => $primaryRole,
-                'secondary_role' => $secondaryRole,
-                'preferred_battle_format' => $primaryRole === 'support' ? 'double' : 'any',
-                'playstyle_summary' => $this->playstyleSummary($pet, $primaryRole, $secondaryRole),
-            ]);
-        }
-    }
-
-    /** @return array{hp: int, strength: int, defense: int, agility: int} */
-    private function levelFiftyStats(Pet $pet): array
-    {
-        $multiplier = self::QUALITY_MULTIPLIERS[$pet->quality_tier];
-
-        return [
-            'hp' => (int) (($pet->hp_base + $pet->hp_per_level * 50 + $pet->hp_offset) * $multiplier / 100),
-            'strength' => (int) (($pet->stat_2_base + $pet->stat_2_per_level * 50 + $pet->stat_2_offset) * $multiplier / 100),
-            'defense' => (int) (($pet->stat_3_base + $pet->stat_3_per_10_levels * 5 + $pet->stat_3_offset) * $multiplier / 100),
-            'agility' => (int) (($pet->stat_4_base + $pet->stat_4_per_10_levels * 5 + $pet->stat_4_offset) * $multiplier / 100),
-        ];
-    }
-
-    private function speciesRoleBias(string $species, string $role): float
-    {
-        return match ($species) {
-            'thuc-vat' => match ($role) {
-                'support' => -0.10,
-                'guardian' => -0.04,
-                default => 0.0,
-            },
-            'kim-loai' => match ($role) {
-                'guardian' => -0.12,
-                'bruiser' => -0.04,
-                default => 0.0,
-            },
-            'phi-hanh' => match ($role) {
-                'controller' => -0.10,
-                'striker' => -0.04,
-                default => 0.0,
-            },
-            'manh-thu' => in_array($role, ['striker', 'bruiser'], true) ? -0.08 : 0.0,
-            'hai-duong' => match ($role) {
-                'support' => -0.08,
-                'controller' => -0.05,
-                default => 0.0,
-            },
-            default => 0.0,
-        };
-    }
-
-    private function playstyleSummary(Pet $pet, string $primaryRole, string $secondaryRole): string
-    {
-        $primary = Pet::COMBAT_ROLES[$primaryRole];
-        $secondary = Pet::COMBAT_ROLES[$secondaryRole];
-        $element = Pet::COMBAT_ELEMENTS[$pet->combat_element]['name'];
-        $species = Pet::SPECIES[$pet->species]['name'];
-
-        return "{$primary} thiên {$secondary}; kết hợp Skill hệ {$element} với kỹ thuật chủng {$species}.";
-    }
-
-    /** @param  Collection<int, Pet>  $pets */
     private function seedLearnsets(Collection $pets): void
     {
         $evolutions = PetEvolution::query()->select(['from_pet_id', 'to_pet_id'])->orderBy('id')->get();
@@ -446,7 +389,6 @@ class PetLearnsetSeeder extends Seeder
         $accessibleSkillIds = [];
         $siblingGrantSkillIds = [];
         $directGrantCounts = array_fill_keys($skills->pluck('id')->all(), 0);
-        $exclusiveSkillFamilies = [];
         $rows = [];
         $orderedPets = $pets->sortBy(fn (Pet $pet): array => [
             $familyMetadata[$pet->id]['stage'],
@@ -475,19 +417,19 @@ class PetLearnsetSeeder extends Seeder
                 ->all();
             $candidates = $this->candidateSkills($pet, $skills)
                 ->reject(fn (Skill $skill): bool => in_array($skill->id, $selectedSkillIds, true)
-                    || in_array($skill->id, $reservedSiblingSkillIds, true)
-                    || (isset($exclusiveSkillFamilies[$skill->id])
-                        && $exclusiveSkillFamilies[$skill->id] !== $metadata['root_id']));
+                    || in_array($skill->id, $reservedSiblingSkillIds, true));
 
             while (count($selectedSkillIds) < $targetCount && $candidates->isNotEmpty()) {
                 $desiredTier = $this->desiredTierForSlot(count($selectedSkillIds));
+                $selectedSkills = $skills->whereIn('id', $selectedSkillIds);
                 $selected = $candidates
                     ->sortBy(fn (Skill $skill): array => $this->candidateScore(
                         $skill,
                         $pet,
                         $desiredTier,
-                        $grantRows,
                         $directGrantCounts,
+                        $selectedSkills,
+                        $targetCount,
                     ))
                     ->first();
 
@@ -500,10 +442,10 @@ class PetLearnsetSeeder extends Seeder
                 $grantRows[] = [
                     'pet_id' => $pet->id,
                     'skill_id' => $selected->id,
-                    'unlock_level' => $this->unlockLevel($selected),
-                    'source_type' => $this->sourceType($selected),
+                    'unlock_level' => self::UNLOCK_MILESTONES[count($selectedSkillIds) - 1],
+                    'source_type' => $this->sourceType($selected, $pet),
                     'combat_role' => $selected->combat_category,
-                    'is_signature' => false,
+                    'is_signature' => $this->isDesignatedSignatureGrant($selected, $pet),
                     'sort_order' => count($selectedSkillIds),
                     'created_at' => now(),
                     'updated_at' => now(),
@@ -511,19 +453,10 @@ class PetLearnsetSeeder extends Seeder
                 $candidates = $candidates->reject(fn (Skill $skill): bool => $skill->is($selected));
             }
 
-            if (
-                $exclusiveSkillFamilies === []
-                && (! isset($outgoing[$pet->id]) || $metadata['maximum_depth'] === 0)
-                && $grantRows !== []
-            ) {
-                $signatureRowIndex = collect(array_keys($grantRows))
-                    ->reverse()
-                    ->first(fn (int $index): bool => $directGrantCounts[$grantRows[$index]['skill_id']] === 1);
-
-                if ($signatureRowIndex !== null) {
-                    $grantRows[$signatureRowIndex]['is_signature'] = true;
-                    $exclusiveSkillFamilies[$grantRows[$signatureRowIndex]['skill_id']] = $metadata['root_id'];
-                }
+            if (count($selectedSkillIds) !== $targetCount) {
+                throw new RuntimeException(
+                    "Unable to build {$targetCount} cumulative skills for {$pet->name}.",
+                );
             }
 
             $rows = [...$rows, ...$grantRows];
@@ -538,8 +471,99 @@ class PetLearnsetSeeder extends Seeder
         }
 
         PetSkillLearnset::query()->insert($rows);
+        $this->applyApprovedMetaTuning($pets, $skills);
         $this->normalizeSignatureAssignments($familyMetadata);
         $this->validateLearnsetCoverage($skills);
+    }
+
+    /**
+     * Apply the approved per-Pet deck changes without altering shared Skill power.
+     *
+     * @param  Collection<int, Pet>  $pets
+     * @param  Collection<int, Skill>  $skills
+     */
+    private function applyApprovedMetaTuning(Collection $pets, Collection $skills): void
+    {
+        $petsByIdentity = $pets->keyBy(
+            fn (Pet $pet): string => "{$pet->gameSource->slug}:{$pet->game_id}",
+        );
+        $skillsByIdentity = $skills->keyBy(
+            fn (Skill $skill): string => "{$skill->gameSource->slug}:{$skill->game_id}",
+        );
+        $replacements = [
+            [
+                'pet' => 'cau-vong:18',
+                'remove' => 'cau-vong:7',
+                'add' => 'cau-vong:8',
+            ],
+            [
+                'pet' => 'cau-vong:19',
+                'remove' => 'cau-vong:8',
+                'add' => 'cau-vong:7',
+            ],
+            [
+                'pet' => 'liet-hoa:17',
+                'remove' => 'cau-vong:28',
+                'add' => 'liet-hoa:13',
+            ],
+            [
+                'pet' => 'liet-hoa:17',
+                'remove' => 'liet-hoa:15',
+                'add' => 'liet-hoa:11',
+            ],
+            [
+                'pet' => 'liet-hoa:18',
+                'remove' => 'liet-hoa:18',
+                'add' => 'liet-hoa:14',
+            ],
+            [
+                'pet' => 'cau-vong:48',
+                'remove' => 'liet-hoa:29',
+                'add' => 'liet-hoa:25',
+            ],
+        ];
+
+        foreach ($replacements as $replacement) {
+            $pet = $petsByIdentity->get($replacement['pet']);
+            $removedSkill = $skillsByIdentity->get($replacement['remove']);
+            $addedSkill = $skillsByIdentity->get($replacement['add']);
+
+            if (! $pet instanceof Pet || ! $removedSkill instanceof Skill || ! $addedSkill instanceof Skill) {
+                throw new RuntimeException("Invalid approved meta tuning for {$replacement['pet']}.");
+            }
+
+            $this->replaceDirectLearnsetSkill($pet, $removedSkill, $addedSkill);
+        }
+    }
+
+    /**
+     * Replace one direct learnset grant while preserving its unlock milestone and order.
+     */
+    private function replaceDirectLearnsetSkill(Pet $pet, Skill $removedSkill, Skill $addedSkill): void
+    {
+        $entry = PetSkillLearnset::query()
+            ->whereBelongsTo($pet)
+            ->whereBelongsTo($removedSkill, 'skill')
+            ->first();
+
+        if (! $entry instanceof PetSkillLearnset) {
+            throw new RuntimeException(
+                "Missing direct Skill {$removedSkill->name} for approved Pet tuning {$pet->name}.",
+            );
+        }
+
+        if (PetSkillLearnset::query()->whereBelongsTo($pet)->whereBelongsTo($addedSkill, 'skill')->exists()) {
+            throw new RuntimeException(
+                "Replacement Skill {$addedSkill->name} is already granted directly to {$pet->name}.",
+            );
+        }
+
+        $entry->update([
+            'skill_id' => $addedSkill->id,
+            'source_type' => $this->sourceType($addedSkill, $pet),
+            'combat_role' => $addedSkill->combat_category,
+            'is_signature' => $this->isDesignatedSignatureGrant($addedSkill, $pet),
+        ]);
     }
 
     /**
@@ -628,10 +652,10 @@ class PetLearnsetSeeder extends Seeder
         }
 
         if ($stage === 0) {
-            return $maximumDepth === 1 ? 6 : 4;
+            return $maximumDepth === 1 ? 5 : 3;
         }
 
-        return min(9, 4 + (int) round(6 * $stage / $maximumDepth));
+        return min(9, 3 + (int) round(7 * $stage / $maximumDepth));
     }
 
     /**
@@ -643,8 +667,11 @@ class PetLearnsetSeeder extends Seeder
         $roleSpecialGameIds = $this->roleSpecialGameIds($pet);
 
         return $skills->filter(function (Skill $skill) use ($pet, $roleSpecialGameIds): bool {
-            $matchesElement = $skill->species_affinity === null
-                && $skill->combat_element === $pet->combat_element
+            if ($this->isDesignatedSignatureSkill($skill) && ! $this->isDesignatedSignaturePet($pet)) {
+                return false;
+            }
+
+            $matchesElement = $skill->combat_element === $pet->combat_element
                 && ! $this->isRestrictedRainbowSpecial($skill, $pet);
             $matchesSpecies = $skill->species_affinity === $pet->species;
             $isRoleSpecial = $this->isRainbowSpecial($skill, $roleSpecialGameIds);
@@ -659,25 +686,32 @@ class PetLearnsetSeeder extends Seeder
             return false;
         }
 
-        return $skill->game_id === 26
-            || ! in_array($skill->game_id, $this->roleSpecialGameIds($pet), true);
+        if ($skill->game_id === 26) {
+            return true;
+        }
+
+        if ($skill->game_id === 28 && $pet->primary_role !== 'support') {
+            return true;
+        }
+
+        if ($skill->combat_element === $pet->combat_element) {
+            return false;
+        }
+
+        return ! in_array($skill->game_id, $this->roleSpecialGameIds($pet), true);
     }
 
     /** @return list<int> */
     private function roleSpecialGameIds(Pet $pet): array
     {
-        $variation = abs(crc32("{$pet->game_source_id}:{$pet->game_id}:role-special"));
+        $primaryRole = $pet->primary_role ?? throw new RuntimeException("Missing combat role for {$pet->name}.");
 
-        return match ($pet->primary_role) {
-            'support' => match ($variation % 4) {
-                0 => [27, 28],
-                1 => [27, 30],
-                2 => [30],
-                default => [27],
-            },
-            'guardian' => $variation % 3 === 0 ? [27] : [],
-            'controller' => $variation % 2 === 0 ? [30] : [],
+        return match ($primaryRole) {
+            'support' => [27, 28, 30],
+            'guardian' => $pet->combat_element === 'tho' ? [] : [27],
+            'controller' => [30],
             'striker' => $pet->quality_tier >= 4 ? [29] : [],
+            'versatile' => [27, 30],
             default => [],
         };
     }
@@ -688,87 +722,183 @@ class PetLearnsetSeeder extends Seeder
         return $skill->gameSource->slug === 'cau-vong' && in_array($skill->game_id, $gameIds, true);
     }
 
+    private function isDesignatedSignatureSkill(Skill $skill): bool
+    {
+        return $skill->gameSource->slug === 'cau-vong' && $skill->game_id === 19;
+    }
+
+    private function isDesignatedSignaturePet(Pet $pet): bool
+    {
+        return $pet->gameSource->slug === 'liet-hoa' && $pet->game_id === 8;
+    }
+
+    private function isDesignatedSignatureGrant(Skill $skill, Pet $pet): bool
+    {
+        return $this->isDesignatedSignatureSkill($skill) && $this->isDesignatedSignaturePet($pet);
+    }
+
     /**
-     * @param  list<array<string, mixed>>  $grantRows
      * @param  array<int, int>  $directGrantCounts
+     * @param  Collection<int, Skill>  $selectedSkills
      * @return array<int, int|string>
      */
     private function candidateScore(
         Skill $skill,
         Pet $pet,
         int $desiredTier,
-        array $grantRows,
         array $directGrantCounts,
+        Collection $selectedSkills,
+        int $targetCount,
     ): array {
-        $priorities = self::ROLE_CATEGORY_PRIORITY[$pet->primary_role];
+        $primaryRole = $pet->primary_role ?? throw new RuntimeException("Missing combat role for {$pet->name}.");
+        $priorities = self::ROLE_CATEGORY_PRIORITY[$primaryRole];
         $categoryRank = array_search($skill->combat_category, $priorities, true);
         $categoryRank = $categoryRank === false ? count($priorities) : $categoryRank;
-        $sourceType = $this->sourceType($skill);
-        $sameCategoryCount = collect($grantRows)->where('combat_role', $skill->combat_category)->count();
-        $sameSourceCount = collect($grantRows)->where('source_type', $sourceType)->count();
-        $roleTagBonus = in_array($pet->primary_role, $skill->role_tags ?? [], true) ? -25 : 0;
+        $sourceType = $this->sourceType($skill, $pet);
+        $sourceCoveragePenalty = $this->sourceCoveragePenalty(
+            $sourceType,
+            $pet,
+            $selectedSkills,
+            $targetCount,
+        );
+        $roleCoveragePenalty = $this->roleCoveragePenalty(
+            $skill->combat_category,
+            $primaryRole,
+            $selectedSkills,
+            $targetCount,
+        );
+        $minimumOffenseCoveragePenalty = $this->minimumOffenseCoveragePenalty(
+            $skill->combat_category,
+            $selectedSkills,
+            $targetCount,
+        );
+        $sameCategoryCount = $selectedSkills->where('combat_category', $skill->combat_category)->count();
+        $sameSourceCount = $selectedSkills
+            ->filter(fn (Skill $selectedSkill): bool => $this->sourceType($selectedSkill, $pet) === $sourceType)
+            ->count();
+        $secondaryRole = $pet->secondary_role ?? throw new RuntimeException("Missing secondary combat role for {$pet->name}.");
+        $roleTags = Arr::wrap($skill->getAttribute('role_tags'));
+        $roleTagBonus = match (true) {
+            in_array($primaryRole, $roleTags, true) => -25,
+            in_array($secondaryRole, $roleTags, true) => -10,
+            default => 0,
+        };
         $variation = abs(crc32("{$pet->game_source_id}:{$pet->game_id}:{$skill->game_source_id}:{$skill->game_id}")) % 17;
 
         return [
+            $this->isDesignatedSignatureGrant($skill, $pet) ? -1 : 0,
+            $minimumOffenseCoveragePenalty,
+            $sourceCoveragePenalty + $roleCoveragePenalty,
+            $sourceCoveragePenalty,
+            $roleCoveragePenalty,
             $directGrantCounts[$skill->id] === 0 ? 0 : 1,
-            $categoryRank * 100 + $roleTagBonus,
             abs($skill->tier - $desiredTier) * 35,
+            $variation,
+            $categoryRank * 100 + $roleTagBonus,
             $sameCategoryCount * 16,
             $sameSourceCount * 12,
-            $variation,
             $skill->game_source_id,
             $skill->game_id,
         ];
+    }
+
+    /** @param Collection<int, Skill> $selectedSkills */
+    private function sourceCoveragePenalty(
+        string $candidateSource,
+        Pet $pet,
+        Collection $selectedSkills,
+        int $targetCount,
+    ): int {
+        $requirements = [
+            'element' => (int) ceil(3 * $targetCount / 10),
+            'species' => (int) ceil(3 * $targetCount / 10),
+        ];
+        $sourceCounts = $selectedSkills
+            ->countBy(fn (Skill $selectedSkill): string => $this->sourceType($selectedSkill, $pet));
+        $missingSources = collect($requirements)
+            ->filter(fn (int $required, string $source): bool => $sourceCounts->get($source, 0) < $required)
+            ->keys();
+
+        return $missingSources->isEmpty() || $missingSources->contains($candidateSource) ? 0 : 2;
+    }
+
+    /** @param Collection<int, Skill> $selectedSkills */
+    private function roleCoveragePenalty(
+        string $candidateCategory,
+        string $primaryRole,
+        Collection $selectedSkills,
+        int $targetCount,
+    ): int {
+        $coverageDeficits = collect(self::ROLE_GROUP_REQUIREMENTS[$primaryRole])
+            ->mapWithKeys(function (int $finalRequirement, string $group) use ($selectedSkills, $targetCount): array {
+                $required = (int) ceil($finalRequirement * $targetCount / 10);
+
+                if ($group === 'offense' && $targetCount >= 3) {
+                    $required = max(2, $required);
+                }
+
+                $current = $selectedSkills
+                    ->whereIn('combat_category', self::CATEGORY_GROUPS[$group])
+                    ->count();
+
+                return [$group => max(0, $required - $current)];
+            })
+            ->filter(fn (int $deficit): bool => $deficit > 0);
+
+        if ($coverageDeficits->isEmpty()) {
+            return 0;
+        }
+
+        return $coverageDeficits
+            ->reject(fn (int $deficit, string $group): bool => in_array($candidateCategory, self::CATEGORY_GROUPS[$group], true))
+            ->sum() * 2;
+    }
+
+    /** @param Collection<int, Skill> $selectedSkills */
+    private function minimumOffenseCoveragePenalty(
+        string $candidateCategory,
+        Collection $selectedSkills,
+        int $targetCount,
+    ): int {
+        if ($targetCount < 3) {
+            return 0;
+        }
+
+        $offenseCount = $selectedSkills
+            ->whereIn('combat_category', self::CATEGORY_GROUPS['offense'])
+            ->count();
+
+        if ($offenseCount >= 2) {
+            return 0;
+        }
+
+        return in_array($candidateCategory, self::CATEGORY_GROUPS['offense'], true) ? 0 : 1;
     }
 
     private function desiredTierForSlot(int $currentSkillCount): int
     {
         return match (true) {
             $currentSkillCount < 3 => 0,
-            $currentSkillCount < 6 => 1,
+            $currentSkillCount < 5 => 1,
             $currentSkillCount < 8 => 2,
             default => 3,
         };
     }
 
-    private function unlockLevel(Skill $skill): int
+    private function sourceType(Skill $skill, Pet $pet): string
     {
-        if ($skill->tier === 0) {
-            $groupSize = $skill->gameSource->slug === 'cau-vong' && $skill->game_id <= 24 ? 5 : 10;
-
-            return $skill->game_id % $groupSize === 0 ? 5 : 10;
-        }
-
-        return match ($skill->tier) {
-            1 => 20,
-            2 => 30,
-            3 => 40,
-            default => 40,
-        };
-    }
-
-    private function sourceType(Skill $skill): string
-    {
-        if ($skill->species_affinity !== null) {
-            return 'species';
-        }
-
         if ($skill->gameSource->slug === 'cau-vong' && $skill->game_id >= 25) {
             return 'universal';
         }
 
-        return 'element';
-    }
+        if ($skill->species_affinity === $pet->species) {
+            return 'species';
+        }
 
-    /** @param  list<int|float>  $values */
-    private function median(array $values): float
-    {
-        sort($values, SORT_NUMERIC);
-        $count = count($values);
-        $middle = intdiv($count, 2);
+        if ($skill->combat_element === $pet->combat_element) {
+            return 'element';
+        }
 
-        return $count % 2 === 0
-            ? ($values[$middle - 1] + $values[$middle]) / 2
-            : (float) $values[$middle];
+        return 'universal';
     }
 }

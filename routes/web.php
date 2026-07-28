@@ -3,9 +3,10 @@
 use App\Http\Controllers\Wiki\ItemController;
 use App\Http\Controllers\Wiki\PetController;
 use App\Http\Controllers\Wiki\SkillController;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 
-Route::inertia('/', 'welcome')->name('home');
+Route::get('/', static fn (): RedirectResponse => to_route('wiki.pets.index'))->name('home');
 
 Route::prefix('wiki')->name('wiki.')->group(function () {
     Route::get('pets', [PetController::class, 'index'])->name('pets.index');

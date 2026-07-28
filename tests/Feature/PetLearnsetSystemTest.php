@@ -41,9 +41,10 @@ test('normalizes the shared active skill catalog without retaining rainbow energ
         ->and(Skill::query()->whereBelongsTo($rainbow)->whereBetween('game_id', [31, 48])->where('is_active', false)->count())->toBe(18)
         ->and($rainbowSpeciesSkills)->toHaveCount(25)
         ->and($rainbowSpeciesSkills->whereNotNull('energy_cost'))->toBeEmpty()
-        ->and($rainbowSpeciesSkills->pluck('max_uses')->unique()->sort()->values()->all())->toBe([15, 25, 30, 40, 45])
+        ->and(Skill::query()->where('is_active', true)->distinct()->pluck('balance_version')->all())->toBe(['unified-v4'])
+        ->and($rainbowSpeciesSkills->pluck('max_uses')->unique()->sort()->values()->all())->toBe([5, 8, 12, 14, 15, 18, 20, 22, 25])
         ->and($rainbowSpeciesSkills->pluck('power_percent')->min())->toBeGreaterThanOrEqual(60)
-        ->and($rainbowSpeciesSkills->pluck('power_percent')->max())->toBeLessThanOrEqual(190);
+        ->and($rainbowSpeciesSkills->pluck('power_percent')->max())->toBeLessThanOrEqual(185);
 });
 
 test('publishes only covered combat skills and reserves signature labels for one evolution family', function () {
@@ -79,6 +80,16 @@ test('publishes only covered combat skills and reserves signature labels for one
             ->and($familyRootIds)->toHaveCount(1);
     }
 
+    $signatureEntry = PetSkillLearnset::query()
+        ->with(['skill.gameSource:id,slug', 'pet.gameSource:id,slug'])
+        ->where('is_signature', true)
+        ->sole();
+
+    expect($signatureEntry->skill->gameSource->slug)->toBe('cau-vong')
+        ->and($signatureEntry->skill->game_id)->toBe(19)
+        ->and($signatureEntry->pet->gameSource->slug)->toBe('liet-hoa')
+        ->and($signatureEntry->pet->game_id)->toBe(8);
+
     expect($pets)->toHaveCount(202);
 });
 
@@ -87,12 +98,14 @@ test('inherits ancestor skills and grants exactly ten cumulative skills at every
     $evolutions = PetEvolution::query()->get();
     $incoming = $evolutions->groupBy('to_pet_id')->map->pluck('from_pet_id');
     $outgoing = $evolutions->groupBy('from_pet_id')->map->pluck('to_pet_id');
+    $familyMetadata = learnsetFamilyMetadata($pets, $incoming);
 
     foreach ($pets as $pet) {
         $accessibleSkillIds = learnsetAccessibleSkillIds($pet->id, $pets, $incoming);
         $isFinalOrStandalone = ! $outgoing->has($pet->id);
+        $expectedPoolSize = learnsetExpectedPoolSize($familyMetadata[$pet->id], $isFinalOrStandalone);
 
-        expect($accessibleSkillIds)->toHaveCount($isFinalOrStandalone ? 10 : count($accessibleSkillIds))
+        expect($accessibleSkillIds)->toHaveCount($expectedPoolSize, $pet->name)
             ->and($accessibleSkillIds)->each->toBeInt();
 
         if ($incoming->has($pet->id)) {
@@ -100,8 +113,49 @@ test('inherits ancestor skills and grants exactly ten cumulative skills at every
         }
     }
 
-    expect(PetSkillLearnset::query()->whereNotIn('unlock_level', [5, 10, 20, 30, 40])->exists())->toBeFalse()
+    expect(PetSkillLearnset::query()->whereNotIn('unlock_level', learnsetMilestones())->exists())->toBeFalse()
+        ->and(PetSkillLearnset::query()->distinct()->pluck('unlock_level')->sort()->values()->all())->toBe(learnsetMilestones())
         ->and(PetSkillLearnset::query()->where('is_signature', true)->count())->toBeGreaterThan(0);
+});
+
+test('builds every pet pool from element species and role appropriate tactical skills', function () {
+    $pets = Pet::query()->with('learnsetEntries')->get()->keyBy('id');
+    $skills = Skill::query()->with('gameSource:id,slug')->get()->keyBy('id');
+    $evolutions = PetEvolution::query()->get();
+    $incoming = $evolutions->groupBy('to_pet_id')->map->pluck('from_pet_id');
+    $outgoingPetIds = $evolutions->pluck('from_pet_id')->unique();
+    $poolSignatures = [];
+
+    expect($pets->whereNotIn('id', $outgoingPetIds))->toHaveCount(118);
+
+    foreach ($pets as $pet) {
+        $entries = learnsetAccessibleEntries($pet->id, $pets, $incoming);
+        $pool = $skills->whereIn('id', $entries->pluck('skill_id'));
+        $identity = "{$pet->gameSource->slug}:{$pet->game_id} {$pet->name}";
+        $sourceCounts = $pool->countBy(fn (Skill $skill): string => learnsetSkillSourceType($skill, $pet));
+        $categoryCounts = [
+            'offense' => $pool->whereIn('combat_category', ['damage', 'hybrid'])->count(),
+            'sustain' => $pool->whereIn('combat_category', ['heal', 'defense', 'buff'])->count(),
+            'control' => $pool->whereIn('combat_category', ['control', 'disrupt'])->count(),
+            'utility' => $pool->whereIn('combat_category', ['heal', 'defense', 'buff', 'control', 'disrupt'])->count(),
+        ];
+        $isFinalOrStandalone = ! $outgoingPetIds->contains($pet->id);
+        $minimumSourceSkills = $isFinalOrStandalone ? 3 : 1;
+
+        expect($sourceCounts->get('element', 0))->toBeGreaterThanOrEqual($minimumSourceSkills, $identity)
+            ->and($sourceCounts->get('species', 0))->toBeGreaterThanOrEqual($minimumSourceSkills, $identity)
+            ->and($categoryCounts['offense'])->toBeGreaterThanOrEqual(min(2, $pool->count()), "{$identity}:offense-floor");
+
+        if ($isFinalOrStandalone) {
+            foreach (learnsetRoleRequirements($pet->primary_role) as $group => $minimum) {
+                expect($categoryCounts[$group])->toBeGreaterThanOrEqual($minimum, "{$identity}:{$group}");
+            }
+
+            $poolSignatures[] = $pool->pluck('id')->sort()->implode(':');
+        }
+    }
+
+    expect(collect($poolSignatures)->unique())->toHaveCount(118);
 });
 
 test('keeps mutation branch grants separate while preserving their shared ancestor pool', function () {
@@ -115,15 +169,16 @@ test('keeps mutation branch grants separate while preserving their shared ancest
     foreach ($branchingFamilies as $fromPetId => $branches) {
         $ancestorSkills = learnsetAccessibleSkillIds((int) $fromPetId, $pets, $incoming);
         $branchGrantSets = $branches
-            ->map(fn (PetEvolution $evolution): array => $pets[$evolution->to_pet_id]->learnsetEntries->pluck('skill_id')->all())
-            ->values();
+            ->map(fn (PetEvolution $evolution): array => learnsetDirectSkillIds($pets[$evolution->to_pet_id]))
+            ->values()
+            ->all();
 
         foreach ($branchGrantSets as $branchGrants) {
             expect(array_intersect($ancestorSkills, $branchGrants))->toBeEmpty();
         }
 
-        for ($left = 0; $left < $branchGrantSets->count(); $left++) {
-            for ($right = $left + 1; $right < $branchGrantSets->count(); $right++) {
+        for ($left = 0; $left < count($branchGrantSets); $left++) {
+            for ($right = $left + 1; $right < count($branchGrantSets); $right++) {
                 expect(array_intersect($branchGrantSets[$left], $branchGrantSets[$right]))->toBeEmpty();
             }
         }
@@ -145,6 +200,71 @@ test('gives double battle support pets ally interaction and disruptive options',
         ->and($supportSkills->whereIn('combat_category', ['control', 'disrupt']))->not->toBeEmpty();
 });
 
+test('reserves professional healing for support and prevents stacked sustain on earth guardians', function () {
+    $rainbow = GameSource::query()->where('slug', 'cau-vong')->firstOrFail();
+    $basicHealing = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 27)->firstOrFail();
+    $professionalHealing = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 28)->firstOrFail();
+
+    expect($basicHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query
+        ->where('primary_role', 'guardian')
+        ->where('combat_element', 'tho'))->exists())->toBeFalse()
+        ->and($basicHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query
+            ->where('primary_role', 'guardian')
+            ->where('combat_element', '!=', 'tho'))->exists())->toBeTrue()
+        ->and($professionalHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query->where('primary_role', 'guardian'))->exists())->toBeFalse()
+        ->and($professionalHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query->where('primary_role', 'support'))->exists())->toBeTrue();
+});
+
+test('applies the approved meta tuning without changing Dau ung watchlist deck', function () {
+    $gameSources = GameSource::query()
+        ->whereIn('slug', ['liet-hoa', 'cau-vong'])
+        ->get()
+        ->keyBy('slug');
+    $pets = Pet::query()
+        ->with(['gameSource:id,slug', 'learnsetEntries.skill.gameSource:id,slug'])
+        ->where(function ($query) use ($gameSources): void {
+            $query
+                ->where(fn ($sourceQuery) => $sourceQuery
+                    ->whereBelongsTo($gameSources['liet-hoa'])
+                    ->whereIn('game_id', [17, 18, 95]))
+                ->orWhere(fn ($sourceQuery) => $sourceQuery
+                    ->whereBelongsTo($gameSources['cau-vong'])
+                    ->whereIn('game_id', [18, 19, 48]));
+        })
+        ->get()
+        ->keyBy(fn (Pet $pet): string => "{$pet->gameSource->slug}:{$pet->game_id}");
+
+    $directSkillIdentities = fn (string $petIdentity): Collection => $pets[$petIdentity]
+        ->learnsetEntries
+        ->map(fn (PetSkillLearnset $entry): string => "{$entry->skill->gameSource->slug}:{$entry->skill->game_id}");
+
+    expect($directSkillIdentities('cau-vong:18'))
+        ->toContain('cau-vong:8')
+        ->not->toContain('cau-vong:7')
+        ->and($directSkillIdentities('cau-vong:19'))
+        ->toContain('cau-vong:7')
+        ->not->toContain('cau-vong:8')
+        ->and($directSkillIdentities('liet-hoa:17'))
+        ->toContain('liet-hoa:13')
+        ->not->toContain('cau-vong:28')
+        ->toContain('liet-hoa:11')
+        ->not->toContain('liet-hoa:15')
+        ->and($directSkillIdentities('liet-hoa:18'))
+        ->toContain('liet-hoa:14')
+        ->not->toContain('liet-hoa:18')
+        ->and($directSkillIdentities('cau-vong:48'))
+        ->toContain('liet-hoa:25')
+        ->not->toContain('liet-hoa:29')
+        ->and($pets['liet-hoa:95']->learnsetEntries->pluck('skill.name')->all())
+        ->toBe([
+            'Phi Tường Trảm',
+            'Phong nhận',
+            'Thuận phong',
+            'Tật Phong Tốc Hàng',
+            'Kỹ năng Phong Bế',
+        ]);
+});
+
 test('can rebuild all learnsets repeatedly without creating duplicates', function () {
     $initialRows = PetSkillLearnset::query()->count();
 
@@ -160,7 +280,7 @@ test('can rebuild all learnsets repeatedly without creating duplicates', functio
 
 /**
  * @param  Collection<int, Pet>  $pets
- * @param  Collection<int, Collection<int, int>>  $incoming
+ * @param  Collection<array-key, Collection<array-key, mixed>>  $incoming
  * @return list<int>
  */
 function learnsetAccessibleSkillIds(
@@ -189,7 +309,130 @@ function learnsetAccessibleSkillIds(
     return array_values(array_unique($skillIds));
 }
 
-/** @param Collection<int, Collection<int, int>> $incoming */
+/**
+ * @param  Collection<int, Pet>  $pets
+ * @param  Collection<array-key, Collection<array-key, mixed>>  $incoming
+ * @return Collection<int, PetSkillLearnset>
+ */
+function learnsetAccessibleEntries(int $petId, Collection $pets, Collection $incoming): Collection
+{
+    $entries = collect();
+    $currentId = $petId;
+    $visited = [];
+
+    while (! isset($visited[$currentId])) {
+        $visited[$currentId] = true;
+        $entries = $entries->concat($pets[$currentId]->learnsetEntries);
+
+        if (! $incoming->has($currentId)) {
+            break;
+        }
+
+        $currentId = (int) $incoming[$currentId]->first();
+    }
+
+    return $entries->unique('skill_id')->values();
+}
+
+/** @return list<int> */
+function learnsetMilestones(): array
+{
+    return [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+}
+
+/**
+ * @param  Collection<int, Pet>  $pets
+ * @param  Collection<array-key, Collection<array-key, mixed>>  $incoming
+ * @return array<int, array{root_id: int, stage: int, maximum_depth: int}>
+ */
+function learnsetFamilyMetadata(Collection $pets, Collection $incoming): array
+{
+    $metadata = [];
+
+    foreach ($pets as $pet) {
+        $currentId = $pet->id;
+        $stage = 0;
+        $visited = [];
+
+        while ($incoming->has($currentId) && ! isset($visited[$currentId])) {
+            $visited[$currentId] = true;
+            $currentId = (int) $incoming[$currentId]->first();
+            $stage++;
+        }
+
+        $metadata[$pet->id] = [
+            'root_id' => $currentId,
+            'stage' => $stage,
+            'maximum_depth' => 0,
+        ];
+    }
+
+    $maximumDepthByRoot = collect($metadata)
+        ->groupBy('root_id')
+        ->map(fn (Collection $family): int => (int) $family->max('stage'));
+
+    foreach ($metadata as $petId => $petMetadata) {
+        $metadata[$petId]['maximum_depth'] = $maximumDepthByRoot[$petMetadata['root_id']];
+    }
+
+    return $metadata;
+}
+
+/** @param array{root_id: int, stage: int, maximum_depth: int} $metadata */
+function learnsetExpectedPoolSize(array $metadata, bool $isFinalOrStandalone): int
+{
+    if ($metadata['maximum_depth'] === 0 || $isFinalOrStandalone) {
+        return 10;
+    }
+
+    return match ([$metadata['maximum_depth'], $metadata['stage']]) {
+        [1, 0] => 5,
+        [2, 0], [3, 0] => 3,
+        [2, 1] => 7,
+        [3, 1] => 5,
+        [3, 2] => 8,
+        default => throw new InvalidArgumentException('Unsupported evolution depth and stage.'),
+    };
+}
+
+function learnsetSkillSourceType(Skill $skill, Pet $pet): string
+{
+    if ($skill->gameSource->slug === 'cau-vong' && $skill->game_id >= 25) {
+        return 'universal';
+    }
+
+    if ($skill->species_affinity === $pet->species) {
+        return 'species';
+    }
+
+    return $skill->combat_element === $pet->combat_element ? 'element' : 'universal';
+}
+
+/** @return list<int> */
+function learnsetDirectSkillIds(Pet $pet): array
+{
+    return array_values($pet->learnsetEntries
+        ->pluck('skill_id')
+        ->map(fn (mixed $skillId): int => (int) $skillId)
+        ->values()
+        ->all());
+}
+
+/** @return array<string, int> */
+function learnsetRoleRequirements(string $role): array
+{
+    return match ($role) {
+        'striker' => ['offense' => 6, 'utility' => 1],
+        'bruiser' => ['offense' => 5, 'utility' => 2],
+        'guardian' => ['sustain' => 1, 'offense' => 3],
+        'controller' => ['control' => 1, 'offense' => 4],
+        'support' => ['sustain' => 2, 'control' => 1, 'offense' => 2],
+        'versatile' => ['offense' => 4, 'utility' => 2, 'control' => 1],
+        default => throw new InvalidArgumentException("Unknown combat role [{$role}]."),
+    };
+}
+
+/** @param Collection<array-key, Collection<array-key, mixed>> $incoming */
 function learnsetFamilyRootId(int $petId, Collection $incoming): int
 {
     $currentId = $petId;

@@ -94,6 +94,12 @@ final class PetTraitData
 
     public static function speciesTraitCode(string $source, int $gameId): string
     {
+        $balanceProfile = PetBalanceData::find($source, $gameId);
+
+        if ($balanceProfile !== null) {
+            return $balanceProfile['species_trait_code'];
+        }
+
         $traitGroups = self::SPECIES_TRAIT_PETS[$source] ?? throw new InvalidArgumentException(
             "Unknown Pet source {$source}.",
         );

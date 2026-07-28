@@ -5,6 +5,7 @@ import {
     Backpack,
     Database,
     GitBranch,
+    Layers3,
     PackageOpen,
     PawPrint,
     ScrollText,
@@ -19,10 +20,12 @@ import {
 } from '@/lib/game-assets';
 import {
     itemCategoryLabel,
+    itemEquipmentSlotLabel,
     itemEffectLabel,
     itemSourceLabel,
+    itemUsageScopeLabel,
 } from '@/lib/wiki-presenters';
-import { index as itemsIndex } from '@/routes/wiki/items';
+import { index as itemsIndex, show as itemShow } from '@/routes/wiki/items';
 import { show as petShow } from '@/routes/wiki/pets';
 import type { WikiItemDetail } from '@/types';
 
@@ -59,6 +62,32 @@ export default function ItemShow({ item }: ItemShowProps) {
                 <strong className="text-white">{item.name}</strong>
             </nav>
 
+            {item.canonical_item !== null && (
+                <section className="flex flex-col gap-4 border border-amber-300/30 bg-amber-300/8 p-5 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <p className="text-xs font-black tracking-[0.14em] text-amber-200 uppercase">
+                            Biến thể tài nguyên gốc
+                        </p>
+                        <p className="mt-2 text-sm leading-6 text-slate-300">
+                            Bản ghi này được giữ để tra cứu artwork và dữ liệu
+                            giải mã. Cơ chế sử dụng chính thức nằm ở{' '}
+                            <strong className="text-white">
+                                {item.canonical_item.name}
+                            </strong>
+                            .
+                        </p>
+                    </div>
+                    <Link
+                        href={itemShow(item.canonical_item.id)}
+                        prefetch
+                        className="inline-flex shrink-0 items-center justify-center gap-2 border border-amber-300/35 bg-amber-300/12 px-4 py-3 text-sm font-black text-amber-100 transition hover:bg-amber-300/20"
+                    >
+                        Xem Item chuẩn
+                        <ArrowRight className="size-4" />
+                    </Link>
+                </section>
+            )}
+
             <div className="grid gap-5 xl:grid-cols-[minmax(0,1.85fr)_minmax(19rem,1fr)]">
                 <main className="flex min-w-0 flex-col gap-5">
                     <section className="wiki-console wiki-panel relative isolate overflow-hidden [clip-path:polygon(0_20px,20px_0,calc(100%_-_56px)_0,calc(100%_-_36px)_20px,100%_20px,100%_calc(100%_-_20px),calc(100%_-_20px)_100%,20px_100%,0_calc(100%_-_20px))]">
@@ -85,6 +114,9 @@ export default function ItemShow({ item }: ItemShowProps) {
                                     </span>
                                     <span className="border border-amber-300/25 bg-amber-300/8 px-3 py-1.5 text-xs font-black text-amber-200">
                                         {itemEffectLabel(item)}
+                                    </span>
+                                    <span className="border border-cyan-300/25 bg-cyan-300/8 px-3 py-1.5 text-xs font-black text-cyan-100">
+                                        {itemUsageScopeLabel(item.usage_scope)}
                                     </span>
                                 </div>
                                 <h1 className="mt-5 text-4xl leading-none font-black tracking-[-0.045em] text-white sm:text-6xl">
@@ -146,9 +178,7 @@ export default function ItemShow({ item }: ItemShowProps) {
                                                 {usage.cost_rank}
                                             </span>
                                         </div>
-                                        <EvolutionPetLink
-                                            pet={usage.to_pet}
-                                        />
+                                        <EvolutionPetLink pet={usage.to_pet} />
                                     </article>
                                 ))}
                             </div>
@@ -177,6 +207,20 @@ export default function ItemShow({ item }: ItemShowProps) {
                                 value={itemEffectLabel(item)}
                             />
                             <FactRow
+                                label="Cách sử dụng"
+                                value={itemUsageScopeLabel(item.usage_scope)}
+                            />
+                            <FactRow
+                                label="Ô trang bị"
+                                value={itemEquipmentSlotLabel(
+                                    item.equipment_slot,
+                                )}
+                            />
+                            <FactRow
+                                label="Phiên bản cân bằng"
+                                value={item.balance_version ?? 'Dữ liệu nguồn'}
+                            />
+                            <FactRow
                                 label="Giá niêm yết"
                                 value={
                                     item.cost === null
@@ -188,8 +232,59 @@ export default function ItemShow({ item }: ItemShowProps) {
                                 label="Tuyến tiến hóa"
                                 value={String(item.evolution_usages.length)}
                             />
+                            <FactRow
+                                label="Biến thể hình ảnh"
+                                value={String(item.source_variants.length)}
+                            />
                         </dl>
                     </section>
+
+                    {item.source_variants.length > 0 && (
+                        <section className="wiki-panel p-5 sm:p-6">
+                            <div className="flex items-center gap-3 text-cyan-200">
+                                <Layers3 className="size-5" />
+                                <h2 className="font-black">
+                                    Artwork biến thể gốc
+                                </h2>
+                            </div>
+                            <p className="mt-3 text-sm leading-6 text-slate-400">
+                                Các bản dưới đây dùng chung cơ chế với Item
+                                chuẩn này và không xuất hiện riêng trong
+                                catalog.
+                            </p>
+                            <div className="mt-4 grid gap-2">
+                                {item.source_variants.map((variant) => (
+                                    <Link
+                                        key={variant.id}
+                                        href={itemShow(variant.id)}
+                                        prefetch
+                                        className="flex items-center gap-3 border border-white/8 bg-white/3 p-3 transition hover:border-cyan-300/35 hover:bg-cyan-300/7"
+                                    >
+                                        <GameArtwork
+                                            src={itemArtworkUrl(
+                                                variant.frame_id,
+                                                variant.game_source.asset_key,
+                                            )}
+                                            alt={variant.name}
+                                            className="size-10 shrink-0"
+                                            fallback={
+                                                <PackageOpen className="size-5 text-cyan-200" />
+                                            }
+                                        />
+                                        <span className="min-w-0">
+                                            <strong className="block truncate text-sm text-white">
+                                                {variant.name}
+                                            </strong>
+                                            <span className="mt-1 block text-xs text-slate-500">
+                                                Mã nguồn {variant.source_table}:
+                                                {variant.game_id}
+                                            </span>
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
+                    )}
 
                     {condition !== null && (
                         <section className="wiki-panel p-5 sm:p-6">
@@ -226,6 +321,10 @@ export default function ItemShow({ item }: ItemShowProps) {
                                 label="Effect code"
                                 value={String(item.effect_type ?? '—')}
                             />
+                            <FactRow
+                                label="Cơ chế chuẩn"
+                                value={item.mechanic_key ?? '—'}
+                            />
                             <pre className="overflow-x-auto bg-black/20 p-3 font-mono text-[10px] leading-5 text-slate-500">
                                 {JSON.stringify(
                                     {
@@ -256,10 +355,7 @@ function EvolutionPetLink({
             className="group flex min-w-0 items-center gap-3 border border-white/8 bg-white/3 p-3 transition hover:border-emerald-300/35 hover:bg-emerald-300/7"
         >
             <GameArtwork
-                src={petArtworkUrl(
-                    pet.sprite_id,
-                    pet.game_source.asset_key,
-                )}
+                src={petArtworkUrl(pet.sprite_id, pet.game_source.asset_key)}
                 alt={pet.name}
                 className="size-14 shrink-0 transition group-hover:scale-110"
                 fallback={<PawPrint className="size-7 text-emerald-200" />}

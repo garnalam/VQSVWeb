@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Wiki;
 
-use App\Models\GameSource;
 use App\Models\Item;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,9 +26,11 @@ class ItemIndexRequest extends FormRequest
     {
         return [
             'q' => ['nullable', 'string', 'max:100'],
-            'game' => ['nullable', 'string', Rule::exists(GameSource::class, 'slug')],
-            'source_table' => ['nullable', 'integer', 'between:0,5'],
-            'category' => ['nullable', 'string', Rule::exists(Item::class, 'category')],
+            'category' => [
+                'nullable',
+                'string',
+                Rule::exists(Item::class, 'category')->where('is_active', true),
+            ],
             'sort' => ['nullable', Rule::in(['game_id', 'name', 'cost'])],
         ];
     }

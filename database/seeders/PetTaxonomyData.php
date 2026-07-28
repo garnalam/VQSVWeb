@@ -219,6 +219,15 @@ final class PetTaxonomyData
     /** @return array{combat_element: string, species: string} */
     public static function for(string $source, int $gameId): array
     {
+        $balanceProfile = PetBalanceData::find($source, $gameId);
+
+        if ($balanceProfile !== null) {
+            return [
+                'combat_element' => $balanceProfile['combat_element'],
+                'species' => $balanceProfile['species'],
+            ];
+        }
+
         return self::PETS[$source][$gameId] ?? throw new InvalidArgumentException(
             "Missing Pet taxonomy for {$source}:{$gameId}.",
         );

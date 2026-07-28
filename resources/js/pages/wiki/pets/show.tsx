@@ -3,6 +3,7 @@ import {
     ArrowLeft,
     BarChart3,
     ChevronRight,
+    Crown,
     Dna,
     Dumbbell,
     Expand,
@@ -58,14 +59,6 @@ type PetShowProps = {
 
 type SkillDeckTab = 'ready' | 'locked' | 'alternate';
 
-const qualityLabels: Record<number, string> = {
-    1: 'Phổ thông',
-    2: 'Khá',
-    3: 'Tinh anh',
-    4: 'Quý hiếm',
-    5: 'Huyền thoại',
-};
-
 const statDefinitions = [
     { key: 'hp', label: 'Sinh mệnh', shortLabel: 'HP', color: '#fb7185' },
     {
@@ -90,6 +83,7 @@ const statDefinitions = [
 
 export default function PetShow({ pet, trait_system }: PetShowProps) {
     const [level, setLevel] = useState(50);
+    const [star, setStar] = useState(pet.default_star);
     const [activeSkillTab, setActiveSkillTab] = useState<SkillDeckTab>('ready');
     const [equippedSkillIds, setEquippedSkillIds] = useState<number[]>([]);
     const [isSpriteOpen, setIsSpriteOpen] = useState(false);
@@ -97,12 +91,9 @@ export default function PetShow({ pet, trait_system }: PetShowProps) {
     const [isTraitCatalogOpen, setIsTraitCatalogOpen] = useState(false);
     const accent = pet.combat_element.color;
     const style = { '--pet-accent': accent } as CSSProperties;
-    const currentStats = calculateStatValues(
-        pet.stats,
-        level,
-        pet.quality_multiplier,
-    );
-    const benchmarkStats = interpolateBenchmarks(pet, level);
+    const starMultiplier = pet.star_multipliers[star];
+    const currentStats = calculateStatValues(pet.stats, level, starMultiplier);
+    const benchmarkStats = interpolateBenchmarks(pet, level, starMultiplier);
     const readySkills = pet.skills.filter(
         (skill) =>
             skill.is_available_on_current_form && skill.unlock_level <= level,
@@ -162,7 +153,9 @@ export default function PetShow({ pet, trait_system }: PetShowProps) {
 
             <HeroSection pet={pet} onOpenSprite={() => setIsSpriteOpen(true)} />
 
-            <QuickNavigation />
+            <QuickNavigation isDivine={pet.divine_ability !== null} />
+
+            {pet.divine_ability !== null && <DivineAuthorityPanel pet={pet} />}
 
             <div className="grid items-start gap-5 xl:grid-cols-[minmax(0,1.85fr)_minmax(21rem,1fr)]">
                 <main className="flex min-w-0 flex-col gap-5">
@@ -171,6 +164,9 @@ export default function PetShow({ pet, trait_system }: PetShowProps) {
                             pet={pet}
                             level={level}
                             onLevelChange={setLevel}
+                            star={star}
+                            starMultiplier={starMultiplier}
+                            onStarChange={setStar}
                             currentStats={currentStats}
                             benchmarkStats={benchmarkStats}
                         />
@@ -256,6 +252,8 @@ export default function PetShow({ pet, trait_system }: PetShowProps) {
                 <TacticalSidebar
                     pet={pet}
                     level={level}
+                    star={star}
+                    starMultiplier={starMultiplier}
                     onOpenTraits={() => setIsTraitCatalogOpen(true)}
                     onOpenComparison={() => setIsComparisonOpen(true)}
                 />
@@ -288,6 +286,7 @@ export default function PetShow({ pet, trait_system }: PetShowProps) {
                 <FormComparisonModal
                     pet={pet}
                     level={level}
+                    starMultiplier={starMultiplier}
                     onClose={() => setIsComparisonOpen(false)}
                 />
             )}
@@ -359,6 +358,13 @@ function HeroSection({
                             Form {pet.evolution_stage}/
                             {pet.evolution_stage_count}
                         </span>
+                        {pet.divine_ability !== null && (
+                            <span className="relative flex items-center gap-2 overflow-hidden border border-amber-300/55 bg-linear-to-r from-amber-300 via-yellow-200 to-amber-400 px-3 py-1.5 text-[#321800] shadow-[0_0_22px_rgba(251,191,36,.28)]">
+                                <span className="absolute inset-0 animate-pulse bg-linear-to-r from-transparent via-white/35 to-transparent" />
+                                <Crown className="relative size-4" />
+                                <span className="relative">Thần thú</span>
+                            </span>
+                        )}
                     </div>
 
                     <h1 className="mt-5 text-4xl leading-none font-black tracking-[-.05em] text-white uppercase sm:text-6xl">
@@ -427,9 +433,18 @@ function TacticalBadge({
     );
 }
 
-function QuickNavigation() {
+function QuickNavigation({ isDivine }: { isDivine: boolean }) {
     const items = [
         { href: '#overview', label: 'Tổng quan & Chỉ số', icon: <BarChart3 /> },
+        ...(isDivine
+            ? [
+                  {
+                      href: '#divine-authority',
+                      label: 'Thần Quyền',
+                      icon: <Crown />,
+                  },
+              ]
+            : []),
         { href: '#evolution', label: 'Cây Tiến hóa', icon: <GitBranch /> },
         { href: '#skills', label: 'Bể Skill & Build', icon: <Swords /> },
         { href: '#traits', label: 'Đặc tính', icon: <Dna /> },
@@ -453,6 +468,91 @@ function QuickNavigation() {
                 ))}
             </div>
         </nav>
+    );
+}
+
+function DivineAuthorityPanel({ pet }: { pet: WikiPetDetail }) {
+    const ability = pet.divine_ability;
+
+    if (ability === null) {
+        return null;
+    }
+
+    return (
+        <section
+            id="divine-authority"
+            className="group relative scroll-mt-36 overflow-hidden rounded-[2rem] border border-amber-300/35 bg-[linear-gradient(125deg,#130d24_0%,#25143d_44%,#161027_70%,#2a1c0c_100%)] p-px shadow-[0_24px_80px_rgba(88,28,135,.2),0_0_38px_rgba(251,191,36,.08)]"
+        >
+            <div className="absolute -top-28 -left-20 size-72 rounded-full bg-violet-500/18 blur-3xl" />
+            <div className="absolute -right-16 -bottom-28 size-72 rounded-full bg-amber-300/14 blur-3xl" />
+            <div className="absolute inset-0 [background-image:linear-gradient(rgba(251,191,36,.15)_1px,transparent_1px),linear-gradient(90deg,rgba(167,139,250,.12)_1px,transparent_1px)] [background-size:42px_42px] opacity-20" />
+
+            <div className="relative overflow-hidden rounded-[calc(2rem-1px)] bg-[#080c17]/56 px-5 py-6 backdrop-blur-sm sm:px-7 sm:py-7">
+                <div className="grid items-center gap-6 lg:grid-cols-[10rem_minmax(0,1fr)]">
+                    <div className="relative mx-auto flex size-36 items-center justify-center">
+                        <div className="absolute inset-0 animate-[spin_18s_linear_infinite] rounded-full border border-dashed border-amber-300/45" />
+                        <div className="absolute inset-3 animate-[spin_12s_linear_infinite_reverse] rounded-full border border-violet-300/30" />
+                        <div className="absolute inset-7 rotate-45 border border-amber-200/25" />
+                        <div className="absolute inset-10 rounded-full bg-[radial-gradient(circle,rgba(253,224,71,.3),rgba(124,58,237,.14)_50%,transparent_72%)] blur-sm transition duration-500 group-hover:scale-125" />
+                        <Crown className="relative size-12 text-amber-200 drop-shadow-[0_0_18px_rgba(253,224,71,.75)]" />
+                    </div>
+
+                    <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                            <span className="rounded-full border border-amber-200/45 bg-amber-300/10 px-3 py-1 font-mono text-[10px] font-black tracking-[.2em] text-amber-200 uppercase">
+                                Thần Quyền
+                            </span>
+                            <span className="rounded-full border border-violet-300/25 bg-violet-400/8 px-3 py-1 text-[10px] font-black tracking-[.08em] text-violet-200 uppercase">
+                                Nội tại độc quyền
+                            </span>
+                        </div>
+
+                        <h2 className="mt-3 bg-linear-to-r from-amber-100 via-yellow-300 to-violet-200 bg-clip-text text-3xl leading-tight font-black tracking-[-.04em] text-transparent sm:text-4xl">
+                            {ability.name}
+                        </h2>
+                        <div className="mt-3 flex items-start gap-2 text-sm font-bold text-violet-100">
+                            <Zap className="mt-0.5 size-4 shrink-0 text-amber-300" />
+                            <span>
+                                <span className="text-slate-500">
+                                    Điều kiện kích hoạt:{' '}
+                                </span>
+                                {ability.activation_type_label}
+                            </span>
+                        </div>
+                        <p className="mt-4 max-w-4xl text-sm leading-7 font-semibold text-slate-200 sm:text-base">
+                            {ability.description}
+                        </p>
+
+                        <div className="mt-5 flex flex-wrap gap-2">
+                            {Object.entries(ability.parameters).map(
+                                ([parameter, value]) => (
+                                    <div
+                                        key={parameter}
+                                        className="rounded-xl border border-white/9 bg-black/24 px-3.5 py-2.5 shadow-inner shadow-black/20"
+                                    >
+                                        <p className="text-[10px] font-bold tracking-[.08em] text-slate-500 uppercase">
+                                            {divineParameterLabel(parameter)}
+                                        </p>
+                                        <p className="mt-0.5 font-mono text-sm font-black text-amber-200">
+                                            {formatDivineParameterValue(
+                                                parameter,
+                                                value,
+                                            )}
+                                        </p>
+                                    </div>
+                                ),
+                            )}
+                        </div>
+
+                        <div className="mt-5 flex items-center gap-2 border-t border-white/8 pt-4 text-xs font-semibold text-slate-500">
+                            <ShieldCheck className="size-4 shrink-0 text-violet-300" />
+                            Thần Quyền là năng lực bẩm sinh độc lập, không chiếm
+                            ô Đặc tính hoặc một trong 5 ô Skill chiến đấu.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 }
 
@@ -502,12 +602,18 @@ function StatAnalysis({
     pet,
     level,
     onLevelChange,
+    star,
+    starMultiplier,
+    onStarChange,
     currentStats,
     benchmarkStats,
 }: {
     pet: WikiPetDetail;
     level: number;
     onLevelChange: (level: number) => void;
+    star: number;
+    starMultiplier: number;
+    onStarChange: (star: number) => void;
     currentStats: WikiPetStatValues;
     benchmarkStats: WikiPetStatValues;
 }) {
@@ -518,13 +624,43 @@ function StatAnalysis({
             title="Phân tích chỉ số chiến đấu"
             description="Radar so Pet với trung bình thật của toàn bộ 202 Pet tại cùng cấp độ."
             action={
-                <div className="border border-white/9 bg-white/4 px-4 py-2 text-center">
-                    <span className="block font-mono text-[8px] tracking-[.15em] text-slate-500 uppercase">
-                        Cấp đang mô phỏng
-                    </span>
-                    <strong className="text-2xl font-black text-[var(--pet-accent)] tabular-nums">
-                        {level}
-                    </strong>
+                <div className="flex flex-wrap items-center gap-3">
+                    <div className="border border-white/9 bg-white/4 px-4 py-2 text-center">
+                        <span className="block font-mono text-[8px] tracking-[.15em] text-slate-500 uppercase">
+                            Cấp đang mô phỏng
+                        </span>
+                        <strong className="text-2xl font-black text-[var(--pet-accent)] tabular-nums">
+                            {level}
+                        </strong>
+                    </div>
+                    <div className="border border-white/9 bg-white/4 px-3 py-2">
+                        <span className="block font-mono text-[8px] tracking-[.15em] text-slate-500 uppercase">
+                            Sao cá thể
+                        </span>
+                        <div
+                            className="mt-1 flex gap-1"
+                            aria-label="Chọn số sao mô phỏng"
+                        >
+                            {Object.keys(pet.star_multipliers)
+                                .map(Number)
+                                .map((option) => (
+                                    <button
+                                        key={option}
+                                        type="button"
+                                        onClick={() => onStarChange(option)}
+                                        aria-pressed={star === option}
+                                        aria-label={`${option} sao`}
+                                        className={`flex size-7 items-center justify-center border transition ${
+                                            star === option
+                                                ? 'border-amber-300/70 bg-amber-300/15 text-amber-300'
+                                                : 'border-white/8 text-slate-600 hover:border-amber-300/30 hover:text-amber-200'
+                                        }`}
+                                    >
+                                        <Sparkles className="size-3.5 fill-current" />
+                                    </button>
+                                ))}
+                        </div>
+                    </div>
                 </div>
             }
         >
@@ -765,52 +901,55 @@ function EvolutionTree({ pet }: { pet: WikiPetDetail }) {
                         viewBox={`0 0 ${tree.width} ${tree.height}`}
                         aria-hidden="true"
                     >
-                    <defs>
-                        <filter id="treeGlow">
-                            <feGaussianBlur stdDeviation="2.5" result="blur" />
-                            <feMerge>
-                                <feMergeNode in="blur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    {pet.evolution_family.transitions.map((transition) => {
-                        const from = tree.positions.get(transition.from_pet_id);
-                        const to = tree.positions.get(transition.to_pet_id);
+                        <defs>
+                            <filter id="treeGlow">
+                                <feGaussianBlur
+                                    stdDeviation="2.5"
+                                    result="blur"
+                                />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        {pet.evolution_family.transitions.map((transition) => {
+                            const from = tree.positions.get(
+                                transition.from_pet_id,
+                            );
+                            const to = tree.positions.get(transition.to_pet_id);
 
-                        if (!from || !to) {
-                            return null;
-                        }
+                            if (!from || !to) {
+                                return null;
+                            }
 
-                        const midpoint = (from.x + to.x) / 2;
+                            const midpoint = (from.x + to.x) / 2;
 
-                        return (
-                            <path
-                                key={`${transition.from_pet_id}-${transition.to_pet_id}`}
-                                d={`M ${from.x + 96} ${from.y} C ${midpoint} ${from.y}, ${midpoint} ${to.y}, ${to.x - 96} ${to.y}`}
-                                fill="none"
-                                stroke={
-                                    transition.type === 'mutation'
-                                        ? '#c084fc'
-                                        : 'var(--pet-accent)'
-                                }
-                                strokeWidth="2"
-                                strokeDasharray={
-                                    transition.type === 'mutation'
-                                        ? '7 5'
-                                        : undefined
-                                }
-                                opacity=".7"
-                                filter="url(#treeGlow)"
-                            />
-                        );
-                    })}
+                            return (
+                                <path
+                                    key={`${transition.from_pet_id}-${transition.to_pet_id}`}
+                                    d={`M ${from.x + 96} ${from.y} C ${midpoint} ${from.y}, ${midpoint} ${to.y}, ${to.x - 96} ${to.y}`}
+                                    fill="none"
+                                    stroke={
+                                        transition.type === 'mutation'
+                                            ? '#c084fc'
+                                            : 'var(--pet-accent)'
+                                    }
+                                    strokeWidth="2"
+                                    strokeDasharray={
+                                        transition.type === 'mutation'
+                                            ? '7 5'
+                                            : undefined
+                                    }
+                                    opacity=".7"
+                                    filter="url(#treeGlow)"
+                                />
+                            );
+                        })}
                     </svg>
 
                     {pet.evolution_family.transitions.map((transition) => {
-                        const from = tree.positions.get(
-                            transition.from_pet_id,
-                        );
+                        const from = tree.positions.get(transition.from_pet_id);
                         const to = tree.positions.get(transition.to_pet_id);
 
                         if (!from || !to) {
@@ -951,7 +1090,8 @@ function EvolutionMaterialLink({
             title={transition.balance_notes ?? undefined}
             className={`absolute z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border px-2 py-1 font-mono text-[7px] font-black whitespace-nowrap uppercase shadow-xl backdrop-blur ${rankTone}`}
         >
-            H{transition.cost_rank} · {transition.ingredients.length} nguyên liệu
+            H{transition.cost_rank} · {transition.ingredients.length} nguyên
+            liệu
         </div>
     );
 }
@@ -1340,11 +1480,15 @@ function SkillDeckCard({
 function TacticalSidebar({
     pet,
     level,
+    star,
+    starMultiplier,
     onOpenTraits,
     onOpenComparison,
 }: {
     pet: WikiPetDetail;
     level: number;
+    star: number;
+    starMultiplier: number;
     onOpenTraits: () => void;
     onOpenComparison: () => void;
 }) {
@@ -1376,8 +1520,8 @@ function TacticalSidebar({
                             value={`${pet.skills.filter((skill) => skill.is_available_on_current_form && skill.unlock_level <= level).length} Skill tại cấp ${level}`}
                         />
                         <SidebarFact
-                            label="Phẩm chất"
-                            value={`${qualityLabels[pet.quality_tier] ?? `Bậc ${pet.quality_tier}`} · ${pet.quality_multiplier}%`}
+                            label="Sao đang mô phỏng"
+                            value={`${star}★ · ${starMultiplier}% chỉ số chuẩn`}
                         />
                     </div>
                 </div>
@@ -1502,10 +1646,12 @@ function SidebarFact({
 function FormComparisonModal({
     pet,
     level,
+    starMultiplier,
     onClose,
 }: {
     pet: WikiPetDetail;
     level: number;
+    starMultiplier: number;
     onClose: () => void;
 }) {
     return (
@@ -1572,7 +1718,7 @@ function FormComparisonModal({
                                         const values = calculateStatValues(
                                             form.stats,
                                             level,
-                                            form.quality_multiplier,
+                                            starMultiplier,
                                         );
                                         const formula =
                                             form.stats[definition.key];
@@ -1588,7 +1734,7 @@ function FormComparisonModal({
                                 const values = calculateStatValues(
                                     form.stats,
                                     level,
-                                    form.quality_multiplier,
+                                    starMultiplier,
                                 );
 
                                 return Object.values(values)
@@ -1766,17 +1912,20 @@ function calculateStatValues(
 function interpolateBenchmarks(
     pet: WikiPetDetail,
     level: number,
+    starMultiplier: number,
 ): WikiPetStatValues {
     const progress = (level - 1) / 49;
 
     return Object.fromEntries(
         statDefinitions.map(({ key }) => [
             key,
-            Math.round(
-                pet.stat_benchmarks.level_one[key] +
+            Math.trunc(
+                ((pet.stat_benchmarks.level_one[key] +
                     (pet.stat_benchmarks.level_fifty[key] -
                         pet.stat_benchmarks.level_one[key]) *
-                        progress,
+                        progress) *
+                    starMultiplier) /
+                    100,
             ),
         ]),
     ) as WikiPetStatValues;
@@ -1890,6 +2039,85 @@ function analyzeBuild(skills: WikiPetSkill[]): {
         coverage,
         recommendation,
     };
+}
+
+const divineParameterLabels: Record<string, string> = {
+    heal_percent: 'Hồi HP',
+    damage_percent: 'Sát thương tăng thêm',
+    duration: 'Thời hạn hiệu lực',
+    uses: 'Giới hạn kích hoạt',
+    maximum_charges: 'Tích tầng tối đa',
+    damage_percent_per_charge: 'Sát thương mỗi tầng',
+    heal_percent_per_charge: 'Hồi HP mỗi tầng',
+    first_hit_reduction_percent: 'Giảm sát thương đòn đầu',
+    hits_required: 'Số đòn cần chịu',
+    counter_damage_percent: 'Sát thương phản công',
+    defense_pierce_percent: 'Xuyên Phòng ngự',
+    trigger_hp_percent: 'Ngưỡng HP kích hoạt',
+    next_hit_reduction_percent: 'Giảm sát thương đòn kế',
+    counter_heal_percent: 'Hồi HP khi phản công',
+    cooldown: 'Hồi chiêu',
+    mark_duration: 'Thời hạn dấu ấn',
+    status_chance_bonus: 'Tăng xác suất hiệu ứng',
+    critical_hp_percent: 'Ngưỡng HP nguy cấp',
+    critical_damage_percent: 'Sát thương ở ngưỡng nguy cấp',
+    reduction_percent: 'Giảm sát thương nhận',
+    agility_percent: 'Tăng Linh xảo',
+    next_damage_percent: 'Sát thương đòn kế',
+    duration_bonus: 'Tăng thời hạn debuff',
+    target_hp_percent: 'Ngưỡng HP mục tiêu',
+    failure_cooldown: 'Khóa sau khi thất bại',
+    cleanse_at_charges: 'Thanh tẩy khi đạt',
+    attacks_required: 'Chu kỳ kích hoạt',
+    current_hp_damage_percent: 'Sát thương theo HP hiện tại',
+    maximum_actor_hp_percent: 'Giới hạn theo HP tối đa',
+    fate_duration: 'Thời hạn Thiên Mệnh',
+    damage_charge_cost: 'Tầng dùng cường hóa sát thương',
+    debuff_charge_cost: 'Tầng dùng kéo dài debuff',
+    pp_restore: 'PP hồi phục',
+};
+
+function divineParameterLabel(parameter: string): string {
+    return divineParameterLabels[parameter] ?? parameter.replaceAll('_', ' ');
+}
+
+function formatDivineParameterValue(
+    parameter: string,
+    value: number | string,
+): string {
+    if (typeof value !== 'number') {
+        return value;
+    }
+
+    if (parameter.includes('percent')) {
+        return `${value}%`;
+    }
+
+    if (
+        parameter === 'duration' ||
+        parameter.includes('duration') ||
+        parameter.includes('cooldown')
+    ) {
+        return `${value} hiệp`;
+    }
+
+    if (parameter === 'uses') {
+        return `${value} lần / trận`;
+    }
+
+    if (parameter === 'pp_restore') {
+        return `+${value} PP`;
+    }
+
+    if (parameter.includes('charge')) {
+        return `${value} tầng`;
+    }
+
+    if (parameter.includes('hit') || parameter.includes('attack')) {
+        return `${value} đòn`;
+    }
+
+    return String(value);
 }
 
 function evolutionStatus(pet: WikiPetDetail): string {

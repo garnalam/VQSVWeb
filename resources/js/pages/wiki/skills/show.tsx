@@ -12,6 +12,7 @@ import {
     HeartHandshake,
     Layers3,
     LockKeyhole,
+    MonitorPlay,
     Pin,
     Plus,
     Scale,
@@ -28,6 +29,7 @@ import { toast } from 'sonner';
 import { EffectBadge, EffectIcon } from '@/components/wiki/effect-badge';
 import { ElementBadge } from '@/components/wiki/element-badge';
 import { GameArtwork } from '@/components/wiki/game-artwork';
+import { SkillBattlePreview } from '@/components/wiki/skill-battle-preview';
 import { SkillSigil } from '@/components/wiki/skill-sigil';
 import { petArtworkUrl } from '@/lib/game-assets';
 import { cn } from '@/lib/utils';
@@ -54,6 +56,7 @@ const PINNED_SKILL_STORAGE_KEY = 'vqsv-wiki:pinned-skills';
 const BUILD_SKILL_STORAGE_KEY = 'vqsv-wiki:skill-build';
 
 const quickNavigation = [
+    { href: '#battle-preview', icon: MonitorPlay, label: 'Demo chiến đấu' },
     { href: '#analysis', icon: Swords, label: 'Phân tích & Hiệu ứng' },
     { href: '#learnset', icon: GitBranch, label: 'Sơ đồ Pet học được' },
     { href: '#synergy', icon: Sparkles, label: 'Combo & Đội hình' },
@@ -237,6 +240,8 @@ export default function SkillShow({ skill }: SkillShowProps) {
                     ))}
                 </div>
             </nav>
+
+            <SkillBattlePreview skill={skill} />
 
             <div className="grid items-start gap-4 xl:grid-cols-[minmax(0,1.85fr)_minmax(20rem,1fr)]">
                 <main className="flex min-w-0 flex-col gap-4">

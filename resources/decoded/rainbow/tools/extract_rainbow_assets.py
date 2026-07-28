@@ -132,10 +132,21 @@ def animation_frames(
     if not animation:
         return [], []
 
-    frame_bounds: list[tuple[int, int, int, int]] = []
+    frames, durations, _ = render_animation_rows(atlas, sprite, animation)
+
+    return frames, durations
+
+
+def render_animation_rows(
+    atlas: Image.Image,
+    sprite: SpriteData,
+    animation: list[list[int]],
+) -> tuple[list[Image.Image], list[int], tuple[int, int, int, int] | None]:
+    """Render source animation rows and retain their shared origin around the game anchor."""
+    frame_bounds: list[tuple[int, int, int, int] | None] = []
     for frame in animation:
         if len(frame) < 2:
-            return [], []
+            return [], [], None
 
         composition_id = frame[0]
         parts: list[tuple[Image.Image, int, int]] = []
@@ -151,7 +162,8 @@ def animation_frames(
             parts.append((part, x, y))
 
         if not parts:
-            return [], []
+            frame_bounds.append(None)
+            continue
 
         frame_bounds.append(
             (
@@ -162,19 +174,47 @@ def animation_frames(
             )
         )
 
+    visual_bounds = [bounds for bounds in frame_bounds if bounds is not None]
+    if not visual_bounds:
+        return [], [], None
+
     shared_bounds = (
-        min(bounds[0] for bounds in frame_bounds),
-        min(bounds[1] for bounds in frame_bounds),
-        max(bounds[2] for bounds in frame_bounds),
-        max(bounds[3] for bounds in frame_bounds),
+        min(bounds[0] for bounds in visual_bounds),
+        min(bounds[1] for bounds in visual_bounds),
+        max(bounds[2] for bounds in visual_bounds),
+        max(bounds[3] for bounds in visual_bounds),
     )
     frames = [
         render_composition(atlas, sprite, frame[0], bounds=shared_bounds)
+        if sprite.compositions[frame[0]]
+        else Image.new(
+            "RGBA",
+            (shared_bounds[2] - shared_bounds[0], shared_bounds[3] - shared_bounds[1]),
+            (0, 0, 0, 0),
+        )
         for frame in animation
     ]
     durations = [(max(0, frame[1]) + 1) * GAME_TICK_MS for frame in animation]
 
-    return frames, durations
+    return frames, durations, shared_bounds
+
+
+def skill_animation_frames(
+    atlas: Image.Image,
+    sprite: SpriteData,
+    animation_id: int,
+) -> tuple[list[Image.Image], list[int], tuple[int, int, int, int] | None]:
+    """Render a Rainbow Skill VFX while skipping its non-visual control frames."""
+    if animation_id < 0 or animation_id >= len(sprite.animations):
+        return [], [], None
+
+    visual_animation = [
+        frame for frame in sprite.animations[animation_id] if frame and frame[0] >= 2
+    ]
+    if not visual_animation:
+        return [], [], None
+
+    return render_animation_rows(atlas, sprite, visual_animation)
 
 
 def scale_animation_frames(
@@ -291,8 +331,9 @@ def render_items(data: dict) -> None:
         save_scaled(artwork, PUBLIC_ROOT / "items" / f"{item['game_id']}.png", 96)
 
 
-def render_skills(data: dict) -> None:
+def render_skills(data: dict) -> dict[str, dict[str, object]]:
     cache: dict[int, tuple[Image.Image, SpriteData]] = {}
+    animation_manifest: dict[str, dict[str, object]] = {}
     for skill in data["skills"]:
         group = skill["artwork_group"]
         if group not in cache:
@@ -306,6 +347,53 @@ def render_skills(data: dict) -> None:
         composition_id = representative_composition(sprite, animation_id, skip_control_frames=True)
         artwork = render_composition(atlas, sprite, composition_id)
         save_scaled(artwork, PUBLIC_ROOT / "skills" / f"{skill['game_id']}.png", 112)
+
+        if skill["game_id"] > 30:
+            continue
+
+        frames, durations, bounds = skill_animation_frames(
+            atlas,
+            sprite,
+            animation_id,
+        )
+        if not frames or bounds is None:
+            continue
+
+        filename = f"{skill['game_id']}.webp"
+        save_animation(
+            frames,
+            durations,
+            PUBLIC_ROOT / "skill-animations" / filename,
+        )
+        anchor = "caster" if skill["game_id"] in (27, 28) else "opponent"
+        anchor_x = 46 if anchor == "caster" else 177
+        anchor_y = 206 if anchor == "caster" else 97
+        animation_manifest[str(skill["game_id"])] = {
+            "source_skill_id": skill["game_id"],
+            "source_atlas_group": group,
+            "source_animation_id": animation_id,
+            "source_controller": "ak.b(z) -> ak.b(slot, atlas, animation, x, y, transform)",
+            "url": f"/assets/game/cau-vong/skill-animations/{filename}",
+            "frame_count": len(frames),
+            "duration_ms": sum(durations),
+            "tick_ms": GAME_TICK_MS,
+            "frame_durations_ms": durations,
+            "timeline_mode": "concurrent_caster_action",
+            "anchor": anchor,
+            "stage_width": 240,
+            "stage_height": 320,
+            "anchor_x": anchor_x,
+            "anchor_y": anchor_y,
+            "origin_x": bounds[0],
+            "origin_y": bounds[1],
+            "frame_width": bounds[2] - bounds[0],
+            "frame_height": bounds[3] - bounds[1],
+            "global_transform": 0,
+            "control_frames_skipped": len(sprite.animations[animation_id])
+            - len(frames),
+        }
+
+    return animation_manifest
 
 
 def render_effects(data: dict) -> None:
@@ -326,7 +414,7 @@ def main() -> None:
     data = json.loads(ANALYSIS_PATH.read_text(encoding="utf-8"))
     animation_manifest = render_pets(data)
     render_items(data)
-    render_skills(data)
+    skill_animation_manifest = render_skills(data)
     render_effects(data)
     animation_manifest_path = PUBLIC_ROOT / "pet-animations" / "manifest.json"
     animation_manifest_path.parent.mkdir(parents=True, exist_ok=True)
@@ -342,9 +430,33 @@ def main() -> None:
         + "\n",
         encoding="utf-8",
     )
+    skill_animation_manifest_path = PUBLIC_ROOT / "skill-animations" / "manifest.json"
+    skill_animation_manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    skill_animation_manifest_path.write_text(
+        json.dumps(
+            {
+                "source": "Decoded Rainbow J2ME ak battle controller and battle/s0..s5 atlases",
+                "controller": {
+                    "class": "ak",
+                    "method": "b(z)",
+                    "stage_width": 240,
+                    "stage_height": 320,
+                    "tick_ms": GAME_TICK_MS,
+                    "active_skill_ids": list(range(31)),
+                    "playback": "Pet action and Skill VFX advance concurrently",
+                },
+                "animations": skill_animation_manifest,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
     print(
         f"Rendered {len(data['pets'])} pets, {len(animation_manifest)} original "
-        f"Pet skill animations, {len(data['skills'])} skills and "
+        f"Pet skill animations, {len(skill_animation_manifest)} original "
+        f"Skill VFX animations, {len(data['skills'])} skills and "
         f"{len(data['items'])} item images into {PUBLIC_ROOT}."
     )
 

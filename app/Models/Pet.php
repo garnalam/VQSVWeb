@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable([
     'game_source_id',
@@ -130,6 +131,12 @@ class Pet extends Model
     public function learnsetEntries(): HasMany
     {
         return $this->hasMany(PetSkillLearnset::class);
+    }
+
+    /** @return HasOne<DivineAbility, $this> */
+    public function divineAbility(): HasOne
+    {
+        return $this->hasOne(DivineAbility::class);
     }
 
     /**

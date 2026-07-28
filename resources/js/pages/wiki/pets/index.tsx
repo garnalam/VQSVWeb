@@ -468,12 +468,12 @@ function PetCard({
                 <div className="mt-auto flex items-center justify-between gap-3 pt-3">
                     <span
                         className="flex items-center gap-1 text-[#e0a72f]"
-                        aria-label={`${pet.quality_tier} sao`}
+                        aria-label={`${pet.preview_star} sao mô phỏng`}
                     >
                         {Array.from({ length: 5 }, (_, index) => (
                             <Sparkles
                                 key={index}
-                                className={`size-3.5 ${index < pet.quality_tier ? 'fill-current' : 'opacity-20'}`}
+                                className={`size-3.5 ${index < pet.preview_star ? 'fill-current' : 'opacity-20'}`}
                             />
                         ))}
                     </span>

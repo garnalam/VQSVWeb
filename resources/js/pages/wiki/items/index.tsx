@@ -27,18 +27,15 @@ import { compactWikiQuery } from '@/lib/wiki';
 import {
     ITEM_CATEGORY_LABELS,
     ITEM_SOURCE_ARTWORK,
-    ITEM_SOURCE_LABELS,
     itemCategoryLabel,
     itemEffectLabel,
-    itemSourceLabel,
+    itemUsageScopeLabel,
 } from '@/lib/wiki-presenters';
 import { index as itemsIndex, show as itemShow } from '@/routes/wiki/items';
-import type { PaginatedWikiData, WikiGameSource, WikiItem } from '@/types';
+import type { PaginatedWikiData, WikiItem } from '@/types';
 
 type ItemFilters = {
     q: string;
-    game: string | null;
-    source_table: number | null;
     category: string | null;
     sort: string;
 };
@@ -46,32 +43,21 @@ type ItemFilters = {
 type ItemIndexProps = {
     items: PaginatedWikiData<WikiItem>;
     categories: string[];
-    gameSources: WikiGameSource[];
     filters: ItemFilters;
 };
 
 export default function ItemIndex({
     items,
     categories,
-    gameSources,
     filters,
 }: ItemIndexProps) {
     const [query, setQuery] = useState(filters.q);
-    const [sourceTable, setSourceTable] = useState(
-        filters.source_table === null ? 'all' : String(filters.source_table),
-    );
-    const [game, setGame] = useState(filters.game ?? 'all');
     const [category, setCategory] = useState(filters.category ?? 'all');
     const [sort, setSort] = useState(filters.sort);
 
     const appliedQuery = compactWikiQuery(filters);
-    const selectedSource = gameSources.find(
-        (source) => source.slug === filters.game,
-    );
     const description =
-        selectedSource === undefined
-            ? 'Tra cứu vật phẩm, nguyên liệu, huy chương và đạo cụ theo đúng nguồn dữ liệu của từng phiên bản game.'
-            : `Tra cứu kho vật phẩm ${selectedSource.name} với tên, mô tả và icon được phục hồi trực tiếp từ game.`;
+        'Kho Item hợp nhất với cơ chế chính thức cho trang sức Pet, trang bị nội tại, hồi phục PP, bắt Pet và tiến hóa.';
 
     function submit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -80,9 +66,6 @@ export default function ItemIndex({
             itemsIndex({
                 query: compactWikiQuery({
                     q: query,
-                    game: game === 'all' ? null : game,
-                    source_table:
-                        sourceTable === 'all' ? null : Number(sourceTable),
                     category: category === 'all' ? null : category,
                     sort,
                 }),
@@ -111,38 +94,6 @@ export default function ItemIndex({
                 resetHref={itemsIndex()}
                 placeholder="Tên, mô tả hoặc ID vật phẩm..."
             >
-                <Select value={game} onValueChange={setGame}>
-                    <SelectTrigger className="h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none focus:border-[var(--wiki-shell-accent)]/55 focus:ring-[var(--wiki-shell-accent)]/15">
-                        <SelectValue placeholder="Nguồn game" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="all">Tất cả game</SelectItem>
-                        {gameSources.map((source) => (
-                            <SelectItem key={source.slug} value={source.slug}>
-                                {source.name}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-
-                <Select value={sourceTable} onValueChange={setSourceTable}>
-                    <SelectTrigger className="h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none focus:border-[var(--wiki-shell-accent)]/55 focus:ring-[var(--wiki-shell-accent)]/15">
-                        <SelectValue placeholder="Nhóm vật phẩm" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="all">
-                            Tất cả nhóm vật phẩm
-                        </SelectItem>
-                        {Object.entries(ITEM_SOURCE_LABELS).map(
-                            ([value, label]) => (
-                                <SelectItem key={value} value={value}>
-                                    {label}
-                                </SelectItem>
-                            ),
-                        )}
-                    </SelectContent>
-                </Select>
-
                 <Select value={category} onValueChange={setCategory}>
                     <SelectTrigger className="h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none focus:border-[var(--wiki-shell-accent)]/55 focus:ring-[var(--wiki-shell-accent)]/15">
                         <SelectValue placeholder="Phân loại" />
@@ -201,7 +152,9 @@ export default function ItemIndex({
                                     Vật phẩm #{item.game_id}
                                 </span>
                                 <span className="absolute top-4 left-4 rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[9px] font-black tracking-widest text-white uppercase backdrop-blur-sm">
-                                    {itemSourceLabel(item.source_table)}
+                                    {item.source_variants_count > 0
+                                        ? `${item.source_variants_count} biến thể gốc`
+                                        : 'Cơ chế hợp nhất'}
                                 </span>
 
                                 <div
@@ -275,6 +228,9 @@ export default function ItemIndex({
                                         </strong>
                                     </div>
                                 </div>
+                                <p className="mt-3 text-[11px] font-bold tracking-wide text-emerald-200/70 uppercase">
+                                    {itemUsageScopeLabel(item.usage_scope)}
+                                </p>
                             </div>
                         </Link>
                     ))}

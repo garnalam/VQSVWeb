@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Wiki;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Wiki\ItemIndexRequest;
-use App\Models\GameSource;
 use App\Models\Item;
 use App\Models\PetEvolutionIngredient;
 use Illuminate\Database\Eloquent\Builder;
@@ -21,7 +20,6 @@ class ItemController extends Controller
         $filters = $request->validated();
         $search = trim((string) ($filters['q'] ?? ''));
         $sort = (string) ($filters['sort'] ?? 'game_id');
-        $gameSlug = $filters['game'] ?? null;
 
         $items = Item::query()
             ->select([
@@ -29,10 +27,16 @@ class ItemController extends Controller
                 'game_source_id',
                 'source_table',
                 'game_id',
+                'canonical_item_id',
                 'name',
                 'slug',
                 'description',
                 'category',
+                'mechanic_key',
+                'usage_scope',
+                'equipment_slot',
+                'balance_version',
+                'is_active',
                 'frame_id',
                 'cost',
                 'currency_code',
@@ -40,10 +44,8 @@ class ItemController extends Controller
                 'effect_parameters',
             ])
             ->with('gameSource:id,name,slug,asset_key,color')
-            ->when($gameSlug, fn (Builder $query): Builder => $query->whereHas(
-                'gameSource',
-                fn (Builder $sourceQuery): Builder => $sourceQuery->where('slug', $gameSlug),
-            ))
+            ->withCount('sourceVariants')
+            ->active()
             ->when($search !== '', function (Builder $query) use ($search): void {
                 $query->where(function (Builder $searchQuery) use ($search): void {
                     $searchQuery->where('name', 'like', "%{$search}%")
@@ -54,10 +56,6 @@ class ItemController extends Controller
                     }
                 });
             })
-            ->when(isset($filters['source_table']), fn (Builder $query): Builder => $query->where(
-                'source_table',
-                (int) $filters['source_table'],
-            ))
             ->when(isset($filters['category']), fn (Builder $query): Builder => $query->where(
                 'category',
                 (string) $filters['category'],
@@ -85,6 +83,12 @@ class ItemController extends Controller
                 'slug' => $item->slug,
                 'description' => $item->description,
                 'category' => $item->category,
+                'mechanic_key' => $item->mechanic_key,
+                'usage_scope' => $item->usage_scope,
+                'equipment_slot' => $item->equipment_slot,
+                'balance_version' => $item->balance_version,
+                'is_active' => $item->is_active,
+                'source_variants_count' => $item->source_variants_count,
                 'frame_id' => $item->frame_id,
                 'cost' => $item->cost,
                 'currency_code' => $item->currency_code,
@@ -95,18 +99,12 @@ class ItemController extends Controller
         return Inertia::render('wiki/items/index', [
             'items' => $items,
             'categories' => Item::query()
-                ->when($gameSlug, fn (Builder $query): Builder => $query->whereHas(
-                    'gameSource',
-                    fn (Builder $sourceQuery): Builder => $sourceQuery->where('slug', $gameSlug),
-                ))
+                ->active()
                 ->distinct()
                 ->orderBy('category')
                 ->pluck('category'),
-            'gameSources' => GameSource::query()->select('name', 'slug', 'asset_key', 'color')->orderBy('id')->get(),
             'filters' => [
                 'q' => $search,
-                'game' => $gameSlug,
-                'source_table' => isset($filters['source_table']) ? (int) $filters['source_table'] : null,
                 'category' => $filters['category'] ?? null,
                 'sort' => $sort,
             ],
@@ -118,7 +116,13 @@ class ItemController extends Controller
      */
     public function show(Item $item): Response
     {
-        $item->load('gameSource:id,name,slug,asset_key,color');
+        $item->load([
+            'gameSource:id,name,slug,asset_key,color',
+            'canonicalItem:id,game_source_id,source_table,game_id,name,slug,frame_id,category,mechanic_key',
+            'canonicalItem.gameSource:id,name,slug,asset_key,color',
+            'sourceVariants:id,game_source_id,source_table,game_id,canonical_item_id,name,slug,frame_id',
+            'sourceVariants.gameSource:id,name,slug,asset_key,color',
+        ]);
 
         $evolutionUsages = $item->evolutionIngredients()
             ->select(['id', 'pet_evolution_id', 'item_id', 'quantity', 'role', 'position'])
@@ -187,12 +191,48 @@ class ItemController extends Controller
                 'description_original' => $item->description_original,
                 'description' => $item->description,
                 'category' => $item->category,
+                'mechanic_key' => $item->mechanic_key,
+                'usage_scope' => $item->usage_scope,
+                'equipment_slot' => $item->equipment_slot,
+                'balance_version' => $item->balance_version,
+                'is_active' => $item->is_active,
+                'source_variants_count' => $item->sourceVariants->count(),
                 'frame_id' => $item->frame_id,
                 'cost' => $item->cost,
                 'currency_code' => $item->currency_code,
                 'effect_type' => $item->effect_type,
                 'effect_parameters' => $item->effect_parameters,
                 'raw_values' => $item->raw_values,
+                'canonical_item' => $item->canonicalItem === null ? null : [
+                    'id' => $item->canonicalItem->id,
+                    'game_source' => [
+                        'name' => $item->canonicalItem->gameSource->name,
+                        'slug' => $item->canonicalItem->gameSource->slug,
+                        'asset_key' => $item->canonicalItem->gameSource->asset_key,
+                        'color' => $item->canonicalItem->gameSource->color,
+                    ],
+                    'source_table' => $item->canonicalItem->source_table,
+                    'game_id' => $item->canonicalItem->game_id,
+                    'name' => $item->canonicalItem->name,
+                    'slug' => $item->canonicalItem->slug,
+                    'frame_id' => $item->canonicalItem->frame_id,
+                    'category' => $item->canonicalItem->category,
+                    'mechanic_key' => $item->canonicalItem->mechanic_key,
+                ],
+                'source_variants' => $item->sourceVariants->map(fn (Item $variant): array => [
+                    'id' => $variant->id,
+                    'game_source' => [
+                        'name' => $variant->gameSource->name,
+                        'slug' => $variant->gameSource->slug,
+                        'asset_key' => $variant->gameSource->asset_key,
+                        'color' => $variant->gameSource->color,
+                    ],
+                    'source_table' => $variant->source_table,
+                    'game_id' => $variant->game_id,
+                    'name' => $variant->name,
+                    'slug' => $variant->slug,
+                    'frame_id' => $variant->frame_id,
+                ])->values(),
                 'evolution_usages' => $evolutionUsages,
             ],
         ]);

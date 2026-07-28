@@ -239,6 +239,63 @@
     }
 }
 
+@keyframes skill-battle-number {
+    0% {
+        transform: translateY(1.25rem) scale(0.7);
+        opacity: 0;
+    }
+
+    28% {
+        transform: translateY(-0.4rem) scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-2.5rem) scale(0.95);
+        opacity: 0;
+    }
+}
+
+@keyframes skill-battle-tick {
+    0% {
+        transform: translate(-50%, -35%) scale(0.85);
+        opacity: 0;
+    }
+
+    30%,
+    75% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -62%) scale(0.96);
+        opacity: 0;
+    }
+}
+
+@keyframes skill-battle-status-harmful {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 0 rgb(251 113 133 / 0));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 1.1rem rgb(251 113 133 / 0.95)) saturate(0.7);
+    }
+}
+
+@keyframes skill-battle-status-beneficial {
+    0%,
+    100% {
+        filter: drop-shadow(0 0 0 rgb(52 211 153 / 0));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 1.1rem rgb(52 211 153 / 0.95)) brightness(1.12);
+    }
+}
+
 @layer components {
     .wiki-shell {
         --wiki-surface: #0b0f17;
@@ -399,6 +456,22 @@
         animation: wiki-spark 2.4s ease-in-out infinite;
         box-shadow: 0 0 1rem currentColor;
     }
+
+    .skill-battle-number {
+        animation: skill-battle-number 1.15s ease-out both;
+    }
+
+    .skill-battle-tick {
+        animation: skill-battle-tick 1.2s ease-in-out both;
+    }
+
+    .skill-battle-status-harmful {
+        animation: skill-battle-status-harmful 1s ease-in-out infinite;
+    }
+
+    .skill-battle-status-beneficial {
+        animation: skill-battle-status-beneficial 1s ease-in-out infinite;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -409,7 +482,11 @@
     .wiki-spark,
     .wiki-signal,
     .wiki-pulse-ring::before,
-    .wiki-pulse-ring::after {
+    .wiki-pulse-ring::after,
+    .skill-battle-number,
+    .skill-battle-tick,
+    .skill-battle-status-harmful,
+    .skill-battle-status-beneficial {
         animation: none;
     }
 

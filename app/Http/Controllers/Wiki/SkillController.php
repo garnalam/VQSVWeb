@@ -9,6 +9,7 @@ use App\Models\Pet;
 use App\Models\PetEvolution;
 use App\Models\PetSkillLearnset;
 use App\Models\Skill;
+use App\Support\SkillBattlePreview;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
@@ -303,12 +304,12 @@ class SkillController extends Controller
     /**
      * Display a skill dossier with unlock rules and compatible pets.
      */
-    public function show(Skill $skill): Response
+    public function show(Skill $skill, SkillBattlePreview $battlePreview): Response
     {
         $skill->load([
             'gameSource:id,name,slug,asset_key,color',
             'element:id,game_source_id,game_id,name,slug,color',
-            'effect:id,game_source_id,source_table,game_id,name,kind,duration,description',
+            'effect:id,game_source_id,source_table,game_id,name,kind,duration,description,parameters',
             'learnsetEntries:id,pet_id,skill_id,unlock_level,source_type,combat_role,is_signature,sort_order',
         ]);
 
@@ -324,6 +325,19 @@ class SkillController extends Controller
                 'species',
                 'primary_role',
                 'secondary_role',
+                'quality_tier',
+                'hp_base',
+                'hp_per_level',
+                'hp_offset',
+                'stat_2_base',
+                'stat_2_per_level',
+                'stat_2_offset',
+                'stat_3_base',
+                'stat_3_per_10_levels',
+                'stat_3_offset',
+                'stat_4_base',
+                'stat_4_per_10_levels',
+                'stat_4_offset',
             ])
             ->with('gameSource:id,name,slug,asset_key,color')
             ->orderBy('game_source_id')
@@ -504,6 +518,12 @@ class SkillController extends Controller
                         'disadvantage' => 0.75,
                     ],
                 ],
+                'battle_preview' => $battlePreview->build(
+                    $skill,
+                    $compatiblePets,
+                    $allPets,
+                    $this->effectiveStatusChance($skill),
+                ),
                 'compatible_pets' => $compatiblePets,
                 'provenance' => $this->skillProvenance($skill),
             ],

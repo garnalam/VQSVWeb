@@ -11,6 +11,7 @@ use App\Models\PetSkillLearnset;
 use App\Models\PetTrait;
 use App\Models\Skill;
 use App\Support\EvolutionRecipeData;
+use App\Support\PetStatCalculator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -21,9 +22,9 @@ use UnexpectedValueException;
 
 class PetController extends Controller
 {
-    private const QUALITY_MULTIPLIERS = [1 => 90, 2 => 95, 3 => 100, 4 => 110, 5 => 125];
-
     private const CARD_PREVIEW_LEVEL = 50;
+
+    public function __construct(private PetStatCalculator $petStatCalculator) {}
 
     /**
      * Display the searchable pet catalog grouped by evolution family.
@@ -135,7 +136,8 @@ class PetController extends Controller
                     'learning_group' => $pet->learning_group,
                     'quality_tier' => $pet->quality_tier,
                     'preview_level' => self::CARD_PREVIEW_LEVEL,
-                    'preview_stats' => $this->calculatedStats($pet, self::CARD_PREVIEW_LEVEL),
+                    'preview_star' => PetStatCalculator::DEFAULT_STAR,
+                    'preview_stats' => $this->petStatCalculator->calculate($pet, self::CARD_PREVIEW_LEVEL),
                     'belongs_to_evolution_family' => $metadata['family_size'] > 1,
                     'can_evolve' => $pet->evolutions_count > 0,
                     'is_final_stage' => $pet->previous_evolutions_count > 0 && $pet->evolutions_count === 0,
@@ -208,6 +210,7 @@ class PetController extends Controller
         $pet->load([
             'gameSource:id,name,slug,asset_key,color',
             'speciesTrait:id,code,name,slot_type,species,polarity,description,parameters,roll_weight,is_cleanse_eligible',
+            'divineAbility:id,pet_id,code,name,activation_type,description,parameters,is_active',
         ]);
 
         $allPets = Pet::query()
@@ -346,6 +349,9 @@ class PetController extends Controller
         $statBenchmarks = $this->statBenchmarks();
         $description = Str::of((string) $pet->description)->trim();
         $hasCombatNote = $description->contains('[') && $description->contains(']');
+        $divineAbility = $pet->divineAbility?->is_active === true
+            ? $pet->divineAbility
+            : null;
 
         return Inertia::render('wiki/pets/show', [
             'pet' => [
@@ -372,6 +378,15 @@ class PetController extends Controller
                 'secondary_role_label' => Pet::COMBAT_ROLES[$pet->secondary_role],
                 'preferred_battle_format' => $pet->preferred_battle_format,
                 'playstyle_summary' => $pet->playstyle_summary,
+                'power_class' => $divineAbility === null ? 'standard' : 'divine',
+                'divine_ability' => $divineAbility === null ? null : [
+                    'code' => $divineAbility->code,
+                    'name' => $divineAbility->name,
+                    'activation_type' => $divineAbility->activation_type,
+                    'activation_type_label' => $this->divineActivationTypeLabel($divineAbility->activation_type),
+                    'description' => $divineAbility->description,
+                    'parameters' => $divineAbility->parameters,
+                ],
                 'equipped_skill_limit' => 5,
                 'raw_values' => $pet->raw_values,
                 'description' => $pet->description,
@@ -388,7 +403,8 @@ class PetController extends Controller
                         : null,
                     'locations' => $pet->discovery_locations ?? [],
                 ],
-                'quality_multiplier' => self::QUALITY_MULTIPLIERS[$pet->quality_tier],
+                'default_star' => PetStatCalculator::DEFAULT_STAR,
+                'star_multipliers' => PetStatCalculator::STAR_MULTIPLIERS,
                 'stats' => $this->statFormulas($pet),
                 'stat_benchmarks' => $statBenchmarks,
                 'evolution_stage' => $currentMetadata['stage'] + 1,
@@ -410,7 +426,6 @@ class PetController extends Controller
                         'slug' => $familyPet->slug,
                         'sprite_id' => $familyPet->sprite_id,
                         'quality_tier' => $familyPet->quality_tier,
-                        'quality_multiplier' => self::QUALITY_MULTIPLIERS[$familyPet->quality_tier],
                         'combat_element' => $this->combatElement($familyPet),
                         'species' => $this->species($familyPet),
                         'primary_role' => $familyPet->primary_role,
@@ -452,6 +467,29 @@ class PetController extends Controller
             ],
             'trait_system' => $this->physicalTraitSystem(),
         ]);
+    }
+
+    /**
+     * Convert an internal Divine Authority trigger into a player-facing label.
+     */
+    private function divineActivationTypeLabel(string $activationType): string
+    {
+        return match ($activationType) {
+            'revival' => 'Hồi sinh khi chịu đòn chí tử',
+            'charge_cycle' => 'Tích tầng qua chu kỳ Skill',
+            'guard_counter' => 'Phòng thủ và phản công',
+            'heavy_hit_response' => 'Phản ứng khi chịu đòn nặng',
+            'mark_detonation' => 'Đặt và kích nổ dấu ấn',
+            'hp_threshold' => 'Kích hoạt theo ngưỡng HP',
+            'successful_control' => 'Kích hoạt khi khống chế thành công',
+            'debuff_mastery' => 'Cường hóa mục tiêu chịu debuff',
+            'execution' => 'Kết liễu mục tiêu suy yếu',
+            'attack_cycle' => 'Kích hoạt theo chu kỳ tấn công',
+            'failed_control' => 'Bù đắp khi khống chế thất bại',
+            'speed_charge' => 'Tích tầng khi ra đòn trước',
+            'support_cycle' => 'Chu kỳ Skill hỗ trợ',
+            default => 'Năng lực đặc trưng',
+        };
     }
 
     /** @return array<string, mixed> */
@@ -622,26 +660,6 @@ class PetController extends Controller
     }
 
     /**
-     * Calculate the unified combat stats for a Pet at a selected level.
-     *
-     * @return array{hp: int, strength: int, defense: int, agility: int}
-     */
-    private function calculatedStats(Pet $pet, int $level): array
-    {
-        $formulas = $this->statFormulas($pet);
-        $qualityMultiplier = self::QUALITY_MULTIPLIERS[$pet->quality_tier];
-        $stats = [];
-
-        foreach (['hp', 'strength', 'defense', 'agility'] as $stat) {
-            $formula = $formulas[$stat];
-            $levelFactor = $formula['per_ten_levels'] ? $level / 10 : $level;
-            $stats[$stat] = (int) (($formula['base'] + $formula['per_level'] * $levelFactor + $formula['offset']) * $qualityMultiplier / 100);
-        }
-
-        return $stats;
-    }
-
-    /**
      * Calculate the unified all-Pet average used as the radar-chart benchmark.
      *
      * @return array{level_one: array{hp: int, strength: int, defense: int, agility: int}, level_fifty: array{hp: int, strength: int, defense: int, agility: int}}
@@ -650,7 +668,6 @@ class PetController extends Controller
     {
         $pets = Pet::query()
             ->select([
-                'quality_tier',
                 'hp_base',
                 'hp_per_level',
                 'hp_offset',
@@ -668,7 +685,9 @@ class PetController extends Controller
 
         return collect(['level_one' => 1, 'level_fifty' => 50])
             ->map(function (int $level) use ($pets): array {
-                $calculatedStats = $pets->map(fn (Pet $pet): array => $this->calculatedStats($pet, $level));
+                $calculatedStats = $pets->map(
+                    fn (Pet $pet): array => $this->petStatCalculator->calculate($pet, $level),
+                );
 
                 return [
                     'hp' => (int) round($calculatedStats->avg('hp')),

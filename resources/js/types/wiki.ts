@@ -72,6 +72,7 @@ export type WikiPet = {
     learning_group: number;
     quality_tier: number;
     preview_level: number;
+    preview_star: number;
     preview_stats: WikiPetStatValues;
     belongs_to_evolution_family: boolean;
     can_evolve: boolean;
@@ -139,7 +140,6 @@ export type WikiEvolutionPet = {
     slug: string;
     sprite_id: number;
     quality_tier: number;
-    quality_multiplier: number;
     combat_element: WikiCombatElement;
     species: WikiSpecies;
     primary_role: string;
@@ -189,6 +189,15 @@ export type WikiEvolutionIngredient = {
     >;
 };
 
+export type WikiDivineAbility = {
+    code: string;
+    name: string;
+    activation_type: string;
+    activation_type_label: string;
+    description: string;
+    parameters: Record<string, number | string>;
+};
+
 export type WikiPetDetail = {
     id: number;
     game_source: WikiGameSource;
@@ -208,6 +217,8 @@ export type WikiPetDetail = {
     secondary_role_label: string;
     preferred_battle_format: 'single' | 'double' | 'any';
     playstyle_summary: string;
+    power_class: 'standard' | 'divine';
+    divine_ability: WikiDivineAbility | null;
     equipped_skill_limit: number;
     raw_values: unknown[] | null;
     description: string | null;
@@ -218,7 +229,8 @@ export type WikiPetDetail = {
         method: string | null;
         locations: string[];
     };
-    quality_multiplier: number;
+    default_star: number;
+    star_multipliers: Record<number, number>;
     stats: WikiPetStats;
     stat_benchmarks: {
         level_one: WikiPetStatValues;
@@ -384,6 +396,117 @@ export type WikiSkillTeammate = {
     game_source: WikiGameSource;
 };
 
+export type WikiSkillBattleCombatant = {
+    id: number;
+    name: string;
+    sprite_id: number;
+    quality_tier: number;
+    primary_role_label: string;
+    game_source: WikiGameSource;
+    combat_element: WikiCombatElement;
+    stats: WikiPetStatValues;
+    effect_snapshots: Record<
+        string,
+        {
+            url: string;
+            origin_x: number;
+            origin_y: number;
+            width: number;
+            height: number;
+        }
+    >;
+    unlock_level?: number;
+    is_inherited?: boolean;
+};
+
+export type WikiSkillBattleEffectRule = {
+    key: string;
+    title: string;
+    summary: string;
+    effect_name?: string;
+    target: 'caster' | 'opponent';
+    tone: 'beneficial' | 'harmful' | 'neutral';
+    duration_turns: number | null;
+    status_chance: number | null;
+    stat_changes: Array<{
+        stat: string;
+        direction: 'up' | 'down';
+        value: number;
+        unit: 'percent';
+    }>;
+    follow_up: {
+        kind: string;
+        value: number | null;
+        secondary_value: number | null;
+        basis: 'percent' | 'points' | 'max_hp' | 'current_hp';
+    };
+    provenance: 'decoded' | 'unified';
+};
+
+export type WikiSkillSourceAnimationEvent = {
+    index: number;
+    kind: 'sprite_animation' | 'procedural_pet_effect';
+    anchor: 'caster' | 'opponent';
+    render_status: 'decoded_original' | 'source_metadata';
+    url?: string;
+    frame_count?: number;
+    duration_ms?: number;
+    tick_ms?: number;
+    frame_durations_ms?: number[];
+    timeline_mode?: 'concurrent_caster_action';
+    source_controller?: string;
+    stage_width?: number;
+    stage_height?: number;
+    anchor_x?: number;
+    anchor_y?: number;
+    origin_x?: number;
+    origin_y?: number;
+    frame_width?: number;
+    frame_height?: number;
+    global_transform?: number;
+    runtime_renderer?: 'a.a.b.canvas.v1';
+    snapshot_composition_state?: number;
+    texture_url?: string;
+    source_skill_id?: number;
+    source_action_id?: number;
+    source_sprite_id?: number;
+    source_animation_id?: number;
+    source_effect_id?: number;
+    source_effect_type?: number;
+    source_parameters?: number[];
+    source_row?: number[];
+    trigger_frame?: number | null;
+    follow_up_frame?: number | null;
+    follow_up_action?: number;
+};
+
+export type WikiSkillSourceAnimation = {
+    provenance:
+        | 'decoded_original'
+        | 'source_metadata_only'
+        | 'source_no_visual'
+        | 'unavailable';
+    label: string;
+    source_timeline?: number[];
+    events: WikiSkillSourceAnimationEvent[];
+};
+
+export type WikiSkillBattlePreview = {
+    ruleset: 'liet-hoa-unified-v1';
+    ruleset_label: string;
+    level: number;
+    default_caster_id: number | null;
+    caster_options: WikiSkillBattleCombatant[];
+    opponent: WikiSkillBattleCombatant | null;
+    effect_rule: WikiSkillBattleEffectRule;
+    source_animation: WikiSkillSourceAnimation;
+    damage: {
+        formula: string;
+        element_multiplier: number;
+        variance: number;
+    };
+};
+
 export type WikiSkillDetail = WikiSkill & {
     name_original: string;
     description_original: string;
@@ -421,6 +544,7 @@ export type WikiSkillDetail = WikiSkill & {
             disadvantage: number;
         };
     };
+    battle_preview: WikiSkillBattlePreview;
     compatible_pets: WikiCompatiblePet[];
 };
 
@@ -433,6 +557,12 @@ export type WikiItem = {
     slug: string;
     description: string | null;
     category: string;
+    mechanic_key: string | null;
+    usage_scope: string | null;
+    equipment_slot: string | null;
+    balance_version: string | null;
+    is_active: boolean;
+    source_variants_count: number;
     frame_id: number | null;
     cost: number | null;
     currency_code: number | null;
@@ -463,6 +593,30 @@ export type WikiItemDetail = WikiItem & {
     name_original: string;
     description_original: string | null;
     raw_values: unknown[] | null;
+    canonical_item: Pick<
+        WikiItem,
+        | 'id'
+        | 'game_source'
+        | 'source_table'
+        | 'game_id'
+        | 'name'
+        | 'slug'
+        | 'frame_id'
+        | 'category'
+        | 'mechanic_key'
+    > | null;
+    source_variants: Array<
+        Pick<
+            WikiItem,
+            | 'id'
+            | 'game_source'
+            | 'source_table'
+            | 'game_id'
+            | 'name'
+            | 'slug'
+            | 'frame_id'
+        >
+    >;
     evolution_usages: WikiItemEvolutionUsage[];
 };
 

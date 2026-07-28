@@ -3,10 +3,14 @@
 use App\Models\Item;
 use App\Models\Pet;
 use App\Models\Skill;
+use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\DivineAbilitySeeder;
+use Database\Seeders\PetBalanceSeeder;
 use Database\Seeders\PetLearnsetSeeder;
 use Database\Seeders\PetTraitSeeder;
 use Database\Seeders\RainbowGameDataSeeder;
 use Database\Seeders\VqsvGameDataSeeder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Inertia\Testing\AssertableInertia as Assert;
 
@@ -85,7 +89,7 @@ test('final evolution stages belong to a family and are never classified as stan
 });
 
 test('pet profile exposes stats skills and complete evolution material path', function () {
-    seed([RainbowGameDataSeeder::class, PetLearnsetSeeder::class]);
+    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
 
     $pet = Pet::query()->where('game_id', 7)->firstOrFail();
 
@@ -124,8 +128,45 @@ test('pet profile exposes stats skills and complete evolution material path', fu
             ->has('pet.evolution_family.transitions.0.item'));
 });
 
+test('pet profile exposes divine badge data and Divine Authority only for divine pets', function () {
+    seed([
+        RainbowGameDataSeeder::class,
+        PetBalanceSeeder::class,
+        PetLearnsetSeeder::class,
+        DivineAbilitySeeder::class,
+    ]);
+
+    $divinePet = Pet::query()
+        ->where('game_id', 15)
+        ->whereHas('gameSource', fn (Builder $query): Builder => $query->where('slug', 'liet-hoa'))
+        ->firstOrFail();
+    $standardPet = Pet::query()
+        ->where('game_id', 0)
+        ->whereHas('gameSource', fn (Builder $query): Builder => $query->where('slug', 'liet-hoa'))
+        ->firstOrFail();
+
+    $this->get(route('wiki.pets.show', $divinePet))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page): Assert => $page
+            ->component('wiki/pets/show')
+            ->where('pet.power_class', 'divine')
+            ->where('pet.divine_ability.code', 'phoenix-rebirth')
+            ->where('pet.divine_ability.name', 'Niết Bàn Vĩnh Hỏa')
+            ->where('pet.divine_ability.activation_type', 'revival')
+            ->where('pet.divine_ability.activation_type_label', 'Hồi sinh khi chịu đòn chí tử')
+            ->where('pet.divine_ability.parameters.heal_percent', 25)
+            ->where('pet.divine_ability.parameters.uses', 1));
+
+    $this->get(route('wiki.pets.show', $standardPet))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page): Assert => $page
+            ->component('wiki/pets/show')
+            ->where('pet.power_class', 'standard')
+            ->where('pet.divine_ability', null));
+});
+
 test('skill catalog filters by effect and target', function () {
-    seed([RainbowGameDataSeeder::class, PetLearnsetSeeder::class]);
+    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
 
     $this->get(route('wiki.skills.index', [
         'q' => 'Dương viêm',
@@ -148,20 +189,20 @@ test('skill catalog filters by effect and target', function () {
 });
 
 test('skill element filter uses the shared seven-element combat matrix', function () {
-    seed([RainbowGameDataSeeder::class, PetLearnsetSeeder::class]);
+    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
 
     $this->get(route('wiki.skills.index', [
         'element' => 'moc',
     ]))->assertOk()
         ->assertInertia(fn (Assert $page): Assert => $page
             ->component('wiki/skills/index')
-            ->where('skills.total', 17)
+            ->where('skills.total', 15)
             ->where('skills.data', fn (Collection $skills): bool => $skills->isNotEmpty()
                 && $skills->every(fn (array $skill): bool => $skill['element']['slug'] === 'moc')));
 });
 
 test('skill dossier exposes unlock levels and compatible pets', function () {
-    seed([RainbowGameDataSeeder::class, PetLearnsetSeeder::class]);
+    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
 
     $skill = Skill::query()->where('game_id', 8)->firstOrFail();
 
@@ -171,7 +212,7 @@ test('skill dossier exposes unlock levels and compatible pets', function () {
             ->component('wiki/skills/show')
             ->where('skill.game_id', 8)
             ->where('skill.tier', 3)
-            ->where('skill.status_chance', 20)
+            ->where('skill.status_chance', 25)
             ->where('skill.effect.source_table', 7)
             ->where('skill.effect.game_id', 1)
             ->where('skill.combat_category', fn (string $category): bool => $category !== '')
@@ -188,7 +229,7 @@ test('skill dossier exposes unlock levels and compatible pets', function () {
             ->where('skill.species_distribution', fn (Collection $distribution): bool => $distribution->isNotEmpty()
                 && round($distribution->sum('percentage'), 1) === 100.0)
             ->has('skill.synergies.setup_skills', 0)
-            ->has('skill.synergies.finisher_skills', 0)
+            ->has('skill.synergies.finisher_skills', 2)
             ->has('skill.synergies.teammate_pets')
             ->where('skill.synergies.provenance', 'calculated')
             ->where('skill.simulator.element_multipliers.advantage', 1.5)
@@ -198,10 +239,11 @@ test('skill dossier exposes unlock levels and compatible pets', function () {
                 && isset($pets[0]['grant_pet'], $pets[0]['unlock_level'], $pets[0]['is_inherited'])));
 });
 
-test('item catalog keeps source identity while filtering', function () {
+test('item catalog publishes only canonical unified items while retaining source identity', function () {
+    seed(DatabaseSeeder::class);
+
     $this->get(route('wiki.items.index', [
-        'q' => 'Năng lượng Thạch',
-        'source_table' => 4,
+        'q' => 'Năng lượng',
         'category' => 'recovery',
     ]))->assertOk()
         ->assertInertia(fn (Assert $page): Assert => $page
@@ -210,10 +252,16 @@ test('item catalog keeps source identity while filtering', function () {
             ->where('items.data.0.source_table', 4)
             ->where('items.data.0.game_id', 6)
             ->where('items.data.0.effect_type', 2)
+            ->where('items.data.0.mechanic_key', 'restore_pp')
+            ->where('items.data.0.balance_version', 'unified-item-v1')
+            ->where('items.data.0.effect_parameters.pp_percent', 50)
+            ->where('items.total', 1)
             ->has('categories'));
 });
 
 test('item dossier exposes human readable item data and related evolution paths', function () {
+    seed(DatabaseSeeder::class);
+
     $item = Item::query()->where('name', 'Tinh Nguyên Thạch')->firstOrFail();
 
     $this->get(route('wiki.items.show', $item))
@@ -222,20 +270,24 @@ test('item dossier exposes human readable item data and related evolution paths'
             ->component('wiki/items/show')
             ->where('item.name', 'Tinh Nguyên Thạch')
             ->where('item.category', 'evolution_material')
-            ->has('item.evolution_usages', 18)
+            ->where('item.mechanic_key', 'evolution_core')
+            ->where('item.usage_scope', 'crafting')
+            ->where('item.balance_version', 'unified-item-v1')
+            ->where('item.is_active', true)
+            ->has('item.evolution_usages', 23)
             ->where('item.evolution_usages.0.from_pet.name', 'Long bảo bối')
             ->where('item.evolution_usages.0.to_pet.name', 'Phệ Hỏa Thú')
             ->where('item.evolution_usages.0.quantity', 1));
 });
 
-test('badge item catalog has original artwork for every game badge', function () {
-    $this->get(route('wiki.items.index', ['source_table' => 2]))
-        ->assertOk()
-        ->assertInertia(fn (Assert $page): Assert => $page
-            ->component('wiki/items/index')
-            ->has('items.data', 8)
-            ->where('items.data.0.game_id', 0)
-            ->where('items.data.7.game_id', 7));
+test('retains every original game badge and its decoded artwork', function () {
+    $badges = Item::query()
+        ->where('source_table', 2)
+        ->orderBy('game_id')
+        ->get();
+
+    expect($badges)->toHaveCount(8)
+        ->and($badges->pluck('game_id')->all())->toBe(range(0, 7));
 
     foreach (range(0, 7) as $gameId) {
         expect(public_path("assets/game/badges/{$gameId}.png"))->toBeFile();

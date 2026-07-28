@@ -102,6 +102,3694 @@
     "184": "/assets/game/pets/184.png",
     "185": "/assets/game/pets/185.png"
   },
+  "pet_effect_snapshots": {
+    "86": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/86-state-0.png",
+        "origin_x": -36,
+        "origin_y": -41,
+        "width": 72,
+        "height": 31
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/86-state-3.png",
+        "origin_x": -36,
+        "origin_y": -52,
+        "width": 72,
+        "height": 35
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/86-state-4.png",
+        "origin_x": -36,
+        "origin_y": -45,
+        "width": 72,
+        "height": 31
+      }
+    },
+    "87": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/87-state-0.png",
+        "origin_x": -24,
+        "origin_y": -48,
+        "width": 45,
+        "height": 48
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/87-state-1.png",
+        "origin_x": -24,
+        "origin_y": -49,
+        "width": 45,
+        "height": 49
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/87-state-2.png",
+        "origin_x": -24,
+        "origin_y": -58,
+        "width": 45,
+        "height": 48
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/87-state-3.png",
+        "origin_x": -25,
+        "origin_y": -48,
+        "width": 56,
+        "height": 56
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/87-state-4.png",
+        "origin_x": -24,
+        "origin_y": -58,
+        "width": 55,
+        "height": 66
+      }
+    },
+    "88": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/88-state-0.png",
+        "origin_x": -30,
+        "origin_y": -62,
+        "width": 62,
+        "height": 62
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/88-state-1.png",
+        "origin_x": -30,
+        "origin_y": -61,
+        "width": 62,
+        "height": 61
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/88-state-2.png",
+        "origin_x": -20,
+        "origin_y": -66,
+        "width": 55,
+        "height": 67
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/88-state-3.png",
+        "origin_x": -15,
+        "origin_y": -66,
+        "width": 67,
+        "height": 67
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/88-state-4.png",
+        "origin_x": -20,
+        "origin_y": -66,
+        "width": 73,
+        "height": 71
+      }
+    },
+    "89": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/89-state-0.png",
+        "origin_x": -32,
+        "origin_y": -46,
+        "width": 60,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/89-state-1.png",
+        "origin_x": -26,
+        "origin_y": -47,
+        "width": 54,
+        "height": 47
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/89-state-2.png",
+        "origin_x": -26,
+        "origin_y": -42,
+        "width": 54,
+        "height": 42
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/89-state-3.png",
+        "origin_x": -26,
+        "origin_y": -42,
+        "width": 54,
+        "height": 42
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/89-state-4.png",
+        "origin_x": -26,
+        "origin_y": -42,
+        "width": 54,
+        "height": 42
+      }
+    },
+    "90": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/90-state-0.png",
+        "origin_x": -25,
+        "origin_y": -47,
+        "width": 45,
+        "height": 47
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/90-state-1.png",
+        "origin_x": -2,
+        "origin_y": -47,
+        "width": 45,
+        "height": 47
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/90-state-2.png",
+        "origin_x": -27,
+        "origin_y": -48,
+        "width": 47,
+        "height": 48
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/90-state-3.png",
+        "origin_x": -34,
+        "origin_y": -48,
+        "width": 54,
+        "height": 48
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/90-state-4.png",
+        "origin_x": -27,
+        "origin_y": -47,
+        "width": 47,
+        "height": 47
+      }
+    },
+    "91": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/91-state-0.png",
+        "origin_x": -43,
+        "origin_y": -60,
+        "width": 78,
+        "height": 62
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/91-state-1.png",
+        "origin_x": -44,
+        "origin_y": -59,
+        "width": 80,
+        "height": 60
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/91-state-2.png",
+        "origin_x": -44,
+        "origin_y": -58,
+        "width": 80,
+        "height": 58
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/91-state-3.png",
+        "origin_x": -47,
+        "origin_y": -60,
+        "width": 78,
+        "height": 62
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/91-state-4.png",
+        "origin_x": -39,
+        "origin_y": -60,
+        "width": 78,
+        "height": 62
+      }
+    },
+    "92": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/92-state-0.png",
+        "origin_x": -17,
+        "origin_y": -51,
+        "width": 35,
+        "height": 51
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/92-state-1.png",
+        "origin_x": -18,
+        "origin_y": -50,
+        "width": 36,
+        "height": 50
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/92-state-2.png",
+        "origin_x": -17,
+        "origin_y": -51,
+        "width": 35,
+        "height": 51
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/92-state-3.png",
+        "origin_x": -23,
+        "origin_y": -58,
+        "width": 49,
+        "height": 58
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/92-state-4.png",
+        "origin_x": -23,
+        "origin_y": -50,
+        "width": 49,
+        "height": 60
+      }
+    },
+    "93": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/93-state-0.png",
+        "origin_x": -30,
+        "origin_y": -69,
+        "width": 55,
+        "height": 73
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/93-state-1.png",
+        "origin_x": -30,
+        "origin_y": -69,
+        "width": 55,
+        "height": 73
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/93-state-2.png",
+        "origin_x": -30,
+        "origin_y": -68,
+        "width": 55,
+        "height": 72
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/93-state-3.png",
+        "origin_x": -31,
+        "origin_y": -64,
+        "width": 55,
+        "height": 68
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/93-state-4.png",
+        "origin_x": -32,
+        "origin_y": -63,
+        "width": 56,
+        "height": 67
+      }
+    },
+    "94": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/94-state-0.png",
+        "origin_x": -43,
+        "origin_y": -84,
+        "width": 82,
+        "height": 87
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/94-state-1.png",
+        "origin_x": -43,
+        "origin_y": -84,
+        "width": 86,
+        "height": 87
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/94-state-2.png",
+        "origin_x": -43,
+        "origin_y": -84,
+        "width": 87,
+        "height": 87
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/94-state-3.png",
+        "origin_x": -43,
+        "origin_y": -83,
+        "width": 86,
+        "height": 86
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/94-state-4.png",
+        "origin_x": -43,
+        "origin_y": -82,
+        "width": 87,
+        "height": 85
+      }
+    },
+    "95": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/95-state-0.png",
+        "origin_x": -27,
+        "origin_y": -43,
+        "width": 58,
+        "height": 43
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/95-state-1.png",
+        "origin_x": -27,
+        "origin_y": -42,
+        "width": 58,
+        "height": 42
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/95-state-2.png",
+        "origin_x": -27,
+        "origin_y": -42,
+        "width": 58,
+        "height": 42
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/95-state-3.png",
+        "origin_x": -32,
+        "origin_y": -43,
+        "width": 63,
+        "height": 43
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/95-state-4.png",
+        "origin_x": -32,
+        "origin_y": -41,
+        "width": 58,
+        "height": 41
+      }
+    },
+    "96": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/96-state-0.png",
+        "origin_x": -37,
+        "origin_y": -63,
+        "width": 73,
+        "height": 63
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/96-state-1.png",
+        "origin_x": -47,
+        "origin_y": -63,
+        "width": 73,
+        "height": 63
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/96-state-2.png",
+        "origin_x": -37,
+        "origin_y": -62,
+        "width": 73,
+        "height": 62
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/96-state-3.png",
+        "origin_x": -37,
+        "origin_y": -63,
+        "width": 73,
+        "height": 63
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/96-state-4.png",
+        "origin_x": -37,
+        "origin_y": -60,
+        "width": 73,
+        "height": 63
+      }
+    },
+    "97": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/97-state-0.png",
+        "origin_x": -29,
+        "origin_y": -47,
+        "width": 57,
+        "height": 47
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/97-state-1.png",
+        "origin_x": -29,
+        "origin_y": -46,
+        "width": 57,
+        "height": 46
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/97-state-2.png",
+        "origin_x": -29,
+        "origin_y": -45,
+        "width": 57,
+        "height": 45
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/97-state-3.png",
+        "origin_x": -29,
+        "origin_y": -47,
+        "width": 53,
+        "height": 47
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/97-state-4.png",
+        "origin_x": -29,
+        "origin_y": -47,
+        "width": 53,
+        "height": 47
+      }
+    },
+    "98": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/98-state-0.png",
+        "origin_x": -25,
+        "origin_y": -50,
+        "width": 54,
+        "height": 50
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/98-state-1.png",
+        "origin_x": -25,
+        "origin_y": -49,
+        "width": 54,
+        "height": 49
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/98-state-2.png",
+        "origin_x": -25,
+        "origin_y": -48,
+        "width": 54,
+        "height": 48
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/98-state-3.png",
+        "origin_x": -25,
+        "origin_y": -48,
+        "width": 54,
+        "height": 48
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/98-state-4.png",
+        "origin_x": -25,
+        "origin_y": -48,
+        "width": 54,
+        "height": 48
+      }
+    },
+    "99": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/99-state-0.png",
+        "origin_x": -32,
+        "origin_y": -57,
+        "width": 52,
+        "height": 57
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/99-state-1.png",
+        "origin_x": -32,
+        "origin_y": -56,
+        "width": 52,
+        "height": 56
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/99-state-2.png",
+        "origin_x": -32,
+        "origin_y": -56,
+        "width": 52,
+        "height": 56
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/99-state-3.png",
+        "origin_x": -32,
+        "origin_y": -55,
+        "width": 52,
+        "height": 55
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/99-state-4.png",
+        "origin_x": -32,
+        "origin_y": -57,
+        "width": 52,
+        "height": 57
+      }
+    },
+    "100": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/100-state-0.png",
+        "origin_x": -30,
+        "origin_y": -57,
+        "width": 51,
+        "height": 57
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/100-state-1.png",
+        "origin_x": -30,
+        "origin_y": -57,
+        "width": 51,
+        "height": 57
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/100-state-2.png",
+        "origin_x": -30,
+        "origin_y": -55,
+        "width": 51,
+        "height": 55
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/100-state-3.png",
+        "origin_x": -30,
+        "origin_y": -56,
+        "width": 51,
+        "height": 56
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/100-state-4.png",
+        "origin_x": -30,
+        "origin_y": -56,
+        "width": 51,
+        "height": 56
+      }
+    },
+    "101": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/101-state-0.png",
+        "origin_x": -73,
+        "origin_y": -101,
+        "width": 129,
+        "height": 101
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/101-state-1.png",
+        "origin_x": -73,
+        "origin_y": -101,
+        "width": 129,
+        "height": 101
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/101-state-2.png",
+        "origin_x": -73,
+        "origin_y": -114,
+        "width": 131,
+        "height": 122
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/101-state-3.png",
+        "origin_x": -73,
+        "origin_y": -101,
+        "width": 129,
+        "height": 101
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/101-state-4.png",
+        "origin_x": -73,
+        "origin_y": -101,
+        "width": 129,
+        "height": 101
+      }
+    },
+    "102": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/102-state-0.png",
+        "origin_x": -22,
+        "origin_y": -47,
+        "width": 44,
+        "height": 47
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/102-state-1.png",
+        "origin_x": -22,
+        "origin_y": -45,
+        "width": 43,
+        "height": 45
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/102-state-2.png",
+        "origin_x": -22,
+        "origin_y": -45,
+        "width": 43,
+        "height": 45
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/102-state-3.png",
+        "origin_x": -12,
+        "origin_y": -45,
+        "width": 43,
+        "height": 45
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/102-state-4.png",
+        "origin_x": -39,
+        "origin_y": -46,
+        "width": 43,
+        "height": 46
+      }
+    },
+    "103": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/103-state-0.png",
+        "origin_x": -32,
+        "origin_y": -62,
+        "width": 64,
+        "height": 62
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/103-state-1.png",
+        "origin_x": -31,
+        "origin_y": -61,
+        "width": 63,
+        "height": 61
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/103-state-2.png",
+        "origin_x": -36,
+        "origin_y": -72,
+        "width": 63,
+        "height": 61
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/103-state-3.png",
+        "origin_x": -41,
+        "origin_y": -61,
+        "width": 63,
+        "height": 61
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/103-state-4.png",
+        "origin_x": -49,
+        "origin_y": -59,
+        "width": 65,
+        "height": 59
+      }
+    },
+    "104": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/104-state-0.png",
+        "origin_x": -46,
+        "origin_y": -73,
+        "width": 92,
+        "height": 73
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/104-state-1.png",
+        "origin_x": -46,
+        "origin_y": -73,
+        "width": 92,
+        "height": 73
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/104-state-2.png",
+        "origin_x": -46,
+        "origin_y": -72,
+        "width": 92,
+        "height": 72
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/104-state-3.png",
+        "origin_x": -56,
+        "origin_y": -72,
+        "width": 92,
+        "height": 72
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/104-state-4.png",
+        "origin_x": -56,
+        "origin_y": -69,
+        "width": 92,
+        "height": 70
+      }
+    },
+    "105": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/105-state-0.png",
+        "origin_x": -12,
+        "origin_y": -30,
+        "width": 24,
+        "height": 30
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/105-state-1.png",
+        "origin_x": -24,
+        "origin_y": -30,
+        "width": 24,
+        "height": 30
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/105-state-2.png",
+        "origin_x": -12,
+        "origin_y": -29,
+        "width": 24,
+        "height": 29
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/105-state-3.png",
+        "origin_x": -12,
+        "origin_y": -28,
+        "width": 24,
+        "height": 28
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/105-state-4.png",
+        "origin_x": -12,
+        "origin_y": -27,
+        "width": 24,
+        "height": 27
+      }
+    },
+    "106": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/106-state-0.png",
+        "origin_x": -30,
+        "origin_y": -59,
+        "width": 76,
+        "height": 62
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/106-state-1.png",
+        "origin_x": -34,
+        "origin_y": -58,
+        "width": 68,
+        "height": 58
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/106-state-2.png",
+        "origin_x": -30,
+        "origin_y": -58,
+        "width": 64,
+        "height": 58
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/106-state-3.png",
+        "origin_x": -29,
+        "origin_y": -58,
+        "width": 63,
+        "height": 58
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/106-state-4.png",
+        "origin_x": -34,
+        "origin_y": -58,
+        "width": 68,
+        "height": 58
+      }
+    },
+    "107": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/107-state-0.png",
+        "origin_x": -51,
+        "origin_y": -76,
+        "width": 105,
+        "height": 76
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/107-state-1.png",
+        "origin_x": -58,
+        "origin_y": -73,
+        "width": 102,
+        "height": 73
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/107-state-2.png",
+        "origin_x": -51,
+        "origin_y": -75,
+        "width": 105,
+        "height": 75
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/107-state-3.png",
+        "origin_x": -52,
+        "origin_y": -74,
+        "width": 107,
+        "height": 74
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/107-state-4.png",
+        "origin_x": -52,
+        "origin_y": -74,
+        "width": 107,
+        "height": 74
+      }
+    },
+    "108": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/108-state-0.png",
+        "origin_x": -25,
+        "origin_y": -46,
+        "width": 49,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/108-state-1.png",
+        "origin_x": -29,
+        "origin_y": -44,
+        "width": 54,
+        "height": 44
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/108-state-2.png",
+        "origin_x": -30,
+        "origin_y": -41,
+        "width": 55,
+        "height": 41
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/108-state-3.png",
+        "origin_x": -25,
+        "origin_y": -66,
+        "width": 49,
+        "height": 46
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/108-state-4.png",
+        "origin_x": -25,
+        "origin_y": -46,
+        "width": 57,
+        "height": 49
+      }
+    },
+    "109": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/109-state-0.png",
+        "origin_x": -16,
+        "origin_y": -51,
+        "width": 32,
+        "height": 51
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/109-state-1.png",
+        "origin_x": -16,
+        "origin_y": -47,
+        "width": 32,
+        "height": 47
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/109-state-2.png",
+        "origin_x": -32,
+        "origin_y": -47,
+        "width": 32,
+        "height": 47
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/109-state-3.png",
+        "origin_x": -13,
+        "origin_y": -62,
+        "width": 39,
+        "height": 62
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/109-state-4.png",
+        "origin_x": -23,
+        "origin_y": -68,
+        "width": 49,
+        "height": 68
+      }
+    },
+    "110": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/110-state-0.png",
+        "origin_x": -19,
+        "origin_y": -41,
+        "width": 38,
+        "height": 41
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/110-state-1.png",
+        "origin_x": -32,
+        "origin_y": -41,
+        "width": 38,
+        "height": 41
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/110-state-2.png",
+        "origin_x": -19,
+        "origin_y": -45,
+        "width": 39,
+        "height": 45
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/110-state-3.png",
+        "origin_x": -17,
+        "origin_y": -49,
+        "width": 39,
+        "height": 46
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/110-state-4.png",
+        "origin_x": -16,
+        "origin_y": -41,
+        "width": 38,
+        "height": 41
+      }
+    },
+    "111": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/111-state-0.png",
+        "origin_x": -28,
+        "origin_y": -57,
+        "width": 56,
+        "height": 57
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/111-state-1.png",
+        "origin_x": -38,
+        "origin_y": -54,
+        "width": 56,
+        "height": 54
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/111-state-2.png",
+        "origin_x": -28,
+        "origin_y": -60,
+        "width": 57,
+        "height": 58
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/111-state-3.png",
+        "origin_x": -34,
+        "origin_y": -80,
+        "width": 54,
+        "height": 59
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/111-state-4.png",
+        "origin_x": -30,
+        "origin_y": -87,
+        "width": 49,
+        "height": 56
+      }
+    },
+    "112": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/112-state-0.png",
+        "origin_x": -25,
+        "origin_y": -39,
+        "width": 51,
+        "height": 39
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/112-state-1.png",
+        "origin_x": -25,
+        "origin_y": -39,
+        "width": 51,
+        "height": 39
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/112-state-2.png",
+        "origin_x": -45,
+        "origin_y": -39,
+        "width": 51,
+        "height": 39
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/112-state-3.png",
+        "origin_x": -25,
+        "origin_y": -39,
+        "width": 51,
+        "height": 39
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/112-state-4.png",
+        "origin_x": -17,
+        "origin_y": -44,
+        "width": 43,
+        "height": 44
+      }
+    },
+    "113": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/113-state-0.png",
+        "origin_x": -32,
+        "origin_y": -45,
+        "width": 64,
+        "height": 45
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/113-state-1.png",
+        "origin_x": -28,
+        "origin_y": -45,
+        "width": 60,
+        "height": 45
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/113-state-2.png",
+        "origin_x": -45,
+        "origin_y": -45,
+        "width": 60,
+        "height": 45
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/113-state-3.png",
+        "origin_x": -33,
+        "origin_y": -58,
+        "width": 73,
+        "height": 58
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/113-state-4.png",
+        "origin_x": -33,
+        "origin_y": -37,
+        "width": 64,
+        "height": 37
+      }
+    },
+    "114": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/114-state-0.png",
+        "origin_x": -20,
+        "origin_y": -42,
+        "width": 40,
+        "height": 42
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/114-state-1.png",
+        "origin_x": -20,
+        "origin_y": -41,
+        "width": 40,
+        "height": 41
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/114-state-2.png",
+        "origin_x": -20,
+        "origin_y": -40,
+        "width": 40,
+        "height": 40
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/114-state-3.png",
+        "origin_x": -20,
+        "origin_y": -42,
+        "width": 40,
+        "height": 42
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/114-state-4.png",
+        "origin_x": -18,
+        "origin_y": -42,
+        "width": 39,
+        "height": 42
+      }
+    },
+    "115": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/115-state-0.png",
+        "origin_x": -33,
+        "origin_y": -42,
+        "width": 65,
+        "height": 43
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/115-state-1.png",
+        "origin_x": -35,
+        "origin_y": -40,
+        "width": 69,
+        "height": 42
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/115-state-2.png",
+        "origin_x": -47,
+        "origin_y": -39,
+        "width": 69,
+        "height": 41
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/115-state-3.png",
+        "origin_x": -37,
+        "origin_y": -52,
+        "width": 72,
+        "height": 48
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/115-state-4.png",
+        "origin_x": -42,
+        "origin_y": -92,
+        "width": 82,
+        "height": 59
+      }
+    },
+    "116": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/116-state-0.png",
+        "origin_x": -19,
+        "origin_y": -44,
+        "width": 37,
+        "height": 44
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/116-state-1.png",
+        "origin_x": -19,
+        "origin_y": -50,
+        "width": 37,
+        "height": 50
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/116-state-2.png",
+        "origin_x": -37,
+        "origin_y": -50,
+        "width": 46,
+        "height": 50
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/116-state-3.png",
+        "origin_x": -19,
+        "origin_y": -71,
+        "width": 37,
+        "height": 71
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/116-state-4.png",
+        "origin_x": -37,
+        "origin_y": -71,
+        "width": 37,
+        "height": 71
+      }
+    },
+    "117": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/117-state-0.png",
+        "origin_x": -40,
+        "origin_y": -94,
+        "width": 82,
+        "height": 94
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/117-state-1.png",
+        "origin_x": -40,
+        "origin_y": -97,
+        "width": 82,
+        "height": 97
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/117-state-2.png",
+        "origin_x": -40,
+        "origin_y": -93,
+        "width": 82,
+        "height": 93
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/117-state-3.png",
+        "origin_x": -40,
+        "origin_y": -99,
+        "width": 82,
+        "height": 99
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/117-state-4.png",
+        "origin_x": -40,
+        "origin_y": -92,
+        "width": 82,
+        "height": 92
+      }
+    },
+    "118": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/118-state-0.png",
+        "origin_x": -21,
+        "origin_y": -38,
+        "width": 41,
+        "height": 38
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/118-state-1.png",
+        "origin_x": -22,
+        "origin_y": -37,
+        "width": 42,
+        "height": 37
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/118-state-2.png",
+        "origin_x": -21,
+        "origin_y": -37,
+        "width": 41,
+        "height": 37
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/118-state-3.png",
+        "origin_x": -22,
+        "origin_y": -37,
+        "width": 42,
+        "height": 37
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/118-state-4.png",
+        "origin_x": -17,
+        "origin_y": -38,
+        "width": 41,
+        "height": 38
+      }
+    },
+    "119": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/119-state-0.png",
+        "origin_x": -17,
+        "origin_y": -58,
+        "width": 33,
+        "height": 52
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/119-state-1.png",
+        "origin_x": -17,
+        "origin_y": -63,
+        "width": 33,
+        "height": 56
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/119-state-2.png",
+        "origin_x": -17,
+        "origin_y": -64,
+        "width": 35,
+        "height": 56
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/119-state-3.png",
+        "origin_x": -17,
+        "origin_y": -80,
+        "width": 33,
+        "height": 73
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/119-state-4.png",
+        "origin_x": -18,
+        "origin_y": -67,
+        "width": 34,
+        "height": 61
+      }
+    },
+    "120": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/120-state-0.png",
+        "origin_x": -24,
+        "origin_y": -39,
+        "width": 49,
+        "height": 40
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/120-state-1.png",
+        "origin_x": -23,
+        "origin_y": -40,
+        "width": 47,
+        "height": 41
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/120-state-2.png",
+        "origin_x": -24,
+        "origin_y": -41,
+        "width": 48,
+        "height": 42
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/120-state-3.png",
+        "origin_x": -22,
+        "origin_y": -51,
+        "width": 46,
+        "height": 43
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/120-state-4.png",
+        "origin_x": -54,
+        "origin_y": -40,
+        "width": 101,
+        "height": 47
+      }
+    },
+    "121": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/121-state-0.png",
+        "origin_x": -23,
+        "origin_y": -28,
+        "width": 45,
+        "height": 35
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/121-state-1.png",
+        "origin_x": -24,
+        "origin_y": -27,
+        "width": 47,
+        "height": 34
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/121-state-2.png",
+        "origin_x": -24,
+        "origin_y": -27,
+        "width": 47,
+        "height": 34
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/121-state-3.png",
+        "origin_x": -24,
+        "origin_y": -26,
+        "width": 47,
+        "height": 33
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/121-state-4.png",
+        "origin_x": -34,
+        "origin_y": -17,
+        "width": 71,
+        "height": 24
+      }
+    },
+    "122": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/122-state-0.png",
+        "origin_x": -30,
+        "origin_y": -58,
+        "width": 60,
+        "height": 65
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/122-state-1.png",
+        "origin_x": -45,
+        "origin_y": -58,
+        "width": 60,
+        "height": 65
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/122-state-2.png",
+        "origin_x": -31,
+        "origin_y": -57,
+        "width": 62,
+        "height": 64
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/122-state-3.png",
+        "origin_x": -31,
+        "origin_y": -58,
+        "width": 62,
+        "height": 65
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/122-state-4.png",
+        "origin_x": -33,
+        "origin_y": -52,
+        "width": 82,
+        "height": 59
+      }
+    },
+    "123": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/123-state-0.png",
+        "origin_x": -26,
+        "origin_y": -35,
+        "width": 51,
+        "height": 36
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/123-state-1.png",
+        "origin_x": -26,
+        "origin_y": -34,
+        "width": 51,
+        "height": 35
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/123-state-2.png",
+        "origin_x": -26,
+        "origin_y": -34,
+        "width": 51,
+        "height": 35
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/123-state-3.png",
+        "origin_x": -26,
+        "origin_y": -33,
+        "width": 51,
+        "height": 34
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/123-state-4.png",
+        "origin_x": -26,
+        "origin_y": -34,
+        "width": 51,
+        "height": 35
+      }
+    },
+    "124": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/124-state-0.png",
+        "origin_x": -42,
+        "origin_y": -47,
+        "width": 83,
+        "height": 49
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/124-state-1.png",
+        "origin_x": -42,
+        "origin_y": -46,
+        "width": 83,
+        "height": 48
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/124-state-2.png",
+        "origin_x": -42,
+        "origin_y": -47,
+        "width": 83,
+        "height": 49
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/124-state-3.png",
+        "origin_x": -42,
+        "origin_y": -42,
+        "width": 77,
+        "height": 46
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/124-state-4.png",
+        "origin_x": -42,
+        "origin_y": -59,
+        "width": 77,
+        "height": 46
+      }
+    },
+    "125": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/125-state-0.png",
+        "origin_x": -22,
+        "origin_y": -48,
+        "width": 42,
+        "height": 49
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/125-state-1.png",
+        "origin_x": -37,
+        "origin_y": -48,
+        "width": 42,
+        "height": 49
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/125-state-2.png",
+        "origin_x": -21,
+        "origin_y": -46,
+        "width": 41,
+        "height": 47
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/125-state-3.png",
+        "origin_x": -22,
+        "origin_y": -48,
+        "width": 42,
+        "height": 49
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/125-state-4.png",
+        "origin_x": -21,
+        "origin_y": -47,
+        "width": 41,
+        "height": 48
+      }
+    },
+    "126": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/126-state-0.png",
+        "origin_x": -20,
+        "origin_y": -48,
+        "width": 41,
+        "height": 49
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/126-state-1.png",
+        "origin_x": -35,
+        "origin_y": -48,
+        "width": 41,
+        "height": 49
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/126-state-2.png",
+        "origin_x": -21,
+        "origin_y": -48,
+        "width": 42,
+        "height": 49
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/126-state-3.png",
+        "origin_x": -20,
+        "origin_y": -48,
+        "width": 41,
+        "height": 49
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/126-state-4.png",
+        "origin_x": -21,
+        "origin_y": -48,
+        "width": 42,
+        "height": 49
+      }
+    },
+    "127": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/127-state-0.png",
+        "origin_x": -29,
+        "origin_y": -46,
+        "width": 58,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/127-state-1.png",
+        "origin_x": -29,
+        "origin_y": -45,
+        "width": 58,
+        "height": 45
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/127-state-2.png",
+        "origin_x": -29,
+        "origin_y": -44,
+        "width": 58,
+        "height": 44
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/127-state-3.png",
+        "origin_x": -33,
+        "origin_y": -44,
+        "width": 58,
+        "height": 44
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/127-state-4.png",
+        "origin_x": -26,
+        "origin_y": -63,
+        "width": 94,
+        "height": 63
+      }
+    },
+    "128": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/128-state-0.png",
+        "origin_x": -33,
+        "origin_y": -46,
+        "width": 65,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/128-state-1.png",
+        "origin_x": -33,
+        "origin_y": -45,
+        "width": 65,
+        "height": 45
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/128-state-2.png",
+        "origin_x": -33,
+        "origin_y": -44,
+        "width": 65,
+        "height": 44
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/128-state-3.png",
+        "origin_x": -36,
+        "origin_y": -42,
+        "width": 61,
+        "height": 42
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/128-state-4.png",
+        "origin_x": -31,
+        "origin_y": -55,
+        "width": 89,
+        "height": 55
+      }
+    },
+    "129": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/129-state-0.png",
+        "origin_x": -25,
+        "origin_y": -33,
+        "width": 50,
+        "height": 38
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/129-state-1.png",
+        "origin_x": -24,
+        "origin_y": -33,
+        "width": 50,
+        "height": 39
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/129-state-2.png",
+        "origin_x": -25,
+        "origin_y": -32,
+        "width": 50,
+        "height": 36
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/129-state-3.png",
+        "origin_x": -26,
+        "origin_y": -33,
+        "width": 53,
+        "height": 42
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/129-state-4.png",
+        "origin_x": -25,
+        "origin_y": -32,
+        "width": 51,
+        "height": 35
+      }
+    },
+    "130": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/130-state-0.png",
+        "origin_x": -30,
+        "origin_y": -43,
+        "width": 59,
+        "height": 44
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/130-state-1.png",
+        "origin_x": -30,
+        "origin_y": -43,
+        "width": 59,
+        "height": 45
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/130-state-2.png",
+        "origin_x": -29,
+        "origin_y": -42,
+        "width": 57,
+        "height": 42
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/130-state-3.png",
+        "origin_x": -28,
+        "origin_y": -43,
+        "width": 57,
+        "height": 45
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/130-state-4.png",
+        "origin_x": -28,
+        "origin_y": -51,
+        "width": 53,
+        "height": 50
+      }
+    },
+    "131": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/131-state-0.png",
+        "origin_x": -38,
+        "origin_y": -63,
+        "width": 74,
+        "height": 64
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/131-state-1.png",
+        "origin_x": -38,
+        "origin_y": -62,
+        "width": 74,
+        "height": 63
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/131-state-2.png",
+        "origin_x": -38,
+        "origin_y": -61,
+        "width": 73,
+        "height": 62
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/131-state-3.png",
+        "origin_x": -48,
+        "origin_y": -61,
+        "width": 73,
+        "height": 62
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/131-state-4.png",
+        "origin_x": -41,
+        "origin_y": -63,
+        "width": 70,
+        "height": 64
+      }
+    },
+    "132": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/132-state-0.png",
+        "origin_x": -36,
+        "origin_y": -65,
+        "width": 77,
+        "height": 65
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/132-state-1.png",
+        "origin_x": -36,
+        "origin_y": -64,
+        "width": 77,
+        "height": 64
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/132-state-2.png",
+        "origin_x": -36,
+        "origin_y": -63,
+        "width": 76,
+        "height": 63
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/132-state-3.png",
+        "origin_x": -45,
+        "origin_y": -63,
+        "width": 76,
+        "height": 63
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/132-state-4.png",
+        "origin_x": -39,
+        "origin_y": -68,
+        "width": 70,
+        "height": 68
+      }
+    },
+    "133": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/133-state-0.png",
+        "origin_x": -36,
+        "origin_y": -81,
+        "width": 71,
+        "height": 81
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/133-state-1.png",
+        "origin_x": -36,
+        "origin_y": -80,
+        "width": 71,
+        "height": 80
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/133-state-2.png",
+        "origin_x": -36,
+        "origin_y": -79,
+        "width": 71,
+        "height": 79
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/133-state-3.png",
+        "origin_x": -36,
+        "origin_y": -80,
+        "width": 71,
+        "height": 80
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/133-state-4.png",
+        "origin_x": -36,
+        "origin_y": -80,
+        "width": 71,
+        "height": 80
+      }
+    },
+    "134": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/134-state-0.png",
+        "origin_x": -19,
+        "origin_y": -35,
+        "width": 38,
+        "height": 35
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/134-state-1.png",
+        "origin_x": -20,
+        "origin_y": -34,
+        "width": 40,
+        "height": 34
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/134-state-2.png",
+        "origin_x": -19,
+        "origin_y": -45,
+        "width": 38,
+        "height": 35
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/134-state-3.png",
+        "origin_x": -29,
+        "origin_y": -34,
+        "width": 61,
+        "height": 36
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/134-state-4.png",
+        "origin_x": -39,
+        "origin_y": -41,
+        "width": 79,
+        "height": 42
+      }
+    },
+    "135": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/135-state-0.png",
+        "origin_x": -31,
+        "origin_y": -54,
+        "width": 62,
+        "height": 54
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/135-state-1.png",
+        "origin_x": -41,
+        "origin_y": -54,
+        "width": 62,
+        "height": 54
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/135-state-2.png",
+        "origin_x": -31,
+        "origin_y": -53,
+        "width": 63,
+        "height": 53
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/135-state-3.png",
+        "origin_x": -30,
+        "origin_y": -51,
+        "width": 61,
+        "height": 51
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/135-state-4.png",
+        "origin_x": -31,
+        "origin_y": -54,
+        "width": 62,
+        "height": 54
+      }
+    },
+    "136": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/136-state-0.png",
+        "origin_x": -50,
+        "origin_y": -65,
+        "width": 86,
+        "height": 65
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/136-state-1.png",
+        "origin_x": -49,
+        "origin_y": -64,
+        "width": 85,
+        "height": 64
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/136-state-2.png",
+        "origin_x": -49,
+        "origin_y": -63,
+        "width": 85,
+        "height": 63
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/136-state-3.png",
+        "origin_x": -58,
+        "origin_y": -64,
+        "width": 85,
+        "height": 64
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/136-state-4.png",
+        "origin_x": -59,
+        "origin_y": -65,
+        "width": 85,
+        "height": 65
+      }
+    },
+    "137": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/137-state-0.png",
+        "origin_x": -23,
+        "origin_y": -41,
+        "width": 43,
+        "height": 41
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/137-state-1.png",
+        "origin_x": -18,
+        "origin_y": -39,
+        "width": 36,
+        "height": 39
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/137-state-2.png",
+        "origin_x": -25,
+        "origin_y": -43,
+        "width": 41,
+        "height": 43
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/137-state-3.png",
+        "origin_x": -40,
+        "origin_y": -43,
+        "width": 56,
+        "height": 43
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/137-state-4.png",
+        "origin_x": -30,
+        "origin_y": -42,
+        "width": 45,
+        "height": 42
+      }
+    },
+    "138": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/138-state-0.png",
+        "origin_x": -36,
+        "origin_y": -67,
+        "width": 64,
+        "height": 70
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/138-state-1.png",
+        "origin_x": -36,
+        "origin_y": -68,
+        "width": 64,
+        "height": 71
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/138-state-2.png",
+        "origin_x": -36,
+        "origin_y": -67,
+        "width": 64,
+        "height": 70
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/138-state-3.png",
+        "origin_x": -36,
+        "origin_y": -67,
+        "width": 64,
+        "height": 70
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/138-state-4.png",
+        "origin_x": -36,
+        "origin_y": -68,
+        "width": 64,
+        "height": 71
+      }
+    },
+    "139": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/139-state-0.png",
+        "origin_x": -52,
+        "origin_y": -84,
+        "width": 87,
+        "height": 88
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/139-state-1.png",
+        "origin_x": -51,
+        "origin_y": -86,
+        "width": 107,
+        "height": 90
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/139-state-2.png",
+        "origin_x": -52,
+        "origin_y": -84,
+        "width": 124,
+        "height": 88
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/139-state-3.png",
+        "origin_x": -52,
+        "origin_y": -83,
+        "width": 95,
+        "height": 87
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/139-state-4.png",
+        "origin_x": -52,
+        "origin_y": -83,
+        "width": 87,
+        "height": 87
+      }
+    },
+    "140": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/140-state-0.png",
+        "origin_x": -22,
+        "origin_y": -51,
+        "width": 38,
+        "height": 52
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/140-state-1.png",
+        "origin_x": -22,
+        "origin_y": -50,
+        "width": 38,
+        "height": 51
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/140-state-2.png",
+        "origin_x": -27,
+        "origin_y": -51,
+        "width": 63,
+        "height": 59
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/140-state-3.png",
+        "origin_x": -20,
+        "origin_y": -65,
+        "width": 38,
+        "height": 50
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/140-state-4.png",
+        "origin_x": -32,
+        "origin_y": -51,
+        "width": 38,
+        "height": 52
+      }
+    },
+    "141": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/141-state-0.png",
+        "origin_x": -36,
+        "origin_y": -46,
+        "width": 67,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/141-state-1.png",
+        "origin_x": -41,
+        "origin_y": -48,
+        "width": 72,
+        "height": 47
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/141-state-2.png",
+        "origin_x": -34,
+        "origin_y": -47,
+        "width": 65,
+        "height": 46
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/141-state-3.png",
+        "origin_x": -41,
+        "origin_y": -48,
+        "width": 72,
+        "height": 47
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/141-state-4.png",
+        "origin_x": -36,
+        "origin_y": -33,
+        "width": 67,
+        "height": 46
+      }
+    },
+    "142": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/142-state-0.png",
+        "origin_x": -33,
+        "origin_y": -35,
+        "width": 69,
+        "height": 42
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/142-state-1.png",
+        "origin_x": -38,
+        "origin_y": -31,
+        "width": 75,
+        "height": 38
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/142-state-2.png",
+        "origin_x": -43,
+        "origin_y": -29,
+        "width": 82,
+        "height": 38
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/142-state-3.png",
+        "origin_x": -37,
+        "origin_y": -32,
+        "width": 80,
+        "height": 42
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/142-state-4.png",
+        "origin_x": -32,
+        "origin_y": -35,
+        "width": 83,
+        "height": 53
+      }
+    },
+    "143": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/143-state-0.png",
+        "origin_x": -34,
+        "origin_y": -43,
+        "width": 64,
+        "height": 48
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/143-state-1.png",
+        "origin_x": -32,
+        "origin_y": -44,
+        "width": 64,
+        "height": 48
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/143-state-2.png",
+        "origin_x": -34,
+        "origin_y": -45,
+        "width": 64,
+        "height": 48
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/143-state-3.png",
+        "origin_x": -32,
+        "origin_y": -45,
+        "width": 64,
+        "height": 46
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/143-state-4.png",
+        "origin_x": -34,
+        "origin_y": -44,
+        "width": 64,
+        "height": 46
+      }
+    },
+    "144": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/144-state-0.png",
+        "origin_x": -29,
+        "origin_y": -72,
+        "width": 58,
+        "height": 72
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/144-state-1.png",
+        "origin_x": -29,
+        "origin_y": -75,
+        "width": 58,
+        "height": 73
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/144-state-2.png",
+        "origin_x": -29,
+        "origin_y": -75,
+        "width": 58,
+        "height": 74
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/144-state-3.png",
+        "origin_x": -29,
+        "origin_y": -75,
+        "width": 58,
+        "height": 73
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/144-state-4.png",
+        "origin_x": -29,
+        "origin_y": -75,
+        "width": 58,
+        "height": 73
+      }
+    },
+    "145": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/145-state-0.png",
+        "origin_x": -26,
+        "origin_y": -70,
+        "width": 52,
+        "height": 62
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/145-state-1.png",
+        "origin_x": -26,
+        "origin_y": -72,
+        "width": 52,
+        "height": 62
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/145-state-2.png",
+        "origin_x": -26,
+        "origin_y": -71,
+        "width": 52,
+        "height": 62
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/145-state-3.png",
+        "origin_x": -22,
+        "origin_y": -73,
+        "width": 49,
+        "height": 59
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/145-state-4.png",
+        "origin_x": -22,
+        "origin_y": -63,
+        "width": 58,
+        "height": 69
+      }
+    },
+    "146": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/146-state-0.png",
+        "origin_x": -39,
+        "origin_y": -53,
+        "width": 73,
+        "height": 58
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/146-state-1.png",
+        "origin_x": -39,
+        "origin_y": -55,
+        "width": 73,
+        "height": 58
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/146-state-2.png",
+        "origin_x": -39,
+        "origin_y": -56,
+        "width": 73,
+        "height": 59
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/146-state-3.png",
+        "origin_x": 15,
+        "origin_y": -53,
+        "width": 73,
+        "height": 58
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/146-state-4.png",
+        "origin_x": 15,
+        "origin_y": -53,
+        "width": 73,
+        "height": 58
+      }
+    },
+    "147": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/147-state-0.png",
+        "origin_x": -37,
+        "origin_y": -50,
+        "width": 72,
+        "height": 50
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/147-state-1.png",
+        "origin_x": -37,
+        "origin_y": -52,
+        "width": 72,
+        "height": 50
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/147-state-2.png",
+        "origin_x": -37,
+        "origin_y": -55,
+        "width": 72,
+        "height": 52
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/147-state-3.png",
+        "origin_x": 30,
+        "origin_y": -50,
+        "width": 72,
+        "height": 50
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/147-state-4.png",
+        "origin_x": 30,
+        "origin_y": -50,
+        "width": 72,
+        "height": 50
+      }
+    },
+    "148": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/148-state-0.png",
+        "origin_x": -34,
+        "origin_y": -79,
+        "width": 70,
+        "height": 79
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/148-state-1.png",
+        "origin_x": -35,
+        "origin_y": -86,
+        "width": 67,
+        "height": 86
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/148-state-2.png",
+        "origin_x": -34,
+        "origin_y": -88,
+        "width": 70,
+        "height": 88
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/148-state-3.png",
+        "origin_x": -34,
+        "origin_y": -79,
+        "width": 63,
+        "height": 79
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/148-state-4.png",
+        "origin_x": -34,
+        "origin_y": -64,
+        "width": 61,
+        "height": 64
+      }
+    },
+    "149": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/149-state-0.png",
+        "origin_x": -50,
+        "origin_y": -77,
+        "width": 100,
+        "height": 77
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/149-state-1.png",
+        "origin_x": -50,
+        "origin_y": -102,
+        "width": 100,
+        "height": 102
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/149-state-2.png",
+        "origin_x": -50,
+        "origin_y": -108,
+        "width": 100,
+        "height": 109
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/149-state-3.png",
+        "origin_x": -50,
+        "origin_y": -76,
+        "width": 100,
+        "height": 76
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/149-state-4.png",
+        "origin_x": -50,
+        "origin_y": -75,
+        "width": 100,
+        "height": 76
+      }
+    },
+    "150": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/150-state-0.png",
+        "origin_x": -37,
+        "origin_y": -63,
+        "width": 75,
+        "height": 61
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/150-state-1.png",
+        "origin_x": -37,
+        "origin_y": -62,
+        "width": 75,
+        "height": 61
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/150-state-2.png",
+        "origin_x": -37,
+        "origin_y": -62,
+        "width": 75,
+        "height": 59
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/150-state-3.png",
+        "origin_x": -32,
+        "origin_y": -58,
+        "width": 67,
+        "height": 64
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/150-state-4.png",
+        "origin_x": -39,
+        "origin_y": -57,
+        "width": 52,
+        "height": 61
+      }
+    },
+    "151": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/151-state-0.png",
+        "origin_x": -20,
+        "origin_y": -45,
+        "width": 40,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/151-state-1.png",
+        "origin_x": -20,
+        "origin_y": -45,
+        "width": 40,
+        "height": 46
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/151-state-2.png",
+        "origin_x": -20,
+        "origin_y": -44,
+        "width": 40,
+        "height": 45
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/151-state-3.png",
+        "origin_x": -20,
+        "origin_y": -44,
+        "width": 40,
+        "height": 45
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/151-state-4.png",
+        "origin_x": -20,
+        "origin_y": -43,
+        "width": 40,
+        "height": 44
+      }
+    },
+    "152": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/152-state-0.png",
+        "origin_x": -29,
+        "origin_y": -57,
+        "width": 58,
+        "height": 59
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/152-state-1.png",
+        "origin_x": -29,
+        "origin_y": -56,
+        "width": 59,
+        "height": 58
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/152-state-2.png",
+        "origin_x": -29,
+        "origin_y": -56,
+        "width": 58,
+        "height": 58
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/152-state-3.png",
+        "origin_x": -29,
+        "origin_y": -57,
+        "width": 59,
+        "height": 59
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/152-state-4.png",
+        "origin_x": -29,
+        "origin_y": -57,
+        "width": 58,
+        "height": 60
+      }
+    },
+    "153": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/153-state-0.png",
+        "origin_x": -39,
+        "origin_y": -56,
+        "width": 76,
+        "height": 75
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/153-state-1.png",
+        "origin_x": -39,
+        "origin_y": -54,
+        "width": 78,
+        "height": 73
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/153-state-2.png",
+        "origin_x": -39,
+        "origin_y": -53,
+        "width": 78,
+        "height": 72
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/153-state-3.png",
+        "origin_x": -39,
+        "origin_y": -54,
+        "width": 76,
+        "height": 73
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/153-state-4.png",
+        "origin_x": -39,
+        "origin_y": -55,
+        "width": 78,
+        "height": 74
+      }
+    },
+    "154": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/154-state-0.png",
+        "origin_x": -21,
+        "origin_y": -44,
+        "width": 43,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/154-state-1.png",
+        "origin_x": -21,
+        "origin_y": -45,
+        "width": 43,
+        "height": 47
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/154-state-2.png",
+        "origin_x": -21,
+        "origin_y": -43,
+        "width": 43,
+        "height": 45
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/154-state-3.png",
+        "origin_x": -21,
+        "origin_y": -45,
+        "width": 43,
+        "height": 47
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/154-state-4.png",
+        "origin_x": -26,
+        "origin_y": -41,
+        "width": 48,
+        "height": 43
+      }
+    },
+    "155": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/155-state-0.png",
+        "origin_x": -29,
+        "origin_y": -60,
+        "width": 57,
+        "height": 61
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/155-state-1.png",
+        "origin_x": -29,
+        "origin_y": -60,
+        "width": 57,
+        "height": 61
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/155-state-2.png",
+        "origin_x": -29,
+        "origin_y": -57,
+        "width": 57,
+        "height": 58
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/155-state-3.png",
+        "origin_x": -29,
+        "origin_y": -60,
+        "width": 57,
+        "height": 61
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/155-state-4.png",
+        "origin_x": -29,
+        "origin_y": -60,
+        "width": 57,
+        "height": 61
+      }
+    },
+    "156": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/156-state-0.png",
+        "origin_x": -33,
+        "origin_y": -59,
+        "width": 64,
+        "height": 56
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/156-state-1.png",
+        "origin_x": -33,
+        "origin_y": -58,
+        "width": 64,
+        "height": 56
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/156-state-2.png",
+        "origin_x": -33,
+        "origin_y": -57,
+        "width": 64,
+        "height": 56
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/156-state-3.png",
+        "origin_x": -33,
+        "origin_y": -58,
+        "width": 64,
+        "height": 56
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/156-state-4.png",
+        "origin_x": -33,
+        "origin_y": -58,
+        "width": 64,
+        "height": 56
+      }
+    },
+    "157": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/157-state-0.png",
+        "origin_x": -34,
+        "origin_y": -66,
+        "width": 68,
+        "height": 62
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/157-state-1.png",
+        "origin_x": -34,
+        "origin_y": -64,
+        "width": 70,
+        "height": 63
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/157-state-2.png",
+        "origin_x": -34,
+        "origin_y": -63,
+        "width": 70,
+        "height": 63
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/157-state-3.png",
+        "origin_x": -34,
+        "origin_y": -64,
+        "width": 69,
+        "height": 62
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/157-state-4.png",
+        "origin_x": -34,
+        "origin_y": -66,
+        "width": 73,
+        "height": 65
+      }
+    },
+    "158": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/158-state-0.png",
+        "origin_x": -24,
+        "origin_y": -52,
+        "width": 48,
+        "height": 57
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/158-state-1.png",
+        "origin_x": -25,
+        "origin_y": -51,
+        "width": 49,
+        "height": 57
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/158-state-2.png",
+        "origin_x": -25,
+        "origin_y": -51,
+        "width": 49,
+        "height": 57
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/158-state-3.png",
+        "origin_x": -25,
+        "origin_y": -51,
+        "width": 49,
+        "height": 57
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/158-state-4.png",
+        "origin_x": -27,
+        "origin_y": -50,
+        "width": 51,
+        "height": 57
+      }
+    },
+    "159": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/159-state-0.png",
+        "origin_x": -22,
+        "origin_y": -53,
+        "width": 44,
+        "height": 54
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/159-state-1.png",
+        "origin_x": -22,
+        "origin_y": -53,
+        "width": 44,
+        "height": 54
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/159-state-2.png",
+        "origin_x": -22,
+        "origin_y": -52,
+        "width": 44,
+        "height": 54
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/159-state-3.png",
+        "origin_x": -22,
+        "origin_y": -54,
+        "width": 44,
+        "height": 54
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/159-state-4.png",
+        "origin_x": -22,
+        "origin_y": -53,
+        "width": 44,
+        "height": 54
+      }
+    },
+    "160": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/160-state-0.png",
+        "origin_x": -28,
+        "origin_y": -64,
+        "width": 55,
+        "height": 62
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/160-state-1.png",
+        "origin_x": -27,
+        "origin_y": -61,
+        "width": 53,
+        "height": 61
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/160-state-2.png",
+        "origin_x": -28,
+        "origin_y": -64,
+        "width": 55,
+        "height": 62
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/160-state-3.png",
+        "origin_x": -27,
+        "origin_y": -61,
+        "width": 53,
+        "height": 61
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/160-state-4.png",
+        "origin_x": -28,
+        "origin_y": -64,
+        "width": 55,
+        "height": 62
+      }
+    },
+    "161": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/161-state-0.png",
+        "origin_x": -45,
+        "origin_y": -82,
+        "width": 90,
+        "height": 82
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/161-state-1.png",
+        "origin_x": -45,
+        "origin_y": -83,
+        "width": 90,
+        "height": 83
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/161-state-2.png",
+        "origin_x": -54,
+        "origin_y": -83,
+        "width": 90,
+        "height": 83
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/161-state-3.png",
+        "origin_x": -44,
+        "origin_y": -80,
+        "width": 89,
+        "height": 80
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/161-state-4.png",
+        "origin_x": -45,
+        "origin_y": -81,
+        "width": 90,
+        "height": 81
+      }
+    },
+    "162": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/162-state-0.png",
+        "origin_x": -19,
+        "origin_y": -38,
+        "width": 38,
+        "height": 38
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/162-state-1.png",
+        "origin_x": -19,
+        "origin_y": -31,
+        "width": 38,
+        "height": 41
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/162-state-2.png",
+        "origin_x": -21,
+        "origin_y": -27,
+        "width": 40,
+        "height": 33
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/162-state-3.png",
+        "origin_x": -40,
+        "origin_y": -33,
+        "width": 40,
+        "height": 33
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/162-state-4.png",
+        "origin_x": -21,
+        "origin_y": -41,
+        "width": 40,
+        "height": 33
+      }
+    },
+    "163": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/163-state-0.png",
+        "origin_x": -27,
+        "origin_y": -43,
+        "width": 53,
+        "height": 43
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/163-state-1.png",
+        "origin_x": -27,
+        "origin_y": -44,
+        "width": 53,
+        "height": 44
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/163-state-2.png",
+        "origin_x": -53,
+        "origin_y": -42,
+        "width": 53,
+        "height": 42
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/163-state-3.png",
+        "origin_x": -26,
+        "origin_y": -44,
+        "width": 51,
+        "height": 44
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/163-state-4.png",
+        "origin_x": -26,
+        "origin_y": -42,
+        "width": 51,
+        "height": 42
+      }
+    },
+    "164": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/164-state-0.png",
+        "origin_x": -39,
+        "origin_y": -60,
+        "width": 80,
+        "height": 60
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/164-state-1.png",
+        "origin_x": -40,
+        "origin_y": -58,
+        "width": 82,
+        "height": 58
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/164-state-2.png",
+        "origin_x": -42,
+        "origin_y": -88,
+        "width": 92,
+        "height": 88
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/164-state-3.png",
+        "origin_x": -38,
+        "origin_y": -62,
+        "width": 77,
+        "height": 62
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/164-state-4.png",
+        "origin_x": -37,
+        "origin_y": -65,
+        "width": 75,
+        "height": 65
+      }
+    },
+    "165": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/165-state-0.png",
+        "origin_x": -18,
+        "origin_y": -46,
+        "width": 36,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/165-state-1.png",
+        "origin_x": -18,
+        "origin_y": -46,
+        "width": 36,
+        "height": 46
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/165-state-2.png",
+        "origin_x": -36,
+        "origin_y": -44,
+        "width": 36,
+        "height": 44
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/165-state-3.png",
+        "origin_x": -21,
+        "origin_y": -48,
+        "width": 36,
+        "height": 46
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/165-state-4.png",
+        "origin_x": -14,
+        "origin_y": -35,
+        "width": 51,
+        "height": 46
+      }
+    },
+    "166": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/166-state-0.png",
+        "origin_x": -37,
+        "origin_y": -57,
+        "width": 74,
+        "height": 57
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/166-state-1.png",
+        "origin_x": -44,
+        "origin_y": -63,
+        "width": 88,
+        "height": 63
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/166-state-2.png",
+        "origin_x": -37,
+        "origin_y": -59,
+        "width": 74,
+        "height": 57
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/166-state-3.png",
+        "origin_x": -44,
+        "origin_y": -62,
+        "width": 85,
+        "height": 60
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/166-state-4.png",
+        "origin_x": -38,
+        "origin_y": -59,
+        "width": 74,
+        "height": 57
+      }
+    },
+    "167": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/167-state-0.png",
+        "origin_x": -34,
+        "origin_y": -79,
+        "width": 74,
+        "height": 78
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/167-state-1.png",
+        "origin_x": -34,
+        "origin_y": -81,
+        "width": 74,
+        "height": 78
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/167-state-2.png",
+        "origin_x": -34,
+        "origin_y": -77,
+        "width": 74,
+        "height": 78
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/167-state-3.png",
+        "origin_x": -53,
+        "origin_y": -76,
+        "width": 74,
+        "height": 77
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/167-state-4.png",
+        "origin_x": -34,
+        "origin_y": -88,
+        "width": 74,
+        "height": 81
+      }
+    },
+    "168": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/168-state-0.png",
+        "origin_x": -24,
+        "origin_y": -46,
+        "width": 47,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/168-state-1.png",
+        "origin_x": -26,
+        "origin_y": -48,
+        "width": 46,
+        "height": 50
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/168-state-2.png",
+        "origin_x": -22,
+        "origin_y": -48,
+        "width": 42,
+        "height": 50
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/168-state-3.png",
+        "origin_x": -22,
+        "origin_y": -48,
+        "width": 42,
+        "height": 52
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/168-state-4.png",
+        "origin_x": -22,
+        "origin_y": -94,
+        "width": 42,
+        "height": 96
+      }
+    },
+    "169": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/169-state-0.png",
+        "origin_x": -25,
+        "origin_y": -49,
+        "width": 51,
+        "height": 49
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/169-state-1.png",
+        "origin_x": -23,
+        "origin_y": -52,
+        "width": 51,
+        "height": 55
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/169-state-2.png",
+        "origin_x": -23,
+        "origin_y": -51,
+        "width": 50,
+        "height": 55
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/169-state-3.png",
+        "origin_x": -35,
+        "origin_y": -51,
+        "width": 72,
+        "height": 69
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/169-state-4.png",
+        "origin_x": -35,
+        "origin_y": -109,
+        "width": 72,
+        "height": 113
+      }
+    },
+    "170": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/170-state-0.png",
+        "origin_x": -36,
+        "origin_y": -52,
+        "width": 68,
+        "height": 52
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/170-state-1.png",
+        "origin_x": -36,
+        "origin_y": -62,
+        "width": 68,
+        "height": 52
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/170-state-2.png",
+        "origin_x": -36,
+        "origin_y": -52,
+        "width": 68,
+        "height": 52
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/170-state-3.png",
+        "origin_x": -36,
+        "origin_y": -52,
+        "width": 68,
+        "height": 52
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/170-state-4.png",
+        "origin_x": -36,
+        "origin_y": -52,
+        "width": 68,
+        "height": 52
+      }
+    },
+    "171": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/171-state-0.png",
+        "origin_x": -39,
+        "origin_y": -52,
+        "width": 74,
+        "height": 56
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/171-state-1.png",
+        "origin_x": -36,
+        "origin_y": -52,
+        "width": 68,
+        "height": 55
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/171-state-2.png",
+        "origin_x": -31,
+        "origin_y": -52,
+        "width": 61,
+        "height": 54
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/171-state-3.png",
+        "origin_x": -49,
+        "origin_y": -52,
+        "width": 61,
+        "height": 54
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/171-state-4.png",
+        "origin_x": -39,
+        "origin_y": -53,
+        "width": 74,
+        "height": 59
+      }
+    },
+    "172": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/172-state-0.png",
+        "origin_x": -43,
+        "origin_y": -61,
+        "width": 85,
+        "height": 61
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/172-state-1.png",
+        "origin_x": -44,
+        "origin_y": -60,
+        "width": 87,
+        "height": 60
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/172-state-2.png",
+        "origin_x": -44,
+        "origin_y": -59,
+        "width": 87,
+        "height": 59
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/172-state-3.png",
+        "origin_x": -32,
+        "origin_y": -58,
+        "width": 85,
+        "height": 61
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/172-state-4.png",
+        "origin_x": -60,
+        "origin_y": -60,
+        "width": 87,
+        "height": 59
+      }
+    },
+    "173": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/173-state-0.png",
+        "origin_x": -53,
+        "origin_y": -101,
+        "width": 105,
+        "height": 101
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/173-state-1.png",
+        "origin_x": -53,
+        "origin_y": -99,
+        "width": 105,
+        "height": 99
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/173-state-2.png",
+        "origin_x": -53,
+        "origin_y": -97,
+        "width": 105,
+        "height": 97
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/173-state-3.png",
+        "origin_x": -53,
+        "origin_y": -99,
+        "width": 105,
+        "height": 99
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/173-state-4.png",
+        "origin_x": -75,
+        "origin_y": -95,
+        "width": 105,
+        "height": 95
+      }
+    },
+    "174": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/174-state-0.png",
+        "origin_x": -23,
+        "origin_y": -34,
+        "width": 45,
+        "height": 34
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/174-state-1.png",
+        "origin_x": -24,
+        "origin_y": -33,
+        "width": 47,
+        "height": 31
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/174-state-2.png",
+        "origin_x": -24,
+        "origin_y": -51,
+        "width": 57,
+        "height": 33
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/174-state-3.png",
+        "origin_x": -24,
+        "origin_y": -60,
+        "width": 77,
+        "height": 60
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/174-state-4.png",
+        "origin_x": -23,
+        "origin_y": -33,
+        "width": 45,
+        "height": 32
+      }
+    },
+    "175": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/175-state-0.png",
+        "origin_x": -17,
+        "origin_y": -43,
+        "width": 34,
+        "height": 43
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/175-state-1.png",
+        "origin_x": -17,
+        "origin_y": -41,
+        "width": 34,
+        "height": 41
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/175-state-2.png",
+        "origin_x": -17,
+        "origin_y": -42,
+        "width": 33,
+        "height": 42
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/175-state-3.png",
+        "origin_x": -26,
+        "origin_y": -42,
+        "width": 33,
+        "height": 42
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/175-state-4.png",
+        "origin_x": -10,
+        "origin_y": -96,
+        "width": 70,
+        "height": 104
+      }
+    },
+    "176": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/176-state-0.png",
+        "origin_x": -17,
+        "origin_y": -42,
+        "width": 34,
+        "height": 42
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/176-state-1.png",
+        "origin_x": -17,
+        "origin_y": -41,
+        "width": 33,
+        "height": 41
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/176-state-2.png",
+        "origin_x": -24,
+        "origin_y": -41,
+        "width": 33,
+        "height": 41
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/176-state-3.png",
+        "origin_x": -18,
+        "origin_y": -40,
+        "width": 34,
+        "height": 40
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/176-state-4.png",
+        "origin_x": -9,
+        "origin_y": -97,
+        "width": 69,
+        "height": 107
+      }
+    },
+    "177": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/177-state-0.png",
+        "origin_x": -36,
+        "origin_y": -54,
+        "width": 63,
+        "height": 44
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/177-state-1.png",
+        "origin_x": -39,
+        "origin_y": -59,
+        "width": 63,
+        "height": 44
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/177-state-2.png",
+        "origin_x": -39,
+        "origin_y": -66,
+        "width": 63,
+        "height": 44
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/177-state-3.png",
+        "origin_x": -54,
+        "origin_y": -59,
+        "width": 63,
+        "height": 44
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/177-state-4.png",
+        "origin_x": -50,
+        "origin_y": -73,
+        "width": 63,
+        "height": 44
+      }
+    },
+    "178": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/178-state-0.png",
+        "origin_x": -38,
+        "origin_y": -78,
+        "width": 76,
+        "height": 78
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/178-state-1.png",
+        "origin_x": -37,
+        "origin_y": -76,
+        "width": 74,
+        "height": 78
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/178-state-2.png",
+        "origin_x": -37,
+        "origin_y": -75,
+        "width": 74,
+        "height": 78
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/178-state-3.png",
+        "origin_x": -37,
+        "origin_y": -75,
+        "width": 74,
+        "height": 78
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/178-state-4.png",
+        "origin_x": -47,
+        "origin_y": -89,
+        "width": 76,
+        "height": 80
+      }
+    },
+    "179": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/179-state-0.png",
+        "origin_x": -42,
+        "origin_y": -82,
+        "width": 90,
+        "height": 72
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/179-state-1.png",
+        "origin_x": -42,
+        "origin_y": -84,
+        "width": 90,
+        "height": 72
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/179-state-2.png",
+        "origin_x": -43,
+        "origin_y": -115,
+        "width": 90,
+        "height": 72
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/179-state-3.png",
+        "origin_x": -52,
+        "origin_y": -99,
+        "width": 131,
+        "height": 95
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/179-state-4.png",
+        "origin_x": -52,
+        "origin_y": -99,
+        "width": 140,
+        "height": 111
+      }
+    },
+    "180": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/180-state-0.png",
+        "origin_x": -48,
+        "origin_y": -83,
+        "width": 101,
+        "height": 73
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/180-state-1.png",
+        "origin_x": -48,
+        "origin_y": -85,
+        "width": 101,
+        "height": 73
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/180-state-2.png",
+        "origin_x": -48,
+        "origin_y": -86,
+        "width": 101,
+        "height": 73
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/180-state-3.png",
+        "origin_x": -36,
+        "origin_y": -93,
+        "width": 140,
+        "height": 97
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/180-state-4.png",
+        "origin_x": -56,
+        "origin_y": -83,
+        "width": 101,
+        "height": 73
+      }
+    },
+    "181": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/181-state-0.png",
+        "origin_x": -18,
+        "origin_y": -46,
+        "width": 36,
+        "height": 46
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/181-state-1.png",
+        "origin_x": -18,
+        "origin_y": -46,
+        "width": 37,
+        "height": 46
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/181-state-2.png",
+        "origin_x": -18,
+        "origin_y": -46,
+        "width": 37,
+        "height": 46
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/181-state-3.png",
+        "origin_x": -19,
+        "origin_y": -44,
+        "width": 38,
+        "height": 44
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/181-state-4.png",
+        "origin_x": -17,
+        "origin_y": -46,
+        "width": 36,
+        "height": 46
+      }
+    },
+    "182": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/182-state-0.png",
+        "origin_x": -50,
+        "origin_y": -85,
+        "width": 84,
+        "height": 75
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/182-state-1.png",
+        "origin_x": -51,
+        "origin_y": -88,
+        "width": 83,
+        "height": 74
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/182-state-2.png",
+        "origin_x": -54,
+        "origin_y": -89,
+        "width": 83,
+        "height": 74
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/182-state-3.png",
+        "origin_x": -61,
+        "origin_y": -93,
+        "width": 84,
+        "height": 75
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/182-state-4.png",
+        "origin_x": -47,
+        "origin_y": -85,
+        "width": 79,
+        "height": 72
+      }
+    },
+    "183": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/183-state-0.png",
+        "origin_x": -48,
+        "origin_y": -71,
+        "width": 91,
+        "height": 61
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/183-state-1.png",
+        "origin_x": -48,
+        "origin_y": -74,
+        "width": 91,
+        "height": 61
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/183-state-2.png",
+        "origin_x": -48,
+        "origin_y": -76,
+        "width": 91,
+        "height": 61
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/183-state-3.png",
+        "origin_x": -61,
+        "origin_y": -83,
+        "width": 91,
+        "height": 61
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/183-state-4.png",
+        "origin_x": -28,
+        "origin_y": -54,
+        "width": 91,
+        "height": 61
+      }
+    },
+    "184": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/184-state-0.png",
+        "origin_x": -60,
+        "origin_y": -78,
+        "width": 109,
+        "height": 68
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/184-state-1.png",
+        "origin_x": -61,
+        "origin_y": -80,
+        "width": 109,
+        "height": 68
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/184-state-2.png",
+        "origin_x": -61,
+        "origin_y": -82,
+        "width": 109,
+        "height": 68
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/184-state-3.png",
+        "origin_x": -70,
+        "origin_y": -78,
+        "width": 109,
+        "height": 68
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/184-state-4.png",
+        "origin_x": -81,
+        "origin_y": -88,
+        "width": 109,
+        "height": 68
+      }
+    },
+    "185": {
+      "0": {
+        "url": "/assets/game/pet-effect-snapshots/185-state-0.png",
+        "origin_x": -50,
+        "origin_y": -77,
+        "width": 100,
+        "height": 77
+      },
+      "1": {
+        "url": "/assets/game/pet-effect-snapshots/185-state-1.png",
+        "origin_x": -50,
+        "origin_y": -78,
+        "width": 101,
+        "height": 78
+      },
+      "2": {
+        "url": "/assets/game/pet-effect-snapshots/185-state-2.png",
+        "origin_x": -57,
+        "origin_y": -78,
+        "width": 101,
+        "height": 78
+      },
+      "3": {
+        "url": "/assets/game/pet-effect-snapshots/185-state-3.png",
+        "origin_x": -50,
+        "origin_y": -75,
+        "width": 102,
+        "height": 75
+      },
+      "4": {
+        "url": "/assets/game/pet-effect-snapshots/185-state-4.png",
+        "origin_x": -61,
+        "origin_y": -75,
+        "width": 102,
+        "height": 75
+      }
+    }
+  },
   "pet_animations": {
     "86": {
       "action": "skill",
@@ -986,6 +4674,7 @@
     "10": "/assets/game/skills/motif-10.png",
     "11": "/assets/game/skills/motif-11.png"
   },
+  "skill_animations_manifest": "/assets/game/skill-animations/manifest.json",
   "effects": {
     "harmful": {
       "0": "/assets/game/effects/harmful-0.png",

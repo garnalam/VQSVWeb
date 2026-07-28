@@ -34,12 +34,12 @@ test('assigns reviewed cross game recipes to all evolution edges', function () {
         ]);
 });
 
-test('prices weaker mutations cheaply and uses the target species catalyst', function () {
+test('prices reviewed mutations cheaply and uses the target species catalyst', function () {
     seed(DatabaseSeeder::class);
 
     $weakerMutation = evolutionRecipe('liet-hoa', 41, 42);
     expect($weakerMutation->cost_rank)->toBe(1)
-        ->and($weakerMutation->balance_notes)->toContain('-34%')
+        ->and($weakerMutation->balance_notes)->toContain('Hạng Tiết kiệm')
         ->and(recipeIngredients($weakerMutation))->toBe([
             'liet-hoa:3:15' => ['quantity' => 1, 'role' => 'core'],
             'cau-vong:0:24' => ['quantity' => 1, 'role' => 'species'],
