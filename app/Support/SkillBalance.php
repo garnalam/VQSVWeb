@@ -6,7 +6,7 @@ use InvalidArgumentException;
 
 class SkillBalance
 {
-    public const VERSION = 'unified-v5';
+    public const VERSION = 'unified-v7';
 
     /** @var array<int, array{power: int, pp: int}> */
     private const LIET_HOA_VALUES = [
@@ -36,20 +36,6 @@ class SkillBalance
         69 => ['power' => 155, 'pp' => 5],
     ];
 
-    /** @var array<int, array{power: int, pp: int}> */
-    private const RAINBOW_VALUES = [
-        0 => ['power' => 60, 'pp' => 15], 1 => ['power' => 90, 'pp' => 20], 2 => ['power' => 110, 'pp' => 12],
-        3 => ['power' => 140, 'pp' => 8], 4 => ['power' => 160, 'pp' => 5], 5 => ['power' => 80, 'pp' => 20],
-        6 => ['power' => 75, 'pp' => 18], 7 => ['power' => 110, 'pp' => 12], 8 => ['power' => 135, 'pp' => 8],
-        9 => ['power' => 155, 'pp' => 5], 10 => ['power' => 95, 'pp' => 25], 11 => ['power' => 90, 'pp' => 14],
-        12 => ['power' => 115, 'pp' => 12], 13 => ['power' => 130, 'pp' => 8], 14 => ['power' => 175, 'pp' => 5],
-        15 => ['power' => 95, 'pp' => 25], 16 => ['power' => 90, 'pp' => 20], 17 => ['power' => 110, 'pp' => 14],
-        18 => ['power' => 140, 'pp' => 8], 19 => ['power' => 160, 'pp' => 5], 20 => ['power' => 90, 'pp' => 22],
-        21 => ['power' => 100, 'pp' => 20], 22 => ['power' => 110, 'pp' => 12], 23 => ['power' => 145, 'pp' => 8],
-        24 => ['power' => 185, 'pp' => 5], 27 => ['power' => 0, 'pp' => 4], 28 => ['power' => 0, 'pp' => 2],
-        29 => ['power' => 250, 'pp' => 1], 30 => ['power' => 0, 'pp' => 3],
-    ];
-
     /** @var array<int, int> */
     private const LIET_HOA_STATUS_CHANCES = [
         1 => 100, 2 => 20, 8 => 25, 12 => 100, 13 => 100, 18 => 100, 19 => 100,
@@ -58,17 +44,15 @@ class SkillBalance
         61 => 100, 67 => 100,
     ];
 
-    /** @var array<int, int> */
-    private const RAINBOW_STATUS_CHANCES = [
-        0 => 100, 1 => 30, 4 => 100, 5 => 10, 9 => 25, 11 => 100, 14 => 25,
-        16 => 25, 19 => 30, 20 => 25, 22 => 60, 30 => 60,
-    ];
-
     /**
      * @return array{power: int, pp: int, tier: int, status_chance: int|null, description: string, mechanics: array<string, mixed>}
      */
     public static function profile(string $sourceSlug, int $gameId): array
     {
+        if ($sourceSlug === 'cau-vong') {
+            return Vqsv4SkillData::balanceProfile($gameId);
+        }
+
         $values = self::values($sourceSlug, $gameId);
 
         return [
@@ -85,7 +69,10 @@ class SkillBalance
     {
         $values = match ($sourceSlug) {
             'liet-hoa' => self::LIET_HOA_VALUES[$gameId] ?? null,
-            'cau-vong' => self::RAINBOW_VALUES[$gameId] ?? null,
+            'cau-vong' => array_intersect_key(
+                Vqsv4SkillData::balanceProfile($gameId),
+                ['power' => true, 'pp' => true],
+            ),
             default => null,
         };
 
@@ -97,7 +84,7 @@ class SkillBalance
     {
         return $sourceSlug === 'liet-hoa'
             ? self::lietHoaMechanics($gameId)
-            : self::rainbowMechanics($gameId);
+            : Vqsv4SkillData::balanceProfile($gameId)['mechanics'];
     }
 
     private static function tier(string $sourceSlug, int $gameId): int
@@ -106,19 +93,14 @@ class SkillBalance
             return [0, 0, 0, 1, 1, 1, 2, 2, 3, 3][$gameId % 10];
         }
 
-        return match ($gameId) {
-            27 => 0,
-            28, 30 => 2,
-            29 => 3,
-            default => [0, 0, 1, 2, 3][$gameId % 5],
-        };
+        return Vqsv4SkillData::balanceProfile($gameId)['tier'];
     }
 
     private static function statusChance(string $sourceSlug, int $gameId): ?int
     {
         return match ($sourceSlug) {
             'liet-hoa' => self::LIET_HOA_STATUS_CHANCES[$gameId] ?? null,
-            'cau-vong' => self::RAINBOW_STATUS_CHANCES[$gameId] ?? null,
+            'cau-vong' => Vqsv4SkillData::balanceProfile($gameId)['status_chance'],
             default => null,
         };
     }
@@ -192,43 +174,6 @@ class SkillBalance
             68 => self::rule('self_buff_on_hit', 'Sau khi đánh trúng, Sức mạnh +20% trong 2 lượt; không cộng dồn.', status: 'strength_up', duration: 2, value: 20),
             69 => self::rule('repeat_hit', 'Có 35% đánh thêm một hit 70% Power; hit phụ không áp dụng Effect.', value: 70, chance: 35),
             default => throw new InvalidArgumentException("Missing Liệt Hỏa v2 mechanics for Skill {$gameId}."),
-        };
-    }
-
-    /** @return array<string, mixed> */
-    private static function rainbowMechanics(int $gameId): array
-    {
-        return match ($gameId) {
-            0 => self::rule('apply_status', 'Gây sát thương và chắc chắn gây Hủ Thực 3 lượt: mất 3%, 6%, 9% HP tối đa.', status: 'corrosion', duration: 3, value: 3),
-            1 => self::rule('corrosion_life_steal', 'Nếu mục tiêu Hủ Thực, hồi 35% damage, tối đa 8% HP; nếu chưa có, 30% gây Hủ Thực.', status: 'corrosion', duration: 3, value: 35, cap: 8, chance: 30),
-            2 => self::rule('corrosion_detonate', 'Kích hoạt toàn bộ tick Hủ Thực còn lại, xóa trạng thái và hồi 50% damage kích nổ, tối đa 12% HP.', status: 'corrosion', value: 50, cap: 12),
-            3 => self::rule('conditional_pierce', 'Nếu mục tiêu Hủ Thực, đòn đánh bỏ qua 20% DEF; không xóa trạng thái.', status: 'corrosion', value: 20),
-            4 => self::rule('corrosion_storm', 'Gây Hủ Thực chắc chắn, kích hoạt tick đầu ngay và hồi 50% tick đó, tối đa 5% HP.', status: 'corrosion', duration: 3, value: 50, cap: 5),
-            5 => self::rule('apply_status', 'Gây sát thương; 10% gây Thạch Hóa, làm mất hành động kế tiếp và giảm 30% damage nhận.', status: 'petrified', duration: 1, value: 30),
-            6 => self::rule('defense_stack', 'Sau khi đánh trúng nhận một tầng DEF +7% trong 2 lượt, tối đa 3 tầng.', duration: 2, value: 7, cap: 3),
-            7 => self::rule('consume_defense_power', 'Tiêu thụ toàn bộ tầng Phòng ngự; mỗi tầng cộng 20 Power.', value: 20, cap: 3),
-            8 => self::rule('defense_pierce', 'Đòn đánh bỏ qua 25% DEF của mục tiêu.', value: 25),
-            9 => self::rule('apply_status', 'Gây sát thương; 25% gây Thạch Hóa và không thể làm mới khi đang có.', status: 'petrified', duration: 1, value: 30),
-            10 => self::rule('first_action_power', 'Nếu hành động trước mục tiêu trong lượt, Power tăng thành 110.', conditionalPower: 110),
-            11 => self::rule('apply_status', 'Gây Giam Cầm chắc chắn trong 2 lượt; không đổi Pet/dùng Item và Linh xảo −15%.', status: 'bound', duration: 2, value: 15),
-            12 => self::rule('self_buff_on_hit', 'Sau khi đánh trúng, Linh xảo +15% trong 2 lượt; không cộng dồn.', status: 'agility_up', duration: 2, value: 15),
-            13 => self::rule('cleanse_on_hit', 'Sau khi gây damage, xóa một debuff trên bản thân.'),
-            14 => self::rule('first_action_status', '25% gây Giam Cầm trong 2 lượt; nếu hành động trước, xác suất tăng thành 40%.', status: 'bound', duration: 2, value: 15, chance: 40),
-            15 => self::rule('target_hp_power', 'Nếu mục tiêu dưới 50% HP, Power tăng thành 110.', conditionalPower: 110),
-            16 => self::rule('apply_status', 'Gây sát thương; 25% gây Tê Liệt trong 2 lượt.', status: 'paralysis', duration: 2, value: 20),
-            17 => self::rule('self_hp_damage', 'Nếu người dùng dưới 50% HP, damage của đòn tăng 30%.', value: 30),
-            18 => self::rule('retaliation_power', 'Nếu đã nhận damage kể từ hành động trước, Power tăng thành 160.', conditionalPower: 160),
-            19 => self::rule('low_hp_power_status', '30% gây Tê Liệt; nếu người dùng dưới 35% HP, Power tăng thành 185.', status: 'paralysis', duration: 2, value: 20, conditionalPower: 185),
-            20 => self::rule('apply_status', 'Gây sát thương; 25% gây Mị Hoặc trong 3 lượt, giảm 15% damage.', status: 'charmed', duration: 3, value: 15),
-            21 => self::rule('pp_refund', 'Sau khi đánh trúng, có 25% hoàn lại 1 PP vừa tiêu hao.', value: 1, chance: 25),
-            22 => self::rule('apply_status', 'Gây sát thương; 60% gây Mị Hoặc trong 2 lượt, giảm 15% damage.', status: 'charmed', duration: 2, value: 15),
-            23 => self::rule('life_steal', 'Hồi 30% damage thực gây ra, tối đa 10% HP tối đa.', value: 30, cap: 10),
-            24 => self::rule('consume_for_power', 'Nếu mục tiêu Mị Hoặc, Power tăng thành 220 và xóa trạng thái.', status: 'charmed', conditionalPower: 220),
-            27 => self::rule('direct_heal', 'Hồi 25% HP tối đa cho bản thân hoặc đồng minh.', value: 25),
-            28 => self::rule('direct_heal', 'Hồi 50% HP tối đa cho bản thân hoặc đồng minh.', value: 50),
-            29 => self::rule('exhaust_pp', 'Gây 250 Power; sau khi dùng, PP hiện tại của toàn bộ Skill đang mang trở về 0.'),
-            30 => self::rule('apply_status', '60% gây Phong Bế trong 2 lượt; mục tiêu không dùng được Skill Tier 2–3.', status: 'tier_lock', duration: 2, value: 1),
-            default => throw new InvalidArgumentException("Missing Cầu Vồng v2 mechanics for Skill {$gameId}."),
         };
     }
 

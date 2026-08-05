@@ -38,11 +38,18 @@ class EvolutionRecipeSeeder extends Seeder
                 ->orderBy('id')
                 ->get();
 
-            if ($evolutions->count() !== 88) {
-                throw new RuntimeException('Evolution recipe normalization requires exactly 88 evolution edges.');
+            $legacyEvolutions = $evolutions->reject(
+                fn (PetEvolution $evolution): bool => $evolution->sourcePet->gameSource->slug === 'vqsv4',
+            );
+            $vqsv4Evolutions = $evolutions->filter(
+                fn (PetEvolution $evolution): bool => $evolution->sourcePet->gameSource->slug === 'vqsv4',
+            );
+
+            if ($legacyEvolutions->count() !== 88 || $vqsv4Evolutions->count() !== 45) {
+                throw new RuntimeException('Evolution recipes require 88 legacy and 45 VQSV4 edges.');
             }
 
-            foreach ($evolutions as $evolution) {
+            foreach ($legacyEvolutions as $evolution) {
                 $sourceSlug = $evolution->sourcePet->gameSource->slug;
                 $rank = EvolutionRecipeData::costRank(
                     $sourceSlug,

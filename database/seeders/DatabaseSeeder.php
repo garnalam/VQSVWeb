@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemBalanceSeeder::class);
         $this->call(PetTraitSeeder::class);
         $this->call(PetBalanceSeeder::class);
+        $this->call(Vqsv4PetSeeder::class);
         $this->call(PetLearnsetSeeder::class);
         $this->call(DivineAbilitySeeder::class);
         $this->call(EvolutionRecipeSeeder::class);

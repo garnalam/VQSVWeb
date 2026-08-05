@@ -91,14 +91,19 @@ class SkillBattlePreview
                 ];
             }
 
+            $isUnifiedScale = ($animation['presentation_provenance'] ?? null) === 'unified_design';
+            $provenance = $isUnifiedScale ? 'unified_scaled_source' : 'decoded_original';
+
             return [
-                'provenance' => 'decoded_original',
-                'label' => 'Chuỗi Pet + VFX Skill gốc Cầu Vồng',
+                'provenance' => $provenance,
+                'label' => $isUnifiedScale
+                    ? 'VFX Skill VQSV4 đã cân chỉnh theo kích thước Cầu Vồng'
+                    : 'Chuỗi Pet + VFX Skill gốc Cầu Vồng',
                 'events' => [[
                     'index' => 0,
                     'kind' => 'sprite_animation',
                     'anchor' => $effectTarget,
-                    'render_status' => 'decoded_original',
+                    'render_status' => $provenance,
                     ...$animation,
                 ]],
             ];
@@ -261,12 +266,13 @@ class SkillBattlePreview
         };
         $followUp = match ($key) {
             'seeded_damage' => 'damage_tick',
+            'bleeding' => 'damage_tick',
             'corrosion' => 'escalating_damage',
             'entangled', 'defense_down' => 'defense_break',
             'accuracy_down' => 'accuracy_check',
             'agility_down', 'dazed', 'paralysis', 'bound' => 'action_delayed',
             'damage_down', 'charmed' => 'counter_weakened',
-            'petrified', 'confusion' => 'action_blocked',
+            'petrified', 'confusion', 'sleep' => 'action_blocked',
             'tier_lock' => 'tier_lock',
             'regeneration' => 'heal_tick',
             'direct_heal' => 'direct_heal',
@@ -280,6 +286,7 @@ class SkillBattlePreview
             'agility_down', 'dazed', 'paralysis', 'bound' => [$this->change('agility', 'down', $value)],
             'damage_down', 'charmed' => [$this->change('damage', 'down', $value)],
             'defense_down' => [$this->change('defense', 'down', $value)],
+            'defense_up' => [$this->change('defense', 'up', $value)],
             default => [],
         };
         $target = $skill->target_side === 1 || in_array($skill->target_pattern, ['self', 'self_or_ally', 'all_allies'], true)
@@ -311,7 +318,8 @@ class SkillBattlePreview
     private function categoryRule(Skill $skill): array
     {
         $healPercent = match ($skill->game_id) {
-            27 => 25,
+            26 => 20,
+            27 => 35,
             28 => 50,
             default => 0,
         };

@@ -14,19 +14,19 @@ use Inertia\Testing\AssertableInertia as Assert;
 
 use function Pest\Laravel\seed;
 
-test('imports both games with isolated source identities', function () {
+test('imports all three games with isolated source identities', function () {
     seed(DatabaseSeeder::class);
 
     $rainbow = GameSource::query()->where('slug', 'cau-vong')->firstOrFail();
     $lietHoa = GameSource::query()->where('slug', 'liet-hoa')->firstOrFail();
 
-    expect(GameSource::query()->count())->toBe(2)
-        ->and(Element::query()->count())->toBe(13)
-        ->and(Pet::query()->count())->toBe(202)
+    expect(GameSource::query()->count())->toBe(3)
+        ->and(Element::query()->count())->toBe(19)
+        ->and(Pet::query()->count())->toBe(274)
         ->and(Skill::query()->count())->toBe(119)
         ->and(Item::query()->count())->toBe(112)
-        ->and(Effect::query()->count())->toBe(46)
-        ->and(PetEvolution::query()->count())->toBe(88)
+        ->and(Effect::query()->count())->toBe(52)
+        ->and(PetEvolution::query()->count())->toBe(133)
         ->and(SkillUnlockRule::query()->count())->toBe(45)
         ->and(Pet::query()->whereBelongsTo($rainbow)->count())->toBe(102)
         ->and(Skill::query()->whereBelongsTo($rainbow)->count())->toBe(49)
@@ -59,7 +59,7 @@ test('preserves decoded rainbow stats effects evolutions and artwork', function 
         ])
         ->and($pet->acquisition_code)->toBeNull()
         ->and($pet->evolutions)->toHaveCount(1)
-        ->and($skill->name)->toBe('Triền Nhiễu')
+        ->and($skill->name)->toBe('Mạn Độc Triền Sinh')
         ->and($skill->energy_cost)->toBeNull()
         ->and($skill->raw_values['status_chance'])->toBe(4)
         ->and($skill->status_chance)->toBe(100)
@@ -168,15 +168,15 @@ test('item dossier includes cross game usages from canonical evolution recipes',
             ->where('item.evolution_usages.0.role', 'species'));
 });
 
-test('can import both sources repeatedly without duplicate records', function () {
+test('can import all sources repeatedly without duplicate records', function () {
     seed(DatabaseSeeder::class);
     seed(DatabaseSeeder::class);
 
-    expect(Pet::query()->count())->toBe(202)
+    expect(Pet::query()->count())->toBe(274)
         ->and(Skill::query()->count())->toBe(119)
         ->and(Item::query()->count())->toBe(112)
-        ->and(PetEvolution::query()->count())->toBe(88)
-        ->and(PetEvolutionIngredient::query()->count())->toBeGreaterThan(176);
+        ->and(PetEvolution::query()->count())->toBe(133)
+        ->and(PetEvolutionIngredient::query()->count())->toBe(374);
 });
 
 function rainbowLevelFiftyTotal(Pet $pet): int

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Wiki\PetController::index
- * @see app/Http/Controllers/Wiki/PetController.php:32
+ * @see app/Http/Controllers/Wiki/PetController.php:33
  * @route '/wiki/pets'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Wiki\PetController::index
- * @see app/Http/Controllers/Wiki/PetController.php:32
+ * @see app/Http/Controllers/Wiki/PetController.php:33
  * @route '/wiki/pets'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Wiki\PetController::index
- * @see app/Http/Controllers/Wiki/PetController.php:32
+ * @see app/Http/Controllers/Wiki/PetController.php:33
  * @route '/wiki/pets'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Wiki\PetController::index
- * @see app/Http/Controllers/Wiki/PetController.php:32
+ * @see app/Http/Controllers/Wiki/PetController.php:33
  * @route '/wiki/pets'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Wiki\PetController::index
- * @see app/Http/Controllers/Wiki/PetController.php:32
+ * @see app/Http/Controllers/Wiki/PetController.php:33
  * @route '/wiki/pets'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Wiki\PetController::index
- * @see app/Http/Controllers/Wiki/PetController.php:32
+ * @see app/Http/Controllers/Wiki/PetController.php:33
  * @route '/wiki/pets'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Wiki\PetController::index
- * @see app/Http/Controllers/Wiki/PetController.php:32
+ * @see app/Http/Controllers/Wiki/PetController.php:33
  * @route '/wiki/pets'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\Wiki\PetController::show
- * @see app/Http/Controllers/Wiki/PetController.php:208
+ * @see app/Http/Controllers/Wiki/PetController.php:211
  * @route '/wiki/pets/{pet}'
  */
 export const show = (args: { pet: number | { id: number } } | [pet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\Wiki\PetController::show
- * @see app/Http/Controllers/Wiki/PetController.php:208
+ * @see app/Http/Controllers/Wiki/PetController.php:211
  * @route '/wiki/pets/{pet}'
  */
 show.url = (args: { pet: number | { id: number } } | [pet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -127,7 +127,7 @@ show.url = (args: { pet: number | { id: number } } | [pet: number | { id: number
 
 /**
 * @see \App\Http\Controllers\Wiki\PetController::show
- * @see app/Http/Controllers/Wiki/PetController.php:208
+ * @see app/Http/Controllers/Wiki/PetController.php:211
  * @route '/wiki/pets/{pet}'
  */
 show.get = (args: { pet: number | { id: number } } | [pet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -136,7 +136,7 @@ show.get = (args: { pet: number | { id: number } } | [pet: number | { id: number
 })
 /**
 * @see \App\Http\Controllers\Wiki\PetController::show
- * @see app/Http/Controllers/Wiki/PetController.php:208
+ * @see app/Http/Controllers/Wiki/PetController.php:211
  * @route '/wiki/pets/{pet}'
  */
 show.head = (args: { pet: number | { id: number } } | [pet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -146,7 +146,7 @@ show.head = (args: { pet: number | { id: number } } | [pet: number | { id: numbe
 
     /**
 * @see \App\Http\Controllers\Wiki\PetController::show
- * @see app/Http/Controllers/Wiki/PetController.php:208
+ * @see app/Http/Controllers/Wiki/PetController.php:211
  * @route '/wiki/pets/{pet}'
  */
     const showForm = (args: { pet: number | { id: number } } | [pet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -156,7 +156,7 @@ show.head = (args: { pet: number | { id: number } } | [pet: number | { id: numbe
 
             /**
 * @see \App\Http\Controllers\Wiki\PetController::show
- * @see app/Http/Controllers/Wiki/PetController.php:208
+ * @see app/Http/Controllers/Wiki/PetController.php:211
  * @route '/wiki/pets/{pet}'
  */
         showForm.get = (args: { pet: number | { id: number } } | [pet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -165,7 +165,7 @@ show.head = (args: { pet: number | { id: number } } | [pet: number | { id: numbe
         })
             /**
 * @see \App\Http\Controllers\Wiki\PetController::show
- * @see app/Http/Controllers/Wiki/PetController.php:208
+ * @see app/Http/Controllers/Wiki/PetController.php:211
  * @route '/wiki/pets/{pet}'
  */
         showForm.head = (args: { pet: number | { id: number } } | [pet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

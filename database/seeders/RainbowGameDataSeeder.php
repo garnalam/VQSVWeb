@@ -10,6 +10,7 @@ use App\Models\Pet;
 use App\Models\PetEvolution;
 use App\Models\Skill;
 use App\Models\SkillUnlockRule;
+use App\Support\Vqsv4SkillData;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -89,12 +90,12 @@ class RainbowGameDataSeeder extends Seeder
     private function seedEffects(array $rows, GameSource $gameSource): array
     {
         $ids = [];
-        foreach ($rows as $row) {
+        foreach ([...$rows, ...Vqsv4SkillData::effectDefinitions()] as $row) {
             $effect = Effect::query()->updateOrCreate(
                 ['game_source_id' => $gameSource->id, 'source_table' => $row['source_table'], 'game_id' => $row['game_id']],
                 [
                     'kind' => $row['kind'],
-                    'name_original' => $row['name'],
+                    'name_original' => $row['name_original'] ?? $row['name'],
                     'name' => $row['name'],
                     'description' => $row['description'],
                     'duration' => null,
@@ -574,16 +575,22 @@ class RainbowGameDataSeeder extends Seeder
     private function seedSkills(array $rows, array $elementIds, array $effectIds, GameSource $gameSource): void
     {
         foreach ($rows as $row) {
-            $statusEffectId = $row['status_effect_game_id'];
-            $effectId = $statusEffectId === null ? null : $effectIds[$this->identity(11, $statusEffectId)];
+            $approvedDefinition = $row['game_id'] <= Vqsv4SkillData::LAST_ACTIVE_ID
+                ? Vqsv4SkillData::definition($row['game_id'])
+                : null;
+            $primaryEffect = $approvedDefinition['primary_effect'] ?? null;
+            $effectId = $primaryEffect === null
+                ? null
+                : $effectIds[$this->identity($primaryEffect[0], $primaryEffect[1])];
+            $name = $approvedDefinition['name'] ?? $row['name'];
             Skill::query()->updateOrCreate(
                 ['game_source_id' => $gameSource->id, 'game_id' => $row['game_id']],
                 [
                     'element_id' => $row['element_game_id'] === null ? null : $elementIds[$row['element_game_id']],
                     'effect_id' => $effectId,
                     'name_original' => $row['name'],
-                    'name' => $row['name'],
-                    'slug' => $this->slug($row['game_id'], $row['name']),
+                    'name' => $name,
+                    'slug' => $this->slug($row['game_id'], $name),
                     'description_original' => $row['description'],
                     'description' => $row['description'],
                     'power_percent' => $row['power'],
@@ -591,7 +598,7 @@ class RainbowGameDataSeeder extends Seeder
                     'status_chance' => $row['status_chance'],
                     'tier' => $row['tier'],
                     'max_uses' => 0,
-                    'effect_mode' => $statusEffectId === null ? 0 : 2,
+                    'effect_mode' => $effectId === null ? 0 : 2,
                     'effect_parameter' => $row['status_chance'],
                     'target_side' => 0,
                     'raw_values' => $row,

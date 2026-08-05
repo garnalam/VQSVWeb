@@ -79,7 +79,7 @@ test('converted Rainbow statuses explain their Liệt Hỏa follow-up behavior',
             ->where('skill.battle_preview.effect_rule.key', 'direct_heal')
             ->where('skill.battle_preview.effect_rule.target', 'caster')
             ->where('skill.battle_preview.effect_rule.follow_up.kind', 'direct_heal')
-            ->where('skill.battle_preview.effect_rule.follow_up.value', 25));
+            ->where('skill.battle_preview.effect_rule.follow_up.value', 35));
 });
 
 test('control previews expose their single battle soft penalties', function () {
@@ -137,7 +137,7 @@ test('skill preview only labels decoded source animations as original', function
     $proceduralLietHoaSkill = Skill::query()->whereBelongsTo($lietHoa)->where('game_id', 35)->firstOrFail();
     $renderedRainbowSkill = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 0)->firstOrFail();
     $rainbowHealingSkill = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 27)->firstOrFail();
-    $passiveRainbowSkill = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 32)->firstOrFail();
+    $passiveRainbowSkill = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 33)->firstOrFail();
 
     $this->get(route('wiki.skills.show', $renderedLietHoaSkill))
         ->assertOk()
@@ -158,7 +158,7 @@ test('skill preview only labels decoded source animations as original', function
     $this->get(route('wiki.skills.show', $renderedRainbowSkill))
         ->assertOk()
         ->assertInertia(fn (Assert $page): Assert => $page
-            ->where('skill.battle_preview.source_animation.provenance', 'decoded_original')
+            ->where('skill.battle_preview.source_animation.provenance', 'unified_scaled_source')
             ->where('skill.battle_preview.source_animation.events.0.url', '/assets/game/cau-vong/skill-animations/0.webp')
             ->where('skill.battle_preview.source_animation.events.0.timeline_mode', 'concurrent_caster_action')
             ->where('skill.battle_preview.source_animation.events.0.anchor', 'opponent'));
@@ -166,7 +166,7 @@ test('skill preview only labels decoded source animations as original', function
     $this->get(route('wiki.skills.show', $rainbowHealingSkill))
         ->assertOk()
         ->assertInertia(fn (Assert $page): Assert => $page
-            ->where('skill.battle_preview.source_animation.provenance', 'decoded_original')
+            ->where('skill.battle_preview.source_animation.provenance', 'unified_scaled_source')
             ->where('skill.battle_preview.source_animation.events.0.url', '/assets/game/cau-vong/skill-animations/27.webp')
             ->where('skill.battle_preview.source_animation.events.0.anchor', 'caster'));
 
@@ -199,11 +199,11 @@ test('decoded animation manifests cover both original game sources', function ()
         ->and($lietHoaManifest['procedural_renderer']['runtime'])->toBe('a.a.b.canvas.v1')
         ->and($lietHoaManifest['procedural_renderer']['supported_types'])->toBe([1, 7, 8, 9, 11, 12, 13, 14, 15])
         ->and($lietHoaManifest['procedural_renderer']['textures'])->toHaveCount(4)
-        ->and($rainbowManifest['controller']['class'])->toBe('ak')
-        ->and($rainbowManifest['controller']['method'])->toBe('b(z)')
-        ->and($rainbowManifest['controller']['active_skill_ids'])->toBe(range(0, 30))
-        ->and($rainbowManifest['animations'])->toHaveCount(31)
-        ->and(array_map('intval', array_keys($rainbowManifest['animations'])))->toBe(range(0, 30));
+        ->and($rainbowManifest['controller']['class'])->toBe('VQSV4 decoded battle renderer')
+        ->and($rainbowManifest['controller']['method'])->toBe('artwork group + animation slot')
+        ->and($rainbowManifest['controller']['active_skill_ids'])->toBe(range(0, 32))
+        ->and($rainbowManifest['animations'])->toHaveCount(33)
+        ->and(array_map('intval', array_keys($rainbowManifest['animations'])))->toBe(range(0, 32));
 
     expect($gameManifest['pet_effect_snapshots'])->toHaveCount(100);
 
@@ -267,7 +267,7 @@ test('every active skill can build a preview with a real caster and mapped effec
         ->get();
     $previewBuilder = app(SkillBattlePreview::class);
 
-    expect($skills)->toHaveCount(99);
+    expect($skills)->toHaveCount(103);
 
     foreach ($skills as $skill) {
         $entry = $skill->learnsetEntries->first();

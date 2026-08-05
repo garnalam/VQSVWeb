@@ -17,18 +17,26 @@ test('seeds the unified trait catalog and assigns every pet species trait', func
     $speciesTraits = PetTrait::query()->species()->get();
     $pets = Pet::query()->with('speciesTrait')->get();
 
-    expect(PetTrait::query()->count())->toBe(33)
-        ->and($physicalTraits)->toHaveCount(13)
+    expect(PetTrait::query()->count())->toBe(39)
+        ->and($physicalTraits)->toHaveCount(19)
         ->and($physicalTraits->pluck('roll_weight')->unique()->all())->toBe([1])
-        ->and($physicalTraits->where('is_cleanse_eligible', true))->toHaveCount(8)
+        ->and($physicalTraits->where('is_cleanse_eligible', true))->toHaveCount(11)
         ->and($physicalTraits->countBy('polarity')->all())->toMatchArray([
             PetTrait::POLARITY_NEUTRAL => 1,
-            PetTrait::POLARITY_BENEFICIAL => 5,
-            PetTrait::POLARITY_HARMFUL => 5,
+            PetTrait::POLARITY_BENEFICIAL => 8,
+            PetTrait::POLARITY_HARMFUL => 8,
             PetTrait::POLARITY_MIXED => 2,
         ])
         ->and($speciesTraits)->toHaveCount(20)
-        ->and($pets)->toHaveCount(202)
+        ->and($physicalTraits->whereIn('code', [
+            'V4-TRAIT-00',
+            'V4-TRAIT-01',
+            'V4-TRAIT-02',
+            'V4-TRAIT-03',
+            'V4-TRAIT-04',
+            'V4-TRAIT-05',
+        ]))->toHaveCount(6)
+        ->and($pets)->toHaveCount(274)
         ->and($pets->whereNull('species_trait_id'))->toBeEmpty();
 
     foreach ($pets as $pet) {
@@ -50,7 +58,7 @@ test('keeps the reviewed species trait mapping for representative pets', functio
         ->toBe('HD-02');
 });
 
-test('pet wiki exposes the fixed species trait and the equal thirteen trait pool', function () {
+test('pet wiki exposes the fixed species trait and the equal nineteen trait pool', function () {
     $lietHoa = GameSource::query()->where('slug', 'liet-hoa')->firstOrFail();
     $pet = Pet::query()->whereBelongsTo($lietHoa)->where('game_id', 19)->firstOrFail();
 
@@ -66,7 +74,8 @@ test('pet wiki exposes the fixed species trait and the equal thirteen trait pool
         ->assertInertia(fn (Assert $page): Assert => $page
             ->component('wiki/pets/show')
             ->where('pet.species_trait.code', 'TV-03')
-            ->has('trait_system.physical_traits', 13)
+            ->missing('pet.talent')
+            ->has('trait_system.physical_traits', 19)
             ->missing('trait_system.total_roll_weight')
             ->missing('trait_system.probability_per_trait')
             ->missing('trait_system.cleanse_pool_count')

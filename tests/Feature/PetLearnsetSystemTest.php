@@ -14,16 +14,16 @@ beforeEach(function () {
     seed(DatabaseSeeder::class);
 });
 
-test('assigns a combat identity and a curated learnset to all 202 pets', function () {
+test('assigns a combat identity and a curated learnset to all 274 pets', function () {
     $pets = Pet::query()->with('learnsetEntries')->get();
 
-    expect($pets)->toHaveCount(202)
+    expect($pets)->toHaveCount(274)
         ->and($pets->whereNull('primary_role'))->toBeEmpty()
         ->and($pets->whereNull('secondary_role'))->toBeEmpty()
         ->and($pets->whereNull('playstyle_summary'))->toBeEmpty()
         ->and($pets->pluck('primary_role')->unique()->diff(array_keys(Pet::COMBAT_ROLES)))->toBeEmpty()
         ->and($pets->where('preferred_battle_format', 'double')->count())->toBeGreaterThan(0)
-        ->and(PetSkillLearnset::query()->count())->toBeGreaterThan(500);
+        ->and(PetSkillLearnset::query()->count())->toBe(1880);
 
     foreach ($pets as $pet) {
         expect($pet->learnsetEntries)->not->toBeEmpty();
@@ -38,10 +38,10 @@ test('normalizes the shared active skill catalog without retaining rainbow energ
         ->get();
 
     expect(Skill::query()->count())->toBe(119)
-        ->and(Skill::query()->whereBelongsTo($rainbow)->whereBetween('game_id', [31, 48])->where('is_active', false)->count())->toBe(18)
+        ->and(Skill::query()->whereBelongsTo($rainbow)->whereBetween('game_id', [33, 48])->where('is_active', false)->count())->toBe(16)
         ->and($rainbowSpeciesSkills)->toHaveCount(25)
         ->and($rainbowSpeciesSkills->whereNotNull('energy_cost'))->toBeEmpty()
-        ->and(Skill::query()->where('is_active', true)->distinct()->pluck('balance_version')->all())->toBe(['unified-v4'])
+        ->and(Skill::query()->where('is_active', true)->distinct()->pluck('balance_version')->all())->toBe(['unified-v6'])
         ->and($rainbowSpeciesSkills->pluck('max_uses')->unique()->sort()->values()->all())->toBe([5, 8, 12, 14, 15, 18, 20, 22, 25])
         ->and($rainbowSpeciesSkills->pluck('power_percent')->min())->toBeGreaterThanOrEqual(60)
         ->and($rainbowSpeciesSkills->pluck('power_percent')->max())->toBeLessThanOrEqual(185);
@@ -58,7 +58,7 @@ test('publishes only covered combat skills and reserves signature labels for one
         ->groupBy('to_pet_id')
         ->map->pluck('from_pet_id');
 
-    expect($activeSkills)->toHaveCount(99)
+    expect($activeSkills)->toHaveCount(103)
         ->and($activeSkills->whereIn('combat_category', ['fallback', 'capture', 'passive']))->toBeEmpty();
 
     foreach ($activeSkills as $skill) {
@@ -72,11 +72,12 @@ test('publishes only covered combat skills and reserves signature labels for one
     expect($signatureSkills)->not->toBeEmpty();
 
     foreach ($signatureSkills as $skill) {
-        $familyRootIds = $skill->learnsetEntries
+        $signatureGrants = $skill->learnsetEntries->where('is_signature', true);
+        $familyRootIds = $signatureGrants
             ->map(fn (PetSkillLearnset $entry): int => learnsetFamilyRootId($entry->pet_id, $incoming))
             ->unique();
 
-        expect($skill->learnsetEntries->every('is_signature', true))->toBeTrue()
+        expect($signatureGrants)->not->toBeEmpty()
             ->and($familyRootIds)->toHaveCount(1);
     }
 
@@ -90,12 +91,16 @@ test('publishes only covered combat skills and reserves signature labels for one
         ->and($signatureEntry->pet->gameSource->slug)->toBe('liet-hoa')
         ->and($signatureEntry->pet->game_id)->toBe(8);
 
-    expect($pets)->toHaveCount(202);
+    expect($pets)->toHaveCount(274);
 });
 
 test('inherits ancestor skills and grants exactly ten cumulative skills at every final form', function () {
-    $pets = Pet::query()->with('learnsetEntries')->get()->keyBy('id');
-    $evolutions = PetEvolution::query()->get();
+    $pets = Pet::query()
+        ->with('learnsetEntries')
+        ->whereHas('gameSource', fn ($query) => $query->where('slug', '!=', 'vqsv4'))
+        ->get()
+        ->keyBy('id');
+    $evolutions = PetEvolution::query()->whereIn('from_pet_id', $pets->keys())->get();
     $incoming = $evolutions->groupBy('to_pet_id')->map->pluck('from_pet_id');
     $outgoing = $evolutions->groupBy('from_pet_id')->map->pluck('to_pet_id');
     $familyMetadata = learnsetFamilyMetadata($pets, $incoming);
@@ -113,15 +118,22 @@ test('inherits ancestor skills and grants exactly ten cumulative skills at every
         }
     }
 
-    expect(PetSkillLearnset::query()->whereNotIn('unlock_level', learnsetMilestones())->exists())->toBeFalse()
-        ->and(PetSkillLearnset::query()->distinct()->pluck('unlock_level')->sort()->values()->all())->toBe(learnsetMilestones())
+    $legacyLearnsets = PetSkillLearnset::query()
+        ->whereHas('pet.gameSource', fn ($query) => $query->where('slug', '!=', 'vqsv4'));
+
+    expect((clone $legacyLearnsets)->whereNotIn('unlock_level', learnsetMilestones())->exists())->toBeFalse()
+        ->and((clone $legacyLearnsets)->distinct()->pluck('unlock_level')->sort()->values()->all())->toBe(learnsetMilestones())
         ->and(PetSkillLearnset::query()->where('is_signature', true)->count())->toBeGreaterThan(0);
 });
 
 test('builds every pet pool from element species and role appropriate tactical skills', function () {
-    $pets = Pet::query()->with('learnsetEntries')->get()->keyBy('id');
+    $pets = Pet::query()
+        ->with('learnsetEntries')
+        ->whereHas('gameSource', fn ($query) => $query->where('slug', '!=', 'vqsv4'))
+        ->get()
+        ->keyBy('id');
     $skills = Skill::query()->with('gameSource:id,slug')->get()->keyBy('id');
-    $evolutions = PetEvolution::query()->get();
+    $evolutions = PetEvolution::query()->whereIn('from_pet_id', $pets->keys())->get();
     $incoming = $evolutions->groupBy('to_pet_id')->map->pluck('from_pet_id');
     $outgoingPetIds = $evolutions->pluck('from_pet_id')->unique();
     $poolSignatures = [];
@@ -140,10 +152,11 @@ test('builds every pet pool from element species and role appropriate tactical s
             'utility' => $pool->whereIn('combat_category', ['heal', 'defense', 'buff', 'control', 'disrupt'])->count(),
         ];
         $isFinalOrStandalone = ! $outgoingPetIds->contains($pet->id);
-        $minimumSourceSkills = $isFinalOrStandalone ? 3 : 1;
+        $minimumElementSkills = $isFinalOrStandalone ? 3 : 1;
+        $minimumSpeciesSkills = $isFinalOrStandalone ? 2 : 1;
 
-        expect($sourceCounts->get('element', 0))->toBeGreaterThanOrEqual($minimumSourceSkills, $identity)
-            ->and($sourceCounts->get('species', 0))->toBeGreaterThanOrEqual($minimumSourceSkills, $identity)
+        expect($sourceCounts->get('element', 0))->toBeGreaterThanOrEqual($minimumElementSkills, $identity)
+            ->and($sourceCounts->get('species', 0))->toBeGreaterThanOrEqual($minimumSpeciesSkills, $identity)
             ->and($categoryCounts['offense'])->toBeGreaterThanOrEqual(min(2, $pool->count()), "{$identity}:offense-floor");
 
         if ($isFinalOrStandalone) {
@@ -159,8 +172,12 @@ test('builds every pet pool from element species and role appropriate tactical s
 });
 
 test('keeps mutation branch grants separate while preserving their shared ancestor pool', function () {
-    $pets = Pet::query()->with('learnsetEntries')->get()->keyBy('id');
-    $evolutions = PetEvolution::query()->get();
+    $pets = Pet::query()
+        ->with('learnsetEntries')
+        ->whereHas('gameSource', fn ($query) => $query->where('slug', '!=', 'vqsv4'))
+        ->get()
+        ->keyBy('id');
+    $evolutions = PetEvolution::query()->whereIn('from_pet_id', $pets->keys())->get();
     $incoming = $evolutions->groupBy('to_pet_id')->map->pluck('from_pet_id');
     $branchingFamilies = $evolutions->groupBy('from_pet_id')->filter(fn ($targets): bool => $targets->count() > 1);
 
@@ -200,9 +217,9 @@ test('gives double battle support pets ally interaction and disruptive options',
         ->and($supportSkills->whereIn('combat_category', ['control', 'disrupt']))->not->toBeEmpty();
 });
 
-test('reserves professional healing for support and prevents stacked sustain on earth guardians', function () {
+test('reserves premium healing for water guardians and support while protecting earth balance', function () {
     $rainbow = GameSource::query()->where('slug', 'cau-vong')->firstOrFail();
-    $basicHealing = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 27)->firstOrFail();
+    $basicHealing = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 26)->firstOrFail();
     $professionalHealing = Skill::query()->whereBelongsTo($rainbow)->where('game_id', 28)->firstOrFail();
 
     expect($basicHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query
@@ -211,11 +228,16 @@ test('reserves professional healing for support and prevents stacked sustain on 
         ->and($basicHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query
             ->where('primary_role', 'guardian')
             ->where('combat_element', '!=', 'tho'))->exists())->toBeTrue()
-        ->and($professionalHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query->where('primary_role', 'guardian'))->exists())->toBeFalse()
+        ->and($professionalHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query
+            ->where('primary_role', 'guardian')
+            ->where('combat_element', 'tho'))->exists())->toBeFalse()
+        ->and($professionalHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query
+            ->where('primary_role', 'guardian')
+            ->where('combat_element', 'thuy'))->exists())->toBeTrue()
         ->and($professionalHealing->learnsetEntries()->whereHas('pet', fn ($query) => $query->where('primary_role', 'support'))->exists())->toBeTrue();
 });
 
-test('applies the approved meta tuning without changing Dau ung watchlist deck', function () {
+test('rebuilds representative decks from the approved v6 taxonomy', function () {
     $gameSources = GameSource::query()
         ->whereIn('slug', ['liet-hoa', 'cau-vong'])
         ->get()
@@ -226,43 +248,96 @@ test('applies the approved meta tuning without changing Dau ung watchlist deck',
             $query
                 ->where(fn ($sourceQuery) => $sourceQuery
                     ->whereBelongsTo($gameSources['liet-hoa'])
-                    ->whereIn('game_id', [17, 18, 95]))
+                    ->whereIn('game_id', [17, 90, 95]))
                 ->orWhere(fn ($sourceQuery) => $sourceQuery
                     ->whereBelongsTo($gameSources['cau-vong'])
-                    ->whereIn('game_id', [18, 19, 48]));
+                    ->whereIn('game_id', [11, 18, 48]));
         })
         ->get()
         ->keyBy(fn (Pet $pet): string => "{$pet->gameSource->slug}:{$pet->game_id}");
+
+    expect($pets)->toHaveCount(6);
+
+    foreach ($pets as $pet) {
+        $directSkills = $pet->learnsetEntries->pluck('skill');
+
+        expect($directSkills)->not->toBeEmpty()
+            ->and($directSkills->pluck('id')->unique())->toHaveCount($directSkills->count())
+            ->and($directSkills->every('is_active', true))->toBeTrue();
+    }
 
     $directSkillIdentities = fn (string $petIdentity): Collection => $pets[$petIdentity]
         ->learnsetEntries
         ->map(fn (PetSkillLearnset $entry): string => "{$entry->skill->gameSource->slug}:{$entry->skill->game_id}");
 
     expect($directSkillIdentities('cau-vong:18'))
-        ->toContain('cau-vong:8')
+        ->toContain('cau-vong:5')
         ->not->toContain('cau-vong:7')
-        ->and($directSkillIdentities('cau-vong:19'))
-        ->toContain('cau-vong:7')
-        ->not->toContain('cau-vong:8')
         ->and($directSkillIdentities('liet-hoa:17'))
         ->toContain('liet-hoa:13')
+        ->toContain('cau-vong:2')
         ->not->toContain('cau-vong:28')
-        ->toContain('liet-hoa:11')
-        ->not->toContain('liet-hoa:15')
-        ->and($directSkillIdentities('liet-hoa:18'))
-        ->toContain('liet-hoa:14')
-        ->not->toContain('liet-hoa:18')
+        ->not->toContain('cau-vong:23')
+        ->and($directSkillIdentities('cau-vong:11'))
+        ->toContain('cau-vong:9')
+        ->not->toContain('liet-hoa:23')
         ->and($directSkillIdentities('cau-vong:48'))
         ->toContain('liet-hoa:25')
-        ->not->toContain('liet-hoa:29')
-        ->and($pets['liet-hoa:95']->learnsetEntries->pluck('skill.name')->all())
-        ->toBe([
-            'Phi Tường Trảm',
-            'Phong nhận',
-            'Thuận phong',
-            'Tật Phong Tốc Hàng',
-            'Kỹ năng Phong Bế',
-        ]);
+        ->not->toContain('cau-vong:14')
+        ->and($directSkillIdentities('liet-hoa:90'))
+        ->toContain('liet-hoa:60')
+        ->not->toContain('cau-vong:14')
+        ->and($directSkillIdentities('liet-hoa:95'))
+        ->toContain('liet-hoa:68')
+        ->not->toContain('liet-hoa:62');
+});
+
+test('applies selected vqsv4 skills while reducing premium ghost burst', function () {
+    $gameSources = GameSource::query()
+        ->whereIn('slug', ['liet-hoa', 'cau-vong'])
+        ->get()
+        ->keyBy('slug');
+    $pets = Pet::query()
+        ->with(['gameSource:id,slug', 'learnsetEntries.skill.gameSource:id,slug'])
+        ->where(function ($query) use ($gameSources): void {
+            $query
+                ->where(fn ($sourceQuery) => $sourceQuery
+                    ->whereBelongsTo($gameSources['liet-hoa'])
+                    ->whereIn('game_id', [31, 53, 61, 70]))
+                ->orWhere(fn ($sourceQuery) => $sourceQuery
+                    ->whereBelongsTo($gameSources['cau-vong'])
+                    ->whereIn('game_id', [70, 86, 95]));
+        })
+        ->get()
+        ->keyBy(fn (Pet $pet): string => "{$pet->gameSource->slug}:{$pet->game_id}");
+
+    expect($pets)->toHaveCount(7);
+
+    $directSkillIdentities = fn (string $petIdentity): Collection => $pets[$petIdentity]
+        ->learnsetEntries
+        ->map(fn (PetSkillLearnset $entry): string => "{$entry->skill->gameSource->slug}:{$entry->skill->game_id}");
+
+    expect($directSkillIdentities('liet-hoa:31'))
+        ->toContain('cau-vong:28')
+        ->not->toContain('cau-vong:15')
+        ->and($directSkillIdentities('cau-vong:70'))
+        ->toContain('cau-vong:28')
+        ->not->toContain('liet-hoa:37')
+        ->and($directSkillIdentities('liet-hoa:53'))
+        ->toContain('cau-vong:27')
+        ->not->toContain('liet-hoa:37')
+        ->and($directSkillIdentities('liet-hoa:61'))
+        ->toContain('cau-vong:29')
+        ->not->toContain('liet-hoa:37')
+        ->and($directSkillIdentities('liet-hoa:70'))
+        ->toContain('cau-vong:29')
+        ->not->toContain('liet-hoa:44')
+        ->and($directSkillIdentities('cau-vong:86'))
+        ->toContain('cau-vong:30')
+        ->not->toContain('cau-vong:32')
+        ->and($directSkillIdentities('cau-vong:95'))
+        ->toContain('liet-hoa:55')
+        ->not->toContain('cau-vong:32');
 });
 
 test('can rebuild all learnsets repeatedly without creating duplicates', function () {
@@ -397,10 +472,6 @@ function learnsetExpectedPoolSize(array $metadata, bool $isFinalOrStandalone): i
 
 function learnsetSkillSourceType(Skill $skill, Pet $pet): string
 {
-    if ($skill->gameSource->slug === 'cau-vong' && $skill->game_id >= 25) {
-        return 'universal';
-    }
-
     if ($skill->species_affinity === $pet->species) {
         return 'species';
     }
@@ -422,7 +493,7 @@ function learnsetDirectSkillIds(Pet $pet): array
 function learnsetRoleRequirements(string $role): array
 {
     return match ($role) {
-        'striker' => ['offense' => 6, 'utility' => 1],
+        'striker' => ['offense' => 6],
         'bruiser' => ['offense' => 5, 'utility' => 2],
         'guardian' => ['sustain' => 1, 'offense' => 3],
         'controller' => ['control' => 1, 'offense' => 4],

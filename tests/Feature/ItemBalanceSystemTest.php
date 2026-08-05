@@ -121,8 +121,8 @@ test('reclassifies rainbow rings as five canonical species eggs', function () {
 test('keeps the approved evolution recipe graph unchanged', function () {
     $inactiveItemIds = Item::query()->where('is_active', false)->pluck('id');
 
-    expect(PetEvolution::query()->count())->toBe(88)
-        ->and(PetEvolutionIngredient::query()->count())->toBe(239)
+    expect(PetEvolution::query()->count())->toBe(133)
+        ->and(PetEvolutionIngredient::query()->count())->toBe(374)
         ->and(PetEvolutionIngredient::query()->whereIn('item_id', $inactiveItemIds)->exists())->toBeFalse()
         ->and(PetEvolutionIngredient::query()->distinct()->pluck('item_id')->count())->toBe(20);
 });

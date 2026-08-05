@@ -11,7 +11,7 @@ beforeEach(function () {
     seed(DatabaseSeeder::class);
 });
 
-test('assigns the complete unified taxonomy to all 202 pets', function () {
+test('assigns the complete unified taxonomy to all 274 pets', function () {
     $lietHoa = GameSource::query()->where('slug', 'liet-hoa')->firstOrFail();
     $rainbow = GameSource::query()->where('slug', 'cau-vong')->firstOrFail();
     $lietHoaBat = Pet::query()->whereBelongsTo($lietHoa)->where('game_id', 0)->firstOrFail();
@@ -21,7 +21,7 @@ test('assigns the complete unified taxonomy to all 202 pets', function () {
         ->distinct()
         ->get();
 
-    expect(Pet::query()->count())->toBe(202)
+    expect(Pet::query()->count())->toBe(274)
         ->and(Pet::query()->whereNull('combat_element')->count())->toBe(0)
         ->and(Pet::query()->whereNull('species')->count())->toBe(0)
         ->and(Pet::query()->distinct()->count('combat_element'))->toBe(7)

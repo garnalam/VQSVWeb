@@ -131,6 +131,8 @@ class DivineAbilitySeeder extends Seeder
                 throw new RuntimeException("Cannot seed divine ability for missing Pet [{$identity}].");
             }
 
+            $pet->update(['classification' => 'divine']);
+
             DivineAbility::query()->updateOrCreate(
                 ['pet_id' => $pet->id],
                 [...$ability, 'is_active' => true],

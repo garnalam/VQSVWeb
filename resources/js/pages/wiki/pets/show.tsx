@@ -190,6 +190,9 @@ export default function PetShow({ pet, trait_system }: PetShowProps) {
                             }
                         >
                             <EvolutionTree pet={pet} />
+                            {pet.mutation_recipe !== null && (
+                                <MutationRecipeCard pet={pet} />
+                            )}
                         </DashboardPanel>
                     </section>
 
@@ -358,7 +361,7 @@ function HeroSection({
                             Form {pet.evolution_stage}/
                             {pet.evolution_stage_count}
                         </span>
-                        {pet.divine_ability !== null && (
+                        {pet.power_class === 'divine' && (
                             <span className="relative flex items-center gap-2 overflow-hidden border border-amber-300/55 bg-linear-to-r from-amber-300 via-yellow-200 to-amber-400 px-3 py-1.5 text-[#321800] shadow-[0_0_22px_rgba(251,191,36,.28)]">
                                 <span className="absolute inset-0 animate-pulse bg-linear-to-r from-transparent via-white/35 to-transparent" />
                                 <Crown className="relative size-4" />
@@ -622,7 +625,7 @@ function StatAnalysis({
             icon={<Gauge />}
             eyebrow="Phân tích chỉ số"
             title="Phân tích chỉ số chiến đấu"
-            description="Radar so Pet với trung bình thật của toàn bộ 202 Pet tại cùng cấp độ."
+            description={`Radar so Pet với trung bình thật của toàn bộ ${pet.population_count} Pet tại cùng cấp độ.`}
             action={
                 <div className="flex flex-wrap items-center gap-3">
                     <div className="border border-white/9 bg-white/4 px-4 py-2 text-center">
@@ -1090,8 +1093,10 @@ function EvolutionMaterialLink({
             title={transition.balance_notes ?? undefined}
             className={`absolute z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border px-2 py-1 font-mono text-[7px] font-black whitespace-nowrap uppercase shadow-xl backdrop-blur ${rankTone}`}
         >
-            H{transition.cost_rank} · {transition.ingredients.length} nguyên
-            liệu
+            {transition.required_level !== null
+                ? `Cấp ${transition.required_level} · `
+                : ''}
+            H{transition.cost_rank} · {transition.ingredients.length} nguyên liệu
         </div>
     );
 }
@@ -1128,6 +1133,12 @@ function EvolutionRecipeCard({
                     H{transition.cost_rank} · {transition.cost_rank_label}
                 </span>
             </div>
+
+            {transition.required_level !== null && (
+                <p className="mt-2 font-mono text-[8px] font-black text-cyan-200 uppercase">
+                    Yêu cầu cấp {transition.required_level}
+                </p>
+            )}
 
             <div className="mt-3 grid gap-1.5 sm:grid-cols-2">
                 {transition.ingredients.map((ingredient) => (
@@ -1166,6 +1177,73 @@ function EvolutionRecipeCard({
             {transition.balance_notes !== null && (
                 <p className="mt-3 border-t border-white/7 pt-2 text-[10px] leading-5 text-slate-500">
                     {transition.balance_notes}
+                </p>
+            )}
+        </article>
+    );
+}
+
+function MutationRecipeCard({ pet }: { pet: WikiPetDetail }) {
+    const recipe = pet.mutation_recipe;
+
+    if (recipe === null) {
+        return null;
+    }
+
+    return (
+        <article className="mt-3 overflow-hidden border border-fuchsia-300/20 bg-[linear-gradient(135deg,rgba(217,70,239,.09),rgba(7,17,28,.92))] p-4">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                    <span className="font-mono text-[8px] font-black tracking-[.12em] text-fuchsia-200 uppercase">
+                        Công thức dị hóa riêng
+                    </span>
+                    <h3 className="mt-1 flex items-center gap-2 text-sm font-black text-white">
+                        <Dna className="size-4 text-fuchsia-200" /> Biến thể dị hóa{' '}
+                        {pet.name}
+                    </h3>
+                </div>
+                <span className="border border-fuchsia-300/25 bg-fuchsia-300/8 px-2.5 py-1 font-mono text-[8px] font-black text-fuchsia-100 uppercase">
+                    Cùng Pet ID · đổi biến thể
+                </span>
+            </div>
+
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {recipe.ingredients.map((ingredient) => (
+                    <Link
+                        key={`${ingredient.item.id}-${ingredient.role}`}
+                        href={itemShow(ingredient.item.id)}
+                        prefetch
+                        className="group flex min-w-0 items-center gap-2 border border-white/8 bg-black/16 p-2.5 transition hover:border-fuchsia-300/35 hover:bg-fuchsia-300/7"
+                    >
+                        <GameArtwork
+                            src={itemArtworkUrl(
+                                ingredient.item.frame_id,
+                                ingredient.item.game_source.asset_key,
+                            )}
+                            alt={ingredient.item.name}
+                            className="size-10 shrink-0"
+                            fallback={
+                                <Sparkles className="size-4 text-fuchsia-200" />
+                            }
+                        />
+                        <span className="min-w-0 flex-1">
+                            <strong className="block truncate text-[10px] text-white">
+                                {ingredient.item.name}
+                            </strong>
+                            <span className="block truncate font-mono text-[7px] font-bold text-slate-500">
+                                {ingredient.role_label}
+                            </span>
+                        </span>
+                        <strong className="font-mono text-[10px] text-fuchsia-100">
+                            ×{ingredient.quantity}
+                        </strong>
+                    </Link>
+                ))}
+            </div>
+
+            {recipe.notes !== null && (
+                <p className="mt-3 border-t border-fuchsia-300/12 pt-3 text-[10px] leading-5 text-slate-400">
+                    {recipe.notes}
                 </p>
             )}
         </article>
@@ -1568,7 +1646,7 @@ function TacticalSidebar({
                     </span>
                     <span>
                         <strong className="block text-sm text-white">
-                            13 Tư chất Thiên phú
+                            19 Tư chất ngẫu nhiên
                         </strong>
                         <span className="mt-1 block text-xs text-slate-500">
                             Xem danh sách và tác động chiến đấu
@@ -1783,7 +1861,7 @@ function TraitCatalogModal({
 }) {
     return (
         <ModalShell
-            title="Bách khoa 13 Tư chất Thiên phú"
+            title="Bách khoa 19 Tư chất ngẫu nhiên"
             onClose={onClose}
             size="max-w-5xl"
         >

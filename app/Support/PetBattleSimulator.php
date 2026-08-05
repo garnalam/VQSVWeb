@@ -31,6 +31,7 @@ class PetBattleSimulator
         'agility_down',
         'accuracy_down',
         'burn',
+        'bleeding',
         'corrosion',
         'current_hp_dot',
         'damage_down',
@@ -46,6 +47,7 @@ class PetBattleSimulator
         'bound',
         'charmed',
         'seeded_damage',
+        'sleep',
         'tier_lock',
     ];
 
@@ -261,7 +263,10 @@ class PetBattleSimulator
                 $hpRatio = $actor['hp'] / $actor['max_hp'];
 
                 if ($skill->combat_category === 'heal') {
-                    $healPercent = $skill->game_id === 28 ? 50 : 25;
+                    $healPercent = (int) (SkillBalance::mechanics(
+                        $skill->gameSource->slug,
+                        $skill->game_id,
+                    )['value'] ?? 0);
                     $score = $hpRatio <= 0.62 ? $actor['max_hp'] * $healPercent / 100 : -1000;
                 } elseif ($skill->power_percent <= 0) {
                     $alreadyActive = $this->effectIsActive($skill, $actor, $target);
@@ -343,7 +348,10 @@ class PetBattleSimulator
         }
 
         if ($skill->combat_category === 'heal') {
-            $healPercent = $skill->game_id === 28 ? 50 : 25;
+            $healPercent = (int) (SkillBalance::mechanics(
+                $skill->gameSource->slug,
+                $skill->game_id,
+            )['value'] ?? 0);
             $this->heal($actor, $healPercent);
         }
 
@@ -388,11 +396,26 @@ class PetBattleSimulator
         int $action,
         ?int $powerOverride = null,
     ): int {
-        $power = $powerOverride ?? ($skill === null ? 60 : $this->resolvedPower($skill, $actor, $target));
+        $power = $powerOverride ?? ($skill === null
+            ? 60
+            : $this->resolvedActionPower($skill, $actor, $target, $seed, $round, $action));
         $element = $skill === null
             ? $actorPet->combat_element
             : ($skill->combat_element ?? $actorPet->combat_element);
         $defense = $this->effectiveStat($target, 'defense');
+
+        if ($skill !== null && $skill->balance_version === SkillBalance::VERSION) {
+            $mechanics = SkillBalance::mechanics($skill->gameSource->slug, $skill->game_id);
+            $pierce = match ($mechanics['type']) {
+                'defense_pierce' => (int) ($mechanics['value'] ?? 0),
+                'conditional_pierce' => $this->hasBalancedStatus(
+                    $target,
+                    (string) ($mechanics['status'] ?? ''),
+                ) ? (int) ($mechanics['value'] ?? 0) : 0,
+                default => 0,
+            };
+            $defense = (int) floor($defense * max(0.1, 1 - $pierce / 100));
+        }
 
         if ($actor['trait_code'] === 'KL-03') {
             $defense = (int) floor($defense * 0.95);
@@ -549,8 +572,44 @@ class PetBattleSimulator
             'retaliation_power' => $actor['received_damage_since_action'] ? $conditionalPower : $basePower,
             'low_hp_power_status' => $actor['hp'] / $actor['max_hp'] < 0.35 ? $conditionalPower : $basePower,
             'remove_buff_power' => $this->beneficialStatusKeys($target) !== [] ? $conditionalPower : $basePower,
+            'consume_defense_power' => $basePower + min(
+                (int) ($mechanics['cap'] ?? 0),
+                $this->statusValue($actor, 'defense_stack'),
+            ) * (int) ($mechanics['value'] ?? 0),
             default => $basePower,
         };
+    }
+
+    /**
+     * @param  BattleState  $actor
+     * @param  BattleState  $target
+     */
+    private function resolvedActionPower(
+        Skill $skill,
+        array $actor,
+        array $target,
+        int $seed,
+        int $round,
+        int $action,
+    ): int {
+        if ($skill->balance_version !== SkillBalance::VERSION) {
+            return $this->resolvedPower($skill, $actor, $target);
+        }
+
+        $mechanics = SkillBalance::mechanics($skill->gameSource->slug, $skill->game_id);
+
+        if ($mechanics['type'] !== 'random_power') {
+            return $this->resolvedPower($skill, $actor, $target);
+        }
+
+        $minimum = (int) $mechanics['minimum_power'];
+        $maximum = (int) $mechanics['maximum_power'];
+        $range = $maximum - $minimum + 1;
+        $offset = (int) floor(
+            $this->randomPercent($seed, $round, $action, $skill->id, 'random-power') * $range / 100,
+        );
+
+        return min($maximum, $minimum + $offset);
     }
 
     /**
@@ -595,6 +654,10 @@ class PetBattleSimulator
         $received = max(1, (int) round($damage * max(0.1, 1 - $reduction / 100)));
         $target['hp'] -= $received;
         $target['received_damage_since_action'] = true;
+
+        if (isset($target['statuses']['sleep'])) {
+            $this->removeBalancedStatus($target, 'sleep');
+        }
 
         if ($target['trait_code'] === 'TV-03') {
             $reflected = min((int) round($received * 0.08), (int) round($actor['max_hp'] * 0.05));
@@ -723,6 +786,10 @@ class PetBattleSimulator
             case 'apply_status':
                 $this->applyBalancedStatus($target, (string) $mechanics['status'], $duration, $value);
                 break;
+            case 'first_action_status':
+            case 'low_hp_power_status':
+                $this->applyBalancedStatus($target, (string) $mechanics['status'], $duration, $value);
+                break;
             case 'next_attack':
                 $this->setStatuses($actor, $duration, ['defense_up' => (int) $mechanics['secondary_value'], 'next_attack_percent' => $value]);
                 break;
@@ -785,12 +852,32 @@ class PetBattleSimulator
                 $this->applyRepeatBuff($actor, $value, (int) $mechanics['cap']);
                 break;
             case 'corrosion_life_steal':
-                if (! $this->hasBalancedStatus($target, 'corrosion')) {
+                if ($this->hasBalancedStatus($target, 'corrosion')) {
+                    $this->setStatuses($actor, (int) $mechanics['secondary_duration'], [
+                        (string) $mechanics['secondary_status'] => (int) $mechanics['secondary_value'],
+                    ]);
+                } else {
                     $this->applyBalancedStatus($target, 'corrosion', $duration, 3);
+                }
+                break;
+            case 'conditional_pierce':
+                if ($this->hasBalancedStatus($target, 'corrosion')) {
+                    $this->setStatuses($target, (int) $mechanics['secondary_duration'], [
+                        (string) $mechanics['secondary_status'] => (int) $mechanics['secondary_value'],
+                    ]);
                 }
                 break;
             case 'corrosion_storm':
                 $this->applyBalancedStatus($target, 'corrosion', $duration, 3);
+                $target['statuses']['corrosion']['elapsed'] = 1;
+                $tickDamage = max(1, (int) round($target['max_hp'] * 0.03));
+                $target['hp'] -= $tickDamage;
+                $this->healFromDamage($actor, $tickDamage, $value, (int) $mechanics['cap']);
+                $this->setStatuses(
+                    $target,
+                    (int) $mechanics['secondary_duration'],
+                    $mechanics['secondary_statuses'],
+                );
                 break;
             case 'consume_defense_power':
                 $this->removeBalancedStatus($actor, 'defense_stack');
@@ -834,6 +921,25 @@ class PetBattleSimulator
 
         if ($type === 'corrosion_life_steal' && $this->hasBalancedStatus($target, 'corrosion')) {
             $this->healFromDamage($actor, $damageDealt, (int) $mechanics['value'], (int) $mechanics['cap']);
+        }
+
+        if ($type === 'corrosion_detonate' && isset($target['statuses']['corrosion'])) {
+            $corrosion = $target['statuses']['corrosion'];
+            $elapsed = (int) ($corrosion['elapsed'] ?? 0);
+            $turns = (int) $corrosion['turns'];
+            $baseTick = (int) $corrosion['value'];
+            $remainingPercent = 0;
+
+            foreach (range($elapsed + 1, $elapsed + $turns) as $tick) {
+                $remainingPercent += min($baseTick * 3, $tick * $baseTick);
+            }
+
+            $detonationDamage = max(1, (int) round($target['max_hp'] * $remainingPercent / 100));
+            $target['hp'] -= $detonationDamage;
+            $this->healFromDamage($actor, $detonationDamage, (int) $mechanics['value'], (int) $mechanics['cap']);
+            $this->setStatuses($target, (int) $mechanics['secondary_duration'], [
+                (string) $mechanics['secondary_status'] => (int) $mechanics['secondary_value'],
+            ]);
         }
 
         if ($type === 'pp_refund'
@@ -897,6 +1003,12 @@ class PetBattleSimulator
             return;
         }
 
+        if ($status === 'sleep') {
+            $this->setStatuses($state, $duration, ['sleep' => $value, 'action_block' => 1]);
+
+            return;
+        }
+
         $this->setStatuses($state, $duration, [$status => $value]);
     }
 
@@ -913,6 +1025,10 @@ class PetBattleSimulator
 
         if ($status === 'petrified') {
             unset($state['statuses']['action_block'], $state['statuses']['damage_reduction']);
+        }
+
+        if ($status === 'sleep') {
+            unset($state['statuses']['action_block']);
         }
     }
 
@@ -1087,6 +1203,11 @@ class PetBattleSimulator
     private function applyRoundEnd(array &$state, int $round): void
     {
         $regeneration = $this->statusValue($state, 'regeneration');
+        $bleeding = $this->statusValue($state, 'bleeding');
+
+        if ($bleeding > 0 && $state['hp'] > 0) {
+            $state['hp'] -= max(1, (int) round($state['max_hp'] * $bleeding / 100));
+        }
 
         if ($regeneration > 0 && $state['hp'] > 0) {
             $this->heal($state, $regeneration);
@@ -1227,7 +1348,20 @@ class PetBattleSimulator
         }
 
         if ($skill->balance_version === SkillBalance::VERSION) {
-            $statusChance = SkillBalance::profile($skill->gameSource->slug, $skill->game_id)['status_chance'];
+            $profile = SkillBalance::profile($skill->gameSource->slug, $skill->game_id);
+            $mechanics = $profile['mechanics'];
+
+            if ($mechanics['type'] === 'corrosion_life_steal' && $this->hasBalancedStatus($target, 'corrosion')) {
+                return true;
+            }
+
+            $statusChance = $profile['status_chance'];
+
+            if ($mechanics['type'] === 'first_action_status'
+                && $this->effectiveStat($actor, 'agility') > $this->effectiveStat($target, 'agility')
+            ) {
+                $statusChance = (int) $mechanics['chance'];
+            }
 
             if ($statusChance === null) {
                 return true;
@@ -1343,6 +1477,12 @@ class PetBattleSimulator
             [11, 4] => ['agility_down'],
             [11, 5] => ['corrosion'],
             [11, 6] => ['tier_lock'],
+            [12, 0] => ['bleeding'],
+            [12, 1] => ['sleep'],
+            [12, 2] => ['defense_up'],
+            [12, 3] => ['damage_down'],
+            [12, 4] => ['agility_down'],
+            [12, 5] => ['defense_down'],
             default => [],
         };
         $state = $skill->effect->kind === 'harmful' ? $target : $actor;

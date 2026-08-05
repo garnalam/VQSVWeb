@@ -23,6 +23,14 @@ class PetEvolutionIngredient extends Model
 
     public const ROLE_SIGNATURE = 'signature';
 
+    public const ROLE_SPECIES_PRIMARY = 'species_primary';
+
+    public const ROLE_SPECIES_SECONDARY = 'species_secondary';
+
+    public const ROLE_ELEMENT_CATALYST = 'element_catalyst';
+
+    public const ROLE_SPECIES_CATALYST = 'species_catalyst';
+
     /** @use HasFactory<PetEvolutionIngredientFactory> */
     use HasFactory;
 

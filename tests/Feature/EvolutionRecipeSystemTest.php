@@ -12,8 +12,8 @@ use function Pest\Laravel\seed;
 test('assigns reviewed cross game recipes to all evolution edges', function () {
     seed(DatabaseSeeder::class);
 
-    expect(PetEvolution::query()->count())->toBe(88)
-        ->and(PetEvolutionIngredient::query()->count())->toBeGreaterThan(176)
+    expect(PetEvolution::query()->count())->toBe(133)
+        ->and(PetEvolutionIngredient::query()->count())->toBe(374)
         ->and(PetEvolution::query()->whereDoesntHave('ingredients')->exists())->toBeFalse()
         ->and(PetEvolution::query()->whereNotBetween('cost_rank', [1, 5])->exists())->toBeFalse();
 

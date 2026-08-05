@@ -7,6 +7,7 @@ use App\Http\Requests\Wiki\PetIndexRequest;
 use App\Models\Pet;
 use App\Models\PetEvolution;
 use App\Models\PetEvolutionIngredient;
+use App\Models\PetMutationIngredient;
 use App\Models\PetSkillLearnset;
 use App\Models\PetTrait;
 use App\Models\Skill;
@@ -64,6 +65,7 @@ class PetController extends Controller
                 'sprite_id',
                 'learning_group',
                 'quality_tier',
+                'classification',
                 'hp_base',
                 'hp_per_level',
                 'hp_offset',
@@ -135,6 +137,7 @@ class PetController extends Controller
                     'sprite_id' => $pet->sprite_id,
                     'learning_group' => $pet->learning_group,
                     'quality_tier' => $pet->quality_tier,
+                    'classification' => $pet->classification,
                     'preview_level' => self::CARD_PREVIEW_LEVEL,
                     'preview_star' => PetStatCalculator::DEFAULT_STAR,
                     'preview_stats' => $this->petStatCalculator->calculate($pet, self::CARD_PREVIEW_LEVEL),
@@ -211,6 +214,10 @@ class PetController extends Controller
             'gameSource:id,name,slug,asset_key,color',
             'speciesTrait:id,code,name,slot_type,species,polarity,description,parameters,roll_weight,is_cleanse_eligible',
             'divineAbility:id,pet_id,code,name,activation_type,description,parameters,is_active',
+            'mutationRecipe:id,pet_id,status,notes',
+            'mutationRecipe.ingredients:id,pet_mutation_recipe_id,item_id,quantity,role,position',
+            'mutationRecipe.ingredients.item:id,game_source_id,source_table,game_id,name,slug,frame_id',
+            'mutationRecipe.ingredients.item.gameSource:id,name,slug,asset_key,color',
         ]);
 
         $allPets = Pet::query()
@@ -244,7 +251,7 @@ class PetController extends Controller
             ->get()
             ->keyBy('id');
         $evolutions = PetEvolution::query()
-            ->select(['id', 'from_pet_id', 'to_pet_id', 'item_id', 'quantity', 'materials', 'evolution_type', 'cost_rank', 'balance_notes'])
+            ->select(['id', 'from_pet_id', 'to_pet_id', 'item_id', 'quantity', 'required_level', 'materials', 'evolution_type', 'cost_rank', 'balance_notes'])
             ->whereHas('sourcePet', fn (Builder $query): Builder => $query->where('game_source_id', $pet->game_source_id))
             ->with([
                 'item:id,game_source_id,source_table,game_id,name,slug,frame_id',
@@ -269,8 +276,11 @@ class PetController extends Controller
         $outgoingPetIds = $familyEvolutions->groupBy('from_pet_id')->map->pluck('to_pet_id');
         $currentPathIds = $this->ancestorPetIds($pet->id, $incomingPetIds);
         $futurePathIds = $this->descendantPetIds($pet->id, $outgoingPetIds);
+        $learnsetPetIds = $pet->gameSource->slug === 'vqsv4'
+            ? collect([$pet->id])
+            : $familyPetIds;
         $skills = PetSkillLearnset::query()
-            ->whereIn('pet_id', $familyPetIds)
+            ->whereIn('pet_id', $learnsetPetIds)
             ->with([
                 'pet:id,game_id,name,slug,sprite_id',
                 'skill:id,game_source_id,game_id,effect_id,name,slug,description,power_percent,tier,max_uses,status_chance,combat_element,species_affinity,combat_category,target_pattern,effect_target_pattern,battle_format',
@@ -352,6 +362,7 @@ class PetController extends Controller
         $divineAbility = $pet->divineAbility?->is_active === true
             ? $pet->divineAbility
             : null;
+        $isDivine = $pet->classification === 'divine' || $divineAbility !== null;
 
         return Inertia::render('wiki/pets/show', [
             'pet' => [
@@ -369,6 +380,7 @@ class PetController extends Controller
                 'sprite_id' => $pet->sprite_id,
                 'variant_code' => $pet->variant_code,
                 'quality_tier' => $pet->quality_tier,
+                'classification' => $pet->classification,
                 'rarity_or_growth_code' => $pet->rarity_or_growth_code,
                 'learning_group' => $pet->learning_group,
                 'effectiveness_class' => $pet->effectiveness_class,
@@ -378,7 +390,7 @@ class PetController extends Controller
                 'secondary_role_label' => Pet::COMBAT_ROLES[$pet->secondary_role],
                 'preferred_battle_format' => $pet->preferred_battle_format,
                 'playstyle_summary' => $pet->playstyle_summary,
-                'power_class' => $divineAbility === null ? 'standard' : 'divine',
+                'power_class' => $isDivine ? 'divine' : 'standard',
                 'divine_ability' => $divineAbility === null ? null : [
                     'code' => $divineAbility->code,
                     'name' => $divineAbility->name,
@@ -398,7 +410,7 @@ class PetController extends Controller
                     : null,
                 'acquisition' => [
                     'code' => $pet->acquisition_code,
-                    'method' => $pet->gameSource->slug === 'cau-vong'
+                    'method' => in_array($pet->gameSource->slug, ['cau-vong', 'vqsv4'], true)
                         ? $this->acquisitionMethod($pet->acquisition_code)
                         : null,
                     'locations' => $pet->discovery_locations ?? [],
@@ -407,6 +419,7 @@ class PetController extends Controller
                 'star_multipliers' => PetStatCalculator::STAR_MULTIPLIERS,
                 'stats' => $this->statFormulas($pet),
                 'stat_benchmarks' => $statBenchmarks,
+                'population_count' => Pet::query()->count(),
                 'evolution_stage' => $currentMetadata['stage'] + 1,
                 'evolution_stage_count' => $familyPets->max(fn (Pet $candidate): int => $familyMetadata[$candidate->id]['stage']) + 1,
                 'belongs_to_evolution_family' => $familyPets->count() > 1,
@@ -416,6 +429,13 @@ class PetController extends Controller
                 'combat_element' => $this->combatElement($pet),
                 'species' => $this->species($pet),
                 'species_trait' => $this->trait($pet->speciesTrait),
+                'mutation_recipe' => $pet->mutationRecipe === null ? null : [
+                    'status' => $pet->mutationRecipe->status,
+                    'notes' => $pet->mutationRecipe->notes,
+                    'ingredients' => $pet->mutationRecipe->ingredients
+                        ->map(fn (PetMutationIngredient $ingredient): array => $this->mutationIngredient($ingredient))
+                        ->values(),
+                ],
                 'skills' => $skills,
                 'provenance' => $this->petProvenance(),
                 'evolution_family' => [
@@ -441,6 +461,7 @@ class PetController extends Controller
                         'to_pet_id' => $evolution->to_pet_id,
                         'type' => $evolution->evolution_type,
                         'quantity' => $evolution->quantity,
+                        'required_level' => $evolution->required_level,
                         'materials' => $evolution->materials,
                         'cost_rank' => $evolution->cost_rank,
                         'cost_rank_label' => EvolutionRecipeData::RANK_LABELS[$evolution->cost_rank],
@@ -502,6 +523,38 @@ class PetController extends Controller
                 PetEvolutionIngredient::ROLE_CORE => 'Lõi tiến hóa',
                 PetEvolutionIngredient::ROLE_SPECIES => 'Nguyên liệu Chủng',
                 PetEvolutionIngredient::ROLE_SIGNATURE => 'Xúc tác đặc trưng',
+                PetEvolutionIngredient::ROLE_SPECIES_PRIMARY => 'Nguyên liệu Chủng chính',
+                PetEvolutionIngredient::ROLE_SPECIES_SECONDARY => 'Nguyên liệu Chủng phụ',
+                PetEvolutionIngredient::ROLE_ELEMENT_CATALYST => 'Xúc tác Hệ',
+                PetEvolutionIngredient::ROLE_SPECIES_CATALYST => 'Xúc tác Chủng',
+            },
+            'item' => [
+                'id' => $ingredient->item->id,
+                'game_source' => [
+                    'name' => $ingredient->item->gameSource->name,
+                    'slug' => $ingredient->item->gameSource->slug,
+                    'asset_key' => $ingredient->item->gameSource->asset_key,
+                    'color' => $ingredient->item->gameSource->color,
+                ],
+                'source_table' => $ingredient->item->source_table,
+                'game_id' => $ingredient->item->game_id,
+                'name' => $ingredient->item->name,
+                'slug' => $ingredient->item->slug,
+                'frame_id' => $ingredient->item->frame_id,
+            ],
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    private function mutationIngredient(PetMutationIngredient $ingredient): array
+    {
+        return [
+            'quantity' => $ingredient->quantity,
+            'role' => $ingredient->role,
+            'role_label' => match ($ingredient->role) {
+                PetMutationIngredient::ROLE_CORE => 'Lõi dị hóa',
+                PetMutationIngredient::ROLE_ELEMENT_CATALYST => 'Xúc tác Hệ',
+                PetMutationIngredient::ROLE_SPECIES_CATALYST => 'Xúc tác Chủng',
             },
             'item' => [
                 'id' => $ingredient->item->id,
@@ -631,8 +684,8 @@ class PetController extends Controller
             ])
             ->orderBy('code')
             ->get();
-        if ($traits->count() !== 13 || $traits->pluck('roll_weight')->unique()->count() !== 1) {
-            throw new UnexpectedValueException('The physical trait pool must contain 13 equally weighted traits.');
+        if ($traits->count() !== 19 || $traits->pluck('roll_weight')->unique()->count() !== 1) {
+            throw new UnexpectedValueException('The physical trait pool must contain 19 equally weighted traits.');
         }
 
         return [

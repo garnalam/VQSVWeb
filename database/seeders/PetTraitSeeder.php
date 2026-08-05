@@ -27,7 +27,7 @@ class PetTraitSeeder extends Seeder
             }
 
             $traitsByCode = PetTrait::query()
-                ->select(['id', 'code', 'species'])
+                ->select(['id', 'code', 'slot_type', 'species'])
                 ->get()
                 ->keyBy('code');
 
@@ -51,6 +51,7 @@ class PetTraitSeeder extends Seeder
                     }
 
                     $pet->speciesTrait()->associate($trait);
+
                     $pet->save();
                 }
             }

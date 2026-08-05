@@ -38,8 +38,8 @@ export function elementIconUrl(elementId: number): string {
 }
 
 export function petArtworkUrl(spriteId: number, assetKey = 'liet-hoa'): string {
-    if (assetKey === 'cau-vong') {
-        return `${GAME_ASSET_ROOT}/cau-vong/pets/${spriteId}.png`;
+    if (assetKey === 'cau-vong' || assetKey === 'vqsv4') {
+        return `${GAME_ASSET_ROOT}/${assetKey}/pets/${spriteId}.png`;
     }
 
     return `${GAME_ASSET_ROOT}/pets/${spriteId}.png`;
@@ -51,8 +51,8 @@ export function petSkillAnimationUrl(
 ): string {
     const filename = `${spriteId}-skill.webp`;
 
-    return assetKey === 'cau-vong'
-        ? `${GAME_ASSET_ROOT}/cau-vong/pet-animations/${filename}`
+    return assetKey === 'cau-vong' || assetKey === 'vqsv4'
+        ? `${GAME_ASSET_ROOT}/${assetKey}/pet-animations/${filename}`
         : `${GAME_ASSET_ROOT}/pet-animations/${filename}`;
 }
 

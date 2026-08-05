@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'to_pet_id',
     'item_id',
     'quantity',
+    'required_level',
     'materials',
     'evolution_type',
     'cost_rank',
@@ -30,6 +31,7 @@ class PetEvolution extends Model
         return [
             'materials' => 'array',
             'cost_rank' => 'integer',
+            'required_level' => 'integer',
         ];
     }
 

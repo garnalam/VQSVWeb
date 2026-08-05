@@ -4,11 +4,7 @@ use App\Models\Item;
 use App\Models\Pet;
 use App\Models\Skill;
 use Database\Seeders\DatabaseSeeder;
-use Database\Seeders\DivineAbilitySeeder;
-use Database\Seeders\PetBalanceSeeder;
-use Database\Seeders\PetLearnsetSeeder;
 use Database\Seeders\PetTraitSeeder;
-use Database\Seeders\RainbowGameDataSeeder;
 use Database\Seeders\VqsvGameDataSeeder;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -89,7 +85,7 @@ test('final evolution stages belong to a family and are never classified as stan
 });
 
 test('pet profile exposes stats skills and complete evolution material path', function () {
-    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
+    seed(DatabaseSeeder::class);
 
     $pet = Pet::query()->where('game_id', 7)->firstOrFail();
 
@@ -129,12 +125,7 @@ test('pet profile exposes stats skills and complete evolution material path', fu
 });
 
 test('pet profile exposes divine badge data and Divine Authority only for divine pets', function () {
-    seed([
-        RainbowGameDataSeeder::class,
-        PetBalanceSeeder::class,
-        PetLearnsetSeeder::class,
-        DivineAbilitySeeder::class,
-    ]);
+    seed(DatabaseSeeder::class);
 
     $divinePet = Pet::query()
         ->where('game_id', 15)
@@ -166,7 +157,7 @@ test('pet profile exposes divine badge data and Divine Authority only for divine
 });
 
 test('skill catalog filters by effect and target', function () {
-    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
+    seed(DatabaseSeeder::class);
 
     $this->get(route('wiki.skills.index', [
         'q' => 'Dương viêm',
@@ -184,12 +175,12 @@ test('skill catalog filters by effect and target', function () {
             ->where('skills.data.0.target_pattern', 'single_enemy')
             ->where('skills.data.0.element.slug', 'hoa')
             ->where('skills.data.0.provenance.combat_rules', 'unified')
-            ->where('catalogStats.active_total', 99)
+            ->where('catalogStats.active_total', 103)
             ->has('elements', 7));
 });
 
 test('skill element filter uses the shared seven-element combat matrix', function () {
-    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
+    seed(DatabaseSeeder::class);
 
     $this->get(route('wiki.skills.index', [
         'element' => 'moc',
@@ -202,7 +193,7 @@ test('skill element filter uses the shared seven-element combat matrix', functio
 });
 
 test('skill dossier exposes unlock levels and compatible pets', function () {
-    seed([RainbowGameDataSeeder::class, PetBalanceSeeder::class, PetLearnsetSeeder::class]);
+    seed(DatabaseSeeder::class);
 
     $skill = Skill::query()->where('game_id', 8)->firstOrFail();
 
@@ -259,7 +250,7 @@ test('item catalog publishes only canonical unified items while retaining source
             ->has('categories'));
 });
 
-test('item dossier exposes human readable item data and related evolution paths', function () {
+test('item dossier exposes human readable item data and related evolution and mutation paths', function () {
     seed(DatabaseSeeder::class);
 
     $item = Item::query()->where('name', 'Tinh Nguyên Thạch')->firstOrFail();
@@ -274,7 +265,7 @@ test('item dossier exposes human readable item data and related evolution paths'
             ->where('item.usage_scope', 'crafting')
             ->where('item.balance_version', 'unified-item-v1')
             ->where('item.is_active', true)
-            ->has('item.evolution_usages', 23)
+            ->has('item.evolution_usages', 47)
             ->where('item.evolution_usages.0.from_pet.name', 'Long bảo bối')
             ->where('item.evolution_usages.0.to_pet.name', 'Phệ Hỏa Thú')
             ->where('item.evolution_usages.0.quantity', 1));

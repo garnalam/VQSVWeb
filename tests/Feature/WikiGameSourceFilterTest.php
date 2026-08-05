@@ -24,7 +24,7 @@ test('filters pet catalog by rainbow source', function () {
 
 test('unifies the skill catalog around combat data instead of source and energy filters', function () {
     $this->get(route('wiki.skills.index', [
-        'q' => 'Triền Nhiễu',
+        'q' => 'Mạn Độc Triền Sinh',
         'source' => 'species',
         'role' => 'attack',
         'unlock' => 5,
@@ -34,8 +34,8 @@ test('unifies the skill catalog around combat data instead of source and energy 
         ->assertInertia(fn (Assert $page): Assert => $page
             ->component('wiki/skills/index')
             ->has('skills.data', 1)
-            ->where('skills.data.0.max_uses', 45)
-            ->where('skills.data.0.status_chance', 4)
+            ->where('skills.data.0.max_uses', 15)
+            ->where('skills.data.0.status_chance', 100)
             ->where('skills.data.0.effect.name', 'Hủ Thực')
             ->where('skills.data.0.combat_category', 'hybrid')
             ->where('skills.data.0.target_pattern', 'single_enemy')

@@ -23,6 +23,10 @@ final class PetPowerClassResolver
      */
     public function isDivine(Pet $pet): bool
     {
+        if ($pet->classification === 'divine') {
+            return true;
+        }
+
         $source = $pet->gameSource->slug;
 
         if ($source === 'liet-hoa') {

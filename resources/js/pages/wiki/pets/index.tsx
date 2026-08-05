@@ -4,6 +4,7 @@ import {
     ChevronLeft,
     ChevronDown,
     ChevronRight,
+    Crown,
     Gauge,
     GitBranch,
     HeartPulse,
@@ -396,6 +397,11 @@ function PetCard({
             </div>
             <div className="flex min-w-0 flex-1 flex-col p-5">
                 <div className="flex flex-wrap items-center gap-2">
+                    {pet.classification === 'divine' && (
+                        <span className="flex items-center gap-1 rounded-full border border-amber-300/35 bg-amber-300/10 px-2.5 py-1 text-xs font-black text-amber-200">
+                            <Crown className="size-3.5" /> Thần thú
+                        </span>
+                    )}
                     <img
                         src={elementIconUrl(pet.combat_element.game_id)}
                         alt=""

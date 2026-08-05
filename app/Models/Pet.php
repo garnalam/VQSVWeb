@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     'acquisition_code',
     'variant_code',
     'quality_tier',
+    'classification',
     'rarity_or_growth_code',
     'hp_base',
     'hp_per_level',
@@ -54,6 +55,11 @@ class Pet extends Model
 {
     /** @use HasFactory<PetFactory> */
     use HasFactory;
+
+    /** @var array<string, mixed> */
+    protected $attributes = [
+        'classification' => 'normal',
+    ];
 
     /** @var array<string, array{name: string, color: string, game_id: int}> */
     public const COMBAT_ELEMENTS = [
@@ -131,6 +137,12 @@ class Pet extends Model
     public function learnsetEntries(): HasMany
     {
         return $this->hasMany(PetSkillLearnset::class);
+    }
+
+    /** @return HasOne<PetMutationRecipe, $this> */
+    public function mutationRecipe(): HasOne
+    {
+        return $this->hasOne(PetMutationRecipe::class);
     }
 
     /** @return HasOne<DivineAbility, $this> */

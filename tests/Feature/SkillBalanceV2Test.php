@@ -17,7 +17,7 @@ test('publishes the complete approved v2 catalog as official data', function () 
         ->where('is_active', true)
         ->get();
 
-    expect($skills)->toHaveCount(99)
+    expect($skills)->toHaveCount(103)
         ->and($skills->pluck('balance_version')->unique()->values()->all())->toBe([SkillBalance::VERSION])
         ->and($skills->whereNotNull('energy_cost'))->toBeEmpty();
 
@@ -57,7 +57,7 @@ test('persists every approved post-review adjustment', function (
     'Chú Phược Quỷ Lao' => ['liet-hoa', 57, 115, 8, ['duration' => 2, 'value' => 20]],
     'Vũ Liệt Thuật' => ['liet-hoa', 65, 0, 4, ['value' => 60, 'cap' => 2]],
     'Tật Phong Tốc Hàng' => ['cau-vong', 12, 115, 12, ['duration' => 2, 'value' => 15]],
-    'Tứ Ngược Trùng Phong' => ['cau-vong', 18, 140, 8, ['conditional_power' => 160]],
+    'Bạo Thú Xung Thiên' => ['cau-vong', 18, 140, 8, ['conditional_power' => 185]],
     'Tiên Xạ Thủy Lãng' => ['cau-vong', 21, 100, 20, ['value' => 1, 'chance' => 25]],
     'Thủy Cầu Áp Sát' => ['cau-vong', 22, 110, 12, ['duration' => 2, 'value' => 15]],
 ]);

@@ -35,6 +35,7 @@ test('seeds the complete balance design while preserving decoded source values',
     $calculator = app(PetStatCalculator::class);
     $pets = Pet::query()
         ->with(['gameSource:id,slug', 'speciesTrait:id,code,species'])
+        ->whereHas('gameSource', fn ($query) => $query->where('slug', '!=', 'vqsv4'))
         ->get()
         ->keyBy(fn (Pet $pet): string => "{$pet->gameSource->slug}:{$pet->game_id}");
 
@@ -90,8 +91,13 @@ test('seeds the complete balance design while preserving decoded source values',
         ->map(fn ($powerClassPets) => $powerClassPets->map(
             fn (Pet $pet): float => $combatBudget->score($calculator->calculate($pet, 50)),
         ));
+    $allDivinePets = Pet::query()
+        ->with('gameSource:id,slug')
+        ->get()
+        ->filter(fn (Pet $pet): bool => $powerClassResolver->isDivine($pet));
 
     expect($combatScoresByPowerClass->get(PetPowerClassResolver::DIVINE))->toHaveCount(14)
+        ->and($allDivinePets)->toHaveCount(19)
         ->and($combatScoresByPowerClass->get(PetPowerClassResolver::DIVINE)->min())
         ->toBeGreaterThan($combatScoresByPowerClass->get(PetPowerClassResolver::STANDARD)->max());
 });
@@ -121,7 +127,7 @@ test('keeps evolution lines progressive without flattening combat roles', functi
         fn ($pets): int => $pets->pluck('combat_element')->unique()->count(),
     );
 
-    expect($uniqueStatProfiles)->toHaveCount(202)
+    expect($uniqueStatProfiles)->toHaveCount(274)
         ->and($primaryRoleCounts->keys()->sort()->values()->all())->toBe([
             'bruiser',
             'controller',

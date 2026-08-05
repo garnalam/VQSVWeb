@@ -71,6 +71,7 @@ export type WikiPet = {
     sprite_id: number;
     learning_group: number;
     quality_tier: number;
+    classification: 'normal' | 'divine';
     preview_level: number;
     preview_star: number;
     preview_stats: WikiPetStatValues;
@@ -156,6 +157,7 @@ export type WikiEvolutionTransition = {
     to_pet_id: number;
     type: 'evolution' | 'mutation';
     quantity: number;
+    required_level: number | null;
     materials?: { item_game_id: number; quantity: number }[] | null;
     cost_rank: number;
     cost_rank_label: string;
@@ -175,7 +177,14 @@ export type WikiEvolutionTransition = {
 
 export type WikiEvolutionIngredient = {
     quantity: number;
-    role: 'core' | 'species' | 'signature';
+    role:
+        | 'core'
+        | 'species'
+        | 'signature'
+        | 'species_primary'
+        | 'species_secondary'
+        | 'element_catalyst'
+        | 'species_catalyst';
     role_label: string;
     item: Pick<
         WikiItem,
@@ -187,6 +196,28 @@ export type WikiEvolutionIngredient = {
         | 'slug'
         | 'frame_id'
     >;
+};
+
+export type WikiMutationIngredient = {
+    quantity: number;
+    role: 'core' | 'element_catalyst' | 'species_catalyst';
+    role_label: string;
+    item: Pick<
+        WikiItem,
+        | 'id'
+        | 'game_source'
+        | 'source_table'
+        | 'game_id'
+        | 'name'
+        | 'slug'
+        | 'frame_id'
+    >;
+};
+
+export type WikiMutationRecipe = {
+    status: string;
+    notes: string | null;
+    ingredients: WikiMutationIngredient[];
 };
 
 export type WikiDivineAbility = {
@@ -208,6 +239,7 @@ export type WikiPetDetail = {
     sprite_id: number;
     variant_code: number;
     quality_tier: number;
+    classification: 'normal' | 'divine';
     rarity_or_growth_code: number;
     learning_group: number;
     effectiveness_class: number;
@@ -236,6 +268,7 @@ export type WikiPetDetail = {
         level_one: WikiPetStatValues;
         level_fifty: WikiPetStatValues;
     };
+    population_count: number;
     evolution_stage: number;
     evolution_stage_count: number;
     belongs_to_evolution_family: boolean;
@@ -244,6 +277,7 @@ export type WikiPetDetail = {
     combat_element: WikiCombatElement;
     species: WikiSpecies;
     species_trait: WikiPetTrait;
+    mutation_recipe: WikiMutationRecipe | null;
     skills: WikiPetSkill[];
     evolution_family: {
         pets: WikiEvolutionPet[];
@@ -583,7 +617,14 @@ export type WikiItemEvolutionUsage = {
     id: number;
     type: 'evolution' | 'mutation';
     quantity: number;
-    role: 'core' | 'species' | 'signature';
+    role:
+        | 'core'
+        | 'species'
+        | 'signature'
+        | 'species_primary'
+        | 'species_secondary'
+        | 'element_catalyst'
+        | 'species_catalyst';
     cost_rank: number;
     from_pet: WikiItemEvolutionPet;
     to_pet: WikiItemEvolutionPet;
