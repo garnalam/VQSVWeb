@@ -17,7 +17,7 @@ test('publishes the complete approved v2 catalog as official data', function () 
         ->where('is_active', true)
         ->get();
 
-    expect($skills)->toHaveCount(103)
+    expect($skills)->toHaveCount(136)
         ->and($skills->pluck('balance_version')->unique()->values()->all())->toBe([SkillBalance::VERSION])
         ->and($skills->whereNotNull('energy_cost'))->toBeEmpty();
 

@@ -4,24 +4,14 @@ use App\Models\GameSource;
 use App\Models\Pet;
 use App\Models\Skill;
 use App\Support\SkillBattlePreview;
-use Database\Seeders\PetBalanceSeeder;
-use Database\Seeders\PetLearnsetSeeder;
-use Database\Seeders\PetTraitSeeder;
-use Database\Seeders\RainbowGameDataSeeder;
-use Database\Seeders\VqsvGameDataSeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Collection;
 use Inertia\Testing\AssertableInertia as Assert;
 
 use function Pest\Laravel\seed;
 
 beforeEach(function () {
-    seed([
-        VqsvGameDataSeeder::class,
-        RainbowGameDataSeeder::class,
-        PetTraitSeeder::class,
-        PetBalanceSeeder::class,
-        PetLearnsetSeeder::class,
-    ]);
+    seed(DatabaseSeeder::class);
 });
 
 test('skill dossier exposes a deterministic Liệt Hỏa battle preview', function () {
@@ -267,7 +257,7 @@ test('every active skill can build a preview with a real caster and mapped effec
         ->get();
     $previewBuilder = app(SkillBattlePreview::class);
 
-    expect($skills)->toHaveCount(103);
+    expect($skills)->toHaveCount(136);
 
     foreach ($skills as $skill) {
         $entry = $skill->learnsetEntries->first();

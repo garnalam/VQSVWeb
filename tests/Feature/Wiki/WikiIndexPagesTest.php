@@ -175,7 +175,7 @@ test('skill catalog filters by effect and target', function () {
             ->where('skills.data.0.target_pattern', 'single_enemy')
             ->where('skills.data.0.element.slug', 'hoa')
             ->where('skills.data.0.provenance.combat_rules', 'unified')
-            ->where('catalogStats.active_total', 103)
+            ->where('catalogStats.active_total', 136)
             ->has('elements', 7));
 });
 

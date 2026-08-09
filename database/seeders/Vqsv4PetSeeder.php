@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Effect;
 use App\Models\Element;
 use App\Models\GameSource;
 use App\Models\Item;
@@ -9,7 +10,10 @@ use App\Models\Pet;
 use App\Models\PetEvolution;
 use App\Models\PetMutationRecipe;
 use App\Models\PetTrait;
+use App\Models\Skill;
+use App\Support\SkillBalance;
 use App\Support\Vqsv4PetDesignRevision;
+use App\Support\Vqsv4SkillData;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -49,6 +53,8 @@ class Vqsv4PetSeeder extends Seeder
                 ['name' => 'VQSV4', 'asset_key' => self::SOURCE_SLUG, 'color' => '#a855f7'],
             );
             $elementIds = $this->seedElements($source, $data);
+            $effectIds = $this->seedEffects($source, $data['effects']);
+            $this->seedSkills($source, $data['skills'], $elementIds, $effectIds);
             $traits = PetTrait::query()->get()->keyBy('code');
             $pets = $this->seedPets($source, $data, $elementIds, $traits);
 
@@ -80,6 +86,113 @@ class Vqsv4PetSeeder extends Seeder
         }
 
         return $elementIds;
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $rows
+     * @return array<string, int>
+     */
+    private function seedEffects(GameSource $source, array $rows): array
+    {
+        $effectIds = [];
+
+        foreach ([...$rows, ...Vqsv4SkillData::effectDefinitions()] as $row) {
+            $effect = Effect::query()->updateOrCreate(
+                [
+                    'game_source_id' => $source->id,
+                    'source_table' => $row['source_table'],
+                    'game_id' => $row['game_id'],
+                ],
+                [
+                    'kind' => $row['kind'],
+                    'name_original' => $row['name_original'] ?? $row['name'],
+                    'name' => $row['name'],
+                    'description' => $row['description'],
+                    'duration' => null,
+                    'parameters' => $row['parameters'] ?? null,
+                    'raw_values' => $row,
+                ],
+            );
+
+            $effectIds[$this->effectIdentity((int) $row['source_table'], (int) $row['game_id'])] = (int) $effect->id;
+        }
+
+        return $effectIds;
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $rows
+     * @param  array<int, int>  $elementIds
+     * @param  array<string, int>  $effectIds
+     */
+    private function seedSkills(GameSource $source, array $rows, array $elementIds, array $effectIds): void
+    {
+        foreach ($rows as $row) {
+            $gameId = (int) $row['game_id'];
+            $definition = $gameId <= Vqsv4SkillData::LAST_ACTIVE_ID
+                ? Vqsv4SkillData::definition($gameId)
+                : null;
+            $primaryEffect = $definition['primary_effect'] ?? null;
+            $effectId = $primaryEffect === null
+                ? null
+                : ($effectIds[$this->effectIdentity((int) $primaryEffect[0], (int) $primaryEffect[1])] ?? null);
+            $isActive = $definition !== null;
+
+            Skill::query()->updateOrCreate(
+                ['game_source_id' => $source->id, 'game_id' => $gameId],
+                [
+                    'element_id' => $row['element_game_id'] === null ? null : $elementIds[(int) $row['element_game_id']],
+                    'effect_id' => $effectId,
+                    'name_original' => $row['name'],
+                    'name' => $definition['name'] ?? $row['name'],
+                    'slug' => $this->skillSlug($gameId, $definition['name'] ?? $row['name']),
+                    'description_original' => $row['description'],
+                    'description' => $definition['mechanics']['description'] ?? $row['description'],
+                    'power_percent' => $definition['power'] ?? $row['power'],
+                    'energy_cost' => $isActive ? null : $row['energy_cost'],
+                    'status_chance' => $definition['status_chance'] ?? $row['status_chance'],
+                    'tier' => $definition['tier'] ?? $row['tier'],
+                    'max_uses' => $definition['pp'] ?? $row['energy_cost'],
+                    'effect_mode' => $effectId === null ? 0 : 2,
+                    'effect_parameter' => $row['status_chance'],
+                    'target_side' => ($definition['target_pattern'] ?? null) === 'self_or_ally' ? 1 : 0,
+                    'combat_element' => $definition['combat_element'] ?? null,
+                    'species_affinity' => null,
+                    'combat_category' => $definition['combat_category'] ?? 'passive',
+                    'target_pattern' => $definition['target_pattern'] ?? 'self',
+                    'effect_target_pattern' => $definition['effect_target_pattern'] ?? 'self',
+                    'battle_format' => $definition['battle_format'] ?? 'any',
+                    'role_tags' => $definition === null ? [] : $this->roleTags((string) $definition['combat_category']),
+                    'balance_version' => $isActive ? SkillBalance::VERSION : null,
+                    'is_active' => $isActive,
+                    'raw_values' => $row,
+                ],
+            );
+        }
+    }
+
+    /** @return list<string> */
+    private function roleTags(string $category): array
+    {
+        return match ($category) {
+            'damage' => ['striker', 'bruiser'],
+            'hybrid' => ['bruiser', 'controller'],
+            'buff' => ['striker', 'support'],
+            'heal' => ['support', 'guardian'],
+            'defense' => ['guardian', 'support'],
+            'control', 'disrupt' => ['controller', 'support'],
+            default => ['versatile'],
+        };
+    }
+
+    private function effectIdentity(int $sourceTable, int $gameId): string
+    {
+        return "{$sourceTable}:{$gameId}";
+    }
+
+    private function skillSlug(int $gameId, string $name): string
+    {
+        return Str::slug(sprintf('%02d-%s', $gameId, $name));
     }
 
     /**
@@ -316,6 +429,8 @@ class Vqsv4PetSeeder extends Seeder
             flags: JSON_THROW_ON_ERROR,
         );
         $design['source_elements'] = $source['elements'];
+        $design['effects'] = $source['effects'];
+        $design['skills'] = $source['skills'];
         $design['pets'] = collect($design['pets'])
             ->map(fn (array $pet): array => Vqsv4PetDesignRevision::apply($pet))
             ->all();

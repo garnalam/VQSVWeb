@@ -24,7 +24,7 @@ test('exports a portable gameplay integration database with provenance and stabl
     expect(File::exists($databasePath))->toBeTrue()
         ->and(File::exists($manifestPath))->toBeTrue()
         ->and((int) $snapshot->query('SELECT COUNT(*) FROM pets')->fetchColumn())->toBe(274)
-        ->and((int) $snapshot->query('SELECT COUNT(*) FROM skills WHERE is_active = 1')->fetchColumn())->toBe(103)
+        ->and((int) $snapshot->query('SELECT COUNT(*) FROM skills WHERE is_active = 1')->fetchColumn())->toBe(136)
         ->and((int) $snapshot->query('SELECT COUNT(*) FROM pet_skill_learnsets')->fetchColumn())->toBe(1880)
         ->and((int) $snapshot->query("SELECT COUNT(*) FROM traits WHERE slot_type = 'physical'")->fetchColumn())->toBe(19)
         ->and((int) $snapshot->query('SELECT COUNT(*) FROM item_decisions WHERE decision = "remove"')->fetchColumn())->toBe(10)
@@ -39,7 +39,7 @@ test('exports a portable gameplay integration database with provenance and stabl
 
     expect($pet['pet_key'])->toBe('CV-003')
         ->and($manifest['schema_version'])->toBe('2.0.0')
-        ->and($manifest['data_version'])->toBe('unified-2026-08-05.4')
+        ->and($manifest['data_version'])->toBe('unified-2026-08-08.1')
         ->and($petColumns)->not->toContain('talent_key')
         ->and($manifest['skill_balance_version'])->toBe('unified-v7')
         ->and(json_decode($pet['provenance_json'], true, flags: JSON_THROW_ON_ERROR)['stats'])->toBe('unified_balance')

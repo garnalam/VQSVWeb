@@ -1,5 +1,11 @@
 # Hợp đồng SQLite cho agent và game importer
 
+## Current catalog correction (2026-08-08)
+
+The current unified catalog contains 166 Skill rows and 136 active Skills. The active count is the sum of 70 Liệt Hỏa skills, 33 Rainbow skills, and 33 VQSV4 skills; passive rows remain source-preserved and are not counted as active.
+
+VQSV4 rows use the `vqsv4` game source and stable keys in the `V4-SKILL-*` namespace. Rainbow and VQSV4 both use the shared `unified-v7` balance profile for active combat skills, while VQSV4 passive rows remain inactive source data.
+
 ## Sinh snapshot
 
 ```powershell

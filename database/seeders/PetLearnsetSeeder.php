@@ -100,16 +100,21 @@ class PetLearnsetSeeder extends Seeder
 
     private function normalizeSkills(): void
     {
-        $sources = GameSource::query()->whereIn('slug', ['liet-hoa', 'cau-vong'])->get()->keyBy('slug');
+        $sources = GameSource::query()->whereIn('slug', ['liet-hoa', 'cau-vong', 'vqsv4'])->get()->keyBy('slug');
         $lietHoa = $sources->get('liet-hoa');
         $rainbow = $sources->get('cau-vong');
+        $vqsv4 = $sources->get('vqsv4');
 
         if ($lietHoa === null || $rainbow === null) {
-            throw new RuntimeException('Both game sources must exist before normalizing skills.');
+            throw new RuntimeException('Liá»‡t Há»a and Cầu Vồng sources must exist before normalizing skills.');
         }
 
         $this->normalizeLietHoaSkills($lietHoa);
         $this->normalizeRainbowSkills($rainbow);
+
+        if ($vqsv4 !== null) {
+            $this->normalizeRainbowSkills($vqsv4);
+        }
     }
 
     private function normalizeLietHoaSkills(GameSource $gameSource): void
@@ -189,7 +194,7 @@ class PetLearnsetSeeder extends Seeder
             ->whereBelongsTo($gameSource)
             ->orderBy('game_id')
             ->get()
-            ->each(function (Skill $skill) use ($speciesGroups): void {
+            ->each(function (Skill $skill) use ($gameSource, $speciesGroups): void {
                 if ($skill->game_id > Vqsv4SkillData::LAST_ACTIVE_ID) {
                     $skill->update([
                         'combat_element' => null,
@@ -213,7 +218,7 @@ class PetLearnsetSeeder extends Seeder
                 }
 
                 $definition = Vqsv4SkillData::definition($skill->game_id);
-                $profile = SkillBalance::profile('cau-vong', $skill->game_id);
+                $profile = SkillBalance::profile($gameSource->slug, $skill->game_id);
                 $category = (string) $definition['combat_category'];
 
                 $skill->update([
@@ -279,12 +284,15 @@ class PetLearnsetSeeder extends Seeder
             ->where('is_active', true)
             ->whereNotIn('combat_category', ['fallback', 'passive'])
             ->get();
+        $legacySkills = $skills->reject(
+            fn (Skill $skill): bool => $skill->gameSource->slug === 'vqsv4',
+        );
 
         PetSkillLearnset::query()->delete();
 
         $accessibleSkillIds = [];
         $siblingGrantSkillIds = [];
-        $directGrantCounts = array_fill_keys($skills->pluck('id')->all(), 0);
+        $directGrantCounts = array_fill_keys($legacySkills->pluck('id')->all(), 0);
         $rows = [];
         $orderedPets = $pets->sortBy(fn (Pet $pet): array => [
             $familyMetadata[$pet->id]['stage'],
@@ -311,13 +319,13 @@ class PetLearnsetSeeder extends Seeder
                 ->unique()
                 ->values()
                 ->all();
-            $candidates = $this->candidateSkills($pet, $skills)
+            $candidates = $this->candidateSkills($pet, $legacySkills)
                 ->reject(fn (Skill $skill): bool => in_array($skill->id, $selectedSkillIds, true)
                     || in_array($skill->id, $reservedSiblingSkillIds, true));
 
             while (count($selectedSkillIds) < $targetCount && $candidates->isNotEmpty()) {
                 $desiredTier = $this->desiredTierForSlot(count($selectedSkillIds));
-                $selectedSkills = $skills->whereIn('id', $selectedSkillIds);
+                $selectedSkills = $legacySkills->whereIn('id', $selectedSkillIds);
                 $selected = $candidates
                     ->sortBy(fn (Skill $skill): array => $this->candidateScore(
                         $skill,
@@ -391,11 +399,14 @@ class PetLearnsetSeeder extends Seeder
 
         PetSkillLearnset::query()->whereIn('pet_id', $vqsv4Pets->pluck('id'))->delete();
         $rows = [];
+        $sourceSkills = $skills
+            ->filter(fn (Skill $skill): bool => $skill->gameSource->slug === 'vqsv4')
+            ->values();
         $elementMilestones = [1, 8, 16, 28, 40];
         $speciesMilestones = [1, 10, 18, 30, 42];
 
         foreach ($vqsv4Pets as $pet) {
-            $speciesSkills = $skills
+            $speciesSkills = $sourceSkills
                 ->where('species_affinity', $pet->species)
                 ->sortBy(fn (Skill $skill): array => [$skill->game_source_id, $skill->game_id])
                 ->values();
@@ -408,9 +419,11 @@ class PetLearnsetSeeder extends Seeder
                 ->whereIn('combat_category', self::CATEGORY_GROUPS['offense'])
                 ->count();
             $requiredElementOffense = max(0, 2 - $speciesOffense);
-            $elementSkills = $elementCandidates
-                ->whereIn('combat_category', self::CATEGORY_GROUPS['offense'])
-                ->take($requiredElementOffense)
+            $prioritySkills = $elementCandidates->filter(
+                fn (Skill $skill): bool => in_array($skill->game_id, range(25, 32), true),
+            );
+            $elementSkills = $prioritySkills
+                ->concat($elementCandidates->whereIn('combat_category', self::CATEGORY_GROUPS['offense'])->take($requiredElementOffense))
                 ->concat($elementCandidates)
                 ->unique('id')
                 ->take(5)
@@ -449,7 +462,71 @@ class PetLearnsetSeeder extends Seeder
             }
         }
 
+        $this->ensureVqsv4SkillCoverage($rows, $vqsv4Pets, $sourceSkills);
+
         PetSkillLearnset::query()->insert($rows);
+    }
+
+    /**
+     * Keep every active VQSV4 Skill discoverable without increasing the fixed
+     * ten-entry learnset contract for each VQSV4 Pet.
+     *
+     * @param  list<array<string, mixed>>  $rows
+     * @param  Collection<int, Pet>  $vqsv4Pets
+     * @param  Collection<int, Skill>  $vqsv4Skills
+     */
+    private function ensureVqsv4SkillCoverage(array &$rows, Collection $vqsv4Pets, Collection $vqsv4Skills): void
+    {
+        $learnedSkillIds = collect($rows)->pluck('skill_id')->unique();
+        $missingSkills = $vqsv4Skills->pluck('id')->diff($learnedSkillIds);
+        $coverageCounts = collect($rows)->countBy('skill_id');
+        $usedReplacementIndexes = [];
+
+        foreach ($missingSkills as $missingSkillId) {
+            $replacementIndex = null;
+
+            foreach ($vqsv4Pets as $pet) {
+                $petRows = collect($rows)->filter(
+                    fn (array $row): bool => $row['pet_id'] === $pet->id,
+                );
+
+                if ($petRows->contains('skill_id', $missingSkillId)) {
+                    continue;
+                }
+
+                $replacementIndex = $petRows->keys()->reverse()->first(
+                    fn (int $index): bool => ! isset($usedReplacementIndexes[$index])
+                        && ($coverageCounts[$rows[$index]['skill_id']] ?? 0) > 1,
+                );
+
+                if ($replacementIndex !== null) {
+                    break;
+                }
+            }
+
+            if ($replacementIndex === null) {
+                throw new RuntimeException("Unable to place VQSV4 Skill {$missingSkillId} in a learnset.");
+            }
+
+            $skill = $vqsv4Skills->firstWhere('id', $missingSkillId);
+
+            if (! $skill instanceof Skill) {
+                throw new RuntimeException("Missing VQSV4 Skill model {$missingSkillId}.");
+            }
+
+            $replacedSkillId = $rows[$replacementIndex]['skill_id'];
+            $rows[$replacementIndex] = [
+                ...$rows[$replacementIndex],
+                'skill_id' => $skill->id,
+                'source_type' => 'element',
+                'combat_role' => $skill->combat_category,
+                'is_signature' => false,
+            ];
+            $coverageCounts->put($replacedSkillId, (int) $coverageCounts->get($replacedSkillId) - 1);
+            $coverageCounts->put($missingSkillId, 1);
+            $usedReplacementIndexes[$replacementIndex] = true;
+            $learnedSkillIds->push($missingSkillId);
+        }
     }
 
     /** @return array<int, int> */

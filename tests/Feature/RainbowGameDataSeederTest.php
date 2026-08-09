@@ -23,9 +23,9 @@ test('imports all three games with isolated source identities', function () {
     expect(GameSource::query()->count())->toBe(3)
         ->and(Element::query()->count())->toBe(19)
         ->and(Pet::query()->count())->toBe(274)
-        ->and(Skill::query()->count())->toBe(119)
+        ->and(Skill::query()->count())->toBe(166)
         ->and(Item::query()->count())->toBe(112)
-        ->and(Effect::query()->count())->toBe(52)
+        ->and(Effect::query()->count())->toBe(77)
         ->and(PetEvolution::query()->count())->toBe(133)
         ->and(SkillUnlockRule::query()->count())->toBe(45)
         ->and(Pet::query()->whereBelongsTo($rainbow)->count())->toBe(102)
@@ -173,7 +173,7 @@ test('can import all sources repeatedly without duplicate records', function () 
     seed(DatabaseSeeder::class);
 
     expect(Pet::query()->count())->toBe(274)
-        ->and(Skill::query()->count())->toBe(119)
+        ->and(Skill::query()->count())->toBe(166)
         ->and(Item::query()->count())->toBe(112)
         ->and(PetEvolution::query()->count())->toBe(133)
         ->and(PetEvolutionIngredient::query()->count())->toBe(374);

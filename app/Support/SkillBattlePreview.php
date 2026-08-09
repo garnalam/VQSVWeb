@@ -77,6 +77,14 @@ class SkillBattlePreview
      */
     private function sourceAnimation(Skill $skill, string $effectTarget): array
     {
+        if ($skill->gameSource->slug === 'vqsv4') {
+            return [
+                'provenance' => 'source_no_visual',
+                'label' => 'Nguồn VQSV4 lưu animation theo Pet, chưa có VFX Skill độc lập.',
+                'events' => [],
+            ];
+        }
+
         if ($skill->gameSource->slug === 'cau-vong') {
             $manifest = $this->readManifest(
                 public_path('assets/game/cau-vong/skill-animations/manifest.json'),
@@ -304,7 +312,7 @@ class SkillBattlePreview
                 in_array($type, ['direct_heal', 'heal_regeneration', 'cleanse_regeneration', 'corrosion_storm'], true) ? 'max_hp' : 'percent',
                 $changes,
                 $target,
-                $skill->gameSource->slug === 'cau-vong' ? 'unified' : 'decoded',
+                in_array($skill->gameSource->slug, ['cau-vong', 'vqsv4'], true) ? 'unified' : 'decoded',
             ),
             'effect_name' => $skill->effect?->name,
             'tone' => $skill->effect?->kind ?? 'neutral',

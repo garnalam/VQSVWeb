@@ -5,6 +5,7 @@ use App\Models\Pet;
 use App\Models\PetEvolution;
 use App\Models\PetSkillLearnset;
 use App\Models\Skill;
+use App\Support\SkillBalance;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Collection;
 
@@ -37,11 +38,11 @@ test('normalizes the shared active skill catalog without retaining rainbow energ
         ->whereBetween('game_id', [0, 24])
         ->get();
 
-    expect(Skill::query()->count())->toBe(119)
+    expect(Skill::query()->count())->toBe(166)
         ->and(Skill::query()->whereBelongsTo($rainbow)->whereBetween('game_id', [33, 48])->where('is_active', false)->count())->toBe(16)
         ->and($rainbowSpeciesSkills)->toHaveCount(25)
         ->and($rainbowSpeciesSkills->whereNotNull('energy_cost'))->toBeEmpty()
-        ->and(Skill::query()->where('is_active', true)->distinct()->pluck('balance_version')->all())->toBe(['unified-v6'])
+        ->and(Skill::query()->where('is_active', true)->distinct()->pluck('balance_version')->all())->toBe([SkillBalance::VERSION])
         ->and($rainbowSpeciesSkills->pluck('max_uses')->unique()->sort()->values()->all())->toBe([5, 8, 12, 14, 15, 18, 20, 22, 25])
         ->and($rainbowSpeciesSkills->pluck('power_percent')->min())->toBeGreaterThanOrEqual(60)
         ->and($rainbowSpeciesSkills->pluck('power_percent')->max())->toBeLessThanOrEqual(185);
@@ -58,7 +59,7 @@ test('publishes only covered combat skills and reserves signature labels for one
         ->groupBy('to_pet_id')
         ->map->pluck('from_pet_id');
 
-    expect($activeSkills)->toHaveCount(103)
+    expect($activeSkills)->toHaveCount(136)
         ->and($activeSkills->whereIn('combat_category', ['fallback', 'capture', 'passive']))->toBeEmpty();
 
     foreach ($activeSkills as $skill) {

@@ -13,7 +13,7 @@ final class GameDataIntegrationSnapshotExporter
 {
     public const SCHEMA_VERSION = '2.0.0';
 
-    public const DATA_VERSION = 'unified-2026-08-05.4';
+    public const DATA_VERSION = 'unified-2026-08-08.1';
 
     /** @var list<string> */
     private const EXCLUDED_RAINBOW_ITEMS = [

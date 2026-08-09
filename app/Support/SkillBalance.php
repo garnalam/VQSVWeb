@@ -49,7 +49,7 @@ class SkillBalance
      */
     public static function profile(string $sourceSlug, int $gameId): array
     {
-        if ($sourceSlug === 'cau-vong') {
+        if (in_array($sourceSlug, ['cau-vong', 'vqsv4'], true)) {
             return Vqsv4SkillData::balanceProfile($gameId);
         }
 
@@ -69,7 +69,7 @@ class SkillBalance
     {
         $values = match ($sourceSlug) {
             'liet-hoa' => self::LIET_HOA_VALUES[$gameId] ?? null,
-            'cau-vong' => array_intersect_key(
+            'cau-vong', 'vqsv4' => array_intersect_key(
                 Vqsv4SkillData::balanceProfile($gameId),
                 ['power' => true, 'pp' => true],
             ),
@@ -100,7 +100,7 @@ class SkillBalance
     {
         return match ($sourceSlug) {
             'liet-hoa' => self::LIET_HOA_STATUS_CHANCES[$gameId] ?? null,
-            'cau-vong' => Vqsv4SkillData::balanceProfile($gameId)['status_chance'],
+            'cau-vong', 'vqsv4' => Vqsv4SkillData::balanceProfile($gameId)['status_chance'],
             default => null,
         };
     }

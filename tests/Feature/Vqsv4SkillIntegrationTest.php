@@ -17,24 +17,27 @@ beforeEach(function () {
 });
 
 test('publishes all thirty three approved VQSV4 skills without duplicate source identities', function () {
+    $vqsv4 = GameSource::query()->where('slug', 'vqsv4')->firstOrFail();
     $rainbow = GameSource::query()->where('slug', 'cau-vong')->firstOrFail();
     $skills = Skill::query()
-        ->whereBelongsTo($rainbow)
+        ->whereBelongsTo($vqsv4)
         ->whereBetween('game_id', [0, 32])
         ->with(['effect', 'gameSource'])
         ->orderBy('game_id')
         ->get()
         ->keyBy('game_id');
 
-    expect(Skill::query()->count())->toBe(119)
-        ->and(Skill::query()->where('is_active', true)->count())->toBe(103)
+    expect(Skill::query()->count())->toBe(166)
+        ->and(Skill::query()->where('is_active', true)->count())->toBe(136)
         ->and($skills)->toHaveCount(33)
         ->and($skills[4]->power_percent)->toBe(170)
+        ->and(Skill::query()->whereBelongsTo($vqsv4)->count())->toBe(47)
+        ->and(Skill::query()->whereBelongsTo($rainbow)->count())->toBe(49)
         ->and(Skill::query()->whereBelongsTo($rainbow)->whereBetween('game_id', [33, 48])->where('is_active', true)->exists())->toBeFalse();
 
     foreach (Vqsv4SkillData::definitions() as $gameId => $definition) {
         $skill = $skills->get($gameId);
-        $profile = SkillBalance::profile('cau-vong', $gameId);
+        $profile = SkillBalance::profile('vqsv4', $gameId);
 
         expect($skill)->not->toBeNull()
             ->and($skill->name)->toBe($definition['name'])
@@ -51,9 +54,9 @@ test('publishes all thirty three approved VQSV4 skills without duplicate source 
 });
 
 test('seeds unified effects and six equally weighted VQSV4 aptitudes', function () {
-    $rainbow = GameSource::query()->where('slug', 'cau-vong')->firstOrFail();
+    $vqsv4 = GameSource::query()->where('slug', 'vqsv4')->firstOrFail();
     $effects = Effect::query()
-        ->whereBelongsTo($rainbow)
+        ->whereBelongsTo($vqsv4)
         ->where('source_table', Vqsv4SkillData::UNIFIED_EFFECT_SOURCE_TABLE)
         ->orderBy('game_id')
         ->get();
@@ -64,7 +67,7 @@ test('seeds unified effects and six equally weighted VQSV4 aptitudes', function 
         ->get();
     $traitsByCode = $traits->keyBy('code');
 
-    expect(Effect::query()->count())->toBe(52)
+    expect(Effect::query()->count())->toBe(77)
         ->and($effects)->toHaveCount(6)
         ->and($effects->pluck('parameters')->pluck('status_key')->all())->toBe([
             'bleeding',
@@ -99,8 +102,8 @@ test('seeds unified effects and six equally weighted VQSV4 aptitudes', function 
 test('keeps the VQSV4 import idempotent', function () {
     seed(DatabaseSeeder::class);
 
-    expect(Skill::query()->count())->toBe(119)
-        ->and(Effect::query()->count())->toBe(52)
+    expect(Skill::query()->count())->toBe(166)
+        ->and(Effect::query()->count())->toBe(77)
         ->and(PetTrait::query()->count())->toBe(39);
 });
 
