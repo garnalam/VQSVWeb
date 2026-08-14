@@ -284,6 +284,84 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Inertia\Controller::__invoke
  * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+ * @route '/emulator'
+ */
+export const emulator = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: emulator.url(options),
+    method: 'get',
+})
+
+emulator.definition = {
+    methods: ["get","head"],
+    url: '/emulator',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+ * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+ * @route '/emulator'
+ */
+emulator.url = (options?: RouteQueryOptions) => {
+    return emulator.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+ * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+ * @route '/emulator'
+ */
+emulator.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: emulator.url(options),
+    method: 'get',
+})
+/**
+* @see \Inertia\Controller::__invoke
+ * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+ * @route '/emulator'
+ */
+emulator.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: emulator.url(options),
+    method: 'head',
+})
+
+    /**
+* @see \Inertia\Controller::__invoke
+ * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+ * @route '/emulator'
+ */
+    const emulatorForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: emulator.url(options),
+        method: 'get',
+    })
+
+            /**
+* @see \Inertia\Controller::__invoke
+ * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+ * @route '/emulator'
+ */
+        emulatorForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: emulator.url(options),
+            method: 'get',
+        })
+            /**
+* @see \Inertia\Controller::__invoke
+ * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+ * @route '/emulator'
+ */
+        emulatorForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: emulator.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    emulator.form = emulatorForm
+/**
+* @see \Inertia\Controller::__invoke
+ * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
  * @route '/dashboard'
  */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({

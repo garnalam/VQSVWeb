@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', static fn (): RedirectResponse => to_route('wiki.pets.index'))->name('home');
 
+Route::inertia('emulator', 'emulator')->name('emulator');
+
 Route::prefix('wiki')->name('wiki.')->group(function () {
     Route::get('pets', [PetController::class, 'index'])->name('pets.index');
     Route::get('pets/{pet}', [PetController::class, 'show'])->name('pets.show');

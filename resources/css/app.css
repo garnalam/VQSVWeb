@@ -498,3 +498,922 @@
         animation: none;
     }
 }
+
+@keyframes emulator-signal {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.35;
+    }
+}
+
+@keyframes emulator-idle {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@layer components {
+    .emulator-app {
+        --emulator-cyan: #2de2e6;
+        --emulator-pink: #ff4fa3;
+        --emulator-amber: #ffc857;
+        --emulator-green: #62e6a8;
+        min-width: 320px;
+        background:
+            linear-gradient(rgb(15 23 34 / 0.78) 1px, transparent 1px),
+            linear-gradient(90deg, rgb(15 23 34 / 0.78) 1px, transparent 1px),
+            #06090e;
+        background-size: 32px 32px;
+        color: #f8fbff;
+        font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+        overscroll-behavior: none;
+    }
+
+    .emulator-topbar {
+        position: sticky;
+        z-index: 50;
+        top: 0;
+        display: flex;
+        min-height: 64px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid rgb(45 226 230 / 0.2);
+        background: rgb(5 9 14 / 0.94);
+        padding: max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) 10px max(16px, env(safe-area-inset-left));
+        backdrop-filter: blur(18px);
+    }
+
+    .emulator-brand {
+        display: inline-flex;
+        min-width: 0;
+        align-items: center;
+        gap: 12px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .emulator-brand img {
+        max-width: 96px;
+        image-rendering: pixelated;
+    }
+
+    .emulator-brand span {
+        border-left: 1px solid rgb(255 255 255 / 0.15);
+        padding-left: 12px;
+    }
+
+    .emulator-brand strong,
+    .emulator-brand small {
+        display: block;
+        line-height: 1;
+    }
+
+    .emulator-brand strong {
+        font-size: 12px;
+        font-weight: 900;
+    }
+
+    .emulator-brand small {
+        margin-top: 6px;
+        color: #6f8294;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 8px;
+    }
+
+    .emulator-topbar-actions,
+    .emulator-heading-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .emulator-live-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: #9ab0c2;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .emulator-live-status i,
+    .emulator-ok-dot {
+        width: 7px;
+        height: 7px;
+        background: var(--emulator-green);
+        box-shadow: 0 0 10px rgb(98 230 168 / 0.9);
+        animation: emulator-signal 1.8s ease-in-out infinite;
+    }
+
+    .emulator-icon-button,
+    .emulator-secondary-button {
+        display: inline-flex;
+        height: 38px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid rgb(255 255 255 / 0.12);
+        border-radius: 4px;
+        background: #101823;
+        color: #cfdae4;
+        transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+    }
+
+    .emulator-icon-button {
+        width: 38px;
+    }
+
+    .emulator-secondary-button {
+        padding: 0 13px;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .emulator-icon-button:hover,
+    .emulator-secondary-button:hover {
+        border-color: rgb(45 226 230 / 0.55);
+        background: #132536;
+        color: white;
+    }
+
+    .emulator-layout {
+        display: grid;
+        width: min(100%, 1480px);
+        min-height: calc(100dvh - 64px);
+        margin: 0 auto;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 18px;
+        padding: 18px;
+    }
+
+    .emulator-console {
+        min-width: 0;
+        border: 1px solid rgb(45 226 230 / 0.2);
+        border-radius: 6px;
+        background: rgb(8 13 20 / 0.94);
+        box-shadow: 0 18px 70px rgb(0 0 0 / 0.44);
+    }
+
+    .emulator-console-heading {
+        display: flex;
+        min-height: 70px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 1px solid rgb(255 255 255 / 0.08);
+        padding: 13px 16px;
+    }
+
+    .emulator-eyebrow {
+        color: var(--emulator-cyan);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 9px;
+        font-weight: 900;
+    }
+
+    .emulator-console-heading h1 {
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0;
+    }
+
+    .emulator-play-area {
+        display: grid;
+        min-height: calc(100dvh - 174px);
+        align-items: center;
+        grid-template-columns: minmax(280px, 1fr) minmax(260px, 330px);
+        gap: 24px;
+        padding: 24px;
+    }
+
+    .emulator-screen-shell {
+        position: relative;
+        width: min(100%, 480px);
+        aspect-ratio: 3 / 4;
+        justify-self: center;
+        border: 5px solid #1a2632;
+        border-radius: 8px;
+        background: #030507;
+        box-shadow: 0 0 0 1px #314252, 0 20px 60px rgb(0 0 0 / 0.56), 0 0 35px rgb(45 226 230 / 0.08);
+        overflow: hidden;
+    }
+
+    .emulator-screen-shell.scale-1 {
+        width: min(100%, 360px);
+    }
+
+    .emulator-screen-shell.scale-2 {
+        width: min(100%, 480px);
+    }
+
+    .emulator-screen-shell.scale-3 {
+        width: min(100%, 640px);
+    }
+
+    .emulator-screen-shell::before {
+        position: absolute;
+        z-index: 5;
+        inset: 0;
+        border: 1px solid rgb(255 255 255 / 0.12);
+        content: '';
+        pointer-events: none;
+    }
+
+    .emulator-screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-image: url('/assets/game/decor/scenic_background.png');
+        background-position: center;
+        background-size: cover;
+        image-rendering: pixelated;
+        overflow: hidden;
+        outline: none;
+    }
+
+    .emulator-screen-vignette {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgb(3 9 13 / 0.1), transparent 42%, rgb(3 7 11 / 0.58));
+        pointer-events: none;
+    }
+
+    .emulator-screen-header,
+    .emulator-screen-footer {
+        position: absolute;
+        z-index: 4;
+        right: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgb(4 12 21 / 0.9);
+        color: #dffcff;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 8px;
+        font-weight: 900;
+    }
+
+    .emulator-screen-header {
+        top: 0;
+        height: 24px;
+        border-bottom: 2px solid var(--emulator-cyan);
+        padding: 0 8px;
+    }
+
+    .emulator-screen-battery {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        color: var(--emulator-green);
+    }
+
+    .emulator-screen-footer {
+        bottom: 0;
+        height: 21px;
+        border-top: 2px solid var(--emulator-cyan);
+        padding: 0 8px;
+        color: #9ccad3;
+    }
+
+    .emulator-map-label {
+        position: absolute;
+        z-index: 3;
+        top: 36px;
+        left: 10px;
+        border-left: 3px solid var(--emulator-amber);
+        background: rgb(5 12 18 / 0.78);
+        padding: 5px 8px;
+    }
+
+    .emulator-map-label span,
+    .emulator-map-label small {
+        display: block;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-weight: 900;
+    }
+
+    .emulator-map-label span {
+        color: white;
+        font-size: 9px;
+    }
+
+    .emulator-map-label small {
+        margin-top: 2px;
+        color: #95a9b7;
+        font-size: 6px;
+    }
+
+    .emulator-pet-stage {
+        position: absolute;
+        inset: 24px 0 21px;
+    }
+
+    .emulator-pet {
+        position: absolute;
+        z-index: 2;
+        display: grid;
+        width: 38%;
+        place-items: center;
+        animation: emulator-idle 2s steps(2, end) infinite;
+    }
+
+    .emulator-pet img {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-height: 128px;
+        object-fit: contain;
+        filter: drop-shadow(0 5px 1px rgb(0 0 0 / 0.32));
+        image-rendering: pixelated;
+    }
+
+    .emulator-pet span {
+        margin-top: -4px;
+        border: 1px solid rgb(255 255 255 / 0.2);
+        background: rgb(5 12 18 / 0.86);
+        padding: 2px 5px;
+        color: white;
+        font-size: 7px;
+        font-weight: 900;
+    }
+
+    .emulator-pet-shadow {
+        position: absolute;
+        bottom: 16px;
+        width: 72%;
+        height: 14px;
+        border-radius: 50%;
+        background: rgb(0 0 0 / 0.34);
+    }
+
+    .emulator-pet-ally {
+        bottom: 66px;
+        left: 12%;
+    }
+
+    .emulator-pet-enemy {
+        top: 44px;
+        right: 10%;
+        animation-delay: 500ms;
+    }
+
+    .emulator-player-chip {
+        position: absolute;
+        z-index: 3;
+        top: 34%;
+        left: 8px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border: 1px solid rgb(45 226 230 / 0.5);
+        background: rgb(5 20 28 / 0.78);
+        padding: 3px 6px;
+        color: var(--emulator-cyan);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 6px;
+        font-weight: 900;
+    }
+
+    .emulator-dialog-box {
+        position: absolute;
+        z-index: 4;
+        right: 8px;
+        bottom: 34px;
+        left: 8px;
+        min-height: 42px;
+        border: 2px solid #d8f7ff;
+        background: rgb(5 19 29 / 0.94);
+        padding: 9px 10px 6px;
+        box-shadow: inset 0 0 0 2px #147aa1;
+    }
+
+    .emulator-dialog-name {
+        position: absolute;
+        top: -9px;
+        left: 8px;
+        background: var(--emulator-cyan);
+        padding: 2px 7px;
+        color: #031016;
+        font-size: 7px;
+        font-weight: 1000;
+    }
+
+    .emulator-dialog-box p {
+        color: #f4fbff;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    .emulator-dialog-arrow {
+        position: absolute;
+        right: 7px;
+        bottom: 4px;
+        color: var(--emulator-amber);
+        font-size: 7px;
+    }
+
+    .emulator-pause-layer {
+        position: absolute;
+        z-index: 10;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: rgb(2 6 10 / 0.74);
+        color: white;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 11px;
+        font-weight: 900;
+        backdrop-filter: blur(3px);
+    }
+
+    .emulator-touch-controls {
+        position: relative;
+        display: grid;
+        width: min(100%, 320px);
+        min-height: 330px;
+        justify-self: center;
+        grid-template-columns: repeat(3, 72px);
+        grid-template-rows: repeat(3, 72px) 58px;
+        place-content: center;
+        gap: 4px;
+        border: 1px solid rgb(255 255 255 / 0.09);
+        border-radius: 8px;
+        background: #0b1119;
+        padding: 16px;
+        box-shadow: inset 0 1px rgb(255 255 255 / 0.04);
+        touch-action: none;
+        user-select: none;
+    }
+
+    .emulator-touch-controls::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 58px;
+        height: 58px;
+        transform: translate(-112px, -74px);
+        border: 1px solid rgb(45 226 230 / 0.12);
+        border-radius: 50%;
+        background: #070c12;
+        content: '';
+    }
+
+    .emulator-touch-button {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        min-width: 44px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgb(255 255 255 / 0.15);
+        color: white;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-weight: 1000;
+        transition: transform 80ms ease, filter 80ms ease, box-shadow 80ms ease;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .emulator-touch-button.is-active {
+        transform: translateY(2px) scale(0.96);
+        filter: brightness(1.25);
+    }
+
+    .emulator-touch-button.tone-dpad {
+        width: 72px;
+        height: 72px;
+        border-radius: 6px;
+        background: #15202c;
+        box-shadow: inset 0 -5px #091019, inset 0 1px rgb(255 255 255 / 0.1);
+        color: #bdeff2;
+    }
+
+    .emulator-touch-button.tone-dpad svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .emulator-touch-button.tone-dpad[data-key='up'] {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .emulator-touch-button.tone-dpad[data-key='left'] {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .emulator-touch-button.tone-dpad[data-key='right'] {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .emulator-touch-button.tone-dpad[data-key='down'] {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    .emulator-action-cluster {
+        position: absolute;
+        right: 16px;
+        bottom: 88px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transform: rotate(-10deg);
+    }
+
+    .emulator-action-cluster .emulator-touch-button {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        transform: rotate(10deg);
+        font-size: 18px;
+    }
+
+    .emulator-action-cluster .is-active {
+        transform: rotate(10deg) translateY(2px) scale(0.96);
+    }
+
+    .emulator-touch-button.tone-pink {
+        border-color: rgb(255 79 163 / 0.78);
+        background: #c92e78;
+        box-shadow: inset 0 -5px #781541, 0 0 16px rgb(255 79 163 / 0.16);
+    }
+
+    .emulator-touch-button.tone-blue {
+        border-color: rgb(45 226 230 / 0.72);
+        background: #168caa;
+        box-shadow: inset 0 -5px #075269, 0 0 16px rgb(45 226 230 / 0.15);
+    }
+
+    .emulator-system-cluster {
+        position: absolute;
+        right: 0;
+        bottom: 18px;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        gap: 9px;
+    }
+
+    .emulator-touch-button.tone-dark {
+        height: 34px;
+        min-height: 34px;
+        border-radius: 5px;
+        background: #161e28;
+        padding: 0 13px;
+        box-shadow: inset 0 -3px #080d13;
+        color: #aebdca;
+        font-size: 8px;
+    }
+
+    .emulator-sidebar {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .emulator-status-panel {
+        border: 1px solid rgb(255 255 255 / 0.1);
+        border-radius: 6px;
+        background: rgb(10 16 24 / 0.96);
+        padding: 14px;
+    }
+
+    .emulator-panel-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgb(255 255 255 / 0.08);
+        padding-bottom: 10px;
+        color: #8195a7;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 9px;
+        font-weight: 900;
+    }
+
+    .emulator-device-row {
+        display: grid;
+        min-height: 62px;
+        align-items: center;
+        grid-template-columns: 34px minmax(0, 1fr) auto;
+        gap: 10px;
+        border-bottom: 1px solid rgb(255 255 255 / 0.06);
+    }
+
+    .emulator-device-row:last-child {
+        border-bottom: 0;
+    }
+
+    .emulator-device-icon {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        border: 1px solid rgb(45 226 230 / 0.2);
+        border-radius: 4px;
+        background: rgb(45 226 230 / 0.06);
+        color: var(--emulator-cyan);
+    }
+
+    .emulator-device-row strong,
+    .emulator-device-row small {
+        display: block;
+        min-width: 0;
+    }
+
+    .emulator-device-row strong {
+        overflow: hidden;
+        color: #e9f3f8;
+        font-size: 11px;
+        font-weight: 800;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .emulator-device-row small {
+        margin-top: 4px;
+        color: #6f8292;
+        font-size: 8px;
+        line-height: 1.35;
+    }
+
+    .emulator-device-state {
+        color: #5a6d7c;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 8px;
+        font-weight: 900;
+    }
+
+    .emulator-device-state.connected {
+        color: var(--emulator-green);
+    }
+
+    .emulator-input-readout {
+        margin-top: 12px;
+        border-left: 3px solid var(--emulator-pink);
+        background: #101823;
+        padding: 10px;
+    }
+
+    .emulator-input-readout span,
+    .emulator-last-input span,
+    .emulator-input-readout strong,
+    .emulator-last-input strong {
+        display: block;
+    }
+
+    .emulator-input-readout span,
+    .emulator-last-input span {
+        color: #718697;
+        font-size: 8px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .emulator-input-readout strong,
+    .emulator-last-input strong {
+        margin-top: 5px;
+        color: white;
+        font-size: 11px;
+    }
+
+    .emulator-last-input {
+        padding: 12px 2px 8px;
+    }
+
+    .emulator-key-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+    }
+
+    .emulator-key-grid span {
+        border: 1px solid rgb(255 255 255 / 0.12);
+        border-bottom-width: 3px;
+        border-radius: 4px;
+        background: #151f2a;
+        padding: 5px 7px;
+        color: #b9c8d4;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 8px;
+        font-weight: 800;
+    }
+
+    .emulator-quick-actions {
+        display: grid;
+        gap: 7px;
+        margin-top: 10px;
+    }
+
+    .emulator-quick-actions button {
+        display: flex;
+        min-height: 38px;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid rgb(255 255 255 / 0.09);
+        border-radius: 4px;
+        background: #101923;
+        padding: 0 10px;
+        color: #b9c7d2;
+        font-size: 10px;
+        font-weight: 800;
+        text-align: left;
+    }
+
+    .emulator-quick-actions button:hover {
+        border-color: rgb(255 200 87 / 0.45);
+        color: white;
+    }
+
+    .emulator-settings-panel label {
+        display: block;
+        margin: 12px 0 6px;
+        color: #8497a6;
+        font-size: 9px;
+        font-weight: 800;
+    }
+
+    .emulator-settings-panel select {
+        width: 100%;
+        height: 38px;
+        border: 1px solid rgb(45 226 230 / 0.2);
+        border-radius: 4px;
+        background: #101923;
+        padding: 0 9px;
+        color: white;
+        font-size: 11px;
+        outline: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .emulator-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .emulator-sidebar {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    .emulator-layout {
+        min-height: 0;
+        padding: 10px;
+    }
+
+    .emulator-console-heading {
+        min-height: 60px;
+    }
+
+    .emulator-console-heading h1 {
+        font-size: 15px;
+    }
+
+    .emulator-play-area {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 14px;
+    }
+
+    .emulator-screen-shell {
+        width: min(100%, 400px);
+    }
+
+    .emulator-touch-controls {
+        width: min(100%, 400px);
+        min-height: 280px;
+        grid-template-columns: repeat(3, 62px);
+        grid-template-rows: repeat(3, 62px) 50px;
+    }
+
+    .emulator-touch-button.tone-dpad {
+        width: 62px;
+        height: 62px;
+    }
+
+    .emulator-touch-controls::before {
+        transform: translate(-96px, -62px);
+    }
+
+    .emulator-action-cluster {
+        bottom: 76px;
+    }
+
+    .emulator-sidebar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .emulator-input-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .emulator-topbar {
+        min-height: 56px;
+    }
+
+    .emulator-brand span,
+    .emulator-live-status,
+    .emulator-heading-actions .emulator-secondary-button span {
+        display: none;
+    }
+
+    .emulator-brand img {
+        max-width: 84px;
+    }
+
+    .emulator-console-heading {
+        padding: 10px 12px;
+    }
+
+    .emulator-eyebrow {
+        font-size: 8px;
+    }
+
+    .emulator-play-area {
+        padding: 10px;
+    }
+
+    .emulator-touch-controls {
+        min-height: 250px;
+        grid-template-columns: repeat(3, 54px);
+        grid-template-rows: repeat(3, 54px) 44px;
+        padding: 10px;
+    }
+
+    .emulator-touch-button.tone-dpad {
+        width: 54px;
+        height: 54px;
+    }
+
+    .emulator-touch-button.tone-dpad svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .emulator-touch-controls::before {
+        width: 46px;
+        height: 46px;
+        transform: translate(-83px, -55px);
+    }
+
+    .emulator-action-cluster {
+        right: 10px;
+        bottom: 64px;
+        gap: 6px;
+    }
+
+    .emulator-action-cluster .emulator-touch-button {
+        width: 52px;
+        height: 52px;
+    }
+
+    .emulator-system-cluster {
+        bottom: 10px;
+    }
+
+    .emulator-touch-button.tone-dark {
+        padding: 0 10px;
+    }
+
+    .emulator-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .emulator-status-panel:not(.emulator-settings-panel) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .emulator-live-status i,
+    .emulator-ok-dot,
+    .emulator-pet {
+        animation: none;
+    }
+}
