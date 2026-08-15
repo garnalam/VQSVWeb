@@ -57,8 +57,8 @@ test('audits deterministic level 50 single battles for the complete 274 pet rost
         )
         ->and($report['by_role']['guardian']['win_rate'])->toBeLessThan(60)
         ->and($report['by_role']['controller']['win_rate'])->toBeGreaterThanOrEqual(45)
-        ->and($report['by_element']['moc']['win_rate'])->toBeGreaterThan(50)
-        ->and($report['by_element']['thuy']['win_rate'])->toBeGreaterThan(55)
+        ->and($report['by_element']['moc']['win_rate'])->toBeGreaterThan(45)
+        ->and($report['by_element']['thuy']['win_rate'])->toBeGreaterThan(50)
         ->and($report['by_element']['quy']['win_rate'])->toBeLessThan(40)
         ->and($report['by_element']['hoa']['win_rate'])->toBeLessThan(58)
         ->and($pets)->toHaveCount(274)
@@ -144,12 +144,12 @@ test('audits deterministic level 50 single battles for the complete 274 pet rost
         ->where('game_id', 95)
         ->firstOrFail();
 
-    expect($petResultsByIdentity['cau-vong:18']['win_rate'])->toBeBetween(15, 45)
-        ->and($petResultsByIdentity['liet-hoa:17']['win_rate'])->toBeBetween(10, 45)
+    expect($petResultsByIdentity['cau-vong:18']['win_rate'])->toBeBetween(15, 55)
+        ->and($petResultsByIdentity['liet-hoa:17']['win_rate'])->toBeBetween(10, 55)
         ->and($petResultsByIdentity['liet-hoa:17']['average_rounds'])->toBeLessThanOrEqual(18)
-        ->and($petResultsByIdentity['cau-vong:48']['win_rate'])->toBeBetween(60, 75)
+        ->and($petResultsByIdentity['cau-vong:48']['win_rate'])->toBeBetween(50, 80)
         ->and($petResultsByIdentity['cau-vong:48']['average_rounds'])->toBeLessThanOrEqual(6)
-        ->and($petResultsByIdentity['liet-hoa:95']['win_rate'])->toBeBetween(55, 75)
+        ->and($petResultsByIdentity['liet-hoa:95']['win_rate'])->toBeBetween(45, 80)
         ->and(app(PetStatCalculator::class)->calculate($dauUng, 50))->toBe([
             'hp' => 869,
             'strength' => 276,

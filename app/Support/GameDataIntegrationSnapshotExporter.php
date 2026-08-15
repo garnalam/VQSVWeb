@@ -11,9 +11,9 @@ use RuntimeException;
 
 final class GameDataIntegrationSnapshotExporter
 {
-    public const SCHEMA_VERSION = '2.0.0';
+    public const SCHEMA_VERSION = '2.1.0';
 
-    public const DATA_VERSION = 'unified-2026-08-08.1';
+    public const DATA_VERSION = 'unified-2026-08-16.1';
 
     /** @var list<string> */
     private const EXCLUDED_RAINBOW_ITEMS = [
@@ -99,6 +99,8 @@ final class GameDataIntegrationSnapshotExporter
             'schema_version' => self::SCHEMA_VERSION,
             'data_version' => self::DATA_VERSION,
             'skill_balance_version' => SkillBalance::VERSION,
+            'pet_stat_profile_version' => Vqsv4PetDesignRevision::VERSION,
+            'learnset_version' => UnifiedPetLearnsetCatalog::VERSION,
             'item_balance_version' => ItemBalance::VERSION,
             'generated_at' => now()->toIso8601String(),
             'database_file' => basename($databasePath),
@@ -159,10 +161,10 @@ final class GameDataIntegrationSnapshotExporter
             'CREATE TABLE pet_stat_profiles (pet_key TEXT NOT NULL REFERENCES pets(pet_key), level INTEGER NOT NULL, stars INTEGER NOT NULL, star_multiplier_percent INTEGER NOT NULL, hp INTEGER NOT NULL, strength INTEGER NOT NULL, defense INTEGER NOT NULL, agility INTEGER NOT NULL, provenance TEXT NOT NULL, PRIMARY KEY (pet_key, level, stars))',
             'CREATE TABLE skills (skill_key TEXT PRIMARY KEY, source_key TEXT NOT NULL REFERENCES game_sources(source_key), source_game_id INTEGER NOT NULL, source_element_key TEXT REFERENCES elements(element_key), combat_element TEXT, species_affinity TEXT, combat_category TEXT, target_pattern TEXT, effect_target_pattern TEXT, battle_format TEXT, role_tags_json TEXT, effect_key TEXT REFERENCES effects(effect_key), name_original TEXT NOT NULL, name TEXT NOT NULL, slug TEXT NOT NULL, description_original TEXT, description TEXT, power INTEGER NOT NULL, pp INTEGER NOT NULL, status_chance INTEGER, tier INTEGER NOT NULL, effect_mode INTEGER NOT NULL, effect_parameter INTEGER, target_side INTEGER NOT NULL, is_active INTEGER NOT NULL, mechanics_json TEXT, raw_json TEXT, provenance_json TEXT NOT NULL, balance_version TEXT)',
             'CREATE TABLE skill_unlock_rules (source_key TEXT NOT NULL REFERENCES game_sources(source_key), learning_group INTEGER NOT NULL, level INTEGER NOT NULL, maximum_skill_tier INTEGER NOT NULL, provenance TEXT NOT NULL, PRIMARY KEY (source_key, learning_group, level))',
-            'CREATE TABLE pet_skill_learnsets (pet_key TEXT NOT NULL REFERENCES pets(pet_key), skill_key TEXT NOT NULL REFERENCES skills(skill_key), unlock_level INTEGER NOT NULL, source_type TEXT NOT NULL, combat_role TEXT, is_signature INTEGER NOT NULL, sort_order INTEGER NOT NULL, provenance TEXT NOT NULL, PRIMARY KEY (pet_key, skill_key))',
+            'CREATE TABLE pet_skill_learnsets (pet_key TEXT NOT NULL REFERENCES pets(pet_key), skill_key TEXT NOT NULL REFERENCES skills(skill_key), grant_set TEXT NOT NULL, progression_grade TEXT NOT NULL, required_form_pet_key TEXT NOT NULL REFERENCES pets(pet_key), unlock_level INTEGER NOT NULL, source_type TEXT NOT NULL, combat_role TEXT, is_signature INTEGER NOT NULL, sort_order INTEGER NOT NULL, provenance TEXT NOT NULL, PRIMARY KEY (pet_key, skill_key))',
             'CREATE TABLE items (item_key TEXT PRIMARY KEY, source_key TEXT NOT NULL REFERENCES game_sources(source_key), source_table INTEGER NOT NULL, source_game_id INTEGER NOT NULL, canonical_item_key TEXT REFERENCES items(item_key), name_original TEXT NOT NULL, name TEXT NOT NULL, slug TEXT NOT NULL, description_original TEXT, description TEXT, category TEXT NOT NULL, mechanic_key TEXT, usage_scope TEXT, equipment_slot TEXT, frame_id INTEGER, cost INTEGER, currency_code INTEGER, effect_type INTEGER, effect_parameters_json TEXT, raw_json TEXT, is_active INTEGER NOT NULL, decision TEXT NOT NULL, provenance_json TEXT NOT NULL, balance_version TEXT)',
             'CREATE TABLE item_decisions (decision_key TEXT PRIMARY KEY, source_key TEXT NOT NULL REFERENCES game_sources(source_key), item_key TEXT REFERENCES items(item_key), original_name TEXT NOT NULL, decision TEXT NOT NULL, replacement_item_key TEXT REFERENCES items(item_key), rationale TEXT NOT NULL, provenance TEXT NOT NULL)',
-            'CREATE TABLE pet_evolutions (evolution_key TEXT PRIMARY KEY, from_pet_key TEXT NOT NULL REFERENCES pets(pet_key), to_pet_key TEXT NOT NULL REFERENCES pets(pet_key), primary_item_key TEXT REFERENCES items(item_key), primary_quantity INTEGER NOT NULL, required_level INTEGER, evolution_type TEXT NOT NULL, cost_rank INTEGER, balance_notes TEXT, source_materials_json TEXT, topology_provenance TEXT NOT NULL, recipe_provenance TEXT NOT NULL)',
+            'CREATE TABLE pet_evolutions (evolution_key TEXT PRIMARY KEY, from_pet_key TEXT NOT NULL REFERENCES pets(pet_key), to_pet_key TEXT NOT NULL REFERENCES pets(pet_key), primary_item_key TEXT REFERENCES items(item_key), primary_quantity INTEGER NOT NULL, required_level INTEGER, evolution_type TEXT NOT NULL, inherits_skills INTEGER NOT NULL, cost_rank INTEGER, balance_notes TEXT, source_materials_json TEXT, topology_provenance TEXT NOT NULL, recipe_provenance TEXT NOT NULL)',
             'CREATE TABLE pet_evolution_ingredients (evolution_key TEXT NOT NULL REFERENCES pet_evolutions(evolution_key), item_key TEXT NOT NULL REFERENCES items(item_key), quantity INTEGER NOT NULL, role TEXT NOT NULL, position INTEGER NOT NULL, provenance TEXT NOT NULL, PRIMARY KEY (evolution_key, item_key, position))',
             'CREATE TABLE pet_mutation_recipes (mutation_key TEXT PRIMARY KEY, pet_key TEXT NOT NULL UNIQUE REFERENCES pets(pet_key), status TEXT NOT NULL, notes TEXT, provenance TEXT NOT NULL)',
             'CREATE TABLE pet_mutation_ingredients (mutation_key TEXT NOT NULL REFERENCES pet_mutation_recipes(mutation_key), item_key TEXT NOT NULL REFERENCES items(item_key), quantity INTEGER NOT NULL, role TEXT NOT NULL, position INTEGER NOT NULL, provenance TEXT NOT NULL, PRIMARY KEY (mutation_key, item_key, position))',
@@ -381,14 +383,16 @@ final class GameDataIntegrationSnapshotExporter
      */
     private function exportLearnsets(PDO $pdo, array $petKeys, array $skillKeys): void
     {
-        $statement = $pdo->prepare('INSERT INTO pet_skill_learnsets VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+        $statement = $pdo->prepare('INSERT INTO pet_skill_learnsets VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 
         foreach (DB::table('pet_skill_learnsets')->orderBy('id')->cursor() as $learnset) {
             $statement->execute([
                 $this->requiredMapValue($petKeys, (int) $learnset->pet_id, 'learnset pet'),
                 $this->requiredMapValue($skillKeys, (int) $learnset->skill_id, 'learnset skill'),
+                $learnset->grant_set, $learnset->progression_grade,
+                $this->requiredMapValue($petKeys, (int) $learnset->required_form_pet_id, 'required learnset form'),
                 $learnset->unlock_level, $learnset->source_type, $learnset->combat_role,
-                (int) $learnset->is_signature, $learnset->sort_order, 'generated_unified_design',
+                (int) $learnset->is_signature, $learnset->sort_order, $learnset->provenance,
             ]);
         }
     }
@@ -479,7 +483,7 @@ final class GameDataIntegrationSnapshotExporter
      */
     private function exportEvolutions(PDO $pdo, array $petKeys, array $itemKeys): array
     {
-        $statement = $pdo->prepare('INSERT INTO pet_evolutions VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $statement = $pdo->prepare('INSERT INTO pet_evolutions VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
         $evolutionKeys = [];
 
         foreach (DB::table('pet_evolutions')->orderBy('id')->cursor() as $evolution) {
@@ -490,8 +494,9 @@ final class GameDataIntegrationSnapshotExporter
             $statement->execute([
                 $evolutionKey, $fromPetKey, $toPetKey,
                 $this->nullableMapValue($itemKeys, $evolution->item_id), $evolution->quantity,
-                $evolution->required_level, $evolution->evolution_type, $evolution->cost_rank, $evolution->balance_notes,
-                $this->json($evolution->materials), $fromPetKey[0] === 'V' ? 'unified_design' : 'decoded_source', 'unified_design',
+                $evolution->required_level, $evolution->evolution_type, (int) $evolution->inherits_skills,
+                $evolution->cost_rank, $evolution->balance_notes, $this->json($evolution->materials),
+                $evolution->skill_inheritance_provenance, 'unified_design',
             ]);
         }
 
@@ -573,6 +578,8 @@ final class GameDataIntegrationSnapshotExporter
             'schema_version' => self::SCHEMA_VERSION,
             'data_version' => self::DATA_VERSION,
             'skill_balance_version' => SkillBalance::VERSION,
+            'pet_stat_profile_version' => Vqsv4PetDesignRevision::VERSION,
+            'learnset_version' => UnifiedPetLearnsetCatalog::VERSION,
             'item_balance_version' => ItemBalance::VERSION,
             'generated_at' => now()->toIso8601String(),
             'runtime_policy' => 'reference_only_do_not_connect_game_runtime_to_web_database',
@@ -580,7 +587,7 @@ final class GameDataIntegrationSnapshotExporter
             'physical_trait_policy' => 'one_equal_weight_random_trait_from_the_19_active_traits_where_slot_type_is_physical',
             'species_trait_policy' => 'one_fixed_species_trait_from_pets.species_trait_key',
             'mutation_policy' => 'same_pet_variant_recipe; never represented as a self-loop evolution edge',
-            'learnset_policy' => 'pet_skill_learnsets_is_authoritative; skill_unlock_rules_is_legacy_reference',
+            'learnset_policy' => 'pet_skill_learnsets_v3_and_inherits_skills_are_authoritative; skill_unlock_rules_is_legacy_reference',
             'rainbow_energy_policy' => 'source_reference_only; unified battle uses PP',
             'divine_policy' => 'optional_unified_design_not_source_proven',
         ];

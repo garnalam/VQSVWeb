@@ -1,8 +1,6 @@
 <?php
 
 use App\Models\GameSource;
-use App\Models\Pet;
-use App\Models\PetEvolution;
 use App\Models\PetSkillLearnset;
 use App\Models\Skill;
 use Database\Seeders\DatabaseSeeder;
@@ -53,7 +51,7 @@ test('classifies rainbow species skills across all seven combat elements', funct
     foreach ($expectedElements as $gameId => $element) {
         expect($skills[$gameId]->combat_element)->toBe($element)
             ->and($skills[$gameId]->species_affinity)->not->toBeNull()
-            ->and($skills[$gameId]->balance_version)->toBe('unified-v6')
+            ->and($skills[$gameId]->balance_version)->toBe('unified-v7')
             ->and($skills[$gameId]->is_active)->toBeTrue();
     }
 });
@@ -83,54 +81,27 @@ test('keeps the complete active rainbow pool balanced after special skills are i
     ]);
 });
 
-test('gives every terminal pet balanced access to the unified element and species pools', function () {
+test('gives every pet the three approved v3 source classifications', function () {
     seed(DatabaseSeeder::class);
 
-    $parentByChild = PetEvolution::query()->pluck('from_pet_id', 'to_pet_id');
     $grantsByPet = PetSkillLearnset::query()
         ->with(['pet', 'skill.gameSource:id,slug'])
         ->get()
         ->groupBy('pet_id');
-    $terminalPets = Pet::query()->doesntHave('evolutions')->get();
 
-    expect($terminalPets)->not->toBeEmpty();
+    expect($grantsByPet)->toHaveCount(274);
 
-    foreach ($terminalPets as $pet) {
-        $lineageIds = [$pet->id];
-        $currentPetId = $pet->id;
-
-        while ($parentByChild->has($currentPetId)) {
-            $currentPetId = (int) $parentByChild->get($currentPetId);
-            $lineageIds[] = $currentPetId;
-        }
-
-        $skills = collect($lineageIds)
-            ->flatMap(fn (int $petId) => $grantsByPet->get($petId, collect()))
-            ->pluck('skill')
-            ->unique('id')
-            ->values();
-        $sourceCounts = $skills->countBy(function (Skill $skill) use ($pet): string {
-            if ($skill->species_affinity === $pet->species) {
-                return 'species';
-            }
-
-            return $skill->combat_element === $pet->combat_element ? 'element' : 'universal';
-        });
-
-        expect($skills->count())->toBe(10, $pet->name)
-            ->and($sourceCounts->get('element', 0))->toBeGreaterThanOrEqual(3, $pet->name)
-            ->and($sourceCounts->get('species', 0))->toBeGreaterThanOrEqual(3, $pet->name);
+    foreach ($grantsByPet as $grants) {
+        expect($grants->pluck('source_type')->unique()->sort()->values()->all())->toBe([
+            'element',
+            'species',
+            'style',
+        ]);
     }
 
-    $crossSpeciesElementGrants = $grantsByPet
-        ->flatten(1)
-        ->filter(fn (PetSkillLearnset $grant): bool => $grant->skill->gameSource->slug === 'cau-vong'
-            && $grant->skill->species_affinity !== null
-            && $grant->skill->species_affinity !== $grant->pet->species
-            && $grant->skill->combat_element === $grant->pet->combat_element);
-
-    expect($crossSpeciesElementGrants)->not->toBeEmpty()
-        ->and($crossSpeciesElementGrants->every(
-            fn (PetSkillLearnset $grant): bool => $grant->source_type === 'element',
-        ))->toBeTrue();
+    expect($grantsByPet->flatten(1)->countBy('source_type')->sortKeys()->all())->toBe([
+        'element' => 779,
+        'species' => 779,
+        'style' => 779,
+    ]);
 });

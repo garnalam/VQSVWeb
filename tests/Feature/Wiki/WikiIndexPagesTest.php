@@ -106,11 +106,11 @@ test('pet profile exposes stats skills and complete evolution material path', fu
             ->has('pet.stats.agility', 4)
             ->where('pet.stat_benchmarks.level_one.hp', fn (int $value): bool => $value > 0)
             ->where('pet.stat_benchmarks.level_fifty.hp', fn (int $value): bool => $value > 0)
-            ->has('pet.skills', 10)
+            ->has('pet.skills', 15)
             ->where('pet.primary_role', fn (string $role): bool => in_array($role, array_keys(Pet::COMBAT_ROLES), true))
             ->where('pet.provenance.combat_profile', 'calculated')
             ->where('pet.provenance.learnset', 'unified')
-            ->where('pet.skills', fn (Collection $skills): bool => $skills->where('is_available_on_current_form', true)->count() === 7)
+            ->where('pet.skills', fn (Collection $skills): bool => $skills->where('is_available_on_current_form', true)->count() === 11)
             ->where('pet.skills.0.grant_pet.game_id', 6)
             ->has('pet.evolution_family.pets', 3)
             ->where('pet.evolution_family.pets.0.game_id', 6)
@@ -187,7 +187,7 @@ test('skill element filter uses the shared seven-element combat matrix', functio
     ]))->assertOk()
         ->assertInertia(fn (Assert $page): Assert => $page
             ->component('wiki/skills/index')
-            ->where('skills.total', 15)
+            ->where('skills.total', 20)
             ->where('skills.data', fn (Collection $skills): bool => $skills->isNotEmpty()
                 && $skills->every(fn (array $skill): bool => $skill['element']['slug'] === 'moc')));
 });

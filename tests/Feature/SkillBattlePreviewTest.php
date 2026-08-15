@@ -246,7 +246,7 @@ test('decoded animation manifests cover both original game sources', function ()
     }
 });
 
-test('every active skill can build a preview with a real caster and mapped effect rule', function () {
+test('every learnset skill can build a preview with a real caster and mapped effect rule', function () {
     $allPets = Pet::query()
         ->with('gameSource:id,name,slug,asset_key,color')
         ->get()
@@ -254,10 +254,11 @@ test('every active skill can build a preview with a real caster and mapped effec
     $skills = Skill::query()
         ->with(['effect', 'gameSource', 'learnsetEntries'])
         ->where('is_active', true)
+        ->whereHas('learnsetEntries')
         ->get();
     $previewBuilder = app(SkillBattlePreview::class);
 
-    expect($skills)->toHaveCount(136);
+    expect($skills)->toHaveCount(128);
 
     foreach ($skills as $skill) {
         $entry = $skill->learnsetEntries->first();

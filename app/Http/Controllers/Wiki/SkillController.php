@@ -10,6 +10,7 @@ use App\Models\PetEvolution;
 use App\Models\PetSkillLearnset;
 use App\Models\Skill;
 use App\Support\SkillBattlePreview;
+use App\Support\UnifiedPetLearnsetCatalog;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
@@ -201,6 +202,7 @@ class SkillController extends Controller
                     'color' => $element['color'],
                 ])
                 ->values(),
+            'unlockMilestones' => UnifiedPetLearnsetCatalog::UNLOCK_MILESTONES,
             'catalogStats' => [
                 'decoded_total' => (int) $catalogStats->decoded_total,
                 'active_total' => (int) $catalogStats->active_total,
@@ -243,7 +245,8 @@ class SkillController extends Controller
             ->get()
             ->keyBy('id');
         $parentPetIds = PetEvolution::query()
-            ->select(['from_pet_id', 'to_pet_id'])
+            ->select(['from_pet_id', 'to_pet_id', 'inherits_skills'])
+            ->where('inherits_skills', true)
             ->orderBy('id')
             ->get()
             ->groupBy('to_pet_id')
@@ -345,10 +348,14 @@ class SkillController extends Controller
             ->get()
             ->keyBy('id');
         $evolutions = PetEvolution::query()
-            ->select(['from_pet_id', 'to_pet_id'])
+            ->select(['from_pet_id', 'to_pet_id', 'inherits_skills'])
             ->orderBy('id')
             ->get();
         $incomingPetIds = $evolutions
+            ->where('inherits_skills', true)
+            ->groupBy('to_pet_id')
+            ->map->pluck('from_pet_id');
+        $familyIncomingPetIds = $evolutions
             ->groupBy('to_pet_id')
             ->map->pluck('from_pet_id');
         $grantEntries = $skill->learnsetEntries->keyBy('pet_id');
@@ -436,7 +443,7 @@ class SkillController extends Controller
             ->where('is_active', true)
             ->orderBy('id')
             ->get();
-        $familyMetadata = $this->skillFamilyMetadata($allPets, $incomingPetIds);
+        $familyMetadata = $this->skillFamilyMetadata($allPets, $familyIncomingPetIds);
 
         return Inertia::render('wiki/skills/show', [
             'skill' => [

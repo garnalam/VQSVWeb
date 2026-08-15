@@ -25,6 +25,17 @@ class PetStatCalculator
 
         $multiplier = $this->multiplierFor($star);
 
+        $statProfile = data_get($pet->raw_values, 'design.design_revision.stat_profile');
+
+        if (is_array($statProfile) && data_get($statProfile, 'formula') === 'anchor-l1-l50-over-49') {
+            return [
+                'hp' => $this->calculateAnchoredStat($statProfile, 'hp', $level, $multiplier),
+                'strength' => $this->calculateAnchoredStat($statProfile, 'strength', $level, $multiplier),
+                'defense' => $this->calculateAnchoredStat($statProfile, 'defense', $level, $multiplier),
+                'agility' => $this->calculateAnchoredStat($statProfile, 'agility', $level, $multiplier),
+            ];
+        }
+
         return [
             'hp' => $this->applyMultiplier($pet->hp_base + $pet->hp_per_level * $level + $pet->hp_offset, $multiplier),
             'strength' => $this->applyMultiplier($pet->stat_2_base + $pet->stat_2_per_level * $level + $pet->stat_2_offset, $multiplier),
@@ -43,5 +54,17 @@ class PetStatCalculator
     private function applyMultiplier(float|int $value, int $multiplier): int
     {
         return (int) floor($value * $multiplier / 100);
+    }
+
+    /**
+     * @param  array<string, mixed>  $profile
+     */
+    private function calculateAnchoredStat(array $profile, string $stat, int $level, int $multiplier): int
+    {
+        $levelOne = (int) ($profile["{$stat}_l1"] ?? 0);
+        $levelFifty = (int) ($profile["{$stat}_l50"] ?? 0);
+        $unscaledNumerator = $levelOne * 49 + ($levelFifty - $levelOne) * ($level - 1);
+
+        return intdiv($unscaledNumerator * $multiplier, 49 * 100);
     }
 }

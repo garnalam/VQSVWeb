@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'required_level',
     'materials',
     'evolution_type',
+    'inherits_skills',
+    'skill_inheritance_provenance',
     'cost_rank',
     'balance_notes',
 ])]
@@ -32,6 +34,7 @@ class PetEvolution extends Model
             'materials' => 'array',
             'cost_rank' => 'integer',
             'required_level' => 'integer',
+            'inherits_skills' => 'boolean',
         ];
     }
 

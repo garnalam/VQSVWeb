@@ -4,6 +4,7 @@ namespace App\Http\Requests\Wiki;
 
 use App\Models\Pet;
 use App\Models\Skill;
+use App\Support\UnifiedPetLearnsetCatalog;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -31,9 +32,9 @@ class SkillIndexRequest extends FormRequest
             'tier' => ['nullable', 'integer', 'between:0,3'],
             'effect' => ['nullable', Rule::in(['none', 'beneficial', 'harmful'])],
             'target' => ['nullable', Rule::in(array_keys(Skill::TARGET_PATTERNS))],
-            'source' => ['nullable', Rule::in(['element', 'species', 'universal', 'signature'])],
+            'source' => ['nullable', Rule::in(['element', 'species', 'style', 'signature'])],
             'role' => ['nullable', Rule::in(['attack', 'defense', 'heal', 'control', 'disrupt', 'modifier'])],
-            'unlock' => ['nullable', 'integer', Rule::in([5, 10, 20, 30, 40])],
+            'unlock' => ['nullable', 'integer', Rule::in(UnifiedPetLearnsetCatalog::UNLOCK_MILESTONES)],
             'sort' => ['nullable', Rule::in(['id', 'name', 'power', 'tier'])],
         ];
     }

@@ -26,7 +26,7 @@ test('assigns the complete unified taxonomy to all 274 pets', function () {
         ->and(Pet::query()->whereNull('species')->count())->toBe(0)
         ->and(Pet::query()->distinct()->count('combat_element'))->toBe(7)
         ->and(Pet::query()->distinct()->count('species'))->toBe(5)
-        ->and($taxonomyCombinations)->toHaveCount(34)
+        ->and($taxonomyCombinations)->toHaveCount(35)
         ->and($lietHoaBat->combat_element)->toBe('hoa')
         ->and($lietHoaBat->species)->toBe('phi-hanh')
         ->and($rainbowCarnivorousFlower->name)->toBe('Hoa ăn thịt người')

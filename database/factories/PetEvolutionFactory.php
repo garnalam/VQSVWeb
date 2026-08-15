@@ -26,6 +26,8 @@ class PetEvolutionFactory extends Factory
             'quantity' => fake()->numberBetween(1, 10),
             'materials' => null,
             'evolution_type' => 'evolution',
+            'inherits_skills' => true,
+            'skill_inheritance_provenance' => 'generated_test_data',
         ];
     }
 }

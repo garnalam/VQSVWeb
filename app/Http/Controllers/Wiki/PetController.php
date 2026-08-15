@@ -251,7 +251,7 @@ class PetController extends Controller
             ->get()
             ->keyBy('id');
         $evolutions = PetEvolution::query()
-            ->select(['id', 'from_pet_id', 'to_pet_id', 'item_id', 'quantity', 'required_level', 'materials', 'evolution_type', 'cost_rank', 'balance_notes'])
+            ->select(['id', 'from_pet_id', 'to_pet_id', 'item_id', 'quantity', 'required_level', 'materials', 'evolution_type', 'inherits_skills', 'cost_rank', 'balance_notes'])
             ->whereHas('sourcePet', fn (Builder $query): Builder => $query->where('game_source_id', $pet->game_source_id))
             ->with([
                 'item:id,game_source_id,source_table,game_id,name,slug,frame_id',
@@ -272,15 +272,15 @@ class PetController extends Controller
         $familyEvolutions = $evolutions
             ->filter(fn (PetEvolution $evolution): bool => $familyPetIds->contains($evolution->from_pet_id))
             ->values();
-        $incomingPetIds = $familyEvolutions->groupBy('to_pet_id')->map->pluck('from_pet_id');
+        $incomingPetIds = $familyEvolutions
+            ->where('inherits_skills', true)
+            ->groupBy('to_pet_id')
+            ->map->pluck('from_pet_id');
         $outgoingPetIds = $familyEvolutions->groupBy('from_pet_id')->map->pluck('to_pet_id');
         $currentPathIds = $this->ancestorPetIds($pet->id, $incomingPetIds);
         $futurePathIds = $this->descendantPetIds($pet->id, $outgoingPetIds);
-        $learnsetPetIds = $pet->gameSource->slug === 'vqsv4'
-            ? collect([$pet->id])
-            : $familyPetIds;
         $skills = PetSkillLearnset::query()
-            ->whereIn('pet_id', $learnsetPetIds)
+            ->whereIn('pet_id', $familyPetIds)
             ->with([
                 'pet:id,game_id,name,slug,sprite_id',
                 'skill:id,game_source_id,game_id,effect_id,name,slug,description,power_percent,tier,max_uses,status_chance,combat_element,species_affinity,combat_category,target_pattern,effect_target_pattern,battle_format',
@@ -699,17 +699,41 @@ class PetController extends Controller
     /**
      * Build the four unified stat formulas used by the dossier and form comparison.
      *
-     * @return array{hp: array{base: int, per_level: int, offset: int, per_ten_levels: bool}, energy: null, strength: array{base: int, per_level: int, offset: int, per_ten_levels: bool}, defense: array{base: int, per_level: int, offset: int, per_ten_levels: bool}, agility: array{base: int, per_level: int, offset: int, per_ten_levels: bool}}
+     * @return array{hp: array<string, int|bool|string>, energy: null, strength: array<string, int|bool|string>, defense: array<string, int|bool|string>, agility: array<string, int|bool|string>}
      */
     private function statFormulas(Pet $pet): array
     {
         return [
-            'hp' => ['base' => $pet->hp_base, 'per_level' => $pet->hp_per_level, 'offset' => $pet->hp_offset, 'per_ten_levels' => false],
+            'hp' => $this->statFormula($pet, 'hp', $pet->hp_base, $pet->hp_per_level, $pet->hp_offset, false),
             'energy' => null,
-            'strength' => ['base' => $pet->stat_2_base, 'per_level' => $pet->stat_2_per_level, 'offset' => $pet->stat_2_offset, 'per_ten_levels' => false],
-            'defense' => ['base' => $pet->stat_3_base, 'per_level' => $pet->stat_3_per_10_levels, 'offset' => $pet->stat_3_offset, 'per_ten_levels' => true],
-            'agility' => ['base' => $pet->stat_4_base, 'per_level' => $pet->stat_4_per_10_levels, 'offset' => $pet->stat_4_offset, 'per_ten_levels' => true],
+            'strength' => $this->statFormula($pet, 'strength', $pet->stat_2_base, $pet->stat_2_per_level, $pet->stat_2_offset, false),
+            'defense' => $this->statFormula($pet, 'defense', $pet->stat_3_base, $pet->stat_3_per_10_levels, $pet->stat_3_offset, true),
+            'agility' => $this->statFormula($pet, 'agility', $pet->stat_4_base, $pet->stat_4_per_10_levels, $pet->stat_4_offset, true),
         ];
+    }
+
+    /**
+     * @return array<string, int|bool|string>
+     */
+    private function statFormula(Pet $pet, string $stat, int $base, int $perLevel, int $offset, bool $perTenLevels): array
+    {
+        $formula = [
+            'base' => $base,
+            'per_level' => $perLevel,
+            'offset' => $offset,
+            'per_ten_levels' => $perTenLevels,
+        ];
+        $profile = data_get($pet->raw_values, 'design.design_revision.stat_profile');
+
+        if (is_array($profile)
+            && data_get($profile, 'formula') === 'anchor-l1-l50-over-49'
+            && isset($profile["{$stat}_l1"], $profile["{$stat}_l50"])) {
+            $formula['anchor_level_one'] = (int) $profile["{$stat}_l1"];
+            $formula['anchor_level_fifty'] = (int) $profile["{$stat}_l50"];
+            $formula['anchor_formula'] = 'anchor-l1-l50-over-49';
+        }
+
+        return $formula;
     }
 
     /**

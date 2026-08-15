@@ -6,7 +6,14 @@ use InvalidArgumentException;
 
 final class Vqsv4PetDesignRevision
 {
-    public const VERSION = 'vqsv4-pets-archetypes-2026-08-05.2';
+    public const VERSION = 'unified-v4-pet-growth-v2';
+
+    private const STAT_PROFILE_PATH = 'decoded/vqsv4/06_analysis/pet-growth-v2/profiles.tsv';
+
+    private const STAT_PROFILE_FORMULA = 'anchor-l1-l50-over-49';
+
+    /** @var array<int, array{pet_key: string, classification: string, profile_version: string, formula: string, hp_l1: int, hp_l50: int, strength_l1: int, strength_l50: int, defense_l1: int, defense_l50: int, agility_l1: int, agility_l50: int, provenance: string}>|null */
+    private static ?array $statProfiles = null;
 
     /** @var array<string, array{hp: int, strength: int, defense: int, agility: int}> */
     private const GROWTH_PATTERNS = [
@@ -245,36 +252,37 @@ final class Vqsv4PetDesignRevision
         $lineage = self::LINEAGES[$lineageCode] ?? throw new InvalidArgumentException(
             "Missing VQSV4 design revision for lineage {$lineageCode}.",
         );
-        $profile = $lineage['profiles'][$gameId] ?? throw new InvalidArgumentException(
+        $lineageProfile = $lineage['profiles'][$gameId] ?? throw new InvalidArgumentException(
             "Missing VQSV4 design revision for Pet {$gameId}.",
         );
-        [$hp, $strength, $defense, $agility, $growthPattern, $primaryRole, $secondaryRole] = $profile;
-        $growth = self::GROWTH_PATTERNS[$growthPattern];
+        $statProfile = self::statProfiles()[$gameId] ?? throw new InvalidArgumentException(
+            "Missing VQSV4 stat profile for Pet {$gameId}.",
+        );
+        [, , , , $growthPattern, $primaryRole, $secondaryRole] = $lineageProfile;
+
+        $stats = self::databaseStats($statProfile);
 
         $pet['combat_element'] = $lineage['combat_element'] ?? $pet['combat_element'];
         $pet['species'] = $lineage['species'] ?? $pet['species'];
-        $pet['species_trait_code'] = $profile[7] ?? $pet['species_trait_code'];
+        $pet['species_trait_code'] = $lineageProfile[7] ?? $pet['species_trait_code'];
         unset($pet['assigned_trait_code']);
         $pet['recommended_aptitude_code'] = $pet['recommended_talent_code'];
         unset($pet['recommended_talent_code']);
         $pet['primary_role'] = $primaryRole;
         $pet['secondary_role'] = $secondaryRole;
-        $pet['stats'] = [
-            'hp_base' => $hp - $growth['hp'] * 50,
-            'hp_growth' => $growth['hp'],
-            'strength_base' => $strength - $growth['strength'] * 50,
-            'strength_growth' => $growth['strength'],
-            'defense_base' => $defense - $growth['defense'] * 5,
-            'defense_growth' => $growth['defense'],
-            'agility_base' => $agility - $growth['agility'] * 5,
-            'agility_growth' => $growth['agility'],
-        ];
+        $pet['stats'] = $stats;
         $pet['balance_notes'] = $lineage['archetype'];
         $pet['design_revision'] = [
             'version' => self::VERSION,
             'archetype' => $lineage['archetype'],
             'growth_pattern' => $growthPattern,
-            'level_50_target' => compact('hp', 'strength', 'defense', 'agility'),
+            'level_50_target' => [
+                'hp' => $statProfile['hp_l50'],
+                'strength' => $statProfile['strength_l50'],
+                'defense' => $statProfile['defense_l50'],
+                'agility' => $statProfile['agility_l50'],
+            ],
+            'stat_profile' => $statProfile,
         ];
 
         return $pet;
@@ -292,5 +300,94 @@ final class Vqsv4PetDesignRevision
         sort($gameIds);
 
         return $gameIds;
+    }
+
+    /**
+     * @param  array{hp_l1: int, hp_l50: int, strength_l1: int, strength_l50: int, defense_l1: int, defense_l50: int, agility_l1: int, agility_l50: int}  $profile
+     * @return array{hp_base: int, hp_growth: int, strength_base: int, strength_growth: int, defense_base: int, defense_growth: int, agility_base: int, agility_growth: int}
+     */
+    private static function databaseStats(array $profile): array
+    {
+        $hpGrowth = intdiv($profile['hp_l50'] - $profile['hp_l1'], 49);
+        $strengthGrowth = intdiv($profile['strength_l50'] - $profile['strength_l1'], 49);
+        $defenseGrowth = (int) round(($profile['defense_l50'] - $profile['defense_l1']) * 10 / 49);
+        $agilityGrowth = (int) round(($profile['agility_l50'] - $profile['agility_l1']) * 10 / 49);
+
+        return [
+            'hp_base' => $profile['hp_l1'] - $hpGrowth,
+            'hp_growth' => $hpGrowth,
+            'strength_base' => $profile['strength_l1'] - $strengthGrowth,
+            'strength_growth' => $strengthGrowth,
+            'defense_base' => $profile['defense_l1'] - intdiv($defenseGrowth, 10),
+            'defense_growth' => $defenseGrowth,
+            'agility_base' => $profile['agility_l1'] - intdiv($agilityGrowth, 10),
+            'agility_growth' => $agilityGrowth,
+        ];
+    }
+
+    /**
+     * @return array<int, array{pet_key: string, classification: string, profile_version: string, formula: string, hp_l1: int, hp_l50: int, strength_l1: int, strength_l50: int, defense_l1: int, defense_l50: int, agility_l1: int, agility_l50: int, provenance: string}>
+     */
+    private static function statProfiles(): array
+    {
+        if (self::$statProfiles !== null) {
+            return self::$statProfiles;
+        }
+
+        $lines = file(self::profilePath(), FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $header = str_getcsv((string) array_shift($lines), "\t");
+        $profiles = [];
+
+        foreach ($lines as $line) {
+            $values = str_getcsv($line, "\t");
+            $row = array_combine($header, $values);
+            $gameId = (int) str_replace('V4-', '', $row['pet_key']);
+            $profile = [
+                'pet_key' => $row['pet_key'],
+                'classification' => $row['classification'],
+                'profile_version' => $row['profile_version'],
+                'formula' => $row['formula'],
+                'hp_l1' => (int) $row['hp_l1'],
+                'hp_l50' => (int) $row['hp_l50'],
+                'strength_l1' => (int) $row['strength_l1'],
+                'strength_l50' => (int) $row['strength_l50'],
+                'defense_l1' => (int) $row['defense_l1'],
+                'defense_l50' => (int) $row['defense_l50'],
+                'agility_l1' => (int) $row['agility_l1'],
+                'agility_l50' => (int) $row['agility_l50'],
+                'provenance' => $row['provenance'],
+            ];
+
+            if ($profile['profile_version'] !== self::VERSION
+                || $profile['formula'] !== self::STAT_PROFILE_FORMULA
+                || $profile['provenance'] !== 'generated_unified_balance') {
+                throw new InvalidArgumentException("Invalid VQSV4 stat profile {$profile['pet_key']}.");
+            }
+
+            if (isset($profiles[$gameId])) {
+                throw new InvalidArgumentException("Duplicate VQSV4 stat profile {$profile['pet_key']}.");
+            }
+
+            $profiles[$gameId] = $profile;
+        }
+
+        if (count($profiles) !== 72) {
+            throw new InvalidArgumentException('The VQSV4 stat profile must contain exactly 72 Pets.');
+        }
+
+        ksort($profiles);
+
+        return self::$statProfiles = $profiles;
+    }
+
+    private static function profilePath(): string
+    {
+        $path = resource_path(self::STAT_PROFILE_PATH);
+
+        if (! is_file($path)) {
+            throw new InvalidArgumentException("Missing VQSV4 stat profile resource {$path}.");
+        }
+
+        return $path;
     }
 }

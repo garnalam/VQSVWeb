@@ -23,6 +23,7 @@ import type {
 type SkillIndexProps = {
     skills: PaginatedWikiData<WikiSkillCatalogEntry>;
     elements: WikiCombatElement[];
+    unlockMilestones: number[];
     catalogStats: SkillCatalogStats;
     filters: SkillFilters;
 };
@@ -56,6 +57,7 @@ function storedPinnedSkillIds(): number[] {
 export default function SkillIndex({
     skills,
     elements,
+    unlockMilestones,
     catalogStats,
     filters,
 }: SkillIndexProps) {
@@ -154,7 +156,11 @@ export default function SkillIndex({
                 stats={catalogStats}
             />
 
-            <SkillFilterDeck filters={filters} elements={elements} />
+            <SkillFilterDeck
+                filters={filters}
+                elements={elements}
+                unlockMilestones={unlockMilestones}
+            />
 
             <div className="flex flex-col gap-3 border-y border-white/7 bg-black/10 px-1 py-3 lg:flex-row lg:items-center lg:justify-between">
                 <WikiResultsBar

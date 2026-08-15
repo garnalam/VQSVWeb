@@ -64,21 +64,13 @@ test('seeds the approved 72 pet VQSV4 catalog with balanced taxonomy and recipes
         ])
         ->and($pets->whereNotNull('primary_role'))->toHaveCount(72)
         ->and($pets->whereNotNull('species_trait_id'))->toHaveCount(72)
-        ->and($pets->every(fn (Pet $pet): bool => $pet->learnsetEntries->count() === 10))->toBeTrue()
-        ->and($pets->every(fn (Pet $pet): bool => $pet->learnsetEntries->where('source_type', 'element')->count() === 5))->toBeTrue()
-        ->and($pets->every(fn (Pet $pet): bool => $pet->learnsetEntries->where('source_type', 'species')->count() === 5))->toBeTrue()
-        ->and($pets->every(fn (Pet $pet): bool => $pet->learnsetEntries
-            ->where('source_type', 'element')
-            ->every(fn (PetSkillLearnset $entry): bool => $entry->skill->combat_element === $pet->combat_element)))->toBeTrue()
-        ->and($pets->every(fn (Pet $pet): bool => $pet->learnsetEntries
-            ->where('source_type', 'species')
-            ->every(fn (PetSkillLearnset $entry): bool => $entry->skill->species_affinity === $pet->species)))->toBeTrue()
-        ->and($pets->whereIn('game_id', [8, 9])->every(
-            fn (Pet $pet): bool => $pet->learnsetEntries
-                ->where('source_type', 'element')
-                ->contains(fn (PetSkillLearnset $entry): bool => $entry->skill->species_affinity === 'thuc-vat'),
-        ))->toBeTrue()
-        ->and(PetSkillLearnset::query()->whereIn('pet_id', $pets->pluck('id'))->count())->toBe(720)
+        ->and($pets->every(fn (Pet $pet): bool => $pet->learnsetEntries->isNotEmpty()))->toBeTrue()
+        ->and($pets->flatMap->learnsetEntries->countBy('source_type')->sortKeys()->all())->toBe([
+            'element' => 137,
+            'species' => 137,
+            'style' => 137,
+        ])
+        ->and(PetSkillLearnset::query()->whereIn('pet_id', $pets->pluck('id'))->count())->toBe(411)
         ->and(PetEvolution::query()->whereIn('from_pet_id', $pets->pluck('id'))->count())->toBe(45)
         ->and(PetEvolution::query()->whereIn('from_pet_id', $pets->pluck('id'))->whereNull('required_level')->exists())->toBeFalse()
         ->and(PetMutationRecipe::query()->whereIn('pet_id', $pets->pluck('id'))->count())->toBe(23)
@@ -101,11 +93,11 @@ test('gives every VQSV4 lineage a distinct level 50 archetype and progressive co
             fn (array $rawValues): bool => data_get($rawValues, 'design.design_revision.version') === Vqsv4PetDesignRevision::VERSION,
         ))->toBeTrue()
         ->and($stats->unique(fn (array $profile): string => implode(':', $profile)))->toHaveCount(72)
-        ->and($stats[47])->toBe(['hp' => 650, 'strength' => 420, 'defense' => 72, 'agility' => 70])
-        ->and($stats[54])->toBe(['hp' => 1160, 'strength' => 285, 'defense' => 165, 'agility' => 12])
-        ->and($stats[39])->toBe(['hp' => 620, 'strength' => 320, 'defense' => 68, 'agility' => 50])
-        ->and($stats[40])->toBe(['hp' => 900, 'strength' => 240, 'defense' => 130, 'agility' => 32])
-        ->and($stats[80])->toBe(['hp' => 2200, 'strength' => 300, 'defense' => 230, 'agility' => 8]);
+        ->and($stats[47])->toBe(['hp' => 760, 'strength' => 390, 'defense' => 95, 'agility' => 41])
+        ->and($stats[54])->toBe(['hp' => 1280, 'strength' => 283, 'defense' => 185, 'agility' => 18])
+        ->and($stats[39])->toBe(['hp' => 740, 'strength' => 322, 'defense' => 90, 'agility' => 34])
+        ->and($stats[40])->toBe(['hp' => 980, 'strength' => 237, 'defense' => 140, 'agility' => 27])
+        ->and($stats[80])->toBe(['hp' => 1750, 'strength' => 376, 'defense' => 195, 'agility' => 23]);
 
     $evolutions = PetEvolution::query()
         ->whereIn('from_pet_id', $pets->pluck('id'))
@@ -117,6 +109,42 @@ test('gives every VQSV4 lineage a distinct level 50 archetype and progressive co
         $toScore = $combatBudget->score($calculator->calculate($evolution->targetPet, 50));
 
         expect($toScore)->toBeGreaterThan($fromScore, "{$evolution->sourcePet->name} -> {$evolution->targetPet->name}");
+    }
+});
+
+test('matches every VQSV4 v2 stat checkpoint from the refactor contract', function () {
+    $source = GameSource::query()->where('slug', 'vqsv4')->firstOrFail();
+    $pets = Pet::query()
+        ->whereBelongsTo($source)
+        ->get()
+        ->keyBy(fn (Pet $pet): string => sprintf('V4-%03d', $pet->game_id));
+    $calculator = app(PetStatCalculator::class);
+    $manifestPath = resource_path('decoded/vqsv4/06_analysis/pet-growth-v2/manifest.properties');
+    $manifest = parse_ini_file($manifestPath, false, INI_SCANNER_RAW);
+    $lines = preg_split(
+        '/\R/',
+        trim(File::get(resource_path('decoded/vqsv4/06_analysis/pet-growth-v2/checkpoints.tsv'))),
+    );
+    $header = str_getcsv((string) array_shift($lines), "\t");
+
+    expect($manifest['profile_version'])->toBe('unified-v4-pet-growth-v2')
+        ->and($manifest['pet_count'])->toBe('72')
+        ->and($manifest['checkpoint_count'])->toBe('720')
+        ->and($manifest['profiles_sha256'])->toBe(hash_file('sha256', resource_path('decoded/vqsv4/06_analysis/pet-growth-v2/profiles.tsv')))
+        ->and($manifest['checkpoints_sha256'])->toBe(hash_file('sha256', resource_path('decoded/vqsv4/06_analysis/pet-growth-v2/checkpoints.tsv')))
+        ->and($lines)->toHaveCount(720);
+
+    foreach ($lines as $line) {
+        $row = array_combine($header, str_getcsv($line, "\t"));
+        $pet = $pets->get($row['pet_key']);
+
+        expect($pet)->toBeInstanceOf(Pet::class)
+            ->and($calculator->calculate($pet, (int) $row['level'], (int) $row['stars']))->toBe([
+                'hp' => (int) $row['hp'],
+                'strength' => (int) $row['strength'],
+                'defense' => (int) $row['defense'],
+                'agility' => (int) $row['agility'],
+            ]);
     }
 });
 
@@ -140,8 +168,8 @@ test('publishes VQSV4 profiles with exact skill pool animation classification an
             ->where('pet.game_source.asset_key', 'vqsv4')
             ->where('pet.classification', 'normal')
             ->where('pet.population_count', 274)
-            ->has('pet.skills', 10)
-            ->where('pet.skills', fn (Collection $skills): bool => $skills->where('is_available_on_current_form', true)->count() === 10)
+            ->has('pet.skills')
+            ->where('pet.skills', fn (Collection $skills): bool => $skills->where('is_available_on_current_form', true)->isNotEmpty())
             ->where('pet.mutation_recipe.status', 'approved_same_id_variant')
             ->has('pet.mutation_recipe.ingredients', 3)
             ->has('pet.mutation_recipe.ingredients.0.item'));
@@ -151,6 +179,8 @@ test('publishes VQSV4 profiles with exact skill pool animation classification an
         ->assertInertia(fn (Assert $page): Assert => $page
             ->where('pet.classification', 'divine')
             ->where('pet.power_class', 'divine')
+            ->where('pet.stats.hp.anchor_formula', 'anchor-l1-l50-over-49')
+            ->where('pet.stats.hp.anchor_level_fifty', 1500)
             ->where('pet.divine_ability', null));
 });
 

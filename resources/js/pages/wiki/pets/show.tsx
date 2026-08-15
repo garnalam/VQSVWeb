@@ -165,7 +165,6 @@ export default function PetShow({ pet, trait_system }: PetShowProps) {
                             level={level}
                             onLevelChange={setLevel}
                             star={star}
-                            starMultiplier={starMultiplier}
                             onStarChange={setStar}
                             currentStats={currentStats}
                             benchmarkStats={benchmarkStats}
@@ -606,7 +605,6 @@ function StatAnalysis({
     level,
     onLevelChange,
     star,
-    starMultiplier,
     onStarChange,
     currentStats,
     benchmarkStats,
@@ -615,7 +613,6 @@ function StatAnalysis({
     level: number;
     onLevelChange: (level: number) => void;
     star: number;
-    starMultiplier: number;
     onStarChange: (star: number) => void;
     currentStats: WikiPetStatValues;
     benchmarkStats: WikiPetStatValues;
@@ -1965,6 +1962,19 @@ function calculateStat(
     level: number,
     qualityMultiplier: number,
 ): number {
+    if (
+        formula.anchor_formula === 'anchor-l1-l50-over-49' &&
+        formula.anchor_level_one !== undefined &&
+        formula.anchor_level_fifty !== undefined
+    ) {
+        const numerator =
+            formula.anchor_level_one * 49 +
+            (formula.anchor_level_fifty - formula.anchor_level_one) *
+                (level - 1);
+
+        return Math.trunc((numerator * qualityMultiplier) / (49 * 100));
+    }
+
     const levelFactor = formula.per_ten_levels ? level / 10 : level;
 
     return Math.trunc(

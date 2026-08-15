@@ -49,12 +49,17 @@ export type SkillFilters = {
 type SkillFilterDeckProps = {
     filters: SkillFilters;
     elements: WikiCombatElement[];
+    unlockMilestones: number[];
 };
 
 const selectClassName =
     'h-11 w-full rounded-none border-cyan-100/12 bg-white/5 text-slate-200 shadow-none focus:border-cyan-300/55 focus:ring-cyan-300/15';
 
-export function SkillFilterDeck({ filters, elements }: SkillFilterDeckProps) {
+export function SkillFilterDeck({
+    filters,
+    elements,
+    unlockMilestones,
+}: SkillFilterDeckProps) {
     const [query, setQuery] = useState(filters.q);
     const [element, setElement] = useState(filters.element ?? 'all');
     const [tier, setTier] = useState(
@@ -136,7 +141,7 @@ export function SkillFilterDeck({ filters, elements }: SkillFilterDeckProps) {
                     <SelectItem value="all">Mọi nguồn học</SelectItem>
                     <SelectItem value="element">Bể kỹ năng Hệ</SelectItem>
                     <SelectItem value="species">Bể kỹ năng Chủng</SelectItem>
-                    <SelectItem value="universal">Kỹ năng phổ thông</SelectItem>
+                    <SelectItem value="style">Bể kỹ năng phong cách</SelectItem>
                     <SelectItem value="signature">
                         Đặc trưng Form / Dòng
                     </SelectItem>
@@ -164,7 +169,7 @@ export function SkillFilterDeck({ filters, elements }: SkillFilterDeckProps) {
                 </SelectTrigger>
                 <SelectContent>
                     <SelectItem value="all">Mọi mốc mở khóa</SelectItem>
-                    {[5, 10, 20, 30, 40].map((level) => (
+                    {unlockMilestones.map((level) => (
                         <SelectItem key={level} value={String(level)}>
                             Cấp {level}
                         </SelectItem>

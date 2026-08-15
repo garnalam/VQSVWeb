@@ -160,7 +160,7 @@ test('item dossier includes cross game usages from canonical evolution recipes',
         ->assertInertia(fn (Assert $page): Assert => $page
             ->component('wiki/items/show')
             ->where('item.name', 'Chu quả')
-            ->has('item.evolution_usages', 11)
+            ->has('item.evolution_usages', 21)
             ->where('item.evolution_usages.0.from_pet.name', 'Tiên Nhân Chưởng Thú')
             ->where('item.evolution_usages.0.to_pet.name', 'Thiết Tý Phách Vương Thụ')
             ->where('item.evolution_usages.0.from_pet.game_source.slug', 'liet-hoa')

@@ -11,11 +11,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable([
     'pet_id',
     'skill_id',
+    'grant_set',
+    'progression_grade',
+    'required_form_pet_id',
     'unlock_level',
     'source_type',
     'combat_role',
     'is_signature',
     'sort_order',
+    'provenance',
 ])]
 class PetSkillLearnset extends Model
 {
@@ -32,6 +36,12 @@ class PetSkillLearnset extends Model
     public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
+    }
+
+    /** @return BelongsTo<Pet, $this> */
+    public function requiredFormPet(): BelongsTo
+    {
+        return $this->belongsTo(Pet::class, 'required_form_pet_id');
     }
 
     /** @return array<string, string> */

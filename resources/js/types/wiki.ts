@@ -93,6 +93,9 @@ export type WikiPetStatFormula = {
     per_level: number;
     offset: number;
     per_ten_levels: boolean;
+    anchor_level_one?: number;
+    anchor_level_fifty?: number;
+    anchor_formula?: 'anchor-l1-l50-over-49';
 };
 
 export type WikiPetStats = {
